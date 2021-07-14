@@ -43,7 +43,7 @@ class LocationFactory extends Factory
             'entry_code'            => $this->faker->word,
             'google_maps_shortlink' => $this->faker->url,
             'google_maps'           => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.883646308633!2d15.955561715896785!3d45.79355871942633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d71555555555%3A0xa833ef50ea5717e7!2sBuena%20Vista%20Club%20Zagreb!5e0!3m2!1sen!2shr!4v1619184594286!5m2!1sen!2shr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
-            'public_transportation' => $this->faker->text(200),
+            'public_transportation' => $this->faker->text(50),
             'user_id'               => User::factory(),
             'city_id'               => City::factory(),
         ];

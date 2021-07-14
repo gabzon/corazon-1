@@ -55,7 +55,7 @@ class UserFactory extends Factory
             'phone_verified_at'     => $this->faker->date('Y-m-d'),
             'price_hour'            => null,
             'address'               => $this->faker->streetAddress,
-            'address_info'          => $this->faker->optional()->text,
+            'address_info'          => $this->faker->optional()->word,
             'postal_code'           => $this->faker->postcode,
             'city'                  => $this->faker->randomElement(['Zagreb','Split','Osijek','Zadar', 'Pula','Sibenik','Rijeka','Rovinj']),
             'state'                 => $this->faker->postcode,
