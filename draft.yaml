@@ -1,0 +1,293 @@
+models:
+  Course:
+    name: string:200
+    slug: string:300 
+    excerpt: text nullable
+    description: longtext nullable
+    tagline: string nullable
+    keywords: string nullable
+    start_date: date nullable
+    end_date: date nullable
+    monday: boolean nullable
+    start_time_mon: time nullable
+    end_time_mon: time nullable            
+    tuesday: boolean nullable            
+    start_time_tue: time nullable
+    end_time_tue: time nullable
+    wednesday: boolean nullable
+    start_time_wed: time nullable
+    end_time_wed: time nullable
+    thursday: boolean nullable
+    start_time_thu: time nullable
+    end_time_thu: time nullable
+    friday: boolean nullable
+    start_time_fri: time nullable
+    end_time_fri: time nullable
+    saturday: boolean nullable
+    start_time_sat: time nullable
+    end_time_sat: time nullable
+    sunday: boolean nullable
+    start_time_sun: time nullable
+    end_time_sun: time nullable
+    level: string nullable
+    level_number: string nullable
+    duration: time nullable
+    teaser_video_1: text nullable
+    teaser_video_2: text nullable   
+    teaser_video_3: text nullable    
+    full_price: decimal nullable
+    reduced_price: decimal nullable
+    promo_price: decimal nullable
+    promo_expiry_date: date nullable    
+    thumbnail: string nullable    
+    focus: string:40 nullable
+    type: string:40 nullable
+    status: string:40 nullable    
+    user_id: id foreign
+    classroom_id: id foreign
+    city_id: id foreign
+    school_id: id foreign
+    softDeletes
+  Location:
+    name: string:200        
+    slug: string:300        
+    shortname: string:30 nullable
+    address: string nullable
+    address_info: string nullable
+    postal_code: string nullable
+    city: string nullable
+    neighborhood: string nullable
+    state: string nullable
+    country: string nullable
+    comments: text nullable
+    contact: string nullable
+    website: string nullable
+    email: string nullable
+    phone: string nullable
+    contract: text nullable
+    video: text nullable
+    entry_code: string nullable
+    google_maps_shortlink: string nullable
+    google_maps: text nullable
+    public_transportation: string nullable
+    user_id: id foreign
+    softDeletes
+  Skill:
+    name: string:200
+    slug: string:300
+    icon: string:30 nullable
+    difficulty: string:30 nullable
+    description: text nullable
+    thumbnail: string nullable    
+    video: text nullable
+    user_id: id foreign
+    softDeletes
+  Transaction:
+    code: string nullable
+    provider: string nullable
+    method: string nullable
+    amount: string
+    amount_received: string nullable
+    currency: string nullable
+    molley_payment_id: string nullable
+    status: enum:paid,partial,processing,overpaid,failed,open,canceled,expired
+    received_date: date nullable
+    comments: text nullable
+    user_id: id foreign
+    order_id: id foreign
+    softDeletes
+  Style:
+    name: string:50      
+    slug: string:80 nullable         
+    icon: string:40 nullable
+    color: string:40 nullable
+    thumbnail: string nullable
+    origin: string:50 nullable
+    family: string:100 nullable
+    music: string nullable
+    year: string:20 nullable
+    video: string nullable                          
+    description: text nullable
+    user_id: id foreign
+    softDeletes
+  Classroom:
+    name: string:50
+    slug: string:80
+    m2: decimal nullable
+    capacity: integer nullable
+    limit_couples: integer nullable
+    price_hour: decimal nullable
+    price_month: decimal nullable
+    dance_shoes: boolean nullable
+    comments: text nullable
+    color: string nullable
+    location_id: id foreign
+    user_id: id foreign
+    softDeletes
+  Order:
+    user_id: id foreign           
+    subtotal: decimal nullable
+    vat: decimal nullable
+    quantity_discount: decimal nullable
+    user_status_discount: decimal nullable
+    coupon_discount: decimal nullable
+    coupon_code: string nullable    
+    total: decimal nullable
+    comments: text nullable
+    method: string nullable
+    status: enum:open,canceled,paid,expired,partial nullable
+    author_id: id foreign:users nullable
+  Registration:
+    status: enum:waiting,pre-registered,registered,canceled,standby,open,partial,rejected default:pre-registered
+    role: enum:instructor,assistant,student
+    option: string nullable
+    course_id: id foreign 
+    user_id: id foreignId             
+    order_id: id foreignId 
+  Figure:
+    name: string:100
+    description: text nullable
+    video: text nullable
+    thumbnail: string nullable
+    difficulty: string nullable
+    user_id: id foreign
+  School:
+    name: string:100
+    slug: string:120
+    video: text nullable
+    logo: string nullable
+    about: text nullable
+    contact: string:100 nullable
+    email: string:100 nullable
+    phone: string:100 nullable
+    website: string:100 nullable
+    company_ref: string nullable
+    facebook: string nullable
+    twitter: string nullable
+    instagram: string nullable
+    youtube: string nullable
+    tiktok: string nullable
+    status: string nullable
+    user_id: id foreign
+    softDeletes
+  Tag:
+    name: string:100
+    slug: string:120
+    description: text nullable
+    thumbnail: string nullable
+    user_id: id foreign
+  Event:
+    name: string:100
+    slug: string:120
+    description: longtext nullable
+    start_date: date nullable
+    end_date: date nullable
+    start_time: time nullable
+    end_time: time nullable
+    price: decimal nullable
+    reduced_price: decimal nullable
+    promo_price: decimal nullable
+    promo_expiry_date: date nullable
+    currency: string:20 nullable
+    video: text nullable
+    thumbnail: string nullable
+    type: string nullable
+    status: string nullable
+    organiser: string:100 nullable
+    contact: string:100 nullable
+    email: string:100 nullable
+    phone: string:100 nullable
+    website: string:100 nullable    
+    facebook: string nullable
+    twitter: string nullable
+    instagram: string nullable
+    youtube: string nullable
+    tiktok: string nullable    
+    user_id: id foreign
+    classroom_id: id foreign
+    city_id: id foreign
+    softDeletes
+  Post:
+    title: string:100
+    slug: string:120
+    content: longtext nullable
+    thumbnail: string nullable
+    video: string nullable
+    user_id: id foreign
+    softDeletes
+  Product:
+    name: string
+    slug: string nullable
+    content: longtext nullable
+    video: text nullable
+    thumbnail: string nullable
+    qty: integer nullable
+    price: decimal
+    currency: string:20 nullable
+    dealine: dateTime nullable    
+  Lesson:
+    date: date nullable
+    comments: text nullable
+    user_id: id foreign
+    softDeletes
+  Setting:
+    price: decimal nullable
+    reduced_price: decimal nullable
+    currency: string:20 nullable         
+  City:
+    name: string:100
+    slug: string:120
+    content: longtext nullable
+    state: string:100 nullable
+    region: string:100 nullable
+    subregion: string:100 nullable
+    code: string:20 nullable
+    long: decimal:10,8 nullable
+    lat: decimal:10,8 nullable       
+    postal_code: string:100 nullable
+    country: string:100 nullable
+    alpha2Code: string:20 nullable
+    alpha3Code: string:20 nullable
+    iataCode: string:20 nullable
+  Challenge:
+    name: string:100
+    description: longtext nullable
+    video: text nullable
+    thumbnail: string nullable
+    user_id: id foreign
+    difficulty: enum:easy,moderate,difficult nullable
+controllers:
+  Course:
+    resource
+  Location:
+    resource
+  Skill:
+    resource
+  Transaction:
+    resource
+  Style:
+    resource
+  Classroom:
+    resource
+  Order:
+    resource
+  Figure:
+    resource
+  School:
+    resource
+  Tag:
+    resource
+  Event:
+    resource
+  Post:
+    resource
+  Product:
+    resource
+  Lesson:
+    resource
+  Setting:
+    resource
+  City:
+    resource
+  Challenge:
+    resource

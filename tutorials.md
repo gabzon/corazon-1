@@ -1,0 +1,5 @@
+* https://stackoverflow.com/questions/48288519/eloquent-casts-decimal-as-string
+* https://github.com/alexeymezenin/laravel-best-practices#business-logic-should-be-in-service-class
+* User picker tutorial : https://www.youtube.com/watch?v=L_f9gNaSCRE
+* pikaday.js & trix integration tutorials: https://laravel-livewire.com/screencasts/s6-refactor-pikaday-trix
+* responsive embed: https://www.themes.dev/blog/easily-embed-responsive-youtube-video-with-tailwind-css/
