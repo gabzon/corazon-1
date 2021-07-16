@@ -56,6 +56,7 @@ class Form extends Component
         'event.user_id'         => 'nullable',
         'event.location_id'     => 'required',
         'event.city_id'         => 'required',
+        'event.facebook_id'     => 'nullable',
     ];
 
     public $thumbnail;

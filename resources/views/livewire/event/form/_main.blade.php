@@ -12,7 +12,7 @@
             <div class="w-full sm:w-1/3 px-3">
                 <div class="grid grid-cols-3 gap-5">
                     <div class="col-span-2">
-                        <x-form.text-input wire:model="event.faceboo_id" name="event.facebook_id"
+                        <x-form.text-input wire:model="event.facebook_id" name="event.facebook_id"
                             label="Facebook Event ID" />
                     </div>
                     <div class="col-span-1 flex self-end">
