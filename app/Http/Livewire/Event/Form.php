@@ -77,7 +77,7 @@ class Form extends Component
         $helper = $fb->getCanvasHelper();
 
         try {
-            $response = $fb->get('/1786045018242281?fields=cover,name,place,start_time,end_time,is_online,timezone,description', $token);
+            $response = $fb->get($this->event->facebook_id . '?fields=cover,name,place,start_time,end_time,is_online,timezone,description', $token);
         } catch (FacebookResponseException $e) {
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
