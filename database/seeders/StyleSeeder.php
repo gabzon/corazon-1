@@ -207,8 +207,46 @@ class StyleSeeder extends Seeder
             'user_id'       => 1,
         ]);
 
+        Style::create([
+            'name'          => 'Ballet', 
+            'slug'          => 'ballet', 
+            'family'        => 'Performance dance', 
+            'description'   => $faker->text,
+            'color'         => 'pink-400', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'India',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
 
-// Ballet
+        Style::create([
+            'name'          => 'Contemporary dance', 
+            'slug'          => 'contemporary-dance', 
+            'family'        => 'Performance dance', 
+            'description'   => 'Contemporary dance is a genre of dance performance that developed during the mid-twentieth century and has since grown to become one of the dominant genres for formally trained dancers throughout the world, with particularly strong popularity in the U.S. and Europe. Although originally informed by and borrowing from classical, modern, and jazz styles, it has come to incorporate elements from many styles of dance. Due to its technical similarities, it is often perceived to be closely related to modern dance, ballet, and other classical concert dance styles (src: wikipedia).',
+            'color'         => 'pink-400', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Europe and America',
+            'year'          => 'Start of the 20th century',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Tango', 
+            'slug'          => 'tango', 
+            'family'        => 'Tango', 
+            'description'   => 'Tango is a partner dance, and social dance that originated in the 1880s along the Río de la Plata, the natural border between Argentina and Uruguay. It was born in the impoverished port areas of these countries, in neighborhoods which had predominantly African descendants. The tango is the result of a combination of Rioplatense Candombe celebrations, Spanish-Cuban Habanera, and Argentinean Milonga. The tango was frequently practiced in the brothels and bars of ports, where business owners employed bands to entertain their patrons with music. The tango then spread to the rest of the world. Many variations of this dance currently exist around the world.',
+            'color'         => 'pink-400', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Argentina',
+            'year'          => '1880s',
+            'user_id'       => 1,
+        ]);
+
+
+        
+
+
 // Tap
 // Jazz
 // Modern
@@ -217,7 +255,7 @@ class StyleSeeder extends Seeder
 // Swing
 // Disco
 // Waltz
-// Tango
+// 
 // Jerking
 // Locking
 // Popping

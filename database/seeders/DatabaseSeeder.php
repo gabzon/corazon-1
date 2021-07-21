@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
             SkillSeeder::class,
             LocationSeeder::class,        
             OrganizationSeeder::class,  
-            CourseSeeder::class,
-            EventSeeder::class,
+            // CourseSeeder::class,
+            // EventSeeder::class,
             ]
         );        
     }

@@ -79,7 +79,7 @@ class OrganizationSeeder extends Seeder
         Organization::create([
             'name'          => 'Bachata inspired',
             'slug'          => 'bachata-inspired',                                    
-            'contact'       => 'Mesir',                                    
+            'contact'       => 'Roberto Mesir',                                    
             'status'        => 'active',
             'type'          => 'school',
             'city_id'       => 1,
@@ -89,7 +89,7 @@ class OrganizationSeeder extends Seeder
         Organization::create([
             'name'          => 'Tormenta latina',
             'slug'          => 'tormenta-latina',                                    
-            'contact'       => 'Jerko & Maja',                                    
+            'contact'       => 'Larissa',                                    
             'status'        => 'active',
             'type'          => 'school',
             'city_id'       => 4,
@@ -109,7 +109,7 @@ class OrganizationSeeder extends Seeder
         Organization::create([
             'name'          => 'La negrita',
             'slug'          => 'la-negrita',                                    
-            'contact'       => 'tia y negrita',                                    
+            'contact'       => 'Nera y tia',                                    
             'status'        => 'active',
             'type'          => 'school',
             'city_id'       => 4,
@@ -139,7 +139,7 @@ class OrganizationSeeder extends Seeder
         Organization::create([
             'name'          => 'Aster',
             'slug'          => 'aster',                                    
-            'contact'       => 'Zoka',                                    
+            'contact'       => 'Vedran',                                    
             'status'        => 'active',
             'type'          => 'school',
             'city_id'       => 12,
