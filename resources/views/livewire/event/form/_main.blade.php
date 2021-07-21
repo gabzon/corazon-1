@@ -89,10 +89,10 @@
 
         <div class="flex flex-wrap -mx-3">
             <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="event.price" name="event.price" label="price" />
+                <x-form.price-input wire:model="event.min_price" name="event.price" label="Minimum price" />
             </div>
             <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="event.reduced_price" name="event.reduced_price" label="Reduced price" />
+                <x-form.price-input wire:model="event.max_price" name="event.reduced_price" label="Maximum price" />
             </div>
             <div class="w-full sm:w-1/4 px-3">
                 <x-form.currency />

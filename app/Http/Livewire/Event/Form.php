@@ -54,7 +54,7 @@ class Form extends Component
         'event.youtube'         => 'nullable',
         'event.tiktok'          => 'nullable',
         'event.user_id'         => 'nullable',
-        'event.location_id'     => 'required',
+        'event.location_id'     => 'nullable',
         'event.city_id'         => 'required',
         'event.facebook_id'     => 'nullable',
     ];
@@ -65,7 +65,9 @@ class Form extends Component
 
     public function import()
     {
+        
         $token = auth()->user()->facebook_token;
+        
         $fb = new Facebook([
             'app_id' => config('services.facebook.app_id'),
             'app_secret' => config('services.facebook.app_secret'),
@@ -74,17 +76,24 @@ class Form extends Component
             'enable_beta_mode' => true,
         ]);
 
-        $helper = $fb->getCanvasHelper();
+        
+        
+        $helper = $fb->getCanvasHelper();        
 
         try {
-            $response = $fb->get($this->event->facebook_id . '?fields=cover,name,place,start_time,end_time,is_online,timezone,description', $token);
-        } catch (FacebookResponseException $e) {
+            $url = '/'.$this->event->facebook_id.'?fields=cover,name,place,start_time,end_time,is_online,timezone,description';
+            $response = $fb->get($url, $token);
+        } catch (FacebookResponseException $e) {    
+            dd($e->getMessage());        
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
         } catch (FacebookSDKException $e) {
+            dd('er 2');
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
+        
+        dd($response);
         $graphNode = $response->getGraphNode();
 
         // dd($graphNode['place']['location']['city']);
@@ -98,17 +107,16 @@ class Form extends Component
         $this->event->end_time = $this->event->end_date->format('H:i:s');
         $this->event->user_id = auth()->user()->id;
         
-        $place = new FBLocationService($graphNode['place']);
-
-        $this->event->city_id = $place->getCityID();
-        $this->event->location_id = $place->getFBLocationID();
-        // $this->event->city_id = LocationService::getCityID($graphNode['place']['location']['city']);
-        // $this->event->location_id = LocationService::getLocationId($name $city);
+        if ($graphNode['place']) {
+            $place = new FBLocationService($graphNode['place']);
+            $this->event->city_id = $place->getCityID();
+            $this->event->location_id = $place->getFBLocationID();
+        }
         
+
         $this->event->save();
 
         $name = 'corazon-' . Str::slug($this->event->title, '-') . '-' . date('s');
-        // dd($graphNode['cover']['source']);
 
         $this->event->addMediaFromUrl($graphNode['cover']['source'])
             ->withResponsiveImages()
