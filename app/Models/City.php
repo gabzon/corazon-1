@@ -17,19 +17,29 @@ class City extends Model
     protected $fillable = [
         'name',
         'slug',
-        'content',
+
         'state',
         'region',
-        'subregion',
+        'zip',
+
         'code',
-        'lng',
-        'lat',
-        'postal_code',
+        'iataCode',
+        'population',
+
         'country',
         'alpha2Code',
         'alpha3Code',
-        'iataCode',
+        'world_region',
+        
+        'lng',
+        'lat',
+
+        'emblem',
+        'image',
+        
+        'description',
     ];
+
 
     /**
      * The attributes that should be cast to native types.
@@ -37,8 +47,8 @@ class City extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'long' => 'decimal:8',
-        'lat' => 'decimal:8',
+        'id'    => 'integer',
+        'lng'   => 'decimal:8',
+        'lat'   => 'decimal:8',
     ];
 }

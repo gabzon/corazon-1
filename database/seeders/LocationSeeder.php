@@ -51,7 +51,7 @@ class LocationSeeder extends Seeder
             'city_id'               => 1,
         ]);
 
-        Location::factory(5)->create();
+        // Location::factory(5)->create();
 
         Classroom::create([
             'name' => 'Big room',
@@ -115,3 +115,5 @@ class LocationSeeder extends Seeder
 
     }
 }
+
+
