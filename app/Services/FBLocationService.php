@@ -46,7 +46,11 @@ class FBLocationService
 
     public function getCityID():int
     {        
-        $city = City::where('name', $this->cityName)->firstOrFail();                
+        $city = City::where('name', $this->cityName)->firstOrCreate([
+          'name'    => $this->cityName,
+          'slug'    => Str::slug($this->name . '-' . $this->country),
+          'country' => $this->country,
+        ]);                
         return $city->id;
     }
 }

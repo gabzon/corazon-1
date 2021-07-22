@@ -76,44 +76,40 @@ class Form extends Component
             'enable_beta_mode' => true,
         ]);
 
-        
-        
         $helper = $fb->getCanvasHelper();        
 
         try {
-            $url = '/'.$this->event->facebook_id.'?fields=cover,name,place,start_time,end_time,is_online,timezone,description';
+            $url = '/'. $this->event->facebook_id .'?fields=cover,name,place,start_time,end_time,is_online,timezone,description';                        
             $response = $fb->get($url, $token);
         } catch (FacebookResponseException $e) {    
-            dd($e->getMessage());        
+            // dd($e->getMessage());        
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
         } catch (FacebookSDKException $e) {
-            dd('er 2');
+            // dd('er 2');
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
-        
-        dd($response);
+                
         $graphNode = $response->getGraphNode();
 
-        // dd($graphNode['place']['location']['city']);
-
+        
         $this->event->name = $graphNode['name'];
         $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;
         $this->event->description   = $graphNode['description'];
+        
         $this->event->start_date = $graphNode['start_time'];
-        $this->event->end_date = $graphNode['end_time'];
+        $this->event->end_date = $graphNode['end_time'];        
         $this->event->start_time = $this->event->start_date->format('H:i:s');
         $this->event->end_time = $this->event->end_date->format('H:i:s');
         $this->event->user_id = auth()->user()->id;
         
         if ($graphNode['place']) {
             $place = new FBLocationService($graphNode['place']);
-            $this->event->city_id = $place->getCityID();
+            $this->event->city_id = $place->getCityID();            
             $this->event->location_id = $place->getFBLocationID();
         }
         
-
         $this->event->save();
 
         $name = 'corazon-' . Str::slug($this->event->title, '-') . '-' . date('s');
