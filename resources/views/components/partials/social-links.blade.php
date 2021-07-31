@@ -1,5 +1,5 @@
 <div>
-    <h3 class="font-medium text-gray-900">Social media</h3>
+    {{-- <h3 class="font-medium text-gray-900">Social media</h3> --}}
     <div class="inline-flex items-center space-x-4 mt-2">
         @if ($model->facebook)
         <a href="{{ $model->facebook }}" class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">

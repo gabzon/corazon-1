@@ -13,7 +13,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="#"
+                    <a href="{{ route('events.catalogue') }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>
@@ -33,7 +33,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="#"
+                    <a href="{{ route('events.catalogue') }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>
@@ -53,7 +53,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="#"
+                    <a href="{{ route('events.catalogue') }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>

@@ -22,7 +22,7 @@ class Form extends Component
 {
     use WithThumbnail;
 
-    public Event $event;
+    public Event $event;    
     public string $action = 'store';
 
     protected $listeners = ['thumbnail' => 'updateThumbnail', 'selectedStyles' => 'updateStyles', 'selectedOrganizations' => 'updateOrganizations'];
@@ -97,28 +97,25 @@ class Form extends Component
         $this->event->name = $graphNode['name'];
         $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;
         $this->event->description   = $graphNode['description'];
-        
+
         $this->event->start_date = $graphNode['start_time'];
         $this->event->end_date = $graphNode['end_time'];        
         $this->event->start_time = $this->event->start_date->format('H:i:s');
         $this->event->end_time = $this->event->end_date->format('H:i:s');
         $this->event->user_id = auth()->user()->id;
+                       
+        $place = new FBLocationService($graphNode['place']);       
         
-        if ($graphNode['place']) {
-            $place = new FBLocationService($graphNode['place']);
-            $this->event->city_id = $place->getCityID();            
-            $this->event->location_id = $place->getFBLocationID();
+        if ($place->hasCity()) {                
+            $this->event->city_id = $place->getCityID();  
+            if ($place->hasLocation()) {                                                    
+                $this->event->location_id   = $place->getFBLocationID();
+            }
         }
-        
-        $this->event->save();
 
-        $name = 'corazon-' . Str::slug($this->event->title, '-') . '-' . date('s');
+        $this->thumbnail = $graphNode->getField('cover')['source'];        
 
-        $this->event->addMediaFromUrl($graphNode['cover']['source'])
-            ->withResponsiveImages()
-            ->usingFileName($name)
-            ->toMediaCollection('events');
-        $this->event->thumbnail = $this->event->getMedia('events')->last()->getUrl();              # code...                
+        //$this->event->save();
     }
 
     public function updateThumbnail(array $file)
@@ -170,7 +167,9 @@ class Form extends Component
             $this->action = 'update';
         } else {
             $this->event = new Event;
-            $this->type = '';
+            $this->event->type = '';
+            $this->event->status = '';
+            $this->event->location_id = null;
         }
     }
 

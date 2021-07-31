@@ -30,16 +30,17 @@
             <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
                 <div class="text-center">
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                        <span class="block xl:inline">All-in-one</span>
-                        <span class="block text-indigo-600 xl:inline">dance platform</span>
+                        {{-- <span class="block xl:inline">All-in-one</span> --}}
+                        <span class="block xl:inline">Dancing</span>
+                        <span class="block text-indigo-600 xl:inline">agenda</span>
+                        {{-- <span class="block text-indigo-600 xl:inline">dance platform</span> --}}
                     </h1>
-                    <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit
-                        sunt amet fugiat veniam occaecat fugiat aliqua.
-                    </p>
+                    {{-- <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                        Dancing agenda
+                    </p> --}}
                     <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
                         <div class="rounded-md">
-                            <a href="/auth/redirect"
+                            {{-- <a href="/auth/redirect"
                                 class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                                 <span class="sr-only">Sign in with Facebook</span>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -48,18 +49,18 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span class="ml-2 text-sm">Login with Facebook</span>
-                            </a>
+                            </a> --}}
                             {{-- <a href=""
                             class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-indigo-100 bg-indigo-600 hover:bg-indigo-700">
 
                         </a> --}}
                         </div>
                         <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                            <a href="#main"
+                            {{-- <a href="#main"
                                 class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
                                 @include('icons.events')
                                 <span class="ml-2 text-sm">Schedule</span>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
@@ -71,16 +72,26 @@
     <main id="main">
         <div class="bg-indigo-800">
             <h2 class="text-3xl font-bold text-gray-100 text-center pt-10">Events</h2>
-            <livewire:schedule.events />
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                <livewire:schedule.events />
+            </div>
             <br>
         </div>
+
         <div class="border-t bg-gray-50">
             <div class="container mx-auto mt-10">
-                <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
+                <p class="my-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
+                    Our goal is to facilitate and promote dancing events in croatia and around.
+                    <br>
+                    if you have any event, ideas or comments that you would like to share. You can write us an email to
+                    <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a>
+                </p>
+                <br>
+                {{-- <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
                 <livewire:schedule.filters />
                 <div class="py-10">
                     <livewire:schedule.catalogue />
-                </div>
+                </div> --}}
             </div>
         </div>
     </main>

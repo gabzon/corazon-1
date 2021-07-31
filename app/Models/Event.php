@@ -115,7 +115,7 @@ class Event extends Model implements HasMedia
                 $min = floatval($this->min_price);
             }
         } else {
-            $min = 'free';
+            $min = 'N/A';
         }
         
         if (isset($this->max_price)) {
@@ -123,10 +123,10 @@ class Event extends Model implements HasMedia
                 $max = floatval($this->max_price);
             }
         }else {
-            $max = 'free';
+            $max = 'N/A';
         }
         
-        return $min != $max ? $this->currency . ' '. $min .' - '. $max : 'free';
+        return $min != $max ? $this->currency . ' '. $min .' - '. $max : 'N/A';
 
     }
 

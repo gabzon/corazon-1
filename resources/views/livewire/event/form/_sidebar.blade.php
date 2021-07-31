@@ -3,8 +3,7 @@
         <livewire:component.thumbnail image="{{ $event->thumbnail }}" />
     </div>
 
-    <x-form.select wire:model="event.location_id" name="event.location_id" :options="\App\Models\Location::all()"
-        label="Location" />
+    <x-form.location-select wire:model="event.location_id" name="event.location_id" />
 
     {{-- <livewire:component.select2 :model="$event" select="styles" /> --}}
     <livewire:component.select2.styles :model="$event" />
@@ -16,7 +15,8 @@
         label="Status" />
 
     <x-form.select wire:model="event.type" name="event.type"
-        :options="['party', 'festival', 'workshop', 'bootcamp', 'concert']" label="Type" />
+        :options="['party', 'festival', 'workshop', 'bootcamp', 'concert','show/performance', 'battle', 'practica']"
+        label="Type" />
 
     {{-- <livewire:component.select2 :model="$event" select="styles" /> --}}
 

@@ -8,6 +8,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 

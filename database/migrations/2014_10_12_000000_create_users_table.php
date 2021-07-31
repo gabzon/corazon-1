@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
@@ -45,7 +46,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('mobile_verified_at')->nullable();           
             $table->timestamp('phone_verified_at')->nullable();  
             
-            $table->decimal('price_hour')->nullable();
+            $table->decimal('price_hour')->nullable();            
                              
             $table->string('address')->nullable();
             $table->string('address_info')->nullable();
@@ -62,6 +63,8 @@ class CreateUsersTable extends Migration
             $table->string('tiktok')->nullable()->unique();
             $table->string('twitter')->nullable()->unique(); 
 
+            $table->string('role')->default('user');
+            $table->boolean('preferences_verified')->default(false);
         });
     }
 

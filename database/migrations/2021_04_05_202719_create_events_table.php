@@ -37,7 +37,6 @@ class CreateEventsTable extends Migration
             $table->string('status')->nullable();
             $table->date('publish_at')->nullable();
             
-            
             $table->string('organiser', 100)->nullable();
             $table->string('contact', 100)->nullable();
             $table->string('email', 100)->nullable();

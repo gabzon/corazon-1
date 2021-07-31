@@ -20,17 +20,26 @@ class FBLocationService
     public function __construct($place)
     {              
         $this->name = $place['name'];
-        $this->cityName = $place['location']['city'];
-        $this->country = $place['location']['country'];
-        $this->lat = $place['location']['latitude'];
-        $this->long = $place['location']['longitude'];
-        $this->address = $place['location']['street'];
-        $this->zip = $place['location']['zip'];
+        $this->cityName = $place['location']['city'] ?? null;
+        $this->country = $place['location']['country'] ?? null;
+        $this->lat = $place['location']['latitude'] ?? null;
+        $this->long = $place['location']['longitude'] ?? null;
+        $this->address = $place['location']['street'] ?? null;
+        $this->zip = $place['location']['zip'] ?? null;
     }
 
+    public function hasCity(): bool
+    {
+      return $this->cityName != null;
+    }
+
+    public function hasLocation() : bool
+    {
+      return $this->getField('location') != null;
+    }
 
     public function getFBLocationID():int
-    {           
+    {                 
       $location = Location::firstOrCreate([
         'name'    => $this->name,
         'slug'    => Str::slug($this->name . '-' . \Carbon\Carbon::now()->timestamp,'-'),

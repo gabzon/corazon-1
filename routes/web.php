@@ -89,6 +89,7 @@ Route::get('mail', function(){
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
+Route::get('/event/{event}', [EventController::class, 'show'])->name('show.event');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
