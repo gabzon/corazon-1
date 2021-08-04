@@ -19,11 +19,11 @@
 
                 @if ($course->monday)
                 <div class="col-span-6 sm:col-span-2">
-                    <x-form.time-input wire:model="course.start_time_mon" name="start_time_mon" />
+                    <x-form.time-input wire:model="course.start_time_mon" name="start_time_mon" label="Start Time" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-2">
-                    <x-form.time-input wire:model="course.end_time_mon" name="end_time_mon" />
+                    <x-form.time-input wire:model="course.end_time_mon" name="end_time_mon" label="End time" />
                 </div>
                 @endif
             </div>

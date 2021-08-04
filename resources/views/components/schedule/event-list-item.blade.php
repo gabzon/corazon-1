@@ -20,7 +20,7 @@
                 <p class="text-sm text-gray-500 truncate text-right">
                     {{ $item->location->name }}
                 </p>
-                <p class="text-sm text-gray-500 truncate text-right mt-1 uppercase">
+                <p class="text-sm text-gray-500 truncate text-right mt-1">
                     {{ $item->price }}
                 </p>
             </div>

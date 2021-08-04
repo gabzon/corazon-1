@@ -3,7 +3,7 @@
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate">
-                    {{ __('Add Classroom') }}
+                    {{ __('Edit Classroom') }}
                 </h2>
             </div>
             <div class="mt-4 flex md:mt-0 md:ml-4">
@@ -21,9 +21,10 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:classroom.form :classroom="$classroom" />
+            <div class="my-36"></div>
         </div>
     </div>
 </x-admin-layout>

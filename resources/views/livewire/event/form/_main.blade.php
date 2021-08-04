@@ -95,7 +95,7 @@
                 <x-form.price-input wire:model="event.max_price" name="event.reduced_price" label="Maximum price" />
             </div>
             <div class="w-full sm:w-1/4 px-3">
-                <x-form.currency />
+                <x-form.currency wire:model="event.currency" name="event.currency" />
             </div>
             <div class="w-full sm:w-1/4 px-3">
                 <x-form.city-select wire:model="event.city_id" name="event.city_id" />

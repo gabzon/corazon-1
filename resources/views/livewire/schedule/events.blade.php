@@ -2,8 +2,9 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div>
             <h3 class="text-lg font-bold text-indigo-100">Parties</h3>
-            <div class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-200 rounded-sm">
-                <ul class="divide-y divide-gray-200 overflow-hidden">
+            <div
+                class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
+                <ul class="divide-y divide-gray-200">
                     @forelse ($parties as $party)
                     <x-schedule.event-list-item :event="$party" />
                     @empty
@@ -22,7 +23,8 @@
         </div>
         <div>
             <h3 class="text-lg font-bold text-indigo-100">Workshops</h3>
-            <div class="mt-1 h-96 overflow-y-auto shadow bg-white">
+            <div
+                class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
                 <ul class="divide-y divide-gray-200">
                     @forelse ($workshops as $workshop)
                     <x-schedule.event-list-item :event="$workshop" />
@@ -42,7 +44,8 @@
         </div>
         <div>
             <h3 class="text-lg font-bold text-indigo-100">Festivals</h3>
-            <div class="mt-1 h-96 overflow-y-auto shadow bg-white">
+            <div
+                class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
                 <ul class="divide-y divide-gray-200">
                     @forelse ($festivals as $festival)
                     <x-schedule.event-list-item :event="$festival" />

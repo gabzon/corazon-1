@@ -1,0 +1,72 @@
+<div class="mt-3 sm:mt-4 md:mt-5 lg:mt-6">
+    <img src="{{ $course->thumbnail ?? 'https://source.unsplash.com/random' }}" alt=""
+        class="h-60 object-cover w-full rounded-md">
+</div>
+<div>
+    <h3 class="font-medium text-gray-900">Information</h3>
+    <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Period</dt>
+            <dd class="text-gray-900">{{ $course->start_date->format('F j Y') }} -
+                {{ $course->end_date->format('F j Y')}}</dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Schedule</dt>
+            <dd class="text-gray-900">
+                <x-partials.display-day-time :course="$course" />
+            </dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Level</dt>
+            <dd class="text-gray-900">{{ $course->level }} {{ $course->level_number }}</dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">School</dt>
+            <dd class="text-gray-900">{{ $course->organization->name }}</dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Classroom</dt>
+            <dd class="text-gray-900">{{ $course->classroom->name }}</dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Focus</dt>
+            <dd class="text-gray-900">{{ $course->focus }}</dd>
+        </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+            <dt class="text-gray-500">Price</dt>
+            <dd class="text-gray-900">Kn {{ $course->full_price }}</dd>
+        </div>
+    </dl>
+</div>
+<div>
+    <h3 class="font-medium text-gray-900">Instructors</h3>
+    <ul class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
+        @foreach ($course->instructors as $instructor)
+        <li class="py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{{ $instructor->profile_photo_url }}" alt="" class="w-8 h-8 rounded-full">
+                <p class="ml-4 text-sm font-medium text-gray-900">{{ $instructor->name }}</p>
+            </div>
+        </li>
+        @endforeach
+    </ul>
+</div>
+<x-partials.social-links :model="$course" />
+{{-- <div class="flex">
+    <button type="button"
+        class="flex-1 bg-indigo-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Register
+    </button>
+    <button type="button"
+        class="flex-1 ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Share
+    </button>
+    <br>
+</div> --}}
+<br>

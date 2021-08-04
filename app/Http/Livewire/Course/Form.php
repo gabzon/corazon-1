@@ -40,25 +40,25 @@ class Form extends Component
         'course.end_date'       => 'required|date|after_or_equal:start_date',
         'course.monday'         => 'nullable',
         'course.start_time_mon' => 'nullable|date_format:H:i',
-        'course.end_time_mon'   => 'nullable|date_format:H:i|after:start_time_mon',
+        'course.end_time_mon'   => 'nullable|date_format:H:i|after:course.start_time_mon',
         'course.tuesday'        => 'nullable',
         'course.start_time_tue' => 'nullable|date_format:H:i',
-        'course.end_time_tue'   => 'nullable|date_format:H:i|after:start_time_tue',
+        'course.end_time_tue'   => 'nullable|date_format:H:i|after:course.start_time_tue',
         'course.wednesday'      => 'nullable',
         'course.start_time_wed' => 'nullable|date_format:H:i',
-        'course.end_time_wed'   => 'nullable|date_format:H:i|after:start_time_wed',
+        'course.end_time_wed'   => 'nullable|date_format:H:i|after:course.start_time_wed',
         'course.thursday'       => 'nullable',
         'course.start_time_thu' => 'nullable|date_format:H:i',
-        'course.end_time_thu'   => 'nullable|date_format:H:i',
+        'course.end_time_thu'   => 'nullable|date_format:H:i|after:course.start_time_thu',
         'course.friday'         => 'nullable',
         'course.start_time_fri' => 'nullable|date_format:H:i',
-        'course.end_time_fri'   => 'nullable|date_format:H:i|after:start_time_fri',
+        'course.end_time_fri'   => 'nullable|date_format:H:i|after:course.start_time_fri',
         'course.saturday'       => 'nullable',
         'course.start_time_sat' => 'nullable|date_format:H:i',
-        'course.end_time_sat'   => 'nullable|date_format:H:i|after:start_time_sat',
+        'course.end_time_sat'   => 'nullable|date_format:H:i|after:course.start_time_sat',
         'course.sunday'         => 'nullable',
         'course.start_time_sun' => 'nullable|date_format:H:i',
-        'course.end_time_sun'   => 'nullable|date_format:H:i|after:start_time_sun',    
+        'course.end_time_sun'   => 'nullable|date_format:H:i|after:course.start_time_sun',    
 
         'course.video1'         => 'nullable',
         'course.video2'         => 'nullable',
@@ -118,7 +118,8 @@ class Form extends Component
     }
 
     public function save()
-    {                                 
+    {                        
+        // dd($this->course->start_time_mon);         
         $this->validate();      
 
         $this->course->user_id = auth()->user()->id;    

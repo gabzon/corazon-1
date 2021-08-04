@@ -65,6 +65,7 @@ class CreateUsersTable extends Migration
 
             $table->string('role')->default('user');
             $table->boolean('preferences_verified')->default(false);
+            $table->boolean('in_newsletter')->default(false);
         });
     }
 

@@ -57,7 +57,8 @@ class Form extends Component
         if ($city->exists) {
             $this->city = $city;        
         } else {
-            $this->city = new City;            
+            $this->city = new City;      
+            $this->city->country = '';      
         }
     }
 

@@ -90,6 +90,7 @@ Route::get('mail', function(){
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('show.event');
+Route::get('/course/{course}', [CourseController::class, 'show'])->name('show.course');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -100,6 +101,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
 })->name('schedule');
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
+    
     Route::resource('admin/course', CourseController::class);
     Route::resource('admin/location', LocationController::class);
     Route::resource('admin/skill', SkillController::class);

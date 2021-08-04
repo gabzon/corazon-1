@@ -35,9 +35,9 @@
                         <span class="block text-indigo-600 xl:inline">agenda</span>
                         {{-- <span class="block text-indigo-600 xl:inline">dance platform</span> --}}
                     </h1>
-                    {{-- <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                        Dancing agenda
-                    </p> --}}
+                    <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                        All dancing events in croatia and around in one place.
+                    </p>
                     <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
                         <div class="rounded-md">
                             {{-- <a href="/auth/redirect"
@@ -81,17 +81,18 @@
         <div class="border-t bg-gray-50">
             <div class="container mx-auto mt-10">
                 <p class="my-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
-                    Our goal is to facilitate and promote dancing events in croatia and around.
+                    Our goal is to make you life easier by putting all dancing events in croatia and around in one
+                    place.
                     <br>
                     if you have any event, ideas or comments that you would like to share. You can write us an email to
                     <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a>
                 </p>
                 <br>
-                {{-- <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
+                <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
                 <livewire:schedule.filters />
                 <div class="py-10">
                     <livewire:schedule.catalogue />
-                </div> --}}
+                </div>
             </div>
         </div>
     </main>

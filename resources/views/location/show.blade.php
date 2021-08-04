@@ -21,7 +21,7 @@
     </x-slot>
 
     <main class="flex">
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 h-screen overflow-y-auto">
             <section aria-labelledby="primary-heading"
                 class="min-w-0 flex-1 h-full flex flex-col overflow-hidden lg:order-last">
                 <div class="mx-3 sm:mx-4 md:mx-6 lg:mx-8 my-4">
@@ -30,62 +30,16 @@
                     <x-location.map :location="$location" />
 
                     <div class="my-8">
-                        <h2 class="flex-1 text-lg font-bold text-gray-900">Classrooms</h2>
-                        @forelse ($location->classrooms as $item)
-                        <div class="bg-white shadow overflow-hidden sm:rounded-md">
-                            <ul class="divide-y divide-gray-200">
-                                <li>
-                                    <a href="{{ route('classroom.show', $item) }}" class="block hover:bg-gray-50">
-                                        <div class="px-4 py-4 sm:px-6">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-indigo-600 truncate">
-                                                    {{ $item->name }}
-                                                </p>
-                                                <div class="ml-2 flex-shrink-0 flex">
-                                                    <p
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        Full-time
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2 sm:flex sm:justify-between">
-                                                <div class="sm:flex">
-                                                    <p class="flex items-center text-sm text-gray-500">
-                                                        @include('icons.squared-dashed', ['style' => 'w-4 h-4'])
-                                                        <span class="ml-2">{{ $item->capacity }} m2</span>
-                                                    </p>
-                                                    <p
-                                                        class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-                                                        @include('icons.partners')
-                                                        {{ $item->limit_couples }}
-                                                    </p>
-                                                    <p
-                                                        class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-                                                        @include('icons.partners')
-                                                        {{ $item->limit_couples }}
-                                                    </p>
-                                                </div>
-                                                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                                    @if ($item->dance_shoes == 1)
-                                                    @include('icons.shoes', ['style'=>'w-8 h-8'])
-                                                    @endif
-                                                    <p>
-                                                        Closing on
-                                                        <time datetime="2020-01-07">January 7, 2020</time>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
+                        <header class="flex justify-between items-center">
+                            <h2 class="flex-1 text-lg font-bold text-gray-900">Classrooms</h2>
+                            <a href="{{ route('classroom.create', ['location' => $location]) }}"
+                                class="text-sm underline text-indigo-700 hover:text-indigo-500">Add
+                                Classroom</a>
+                        </header>
+
+                        <div class="my-3">
+                            @include('location._classrooms')
                         </div>
-                        @empty
-                        <a href="{{ route('classroom.create', ['location' => $location]) }}"
-                            class="block border-2 border-dashed text-center py-4 border-gray-300 mt-3 hover:bg-indigo-600 hover:text-white">
-                            Add Classroom
-                        </a>
-                        @endforelse
                     </div>
                 </div>
 

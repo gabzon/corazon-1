@@ -7,7 +7,8 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.home')
                     </a>
-                    <a href="#" id="catalogue" data-tippy-placement="right" data-tippy-content="Catalogue"
+                    <a href="{{ route('courses.schedule') }}" id="catalogue" data-tippy-placement="right"
+                        data-tippy-content="Catalogue"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.catalogue')
                     </a>

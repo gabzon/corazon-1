@@ -17,7 +17,7 @@
             </p>
             <p class="text-sm text-gray-500">
                 <span class="font-medium">Price:</span>
-                {{$event->currency}}{{ $event->min_price }} - {{$event->currency}}{{ $event->max_price }}
+                {{ $event->price }}
             </p>
             <p class="text-sm text-gray-500">
                 {{-- <span class="font-medium">Location: </span> {{ $event->location->name }} --}}

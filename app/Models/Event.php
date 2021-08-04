@@ -114,20 +114,30 @@ class Event extends Model implements HasMedia
             if ($this->min_price > 0) {
                 $min = floatval($this->min_price);
             }
-        } else {
-            $min = 'N/A';
         }
         
         if (isset($this->max_price)) {
             if ($this->max_price > 0) {
                 $max = floatval($this->max_price);
             }
-        }else {
-            $max = 'N/A';
+        }
+
+        if ($min == $max) {
+            if ($min != 0) {
+                return $this->currency . ' '. $min;
+            }else{
+                return 'Free';
+            }            
+        } else {
+            if (!empty($min) && !empty($max)) {
+                return $this->currency . ' '. $min .' - '. $max;        
+            }elseif (!empty($min)) {
+                return $this->currency . ' '. $min;
+            }else{
+                return $this->currency . ' '. $max;
+            }
         }
         
-        return $min != $max ? $this->currency . ' '. $min .' - '. $max : 'N/A';
-
     }
 
     public function scopeShouldExpire($query)

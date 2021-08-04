@@ -3,97 +3,67 @@
 namespace App\Http\Livewire\Classroom;
 
 use App\Models\Classroom;
+use App\Models\Location;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
 class Form extends Component
 {
     public $action = 'store';
-    public $classroom;
-    public $name;
-    public $slug;
-    public $m2;
-    public $capacity;
-    public $limit_couples;
-    public $price_hour;
-    public $price_month;
-    public $color = '';
-    public $danceShoes;
-    public $location = '';
-    public $comments;
+    public Classroom $classroom;
+
+    protected $rules = [
+        'classroom.name'        => 'required',
+        'classroom.slug'        => 'required',
+        'classroom.m2'          => 'nullable',
+        'classroom.capacity'    => 'nullable',
+        'classroom.limit_couples'=> 'nullable',
+        'classroom.price_hour'  => 'nullable',
+        'classroom.price_month' => 'nullable',
+        'classroom.currency'    => 'nullable',
+        'classroom.floor_type'  => 'nullable',
+        'classroom.mirror_type' => 'nullable',
+        'classroom.has_bar'     => 'nullable',
+        'classroom.dance_shoes' => 'nullable',
+        'classroom.description' => 'nullable',
+        'classroom.color'       => 'nullable',
+        'classroom.location_id' => 'required',
+        'classroom.user_id'     => 'nullable',
+    ];
+
+    public function updatedClassroomName()
+    {
+        $this->classroom->slug = Str::slug($this->classroom->name, '-');
+    }
     
-    public function store()
-    {                                
-        $classroom = Classroom::create([
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'm2'            => $this->m2,
-            'capacity'      => $this->capacity,
-            'limit_couples' => $this->limit_couples,
-            'price_hour'    => $this->price_hour,
-            'price_month'   => $this->price_month,
-            'color'         => $this->color,
-            'dance_shoes'   => $this->danceShoes,
-            'comments'      => $this->comments,
-            'location_id'   => $this->location,
-            'user_id'       => auth()->user()->id,
-        ]);
-        // 'location_id'   => intval(),
-        // $classroom->location()->associate()
+    public function save()    
+    {        
+        $this->validate();
 
-        session()->flash('success','Classroom created successfully.');
-
-        return redirect(route('location.show', $this->location));
-    }
-
-    public function updatedName()
-    {
-        $this->slug = Str::slug($this->name, '-');
-    }
-
-    public function update()
-    {
-        $this->classroom->update([
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'm2'            => $this->m2,
-            'capacity'      => $this->capacity,
-            'limit_couples' => $this->limit_couples,
-            'price_hour'    => $this->price_hour,
-            'price_month'   => $this->price_month,
-            'color'         => $this->color,
-            'dance_shoes'   => $this->danceShoes,
-            'comments'      => $this->comments,
-        ]);
-
-        $this->classroom->location()->associate($this->location)->save();
-
-        session()->flash('success','Classroom updated successfully.');
-
-        return redirect(route('location.index'));
-    }    
-
-    public function mount($classroom = null, $location = null)
-    {
-        if ($location) {            
-            $this->location = $location;
-        }
+        $this->classroom->user_id = auth()->user()->id;       
         
-        if ($classroom) {         
-            $this->action       = 'update';
-            $this->classroom    = $classroom;
-            $this->name         = $classroom->name;
-            $this->slug         = $classroom->slug;
-            $this->m2           = $classroom->m2;
-            $this->capacity     = $classroom->capacity;
-            $this->limit_couples= $classroom->limit_couples;
-            $this->price_hour   = $classroom->price_hour;
-            $this->price_month  = $classroom->price_month;
-            $this->color        = $classroom->color;
-            $this->danceShoes  = $classroom->dance_shoes;
-            $this->location     = $classroom->location_id;
-            $this->comments     = $classroom->comments;        
-        }
+        $this->classroom->location()->associate($this->classroom->location_id)->save();     
+
+        $this->classroom->save();
+
+        session()->flash('success','Classroom saved successfully.');
+
+        return redirect()->route('classroom.show', $this->classroom);
+    }
+
+    public function mount(Classroom $classroom = null, $location = null)
+    {
+        if($classroom->exists) {
+            $this->action = 'update';
+            $this->classroom = $classroom;
+        } else {
+            $this->classroom = new Classroom;
+            $this->classroom->color = '';
+            $this->classroom->currency = '';
+            $this->classroom->floor_type = '';
+            $this->classroom->mirror_type = '';
+            $this->classroom->location_id = $location ?? null;
+        }        
     }
 
     public function render()
@@ -101,5 +71,3 @@ class Form extends Component
         return view('livewire.classroom.form');
     }
 }
-
-

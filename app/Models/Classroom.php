@@ -23,8 +23,12 @@ class Classroom extends Model
         'limit_couples',
         'price_hour',
         'price_month',
+        'currency',
+        'floor_type',
+        'mirror_type',
+        'has_bar',
         'dance_shoes',
-        'comments',
+        'description',
         'color',
         'location_id',
         'user_id',
@@ -36,13 +40,15 @@ class Classroom extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'm2' => 'float',
-        'price_hour' => 'float',
-        'price_month' => 'float',
-        'dance_shoes' => 'boolean',
-        'location_id' => 'integer',
-        'user_id' => 'integer',
+        'id'            => 'integer',
+        'm2'            => 'float',
+        'capacity'      => 'integer',
+        'price_hour'    => 'float',
+        'price_month'   => 'float',
+        'has_bar'       => 'boolean',
+        'dance_shoes'   => 'boolean',
+        'location_id'   => 'integer',
+        'user_id'       => 'integer',
     ];
 
 

@@ -20,7 +20,7 @@
         </div>
     </x-slot>
 
-    <div class="py-4">
+    <div class="py-4 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div x-data="{ tab: 'general' }">

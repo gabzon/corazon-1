@@ -1,3 +1,17 @@
+# v0.1.3: Wednesday August 4th, 2021
+* Fixed styles scroll down
+* Catalog page
+* Classroom improvements
+* Fixed bug dates in courses
+* guest can see courses
+* event list design improvements
+* Courses card improvments
+
+# v0.1.2: Saturday july 31, 2021
+* Text for email added
+* Courses removed
+* Various improvements for sharing first launch version
+
 # v0.1.1: Monday July 5th, 2021
 * Welcome pattern color changed
 * Display message if there is no events

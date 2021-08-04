@@ -1,4 +1,4 @@
-<div>
+<div class="text-sm">
     <span class="{{ $class->monday ? 'text-indigo-600 font-bold':'text-gray-400'}}">Mo</span>
     <span class="{{ $class->tuesday ? 'text-indigo-600 font-bold':'text-gray-400'}}">Tu</span>
     <span class="{{ $class->wednesday ? 'text-indigo-600 font-bold':'text-gray-400'}}">We</span>

@@ -18,6 +18,19 @@ class StyleSeeder extends Seeder
         $faker = Factory::create();
 
         Style::create([
+            'name'          => 'Salsa',
+            'slug'          => 'salsa', 
+            'music'         => 'Timba,Salsa salsa cubana,Rumba, Afrocuban, Mambo, Pachanga, Boogaloo, Son, Danzon',
+            'family'        => 'Salsa',            
+            'description'   => $faker->text,
+            'color'         => 'red-800', 
+            'thumbnail'     => $faker->imageUrl(640,640),
+            'origin'        => 'New York, USA',
+            'year'          => '1970s',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
             'name'          => 'Cuban salsa',
             'slug'          => 'cuban-salsa', 
             'music'         => 'Timba,Salsa cubana,Rumba,Afrocuban',

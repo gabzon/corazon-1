@@ -24,7 +24,7 @@ class ClassroomController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request)    
     {
         return view('classroom.create')->with('location', $request->location);
     }

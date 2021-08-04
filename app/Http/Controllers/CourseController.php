@@ -87,4 +87,9 @@ class CourseController extends Controller
 
         return redirect()->route('course.index');
     }
+
+    public function schedule()
+    {
+        return view('course.schedule');
+    }
 }

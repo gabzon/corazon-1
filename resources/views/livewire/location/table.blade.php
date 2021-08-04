@@ -55,7 +55,7 @@
                                 <td class="px-6 py-4 flex justify-end">
                                     <a href="{{ route('location.edit', $item)}}"
                                         class="text-gray-400 hover:text-gray-600">
-                                        @include('icons.edit')
+                                        @include('icons.pen')
                                     </a>
                                 </td>
                             </tr>

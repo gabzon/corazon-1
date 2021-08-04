@@ -16,10 +16,12 @@ class FBLocationService
     public $address;
     public $zip;
     public $country;
+    public $location;
     
     public function __construct($place)
     {              
         $this->name = $place['name'];
+        $this->location = $place['location'] ?? null;
         $this->cityName = $place['location']['city'] ?? null;
         $this->country = $place['location']['country'] ?? null;
         $this->lat = $place['location']['latitude'] ?? null;
@@ -35,7 +37,7 @@ class FBLocationService
 
     public function hasLocation() : bool
     {
-      return $this->getField('location') != null;
+      return $this->location != null ? true : false;
     }
 
     public function getFBLocationID():int

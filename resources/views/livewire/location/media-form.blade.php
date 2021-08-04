@@ -1,7 +1,5 @@
 <div>
-    The whole world belongs to you
-
-    <div class="sm:col-span-6">
+    <div class="py-6 sm:col-span-6">
         <label for="video" class="block text-sm font-medium text-gray-700">
             Video
         </label>
