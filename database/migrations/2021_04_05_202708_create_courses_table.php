@@ -52,6 +52,8 @@ class CreateCoursesTable extends Migration
             $table->text('video1')->nullable();
             $table->text('video2')->nullable();
             $table->text('video3')->nullable();
+            $table->boolean('dropping')->nullable();
+            $table->decimal('dropping_price')->nullable();
             $table->decimal('full_price')->nullable();
             $table->decimal('reduced_price')->nullable();
             $table->string('thumbnail')->nullable();
