@@ -1,6 +1,5 @@
 <footer class="bg-indigo-900" aria-labelledby="footerHeading">
-    <h2 id="footerHeading" class="sr-only">Footer</h2>
-    <div class="max-w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div class="max-w-full mx-auto py-4 px-4 sm:px-6 lg:py-6 lg:px-8">
         {{-- <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8 xl:col-span-1">
                 <img class="h-10" src="https://tailwindui.com/img/logos/workflow-mark-gray-300.svg" alt="Company name">
@@ -253,5 +252,9 @@
                 &copy; {{ date('Y')}} {{ config('app.name') }}. All rights reserved.
             </p>
         </div>
+    </div>
+    <div class="pb-4 text-center text-xs text-indigo-200">
+        <a href="{{ route('terms.show')}}" class="hover:underline">Terms of Service</a> - <a
+            href="{{ route('policy.show') }}" class="hover:underline">Privacy Policy</a>
     </div>
 </footer>

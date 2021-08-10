@@ -51,6 +51,17 @@ class LocationSeeder extends Seeder
             'city_id'               => 1,
         ]);
 
+        Location::create([
+            'name'                  => 'Not defined',
+            'slug'                  => 'not-defined',
+            'shortname'             => 'n/d',
+            'address'               => '',
+            'zip'                   => '',
+            'neighborhood'          => '',
+            'user_id'               => 1,
+            'city_id'               => 1,
+        ]);
+
         // Location::factory(5)->create();
 
         Classroom::create([

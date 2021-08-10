@@ -6,6 +6,7 @@
 * guest can see courses
 * event list design improvements
 * Courses card improvments
+* Dropping + dropping added to migration
 
 # v0.1.2: Saturday july 31, 2021
 * Text for email added

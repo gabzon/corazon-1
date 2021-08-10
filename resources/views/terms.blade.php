@@ -8,6 +8,7 @@
             <div class="w-full sm:max-w-5xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">
                 {!! $terms !!}
             </div>
+            <br>
         </div>
     </div>
 </x-guest-layout>
