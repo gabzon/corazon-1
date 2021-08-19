@@ -1,7 +1,7 @@
-<div class="bg-white shadow overflow-hidden sm:rounded-md">
+<div class="overflow-hidden sm:rounded-md">
     <ul class="divide-y divide-gray-200">
         @forelse ($location->classrooms as $item)
-        <li>
+        <li class="bg-white">
             <a href="{{ route('classroom.show', $item) }}" class="block hover:bg-gray-50">
                 <div class="px-4 py-4 flex items-center sm:px-6">
                     <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">

@@ -26,14 +26,22 @@ class Form extends Component
     public string $type = '';
     public $tmp;
 
+    protected $rules = [
+        'location.name'     => 'required|min:5',
+        'location.slug'     => 'required|min:5',
+        'location.shortname'=> 'nullable',
+        'location.comments' => 'nullable',
+        'location.contact'  => 'nullable',
+        'location.website'  => 'nullable|min:12|url',
+        'location.email'    => 'nullable|min:5|email',
+        'location.phone'    => 'nullable',
+        'location.contract' => 'nullable',
+        'location.type'     => 'nullable',
+    ];
+
     public function store()
     {         
-        $this->validate([
-            'name'      => 'required|min:3',
-            'email'     => 'nullable|min:5|email',
-            'contact'   => 'required|min:3',
-            'website'   => 'nullable|min:12|url',
-        ]); 
+        $this->validate(); 
 
         $location = Location::create([
             'name'                  => $this->name,

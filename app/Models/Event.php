@@ -28,9 +28,7 @@ class Event extends Model implements HasMedia
         'start_time',
         'end_time',
         'publish_at',
-        'min_price',
-        'max_price',                
-        'currency',
+        'is_free',                
         'video',
         'thumbnail',
         'type',
@@ -154,5 +152,10 @@ class Event extends Model implements HasMedia
     public function scopeIsActive($query)
     {
         return $query->whereStatus('active');
+    }
+
+    public function prices()
+    {
+        return $this->morphMany(Price::class, 'priceable');
     }
 }

@@ -28,9 +28,7 @@ class CreateEventsTable extends Migration
             $table->boolean('is_recurrent')->nullable();            
             $table->string('day')->nullable();
 
-            $table->decimal('min_price')->nullable();
-            $table->decimal('max_price')->nullable();
-            $table->string('currency', 20)->nullable();
+            $table->boolean('is_free')->nullable();
             $table->text('video')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('type')->nullable();

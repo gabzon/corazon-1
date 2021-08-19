@@ -11,147 +11,68 @@ class Form extends Component
 {
     use WithFileUploads;
     public $action = 'store';
-    public $organization;
-
-    public $name;
-    public $slug;
-    public $video;
-    public $logo;
-    public $about;
-    public $contact;
-    public $email;
-    public $phone;
-    public $website;
-    public $company_ref;
-    public $facebook;
-    public $twitter;
-    public $instagram;
-    public $youtube;
-    public $tiktok;
-    public $status = '';
-    public $type = '';
-    public $address;
-    public $address_info;
-    public $postal_code;
-    public $city;
-    public $state;
-    public $country = '';
-    public $lat;
-    public $lng; 
-    public $city_id = '';
-
-    public function store()
-    {
+    public Organization $organization;
+    public $country;
+    
+    protected $rules = [
+        'organization.name'         => 'required',
+        'organization.slug'         => 'required',
+        'organization.about'        => 'nullable',
         
-        Organization::create([
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'video'         => $this->video,
-            'logo'          => $this->logo,
-            'about'         => $this->about,
-            'contact'       => $this->contact,
-            'email'         => $this->email,
-            'phone'         => $this->phone,
-            'website'       => $this->website,
-            'company_ref'   => $this->company_ref,
-            'facebook'      => $this->facebook,
-            'twitter'       => $this->twitter,
-            'instagram'     => $this->instagram,
-            'youtube'       => $this->youtube,
-            'tiktok'        => $this->tiktok,
-            'status'        => $this->status,
-            'type'          => $this->type,
-            'address'       => $this->address,
-            'address_info'  => $this->address_info,
-            'postal_code'   => $this->postal_code,
-            'city'          => $this->city,
-            'state'         => $this->state,
-            'country'       => $this->country,
-            'lat'           => $this->lat,
-            'lng'           => $this->lng,
-            'user_id'       => auth()->user()->id,
-            'city_id'       => $this->city_id,
-        ]);
+        'organization.contact'      => 'nullable',
+        'organization.email'        => 'nullable|email',
+        'organization.phone'        => 'nullable',
+        'organization.website'      => 'nullable|url',
+        
+        'organization.oid'          => 'nullable',
+        'organization.status'       => 'required',
+        'organization.type'         => 'required',
+                        
+        'organization.city_id'      => 'required',
+        'organization.zip'          => 'nullable',
+        'organization.address'      => 'nullable',
+        'organization.address_info' => 'nullable',
+        'organization.lat'          => 'nullable',
+        'organization.lng'          => 'nullable',
 
-        session()->flash('success', 'Organization created successfully');
+        'organization.facebook'     => 'nullable',
+        'organization.twitter'      => 'nullable',
+        'organization.instagram'    => 'nullable',
+        'organization.youtube'      => 'nullable',
+        'organization.tiktok'       => 'nullable',
+
+        'organization.video'        => 'nullable',
+        'organization.logo'         => 'nullable',
+        
+        'organization.user_id'      => 'nullable',
+    ];
+
+    public function save()
+    {
+        $this->validate();
+
+        $this->organization->save();
+
+        session()->flash('success', 'Organization saved successfully');
         
         return redirect()->route('organization.index');
     }
 
-    public function update()
-    {
-        $this->organization->update([
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'video'         => $this->video,
-            'logo'          => $this->logo,
-            'about'         => $this->about,
-            'contact'       => $this->contact,
-            'email'         => $this->email,
-            'phone'         => $this->phone,
-            'website'       => $this->website,
-            'company_ref'   => $this->company_ref,
-            'facebook'      => $this->facebook,
-            'twitter'       => $this->twitter,
-            'instagram'     => $this->instagram,
-            'youtube'       => $this->youtube,
-            'tiktok'        => $this->tiktok,
-            'status'        => $this->status,
-            'type'          => $this->type,
-            'address'       => $this->address,
-            'address_info'  => $this->address_info,
-            'postal_code'   => $this->postal_code,
-            'city'          => $this->city,
-            'state'         => $this->state,
-            'country'       => $this->country,
-            'lat'           => $this->lat,
-            'lng'           => $this->lng,
-            'user_id'       => auth()->user()->id,
-            'city_id'       => $this->city_id,
-        ]);
-
-        session()->flash('success', 'Organization updated successfully');
-        
-        return redirect()->route('organization.index');
+    public function updatedOrganizationName($value)
+    {        
+        $this->organization->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
     }
 
-    public function updatedName($value)
+    public function mount(Organization $organization = null)
     {
-        $this->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
-    }
-
-    public function mount($organization = null)
-    {
-        if ($organization) {
-            $this->action = 'update';
+        if ($organization->exists) {
             $this->organization = $organization;
-            $this->name = $organization->name;
-            $this->slug = $organization->slug;
-            $this->video = $organization->video;
-            $this->logo = $organization->logo;
-            $this->about = $organization->about;
-            $this->contact = $organization->contact;
-            $this->email = $organization->email;
-            $this->phone = $organization->phone;
-            $this->website = $organization->website;
-            $this->company_ref = $organization->company_ref;
-            $this->facebook = $organization->facebook;
-            $this->twitter = $organization->twitter;
-            $this->instagram = $organization->instagram;
-            $this->youtube = $organization->youtube;
-            $this->tiktok = $organization->tiktok;
-            $this->status = $organization->status;
-            $this->type = $organization->type;
-            $this->address = $organization->address;
-            $this->address_info = $organization->address_info;
-            $this->postal_code = $organization->postal_code;
-            $this->city = $organization->city;
-            $this->state = $organization->state;
-            $this->country = $organization->country;
-            $this->lat = $organization->lat;
-            $this->lng = $organization->lng;
-            $this->user_id = $organization->user_id;
-            $this->city_id = $organization->city_id;
+            $this->action = 'update';
+        } else {
+            $this->organization = new Organization;
+            $this->organization->type = '';
+            $this->organization->status = '';
+            $this->organization->user_id = auth()->user()->id;
         }
     }
 

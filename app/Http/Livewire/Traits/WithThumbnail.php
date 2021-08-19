@@ -13,7 +13,7 @@ trait WithThumbnail
         if (gettype($thumb) == 'string') {
             
         $name = 'corazon-' . Str::slug($model->title, '-') . '-' . date('s');
-
+        
         $model->addMediaFromUrl($thumb)
             ->withResponsiveImages()
             ->usingFileName($name)
@@ -21,7 +21,7 @@ trait WithThumbnail
         $model->thumbnail = $model->getMedia($tableName)->last()->getUrl(); 
         $model->save();
 
-        }else{
+        } else {
             if ($thumb === [0]) {
                 $model->thumbnail = '';
                 $model->getMedia($tableName)->last()->delete();

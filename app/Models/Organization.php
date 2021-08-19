@@ -36,7 +36,7 @@ class Organization extends Model
         'type',
         'address',
         'address_info',
-        'postal_code',        
+        'zip',        
         'lat',
         'lng',
         'city_id',

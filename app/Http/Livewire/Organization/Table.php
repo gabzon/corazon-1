@@ -13,7 +13,7 @@ class Table extends Component
     public function render()
     {
         return view('livewire.organization.table', [
-            'collection' => Organization::paginate(5)
+            'collection' => Organization::latest()->paginate(10)
         ]);
     }
 }

@@ -34,7 +34,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('type')->default('school')->nullable();
             $table->string('address')->nullable();
             $table->string('address_info')->nullable();
-            $table->string('postal_code')->nullable();                                
+            $table->string('zip')->nullable();                                
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();
             $table->integer('founded')->nullable();

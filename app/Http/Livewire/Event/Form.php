@@ -133,6 +133,15 @@ class Form extends Component
         $this->organizations = $organizations;
     }
 
+    public function delete()
+    {
+        $this->event->delete();
+        
+        session()->flash('success', 'Event deleted successfully');
+        
+        return redirect()->route('event.index');
+    }
+
     public function updatedEventName()
     {
         $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;

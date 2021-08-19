@@ -11,19 +11,16 @@
                     class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Back
                 </a>
-                {{-- <a href="{{ route('style.create') }}"
-                class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm
-                font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2
-                focus:ring-offset-2 focus:ring-indigo-500">
-                Add Style
-                </a> --}}
             </div>
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:organization.form :organization="$organization" />
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                <livewire:organization.form :organization="$organization" />
+            </div>
+            <div class="my-36"></div>
         </div>
     </div>
 </x-admin-layout>

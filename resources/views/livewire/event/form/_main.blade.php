@@ -87,20 +87,7 @@
             </h3>
         </div>
 
-        <div class="flex flex-wrap -mx-3">
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="event.min_price" name="event.price" label="Minimum price" />
-            </div>
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="event.max_price" name="event.reduced_price" label="Maximum price" />
-            </div>
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.currency wire:model="event.currency" name="event.currency" />
-            </div>
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.city-select wire:model="event.city_id" name="event.city_id" />
-            </div>
-        </div>
+        <livewire:shared.price-form />
 
         <br>
 
