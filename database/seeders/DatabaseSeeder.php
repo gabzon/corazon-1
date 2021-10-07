@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             PCSalsa::class, 
             Soss::class, 
             // CourseSeeder::class,
-            EventSeeder::class,
+            // EventSeeder::class,
             ]
         );        
     }
