@@ -101,8 +101,8 @@ class Form extends Component
         $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;
         $this->event->description   = $graphNode['description'];
 
-        $this->event->start_date = $graphNode['start_time'];
-        $this->event->end_date = $graphNode['end_time'];        
+        $this->event->start_date = $graphNode['start_time'] ?? '';
+        $this->event->end_date = $graphNode['end_time'] ?? '';        
         $this->event->start_time = $this->event->start_date->format('H:i:s');
         $this->event->end_time = $this->event->end_date->format('H:i:s');
         $this->event->user_id = auth()->user()->id;
