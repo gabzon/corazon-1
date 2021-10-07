@@ -6,11 +6,18 @@ use App\Models\Classroom;
 use App\Models\Location;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
 {
+    use WithMedia;
+
     public $action = 'store';
     public Classroom $classroom;
+
+    public $mediaComponentNames = ['photos'];
+
+    public $photos;
 
     protected $rules = [
         'classroom.name'        => 'required',
@@ -45,6 +52,10 @@ class Form extends Component
         $this->classroom->location()->associate($this->classroom->location_id)->save();     
 
         $this->classroom->save();
+
+        $this->classroom->addFromMediaLibraryRequest($this->photos)->toMediaCollection('classrooms');
+
+        $this->clearMedia();
 
         session()->flash('success','Classroom saved successfully.');
 

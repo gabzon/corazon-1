@@ -35,12 +35,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'welcome']
-// function(){
-//     return view('schedule.index');
-// }
-)->name('welcome');
-
+Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
 Route::get('/auth/redirect', [LoginController::class,'redirectToFacebook']);
 Route::get('/auth/callback', [LoginController::class, 'handleFacebookCallback']);
@@ -122,3 +117,5 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('admin/organization', OrganizationController::class);    
 });
 
+
+Route::mediaLibrary();

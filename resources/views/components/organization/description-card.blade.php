@@ -1,8 +1,19 @@
-<div class="pb-16 space-y-6">
+<div class="space-y-6">
     <div>
+        @if ($organization->video)
         <div class="block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
-            <img src="{{ asset($organization->logo) }}" alt="" class="object-cover">
+            {!! $organization->video ?? ''!!}
+            {{-- <img src="{{ asset($location->logo) }}" alt="" class="object-cover"> --}}
         </div>
+        @else
+        @if ($organization->getMedia('organization-logos')->last() != null)
+        <div class="block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
+            <img src="{{ $organization->getMedia('organization-logos')->last()->getUrl() }}" alt=""
+                class="object-cover">
+        </div>
+        @endif
+        @endif
+
         <div class="mt-4 flex items-start justify-between">
             <div>
                 <h2 class="text-lg font-medium text-gray-900"><span class="sr-only">Details for
@@ -24,68 +35,46 @@
     <div>
         <h3 class="font-medium text-gray-900">Information</h3>
         <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
+            @if ($organization->contact)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Contact</dt>
                 <dd class="text-gray-900">{{ $organization->contact }}</dd>
             </div>
-
+            @endif
+            @if ($organization->email)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Email</dt>
                 <dd class="text-gray-900">{{ $organization->email }}</dd>
             </div>
+            @endif
 
+            @if ($organization->phone)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Phone</dt>
                 <dd class="text-gray-900">{{ $organization->phone }}</dd>
             </div>
+            @endif
 
+            @if ($organization->type)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Type</dt>
                 <dd class="text-gray-900">{{ $organization->type }}</dd>
             </div>
+            @endif
 
+            @if ($organization->oid)
             <div class="py-3 flex justify-between text-sm font-medium">
-                <dt class="text-gray-500">IDE</dt>
-                <dd class="text-gray-900">{{ $organization->company_ref }}</dd>
+                <dt class="text-gray-500">OID</dt>
+                <dd class="text-gray-900">{{ $organization->oid }}</dd>
             </div>
+            @endif
 
+            @if ($organization->status)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Status</dt>
                 <dd class="text-gray-900">{{ $organization->status }}</dd>
             </div>
+            @endif
         </dl>
-    </div>
-    <div>
-        <div class="inline-flex items-center space-x-4">
-            <a href="{{ $organization->facebook }}"
-                class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/social/facebook')
-            </a>
-            <a href="{{ $organization->instagram }}"
-                class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/social/twitter')
-            </a>
-            <a href="{{ $organization->instagram }}"
-                class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/social/instagram')
-            </a>
-            <a href="{{ $organization->youtube }}"
-                class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/social/youtube')
-            </a>
-            <a href="{{ $organization->tiktok }}" class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/social/tiktok')
-            </a>
-            <a href="{{ $organization->website }}"
-                class="bg-indigo-600 p-2 rounded-full text-white hover:bg-indigo-800">
-                @include('icons/website')
-            </a>
-        </div>
-    </div>
-    <div>
-        <h3 class="font-medium text-gray-900">About</h3>
-        <div class="mt-2 flex items-center justify-between">
-            <p class="text-sm text-gray-500 italic">{{ $organization->about }}</p>
-        </div>
     </div>
 </div>

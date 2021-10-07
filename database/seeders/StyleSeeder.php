@@ -508,6 +508,45 @@ class StyleSeeder extends Seeder
             'user_id'       => 1,
         ]);
 
+        Style::create([
+            'name'          => 'Funk', 
+            'slug'          => 'funk', 
+            'music'         => 'funk',
+            'family'        => 'funk', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Waacking', 
+            'slug'          => 'waacking', 
+            'music'         => 'funk',
+            'family'        => 'urban', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Locking', 
+            'slug'          => 'locking', 
+            'music'         => 'funk',
+            'family'        => 'urban', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
 
 
 // Tap
@@ -520,7 +559,7 @@ class StyleSeeder extends Seeder
 // Waltz
 // 
 // Jerking
-// Locking
+// 
 // Popping
 // Flamenco
 // Viennese Waltz

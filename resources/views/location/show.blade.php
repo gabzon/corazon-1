@@ -24,17 +24,15 @@
 
     <div class="w-full flex flex-wrap">
         <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
-            <div class="max-w-full mx-auto my-5 px-3 md:px-3 lg:px-2">
+            <div class="max-w-7xl mx-auto my-5 px-3 md:px-3 lg:px-2">
 
                 <h2 class="flex-1 text-lg font-bold text-gray-900">Address</h2>
-                <x-location.map :location="$location" />
+
+                <x-location.map :location="$location" :photos="$photos" />
 
                 <div class="my-8">
-                    <header class="flex justify-between items-center">
+                    <header>
                         <h2 class="flex-1 text-lg font-bold text-gray-900">Classrooms</h2>
-                        <a href="{{ route('classroom.create', ['location' => $location]) }}"
-                            class="text-sm underline text-indigo-700 hover:text-indigo-500">Add
-                            Classroom</a>
                     </header>
 
                     <div class="my-3">

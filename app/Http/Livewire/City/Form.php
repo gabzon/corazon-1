@@ -6,12 +6,18 @@ use App\Models\City;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use PragmaRX\Countries\Package\Countries;
-
+use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
 {
+    use WithMedia;
     public $city;
-    public $countries;    
+    public $countries; 
+    
+    public $mediaComponentNames = ['image','emblem'];
+
+    public $image;
+    public $emblem;
     
     protected $rules = [
         'city.name'         =>  'required',
@@ -42,8 +48,13 @@ class Form extends Component
     {
         $this->validate();
         $this->city->save();
+
+        $this->city->addFromMediaLibraryRequest($this->image)->toMediaCollection('city-image');
+        $this->city->addFromMediaLibraryRequest($this->emblem)->toMediaCollection('city-emblem');
         
         session()->flash('success','City saved successfully!');
+
+        $this->clearMedia();
 
         return redirect(route('city.index'));
     }

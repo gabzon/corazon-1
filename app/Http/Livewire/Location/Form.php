@@ -6,26 +6,18 @@ use App\Models\Location;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Livewire\WithFileUploads;
+use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
 {
-    use WithFileUploads;
+    use WithMedia;
 
     public $action = 'store';
     public $location;
-    public $name;
-    public $slug;
-    public $shortname;
-    public $comments;
-    public $contact;
-    public $website;
-    public $email;
-    public $phone;
-    public $contract;
-    public string $type = '';
-    public $tmp;
 
+    public $mediaComponentNames = ['contract'];
+    public $contract;
+    
     protected $rules = [
         'location.name'     => 'required|min:5',
         'location.slug'     => 'required|min:5',
@@ -37,43 +29,27 @@ class Form extends Component
         'location.phone'    => 'nullable',
         'location.contract' => 'nullable',
         'location.type'     => 'nullable',
+        'location.user_id'  => 'nullable',        
+        'location.city_id'  => 'required',        
     ];
 
-    public function store()
+    public function save()
     {         
         $this->validate(); 
-
-        $location = Location::create([
-            'name'                  => $this->name,
-            'slug'                  => $this->slug,
-            'shortname'             => $this->shortname,            
-            'comments'              => $this->comments,
-            'contact'               => $this->contact,
-            'website'               => $this->website,            
-            'email'                 => $this->email,
-            'phone'                 => $this->phone,
-            'contract'              => $this->tmp,            
-            'type'                  => $this->type,            
-            'user_id'               => auth()->user()->id,            
-        ]);        
-
-        session()->flash('success', 'Location created successfully!');
         
-        return redirect()->route('location.edit', $location);
+        $this->location->save();  
+        
+        $this->location->addFromMediaLibraryRequest($this->contract)
+                       ->toMediaCollection('locations');
+
+        session()->flash('success', 'Location saved successfully!');
+        
+        return redirect()->route('location.edit', $this->location);
     }
 
-    public function updatedContract()
+    public function updatedLocationName($value)
     {
-        $this->validate([
-            'contract' => 'nullable|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
-        ]);
-        $this->tmp = $this->contract->store('locations/contracts');      
-        $this->contract = $this->tmp;
-    }
-
-    public function updatedName($value)
-    {
-        $this->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
+        $this->location->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
     }
 
     public function remove()
@@ -84,54 +60,15 @@ class Form extends Component
         }        
     }
 
-    public function update()
+    public function mount(Location $location = null)
     {
-        $this->validate([
-            'name'      => 'required|min:3',
-            'email'     => 'nullable|min:5|email',
-            'contact'   => 'required|min:3',
-            'website'   => 'nullable|min:12|url',
-        ]); 
-
-        $this->location->update([
-            'name'                  => $this->name,
-            'slug'                  => $this->slug,
-            'shortname'             => $this->shortname,                                
-            'comments'              => $this->comments,
-            'contact'               => $this->contact,
-            'website'               => $this->website,
-            'email'                 => $this->email,
-            'phone'                 => $this->phone,  
-            'type'                  => $this->type,                                                                           
-            'user_id'               => auth()->user()->id,                        
-        ]);
-
-        if (!$this->contract == null) {
-            if ($this->location->contract != $this->contract) {                    
-                $this->location->update([ 'contract' => $this->tmp ]);            
-                $this->location = $this->tmp;
-            }
-        }
-        
-        session()->flash('success', 'Location updated successfully!');
-                
-    }
-
-    public function mount($location = null)
-    {
-        if ($location) {
+        if ($location->exists) {
             $this->action       = 'update';
             $this->location     = $location;
-            $this->name         = $location->name;
-            $this->slug         = $location->slug;
-            $this->shortname    = $location->shortname;                                                
-            $this->comments     = $location->comments;
-            $this->contact      = $location->contact;
-            $this->website      = $location->website;
-            $this->email        = $location->email;
-            $this->phone        = $location->phone;
-            $this->contract     = $location->contract; 
-            $this->type         = $location->type ?? '';
+        } else {
+            $this->location =  new Location;
+            $this->location->type = '';
+            $this->location->user_id = auth()->user()->id;
         }
     }
 

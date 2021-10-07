@@ -8,14 +8,16 @@ use Illuminate\View\Component;
 class Map extends Component
 {
     public Location $location;
+    public $photos;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(Location $location)
+    public function __construct(Location $location, $photos = null)
     {
         $this->location = $location;
+        $this->photos = $photos;
     }
 
     /**

@@ -1,5 +1,5 @@
 <div class="overflow-hidden sm:rounded-md">
-    <ul class="divide-y divide-gray-200">
+    <ul class="divide-y divide-gray-200 border">
         @forelse ($location->classrooms as $item)
         <li class="bg-white">
             <a href="{{ route('classroom.show', $item) }}" class="block hover:bg-gray-50">
@@ -11,6 +11,10 @@
                                 <div class="ml-5 flex-shrink-0 font-normal text-gray-500 flex items-center">
                                     @include('icons.squared-dashed', ['style' => 'w-4 h-4'])
                                     <span class="ml-1">{{ $item->capacity }} m2</span>
+                                </div>
+                                <div class="ml-5 flex-shrink-0 font-normal text-gray-500 flex items-center">
+                                    @include('icons.people', ['style' => 'w-6 h-6'])
+                                    <span class="ml-1">{{ $item->limit_couples }} capacity</span>
                                 </div>
                             </div>
                         </div>
@@ -45,4 +49,10 @@
         </a>
         @endforelse
     </ul>
+    <div class="mt-2 flex justify-end">
+        <a href="{{ route('classroom.create', ['location' => $location]) }}"
+            class="text-right text-sm underline text-indigo-700 hover:text-indigo-500">Add
+            Classroom</a>
+    </div>
+
 </div>

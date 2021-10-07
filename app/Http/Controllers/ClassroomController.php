@@ -48,8 +48,8 @@ class ClassroomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Classroom $classroom)
-    {
-        return view('classroom.show', compact('classroom'));
+    {        
+        return view('classroom.show', compact('classroom'))->with('photos', $classroom->getMedia('classrooms'));
     }
 
     /**

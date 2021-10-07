@@ -26,7 +26,7 @@ class CreateStylesTable extends Migration
             $table->string('family', 100)->nullable();
             $table->string('music')->nullable();
             $table->string('year', 30)->nullable();
-            $table->string('video')->nullable();
+            $table->text('video')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->softDeletes();

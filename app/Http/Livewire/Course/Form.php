@@ -8,14 +8,22 @@ use App\Models\User;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Http\Livewire\Traits\WithThumbnail;
+// use App\Http\Livewire\Traits\WithThumbnail;
+use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
 {
-    use WithThumbnail;
+    // use WithThumbnail;
+    use WithMedia;
 
     public $action = 'store';
     public $course;
+
+    public $mediaComponentNames = ['thumbnail'];
+    
+    public $thumbnail;
+    public $instructors;
+    public $styles;
 
     protected $listeners = ['instructorsList' => 'updateInstructorsList','thumbnail' => 'updateThumbnail', 'selectedStyles' => 'updateStyles'];
     
@@ -34,31 +42,31 @@ class Form extends Component
         'course.city_id'        => 'required',
         'course.type'           => 'required',
 
-        'course.duration'       => 'nullable',
+        'course.duration'       => 'nullable|date_format:H:i:s',
 
         'course.start_date'     => 'required',
         'course.end_date'       => 'required|date|after_or_equal:start_date',
         'course.monday'         => 'nullable',
-        'course.start_time_mon' => 'nullable|date_format:H:i',
-        'course.end_time_mon'   => 'nullable|date_format:H:i|after:course.start_time_mon',
+        'course.start_time_mon' => 'nullable|date_format:H:i:s',
+        'course.end_time_mon'   => 'nullable|date_format:H:i:s|after:course.start_time_mon',
         'course.tuesday'        => 'nullable',
-        'course.start_time_tue' => 'nullable|date_format:H:i',
-        'course.end_time_tue'   => 'nullable|date_format:H:i|after:course.start_time_tue',
+        'course.start_time_tue' => 'nullable|date_format:H:i:s',
+        'course.end_time_tue'   => 'nullable|date_format:H:i:s|after:course.start_time_tue',
         'course.wednesday'      => 'nullable',
-        'course.start_time_wed' => 'nullable|date_format:H:i',
-        'course.end_time_wed'   => 'nullable|date_format:H:i|after:course.start_time_wed',
+        'course.start_time_wed' => 'nullable|date_format:H:i:s',
+        'course.end_time_wed'   => 'nullable|date_format:H:i:s|after:course.start_time_wed',
         'course.thursday'       => 'nullable',
-        'course.start_time_thu' => 'nullable|date_format:H:i',
-        'course.end_time_thu'   => 'nullable|date_format:H:i|after:course.start_time_thu',
+        'course.start_time_thu' => 'nullable|date_format:H:i:s',
+        'course.end_time_thu'   => 'nullable|date_format:H:i:s|after:course.start_time_thu',
         'course.friday'         => 'nullable',
-        'course.start_time_fri' => 'nullable|date_format:H:i',
-        'course.end_time_fri'   => 'nullable|date_format:H:i|after:course.start_time_fri',
+        'course.start_time_fri' => 'nullable|date_format:H:i:s',
+        'course.end_time_fri'   => 'nullable|date_format:H:i:s|after:course.start_time_fri',
         'course.saturday'       => 'nullable',
-        'course.start_time_sat' => 'nullable|date_format:H:i',
-        'course.end_time_sat'   => 'nullable|date_format:H:i|after:course.start_time_sat',
+        'course.start_time_sat' => 'nullable|date_format:H:i:s',
+        'course.end_time_sat'   => 'nullable|date_format:H:i:s|after:course.start_time_sat',
         'course.sunday'         => 'nullable',
-        'course.start_time_sun' => 'nullable|date_format:H:i',
-        'course.end_time_sun'   => 'nullable|date_format:H:i|after:course.start_time_sun',    
+        'course.start_time_sun' => 'nullable|date_format:H:i:s',
+        'course.end_time_sun'   => 'nullable|date_format:H:i:s|after:course.start_time_sun',    
 
         'course.video1'         => 'nullable',
         'course.video2'         => 'nullable',
@@ -77,14 +85,12 @@ class Form extends Component
         'course.organization_id'=> 'required',
     ];
 
-    public $thumbnail;
-    public $instructors;
-    public $styles;
 
-    public function updateThumbnail(array $file)
-    {                
-        $this->thumbnail = $file;
-    }
+
+    // public function updateThumbnail(array $file)
+    // {                
+    //     $this->thumbnail = $file;
+    // }
 
     public function updateStyles($styles)
     {        
@@ -114,7 +120,7 @@ class Form extends Component
 
     public function updatedStyles($value)
     {
-        dd($value);
+        $this->styles = $value;
     }
 
     public function save()
@@ -126,18 +132,20 @@ class Form extends Component
         
         $this->course->save();
         
-        if ($this->thumbnail) {
-            $this->handleThumbnailUpload($this->course, $this->thumbnail);
-        }
+        // if ($this->thumbnail) {
+        //     $this->handleThumbnailUpload($this->course, $this->thumbnail);
+        // }
+        $this->course->addFromMediaLibraryRequest($this->thumbnail)->toMediaCollection('courses');
 
         if ($this->instructors) {
             $this->course->instructors()->sync($this->instructors);
         }
 
-        if ($this->styles) {
-            //dd($this->styles);
+        if ($this->styles) {            
             $this->course->styles()->sync($this->styles);
         }
+
+        $this->clearMedia();
 
         session()->flash('success','Course saved successfully.');
         

@@ -5,14 +5,19 @@ namespace App\Http\Livewire\Organization;
 use App\Models\Organization;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Livewire\WithFileUploads;
+use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
-{
-    use WithFileUploads;
+{    
+    use WithMedia;
     public $action = 'store';
     public Organization $organization;
     public $country;
+    
+    public $mediaComponentNames = ['logo', 'icon'];
+    
+    public $logo;
+    public $icon;
     
     protected $rules = [
         'organization.name'         => 'required',
@@ -52,8 +57,18 @@ class Form extends Component
         $this->validate();
 
         $this->organization->save();
+        
+        // dd(array_pop($this->logo));
+        $this->organization->addFromMediaLibraryRequest($this->logo)->toMediaCollection('organization-logos','public');
+        $this->organization->addFromMediaLibraryRequest($this->icon)->toMediaCollection('organization-icons','public');
+        // $this->organization->addMedia(array_pop($this->logo))->withResponsiveImages()->toMediaCollection('organizations','public');
+
+        $this->organization->save();
+        //$this->organization->logo = $this->organization->getMedia('organizations')->last()->getUrl();        
 
         session()->flash('success', 'Organization saved successfully');
+        
+        $this->clearMedia();
         
         return redirect()->route('organization.index');
     }

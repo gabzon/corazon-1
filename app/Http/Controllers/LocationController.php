@@ -49,8 +49,9 @@ class LocationController extends Controller
      */
     public function show(Request $request, Location $location)
     {
-        return view('location.show', compact('location'));
+        return view('location.show', compact('location'))->with('photos', $location->getMedia('location-photos'));
     }
+
 
     /**
      * @param \Illuminate\Http\Request $request

@@ -21,9 +21,12 @@
         </div>
     </x-slot>
 
-    <div class="py-12 min-h-screen">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:city.form :city="$city" />
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                <livewire:city.form :city="$city" />
+            </div>
+            <div class="my-36"></div>
         </div>
     </div>
 </x-admin-layout>

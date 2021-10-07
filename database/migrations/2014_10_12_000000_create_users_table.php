@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->text('profile_photo_path')->nullable();
             
             $table->string('facebook_id')->nullable();
-            $table->string('facebook_token')->nullable();
+            $table->text('facebook_token')->nullable();
             $table->string('instagram_id')->nullable();
             $table->string('google_id')->nullable();
             $table->timestamps();

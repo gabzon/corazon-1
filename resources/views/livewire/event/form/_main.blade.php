@@ -10,6 +10,7 @@
                 <x-form.text-input wire:model="event.name" name="event.name" label="Name" />
             </div>
             <div class="w-full sm:w-1/3 px-3">
+                @if (auth()->user()->facebook_token)
                 <div class="grid grid-cols-3 gap-5">
                     <div class="col-span-2">
                         <x-form.text-input wire:model="event.facebook_id" name="event.facebook_id"
@@ -22,7 +23,7 @@
                         </button>
                     </div>
                 </div>
-
+                @endif
             </div>
         </div>
         <div>

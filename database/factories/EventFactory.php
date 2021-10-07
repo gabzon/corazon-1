@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Location;
 use App\Models\Event;
 use App\Models\User;
+use Carbon\Carbon;
 
 class EventFactory extends Factory
 {
@@ -26,26 +27,23 @@ class EventFactory extends Factory
     public function definition()
     {
         $type       = $this->faker->randomElement(['party', 'workshop', 'bootcamp', 'festival', 'concert']);
-        $status     = $this->faker->randomElement(['active', 'soon', 'expired', 'draft']);
+        // $status     = $this->faker->randomElement(['active', 'soon', 'expired', 'draft']);
         $currency   = $this->faker->randomElement(['eur','hrk','usd']);
 
         return [
             'name'          => $this->faker->name,
             'slug'          => $this->faker->slug,
             'description'   => $this->faker->text,
-            'start_date'    => $this->faker->date(),
-            'end_date'      => $this->faker->date(),
+            'start_date'    => Carbon::now()->addWeeks(1),
+            'end_date'      => Carbon::now()->addWeeks(2),
             'start_time'    => $this->faker->time(),
             'end_time'      => $this->faker->time(),
-            'min_price'     => $this->faker->numberBetween(0,10),
-            'max_price'     => $this->faker->numberBetween(10,1000),                        
-            'currency'      => $currency,
             'video'         => $this->faker->text,
             'thumbnail'     => $this->faker->word,
             'type'          => $type,
-            'status'        => $status,
+            'status'        => 'active',
             'organiser'     => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'contact'       => $this->faker->regexify('[A-Za-z0-9]{100}'),
+            'contact'       => $this->faker->name,
             'email'         => $this->faker->safeEmail,
             'phone'         => $this->faker->phoneNumber,
             'website'       => $this->faker->unique()->url,
@@ -55,8 +53,8 @@ class EventFactory extends Factory
             'youtube'       => $this->faker->word,
             'tiktok'        => $this->faker->word,
             'user_id'       => User::factory(),
-            'location_id'   => Location::factory(),
-            'city_id'       => City::factory(),
+            'location_id'   => Location::all()->random()->first(),
+            'city_id'       => City::all()->random()->first(),
         ];
     }
     

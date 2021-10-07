@@ -66,5 +66,8 @@
             </div>
         </div>
     </div>
+    <div class="m-3">
+        {{ $collection->links() }}
+    </div>
 
 </div>

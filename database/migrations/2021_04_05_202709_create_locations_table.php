@@ -30,6 +30,15 @@ class CreateLocationsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();
+            $table->boolean('has_sink')->nullable();
+            $table->boolean('has_bar')->nullable();
+            $table->boolean('has_fridge')->nullable();
+            $table->boolean('has_hall')->nullable();
+            $table->boolean('has_changeroom')->nullable();
+            $table->boolean('has_lockers')->nullable();
+            $table->boolean('has_wc')->nullable();
+            $table->boolean('has_separate_wc')->nullable();
+            $table->boolean('has_shower')->nullable();
             $table->string('type')->nullable();
             $table->text('contract')->nullable();
             $table->text('video')->nullable();

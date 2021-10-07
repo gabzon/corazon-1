@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Schedule;
 
+use App\Models\Style;
 use Livewire\Component;
 
 class Filters extends Component
@@ -49,7 +50,10 @@ class Filters extends Component
     }
 
     public function render()
-    {
-        return view('livewire.schedule.filters');
+    {        
+        return view('livewire.schedule.filters', [
+            'cities'    => \App\Models\City::has('courses')->get(),
+            'styles'    => Style::has('courses')->get()            
+        ] );
     }
 }

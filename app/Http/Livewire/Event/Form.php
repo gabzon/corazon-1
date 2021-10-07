@@ -12,6 +12,7 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Http;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -36,9 +37,6 @@ class Form extends Component
         'event.end_date'        => 'required|date',
         'event.start_time'      => 'required',
         'event.end_time'        => 'required',
-        'event.min_price'       => 'nullable',
-        'event.max_price'       => 'nullable',
-        'event.currency'        => 'nullable',
         'event.video'           => 'nullable',
         'event.thumbnail'       => 'nullable',
         'event.type'            => 'required',
@@ -80,7 +78,11 @@ class Form extends Component
 
         try {
             $url = '/'. $this->event->facebook_id .'?fields=cover,name,place,start_time,end_time,is_online,timezone,description';                        
-            $response = $fb->get($url, $token);
+            // $url = 'https://graph.facebook.com/' . $this->event->facebook_id . '?access_token='. $token;                        
+            $response = $fb->get($url, $token);      
+            // $response = Http::get($url);      
+            // dd($url);
+            
         } catch (FacebookResponseException $e) {    
             // dd($e->getMessage());        
             echo 'Graph returned an error: ' . $e->getMessage();
@@ -92,6 +94,7 @@ class Form extends Component
         }
                 
         $graphNode = $response->getGraphNode();
+        
 
         
         $this->event->name = $graphNode['name'];

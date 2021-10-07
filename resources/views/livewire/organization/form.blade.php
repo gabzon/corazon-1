@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="save" class="space-y-8 divide-y divide-gray-200">
+    <form wire:submit.prevent="save" class="space-y-8 divide-y divide-gray-200" method="POST">
         <div class="space-y-8 divide-y divide-gray-200">
             <div>
                 <div>
@@ -39,39 +39,17 @@
                             Logo
                         </label>
 
-                        <div
-                            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                            <div class="space-y-1 text-center">
-                                @if ($action == 'update')
-                                @isset($organization->logo)
-                                <img src="{{ asset($organization->logo) }}" class="mb-2">
-                                @endisset
-                                @else
-                                @if ($organization->logo)
-                                <img src="{{ asset($organization->logo) }}" class="mb-2">
-                                @endif
-                                @endif
-                                {{$organization->logo}}
-                                @if (!isset($organization->logo))
-                                @include('icons.add-photo', ['style'=>'mx-auto h-12 w-12 text-gray-400'])
-                                @endif
+                        <x-media-library-attachment name="logo" rules="mimes:jpeg,png,gif" />
 
-                                <div class="flex justify-center text-sm text-gray-600">
-                                    <label for="logo"
-                                        class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 px-2">
-                                        <span>Upload a file</span>
-                                        <input id="logo" name="logo" type="file" class="sr-only" wire:model="logo">
-                                    </label>
-                                    {{-- <p class="pl-1">or drag and drop</p> --}}
-                                </div>
-                                <p class="text-xs text-gray-500">
-                                    PNG, JPG, GIF up to 1MB
-                                </p>
-                                @error('logo')
-                                <span>{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                    </div>
+
+                    <div class="sm:col-span-6">
+                        <label for="icon" class="block text-sm font-medium text-gray-700">
+                            Icon
+                        </label>
+
+                        <x-media-library-attachment name="icon" rules="mimes:jpeg,png,gif" />
+
                     </div>
 
                     <div class="sm:col-span-2">

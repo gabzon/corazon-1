@@ -120,41 +120,7 @@
                 </div>
 
                 <div class="sm:col-span-6">
-                    <label for="thumbnail" class="block text-sm font-medium text-gray-700">
-                        Thumbnail
-                    </label>
-
-                    <div
-                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                        <div class="space-y-1 text-center">
-                            @if ($action == 'update')
-                            @isset($thumbnail)
-                            <img src="{{ asset($thumbnail) }}" class="mb-2">
-                            @endisset
-                            @else
-                            @if ($thumbnail)
-                            <img src="{{ asset($thumbnail) }}" class="mb-2">
-                            @endif
-                            @endif
-                            {{$thumbnail}}
-                            @if (!isset($thumbnail))
-                            @include('icons.add-photo', ['style'=>'mx-auto h-12 w-12 text-gray-400'])
-                            @endif
-
-                            <div class="flex justify-center text-sm text-gray-600">
-                                <label for="thumbnail"
-                                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 px-2">
-                                    <span>Upload a file</span>
-                                    <input id="thumbnail" name="thumbnail" type="file" class="sr-only"
-                                        wire:model="thumbnail">
-                                </label>
-                                {{-- <p class="pl-1">or drag and drop</p> --}}
-                            </div>
-                            <p class="text-xs text-gray-500">
-                                PNG, JPG, GIF up to 1MB
-                            </p>
-                        </div>
-                    </div>
+                    <x-form.media-library name="thumbnail" :model="$style" collection="styles" />
                 </div>
             </div>
 

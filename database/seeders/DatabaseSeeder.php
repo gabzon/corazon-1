@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Organization;
-use App\Models\User;
+use Database\Seeders\Courses\Bandoleros;
+use Database\Seeders\Courses\FeralTango;
+use Database\Seeders\Courses\PCSalsa;
+use Database\Seeders\Courses\SalsaFusion;
+use Database\Seeders\Courses\Soss;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,9 +24,15 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             SkillSeeder::class,
             LocationSeeder::class,        
+            ClassroomSeeder::class,
             OrganizationSeeder::class,  
+            SalsaFusion::class,            
+            Bandoleros::class,    
+            FeralTango::class,       
+            PCSalsa::class, 
+            Soss::class, 
             // CourseSeeder::class,
-            // EventSeeder::class,
+            EventSeeder::class,
             ]
         );        
     }

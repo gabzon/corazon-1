@@ -3,6 +3,7 @@
         <div class="mt-3 sm:mt-3 md:mt-3 lg:mt-3">
             <img src="{{ $event->thumbnail ?? 'https://source.unsplash.com/random' }}" alt=""
                 class="h-60 object-cover w-full rounded-md">
+            {{-- {{ $event->getMedia('')->last()->getUrl()}} --}}
         </div>
         <div>
             <h3 class="font-medium text-gray-900">Information</h3>

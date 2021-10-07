@@ -13,7 +13,7 @@
         "@tailwindcss/aspect-ratio": "^0.2.0",
         "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/typography": "^0.3.0",
-        "alpinejs": "^2.7.3",
+        "alpinejs": "^3.2.3",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
@@ -22,6 +22,7 @@
         "tailwindcss": "^2.0.1"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.4.1"
+        "bootstrap-icons": "^1.4.1",
+        "fslightbox": "^3.3.0-2"
     }
 }

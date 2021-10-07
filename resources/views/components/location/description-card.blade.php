@@ -16,34 +16,44 @@
     <div>
         <h3 class="font-medium text-gray-900">Information</h3>
         <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
+            @if ($location->contact)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Contact</dt>
                 <dd class="text-gray-900">{{ $location->contact }}</dd>
             </div>
+            @endif
 
+            @if ($location->email)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Email</dt>
                 <dd class="text-gray-900">{{ $location->email }}</dd>
             </div>
+            @endif
 
+            @if ($location->phone)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Phone</dt>
                 <dd class="text-gray-900">{{ $location->phone }}</dd>
             </div>
+            @endif
 
+            @if ($location->neighborhood)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Neighborhood</dt>
                 <dd class="text-gray-900">{{ $location->neighborhood }}</dd>
             </div>
+            @endif
 
+            @if ($location->entry_code)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Entry code</dt>
                 <dd class="text-gray-900">{{ $location->entry_code }}</dd>
             </div>
-
-
+            @endif
         </dl>
     </div>
+    @if ($location->facebook || $location->twitter || $location->instagram || $location->tiktok || $location->youtube ||
+    $location->website)
     <div>
         <div class="inline-flex items-center space-x-4">
             @if ($location->facebook)
@@ -83,4 +93,5 @@
             @endif
         </div>
     </div>
+    @endif
 </div>

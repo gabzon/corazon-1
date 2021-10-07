@@ -61,9 +61,9 @@ class CreateCoursesTable extends Migration
             $table->string('type', 40)->nullable();
             $table->string('status', 40)->nullable();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('classroom_id')->constrained();
-            $table->foreignId('city_id')->constrained();
-            $table->foreignId('organization_id')->constrained();
+            $table->foreignId('classroom_id')->nullable()->constrained();
+            $table->foreignId('city_id')->nullable()->constrained();
+            $table->foreignId('organization_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();
         });

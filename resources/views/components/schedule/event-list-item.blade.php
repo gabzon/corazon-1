@@ -18,7 +18,7 @@
             <div>
                 <p class="text-sm text-gray-500 truncate text-right">{{ $item->city->name }}</p>
                 <p class="text-sm text-gray-500 truncate text-right">
-                    {{ $item->location->name }}
+                    {{ $item->location->name ?? 'online' }}
                 </p>
                 <p class="text-sm text-gray-500 truncate text-right mt-1">
                     {{ $item->price }}

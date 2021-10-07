@@ -1,4 +1,6 @@
 <x-admin-layout>
+    <x-slot name="css">
+    </x-slot>
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
@@ -25,12 +27,19 @@
             <div class="bg-white overflow-hidden shadow-xl rounded-lg">
                 <div>
                     <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                            {{ $classroom->name }}
-                        </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                            {{ $classroom->location->name }}
-                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    {{ $classroom->name }}
+                                </h3>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                                    {{ $classroom->location->name }}
+                                </p>
+                            </div>
+                            <div>
+                                <x-shared.photo-gallery :photos="$photos" />
+                            </div>
+                        </div>
                     </div>
                     <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                         <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
@@ -141,8 +150,11 @@
                         </dl>
                     </div>
                 </div>
-
+                <div class="my-32"></div>
             </div>
         </div>
     </div>
+    @push('scripts')
+
+    @endpush
 </x-admin-layout>

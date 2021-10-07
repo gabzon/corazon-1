@@ -26,6 +26,7 @@ class CreateEventsTable extends Migration
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->boolean('is_recurrent')->nullable();            
+            $table->boolean('is_online')->nullable();            
             $table->string('day')->nullable();
 
             $table->boolean('is_free')->nullable();
@@ -40,7 +41,7 @@ class CreateEventsTable extends Migration
             $table->string('email', 100)->nullable();
             $table->string('phone', 100)->nullable();
             
-            $table->string('website', 100)->nullable();
+            $table->string('website')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
@@ -50,8 +51,8 @@ class CreateEventsTable extends Migration
             $table->string('facebook_id')->nullable();
             
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('location_id')->constrained();
-            $table->foreignId('city_id')->constrained();
+            $table->foreignId('location_id')->nullable()->constrained();
+            $table->foreignId('city_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -21,9 +21,12 @@
         </div>
     </x-slot>
 
-    <div class="py-4">
+    <div class="py-4 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:location.form />
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                <livewire:location.form />
+            </div>
+            <div class="my-44"></div>
         </div>
     </div>
 </x-admin-layout>

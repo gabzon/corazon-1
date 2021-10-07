@@ -53,4 +53,9 @@ class Style extends Model implements HasMedia
     {
         return $this->belongsToMany(Event::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 }
