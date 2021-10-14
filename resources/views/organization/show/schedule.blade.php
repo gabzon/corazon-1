@@ -3,70 +3,72 @@
     <section>
         <div class="grid grid-cols-5">
 
-            <div class="">
+            <div>
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">Monday</h3>
-                @foreach ($organization->courses()->where('status','active')->where('monday', 1)->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($mondays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="monday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
-
 
             <div>
                 <h3 class=" text-center font-bold text-gray-700 text-lg uppercase">Tuesday</h3>
-                @foreach ($organization->courses()
-                ->where('status','active')
-                ->where('tuesday', 1)
-                ->orderBy('start_time_tue')
-                ->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($tuesdays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="tuesday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
 
-
-            <div class="">
+            <div>
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">Wednesday</h3>
-                @foreach ($organization->courses()->where('status','active')->where('wednesday',
-                1)->orderBy('start_time_wed')->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($wednesdays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="wednesday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
 
-            <div class="">
+            <div>
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">thursday</h3>
-                @foreach ($organization->courses()
-                ->where('status','active')
-                ->where('thursday',1)
-                ->orderBy('start_time_thu')->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($thursdays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="thursday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
 
             <div class="">
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">Friday</h3>
-                @foreach ($organization->courses()
-                ->where('status','active')
-                ->where('friday', 1)
-                ->orderBy('start_time_fri')->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($fridays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="friday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
 
-            <div class="">
+            @if ($saturdays->count() > 0)
+            <div>
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">Saturday</h3>
-                @foreach ($organization->courses()->where('status','active')->where('saturday', 1)->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($saturdays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="saturday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
+            @endif
 
-            <div class="">
+            @if ($sundays->count() > 0)
+            <div>
                 <h3 class="text-center font-bold text-gray-700 text-lg uppercase">Sunday</h3>
-                @foreach ($organization->courses()->where('status','active')->where('sunday', 1)->get() as $class)
-                <livewire:schedule.card :class="$class" :key="$class->id" />
-                @endforeach
+                @forelse ($sundays as $class)
+                <livewire:schedule.school-card :class="$class" :key="$class->id" day="sunday" />
+                @empty
+                <span class="block mt-3 bg-gray-100 text-center border py-2 rounded-md mx-3">No classes</span>
+                @endforelse
             </div>
-
+            @endif
         </div>
-
-
     </section>
 </div>

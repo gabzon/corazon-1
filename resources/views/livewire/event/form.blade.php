@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </x-slot>
     <form wire:submit.prevent="save" method="POST">
-        <header class="relative bg-white shadow z-20">
+        <header class="relative bg-gray-50 shadow z-20">
             <div class="max-w-full mx-auto py-4 px-4 sm:px-6 lg:px-8">
                 <div class="md:flex md:items-center md:justify-between">
                     <div class="flex-1 min-w-0">
@@ -29,7 +29,7 @@
             </div>
         </header>
 
-        <div class="flex bg-gray-100 max-h-full overflow-hidden">
+        <div class="flex bg-gray-100 min-h-full overflow-hidden">
             <div class="flex-1 overflow-hidden">
                 <div class="h-screen overflow-y-scroll">
                     <div class="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
@@ -44,6 +44,7 @@
                         @endif
                         <div class="max-w-6xl mx-auto">
                             @include('livewire.event.form._main')
+
                             <br>
                             <br>
                             <br>

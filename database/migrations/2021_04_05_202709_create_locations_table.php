@@ -25,7 +25,7 @@ class CreateLocationsTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
-            $table->string('facebook')->nullable();
+            $table->string('facebook')->nullable();            
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
@@ -47,6 +47,8 @@ class CreateLocationsTable extends Migration
             $table->string('zip')->nullable();            
             $table->string('neighborhood')->nullable();                                    
             $table->string('entry_code')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
             $table->decimal('lng', 12, 9)->nullable();
             $table->decimal('lat', 12, 9)->nullable();
             $table->string('google_maps_shortlink')->nullable();

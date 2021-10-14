@@ -31,26 +31,23 @@
 
         <div class="flex bg-gray-100 min-h-full overflow-hidden">
             <div class="flex-1 overflow-hidden">
-                <div class="grid grid-cols-5 gap-6">
-                    <div class="col-span-5 sm:col-span-1 relative">
-                        <div class="sticky top-6 px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8">
-                            @include('livewire.course.form._nav')
-                        </div>
-                    </div>
-                    <div class="col-span-5 sm:col-span-4">
-                        <div class="h-screen overflow-y-scroll">
-                            <div class="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
-                                @if ($errors->any())
-                                <div class="alert alert-danger p-2 mb-6">
-                                    <ul class="list-disc mx-8">
-                                        @foreach ($errors->all() as $error)
-                                        <li class="text-red-600">{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
+                <div class="h-screen overflow-y-scroll">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
+                            @if ($errors->any())
+                            <div class="alert alert-danger p-2 mb-6">
+                                <ul class="list-disc mx-8">
+                                    @foreach ($errors->all() as $error)
+                                    <li class="text-red-600">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
 
+                            <div class="space-y-4">
                                 @include('livewire.course.form._default')
+
+                                @include('livewire.course.form._pricing')
 
                                 @include('livewire.course.form._details')
 
@@ -59,13 +56,13 @@
                                 @include('livewire.course.form._media')
 
                                 @include('livewire.course.form._students')
-                                <br>
                             </div>
+
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="flex-shrink-0 block w-96 h-screen bg-white overflow-hidden">
                 <div class="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
                     @include('livewire.course.form._sidebar')

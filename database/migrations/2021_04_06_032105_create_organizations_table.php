@@ -17,6 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('slug', 120);
+            $table->string('shortname', 30)->nullable();
             $table->text('video')->nullable();
             $table->string('logo')->nullable();
             $table->text('about')->nullable();

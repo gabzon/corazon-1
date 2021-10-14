@@ -47,8 +47,17 @@ class OrganizationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Organization $organization)
-    {
-        return view('organization.show')->with('organization', $organization);
+    {                
+        return view('organization.show')->with([
+            'organization'  => $organization,
+            'mondays'       => $organization->courses()->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
+            'tuesdays'      => $organization->courses()->where('status','active')->where('tuesday', 1)->orderBy('start_time_tue')->get(),
+            'wednesdays'    => $organization->courses()->where('status','active')->where('wednesday',1)->orderBy('start_time_wed')->get(),
+            'thursdays'     => $organization->courses()->where('status','active')->where('thursday',1)->orderBy('start_time_thu')->get(),
+            'fridays'       => $organization->courses()->where('status','active')->where('friday', 1)->orderBy('start_time_fri')->get(),
+            'saturdays'     => $organization->courses()->where('status','active')->where('saturday', 1)->orderBy('start_time_sat')->get(),
+            'sundays'       => $organization->courses()->where('status','active')->where('sunday', 1)->orderBy('start_time_sat')->get(),
+        ]);
     }
 
     /**

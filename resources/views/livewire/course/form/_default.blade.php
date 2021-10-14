@@ -21,30 +21,27 @@
 
         <div class="grid grid-cols-5 gap-6">
             <div class="col-span-5 sm:col-span-2">
-                <x-form.focus wire:model="course.focus" name="course.focus" />
-            </div>
-            <div class="col-span-5 sm:col-span-2">
-                <x-form.level wire:model="course.level" name="course.level" />
+                <x-form.level wire:model="course.level_code" name="course.level_code" />
             </div>
             <div class="col-span-5 sm:col-span-1">
                 <x-form.level-number wire:model="course.level_number" />
             </div>
+            <div class="col-span-5 sm:col-span-2">
+                <x-form.text-input wire:model="course.level_label" name="course.level_label" label="Level Label" />
+            </div>
         </div>
 
-        <div class="flex flex-wrap -mx-3">
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="course.full_price" name="course.full_price" label="price" />
+        <div class="grid grid-cols-4 gap-6">
+            <div class="col-span-5 sm:col-span-1">
+                <x-form.focus wire:model="course.focus" name="course.focus" />
             </div>
-            <div class="w-full sm:w-1/4 px-3">
-                <x-form.price-input wire:model="course.reduced_price" name="course.reduced_price"
-                    label="Reduced price" />
-            </div>
-            <div class="w-full sm:w-1/4 px-3">
+            <div class="col-span-5 sm:col-span-1">
                 <x-form.city-select wire:model="course.city_id" name="course.city_id" />
             </div>
-            <div class="w-full sm:w-1/4 px-3">
+            <div class="col-span-5 sm:col-span-1">
                 <x-form.organization-select wire:model="course.organization_id" name="course.organization_id" />
             </div>
         </div>
+
     </div>
 </div>

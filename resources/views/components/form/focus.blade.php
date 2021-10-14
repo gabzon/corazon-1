@@ -7,12 +7,8 @@
             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error($name) border-red-600 @enderror">
             <option value="" selected disabled>Choose focus</option>
             <option>Partnerwork</option>
-            <option>Footwork</option>
-            <option>Styling</option>
-            <option>Solo</option>
+            <option>Selfwork</option>
             <option>Choreography</option>
-            <option>Stretching</option>
-            <option>Fitness</option>
             <option>Theory</option>
             <option>Mixed</option>
             <option>Other</option>

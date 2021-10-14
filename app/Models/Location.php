@@ -44,6 +44,7 @@ class Location extends Model implements HasMedia
         'public_transportation',
         'user_id',
         'city_id',
+        'facebook_id',
     ];
 
     /**

@@ -1,3 +1,5 @@
 <x-admin-layout>
-    <livewire:event.form :event="$event" />
+    <div class="mb-10">
+        <livewire:event.form :event="$event" />
+    </div>
 </x-admin-layout>

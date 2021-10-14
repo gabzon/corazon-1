@@ -46,8 +46,10 @@ class CreateCoursesTable extends Migration
             $table->boolean('sunday')->nullable();
             $table->time('start_time_sun')->nullable();
             $table->time('end_time_sun')->nullable();
-            $table->string('level')->nullable();
+            $table->string('level')->nullable();            
+            $table->string('level_code')->nullable();
             $table->string('level_number')->nullable();
+            $table->string('level_label')->nullable();
             $table->time('duration')->nullable();
             $table->text('video1')->nullable();
             $table->text('video2')->nullable();
@@ -56,6 +58,10 @@ class CreateCoursesTable extends Migration
             $table->decimal('dropping_price')->nullable();
             $table->decimal('full_price')->nullable();
             $table->decimal('reduced_price')->nullable();
+            $table->decimal('student_price')->nullable();
+            $table->decimal('unemployed_price')->nullable();
+            $table->decimal('senior_price')->nullable();
+            $table->boolean('is_standby')->nullable()->default(false);
             $table->string('thumbnail')->nullable();
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();

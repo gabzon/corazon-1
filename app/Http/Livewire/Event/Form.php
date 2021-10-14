@@ -6,18 +6,7 @@ use App\Models\Event;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Http\Livewire\Traits\WithThumbnail;
-use App\Services\FBLocationService;
-use App\Services\LocationService;
-use Facebook\Facebook;
-use Facebook\Exceptions\FacebookResponseException;
-use Facebook\Exceptions\FacebookSDKException;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Http;
-
-use function PHPUnit\Framework\isEmpty;
-
-// TODO improve validations
-// TODO Tests
+use App\Services\FBImportService;
 
 class Form extends Component
 {
@@ -28,97 +17,59 @@ class Form extends Component
 
     protected $listeners = ['thumbnail' => 'updateThumbnail', 'selectedStyles' => 'updateStyles', 'selectedOrganizations' => 'updateOrganizations'];
 
-    protected $rules = [
-        'event.name'            => 'required',
-        'event.slug'            => 'required',
-        'event.tagline'         => 'nullable',
-        'event.description'     => 'nullable',
-        'event.start_date'      => 'required|date',
-        'event.end_date'        => 'required|date',
-        'event.start_time'      => 'required',
-        'event.end_time'        => 'required',
-        'event.video'           => 'nullable',
-        'event.thumbnail'       => 'nullable',
-        'event.type'            => 'required',
-        'event.status'          => 'required',
-        'event.publish_at'      => 'nullable|date',
-        'event.contact'         => 'nullable',
-        'event.email'           => 'nullable',
-        'event.phone'           => 'nullable',
-        'event.website'         => 'nullable',
-        'event.facebook'        => 'nullable',
-        'event.twitter'         => 'nullable',
-        'event.instagram'       => 'nullable',
-        'event.youtube'         => 'nullable',
-        'event.tiktok'          => 'nullable',
-        'event.user_id'         => 'nullable',
-        'event.location_id'     => 'nullable',
-        'event.city_id'         => 'required',
-        'event.facebook_id'     => 'nullable',
-    ];
-
     public $thumbnail;
     public $styles;
     public $organizations;
+    public array $fbResults;
+
+    protected function rules()
+    {
+        return [
+            'event.name'            => 'required',
+            'event.slug'            => 'required',
+            'event.tagline'         => 'nullable',
+            'event.description'     => 'nullable',
+            'event.start_date'      => 'required|date',
+            'event.end_date'        => 'required|date',
+            'event.start_time'      => 'required',
+            'event.end_time'        => 'required',
+            'event.video'           => 'nullable',
+            'event.thumbnail'       => 'nullable',
+            'event.type'            => 'required',
+            'event.status'          => 'required',
+            'event.publish_at'      => 'nullable|date',
+            'event.contact'         => 'nullable',
+            'event.email'           => 'nullable',
+            'event.phone'           => 'nullable',
+            'event.website'         => 'nullable',
+            'event.facebook'        => 'nullable|unique:events,facebook',
+            'event.facebook_id'     => 'nullable|unique:events,facebook_id,'.$this->event->id,            
+            'event.twitter'         => 'nullable|unique:events,twitter',
+            'event.instagram'       => 'nullable|unique:events,instagram',
+            'event.youtube'         => 'nullable|unique:events,youtube',
+            'event.tiktok'          => 'nullable|unique:events,tiktok ',
+            'event.user_id'         => 'nullable',
+            'event.location_id'     => 'nullable',
+            'event.city_id'         => 'required',
+        ];
+    }
 
     public function import()
     {
-        
-        $token = auth()->user()->facebook_token;
-        
-        $fb = new Facebook([
-            'app_id' => config('services.facebook.app_id'),
-            'app_secret' => config('services.facebook.app_secret'),
-            'default_graph_version' => 'v5.0',
-            'default_access_token' => $token,
-            'enable_beta_mode' => true,
-        ]);
-
-        $helper = $fb->getCanvasHelper();        
-
-        try {
-            $url = '/'. $this->event->facebook_id .'?fields=cover,name,place,start_time,end_time,is_online,timezone,description';                        
-            // $url = 'https://graph.facebook.com/' . $this->event->facebook_id . '?access_token='. $token;                        
-            $response = $fb->get($url, $token);      
-            // $response = Http::get($url);      
-            // dd($url);
-            
-        } catch (FacebookResponseException $e) {    
-            // dd($e->getMessage());        
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch (FacebookSDKException $e) {
-            // dd('er 2');
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
+        $fbImport = new FBImportService($this->event->facebook_id);     
                 
-        $graphNode = $response->getGraphNode();
+        $this->fbResults = $fbImport->getFBNode();
         
-
+        $fbImport->matchImport($this->event);    
         
-        $this->event->name = $graphNode['name'];
-        $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;
-        $this->event->description   = $graphNode['description'];
-
-        $this->event->start_date = $graphNode['start_time'] ?? '';
-        $this->event->end_date = $graphNode['end_time'] ?? '';        
-        $this->event->start_time = $this->event->start_date->format('H:i:s');
-        $this->event->end_time = $this->event->end_date->format('H:i:s');
-        $this->event->user_id = auth()->user()->id;
-                       
-        $place = new FBLocationService($graphNode['place']);       
-        
-        if ($place->hasCity()) {                
-            $this->event->city_id = $place->getCityID();  
-            if ($place->hasLocation()) {                                                    
-                $this->event->location_id   = $place->getFBLocationID();
-            }
+        if ($fbImport->hasCover) {            
+            $this->thumbnail = $fbImport->graphNode->getField('cover')['source']; 
         }
+    }
 
-        $this->thumbnail = $graphNode->getField('cover')['source'];        
-
-        //$this->event->save();
+    public function updateEventFacebook_Id($id)
+    {
+        dd($id);
     }
 
     public function updateThumbnail(array $file)
@@ -153,11 +104,11 @@ class Form extends Component
 
     public function save()
     {
-        $this->validate();
+        $validatedData = $this->validate();
 
         $this->event->user_id = auth()->user()->id;
 
-        $this->event->save();
+        $this->event->save($validatedData);
 
         if ($this->thumbnail) {
             $this->handleThumbnailUpload($this->event, $this->thumbnail);
@@ -190,3 +141,4 @@ class Form extends Component
         return view('livewire.event.form');
     }
 }
+

@@ -19,11 +19,16 @@ class PriceForm extends Component
         'pricing.priceable'     => 'required',        
     ];
 
-    public function save()
-    {
-        $this->validate();
+    // public function save()
+    // {
+    //     $this->validate();
         
-        $this->pricing->save();
+    //     $this->pricing->save();
+    // }
+
+    public function add()
+    {
+        dd($this->pricing);
     }
     
     public function mount($pricing = null)

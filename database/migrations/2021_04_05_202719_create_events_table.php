@@ -48,7 +48,7 @@ class CreateEventsTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();        
 
-            $table->string('facebook_id')->nullable();
+            $table->string('facebook_id')->nullable()->unique();
             
             $table->foreignId('user_id')->constrained();
             $table->foreignId('location_id')->nullable()->constrained();

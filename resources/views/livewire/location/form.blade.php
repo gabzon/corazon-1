@@ -33,19 +33,24 @@
                         description="Write a few sentences about the location." />
                 </div>
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
-                <div class="sm:col-span-3">
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-10">
+                <div class="sm:col-span-4">
                     <x-form.text-input wire:model="location.website" name="location.website" label="Website" />
                 </div>
-                <div class="sm:col-span-1">
+                <div class="sm:col-span-2">
                     <x-form.select wire:model="location.type" name="location.type" :options="[ 'dance-studio'  => __('Dance studio'), 
                                     'hotel'         => __('Hotel'), 
                                     'bar-restaurant'=> __('Bar/Restaurant'), 
                                     'event-hall'    => __('Event Hall')]" label="Type" />
                 </div>
 
-                <div class="sm:col-span-1">
+                <div class="sm:col-span-2">
                     <x-form.city-select wire:model="location.city_id" name="location.city_id" />
+                </div>
+
+                <div class="sm:col-span-2">
+                    <x-form.text-input wire:model="location.facebook_id" name="location.facebook_id"
+                        label="Facebook ID" />
                 </div>
 
 
@@ -63,10 +68,11 @@
     <div class="pt-5">
         <div class="flex justify-end items-center">
             <x-partials.saved-confirmation />
-            <a href="{{ route('location.index') }}"
-                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Cancel
-            </a>
+            <button type="button" wire:click="destroy({{$location}})"
+                onclick="confirm('Are you sure you want to delete this location?') || event.stopImmediatePropagation()"
+                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Delete
+            </button>
             <button type="submit"
                 class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Save

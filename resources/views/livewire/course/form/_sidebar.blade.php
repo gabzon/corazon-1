@@ -1,7 +1,6 @@
 <div class="space-y-6">
 
     <div>
-        <label for="thumbnail" class="block text-sm font-medium text-gray-700 capitalize mb-1">Thumbnail</label>
         <x-form.media-library name="thumbnail" :model="$course" collection="courses" />
     </div>
 

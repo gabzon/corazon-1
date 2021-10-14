@@ -36,11 +36,12 @@
             </tr>
         </table>
     </div>
+    <div class="py-2 flex justify-end">
+        <x-shared.photo-gallery :photos="$course->classroom->getMedia('classrooms')" label="Classroom Photos" />
+    </div>
     <br>
     <div class="mr-3 sm:mr-0">
-
         <h3 class="flex-1 text-lg font-bold text-gray-900">Location</h3>
         <x-location.details :location="$course->classroom->location" />
-        <x-shared.photo-gallery :photos="$course->classroom->getMedia('classrooms')" label="Classroom Photos" />
     </div>
 </div>

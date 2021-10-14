@@ -56,7 +56,11 @@
             </x-jet-dropdown-link>
 
             <x-jet-dropdown-link href="{{ route('organization.index') }}">
-                {{ __('Organization') }}
+                {{ __('Organizations') }}
+            </x-jet-dropdown-link>
+
+            <x-jet-dropdown-link href="{{ route('location.index') }}">
+                {{ __('Locations') }}
             </x-jet-dropdown-link>
 
             <div class="border-t border-gray-100"></div>

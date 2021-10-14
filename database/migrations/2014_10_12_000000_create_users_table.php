@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->text('facebook_token')->nullable();
             $table->string('instagram_id')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('idn')->nullable();
             $table->timestamps();
 
             $table->string('username')->nullable();                    
@@ -50,7 +51,7 @@ class CreateUsersTable extends Migration
                              
             $table->string('address')->nullable();
             $table->string('address_info')->nullable();
-            $table->string('postal_code')->nullable();
+            $table->string('zip')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();

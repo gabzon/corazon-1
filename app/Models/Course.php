@@ -51,7 +51,9 @@ class Course extends Model implements HasMedia
         'start_time_sun',
         'end_time_sun',
         'level',
+        'level_code',
         'level_number',
+        'level_label',
         'duration',
         'video1',
         'video2',
@@ -59,7 +61,10 @@ class Course extends Model implements HasMedia
         'dropping',
         'dropping_price',
         'full_price',
-        'reduced_price',                
+        'reduced_price',   
+        'student_price',
+        'unemployed_price',
+        'senior_price',
         'thumbnail',
         'focus',
         'type',
@@ -69,6 +74,7 @@ class Course extends Model implements HasMedia
         'city_id',
         'organization_id',
     ];
+
 
     /**
      * The attributes that should be cast to native types.
@@ -90,6 +96,9 @@ class Course extends Model implements HasMedia
         'dropping_price'    => 'decimal:2',      
         'full_price'        => 'decimal:2',
         'reduced_price'     => 'decimal:2',
+        'student_price'     => 'decimal:2',
+        'unemployed_price'  => 'decimal:2',
+        'senior_price'      => 'decimal:2',
         'user_id'           => 'integer',
         'classroom_id'      => 'integer',
         'city_id'           => 'integer',

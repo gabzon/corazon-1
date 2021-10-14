@@ -1,4 +1,4 @@
-<div class="mb-10">
+<div>
     <div class="space-y-6">
         <div class="pb-1 border-b border-gray-200 sm:flex sm:items-center sm:justify-between mb-4">
             <h3 id="default" class="text-lg leading-6 font-medium text-gray-900">
@@ -6,22 +6,13 @@
             </h3>
         </div>
         <div class="flex flex-wrap -mx-3">
-            <div class="w-full sm:w-2/3 px-3">
+            <div class="w-full sm:w-4/5 px-3">
                 <x-form.text-input wire:model="event.name" name="event.name" label="Name" />
             </div>
-            <div class="w-full sm:w-1/3 px-3">
+            <div class="w-full sm:w-1/5 px-3">
                 @if (auth()->user()->facebook_token)
-                <div class="grid grid-cols-3 gap-5">
-                    <div class="col-span-2">
-                        <x-form.text-input wire:model="event.facebook_id" name="event.facebook_id"
-                            label="Facebook Event ID" />
-                    </div>
-                    <div class="col-span-1 flex self-end">
-                        <button type="button" wire:click="import"
-                            class="w-full items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ $action == 'store' ? 'Import' : 'Update'}}
-                        </button>
-                    </div>
+                <div class="mt-8">
+                    <a href="#social-media" class="text-sm text-gray-500 underline">Facebook Import</a>
                 </div>
                 @endif
             </div>
@@ -92,7 +83,7 @@
 
         <br>
 
-        <div class="pb-1 border-b border-gray-200 sm:flex sm:items-center sm:justify-between mb-4">
+        <div id="social-media" class="pb-1 border-b border-gray-200 sm:flex sm:items-center sm:justify-between mb-4">
             <h3 id="default" class="text-lg leading-6 font-medium text-gray-900">
                 Social Media
             </h3>
@@ -106,6 +97,31 @@
             <x-form.text-input wire:model="event.instagram" name="event.instagram" label="Instagram" />
             <x-form.text-input wire:model="event.tiktok" name="event.tiktok" label="Tiktok" />
         </div>
+        <br>
+
+        @if (auth()->user()->facebook_token)
+        <div id="facebook" class="pb-1 border-b border-gray-200 sm:flex sm:items-center sm:justify-between mb-4">
+            <h3 id="default" class="text-lg leading-6 font-medium text-gray-900">
+                Facebook Import
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-8">
+            <div class="sm:col-span-2">
+                <x-form.text-input wire:model="event.facebook_id" name="event.facebook_id" label="Facebook Event ID" />
+            </div>
+            <div class="sm:col-span-1">
+                <br>
+                <button type="button" wire:click="import"
+                    class="w-full items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {{ $action == 'store' ? 'Import' : 'Update'}}
+                </button>
+            </div>
+        </div>
+        <div>
+            @dump($fbResults)
+        </div>
+        @endif
         <br>
         <br>
     </div>

@@ -80,12 +80,11 @@
 
         <div class="border-t bg-gray-50">
             <div class="container mx-auto mt-10">
-                <p class="my-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
-                    Our goal is to make you life easier by putting all dancing events in croatia and around in one
-                    place.
-                    <br>
-                    if you have any event, ideas or comments that you would like to share. You can write us an email to
-                    <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a>
+                <p class="my-3 max-w-sm mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
+                    If you would like to share your events, classes, ideas or comments please contact us by email to
+                    <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a> or on
+                    <a href="https://www.facebook.com/corazon.dance21" target="_blank"
+                        class="text-indigo-500">Facebook</a>
                 </p>
                 <br>
                 <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>

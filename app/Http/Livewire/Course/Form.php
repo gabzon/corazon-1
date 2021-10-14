@@ -37,8 +37,10 @@ class Form extends Component
         'course.keywords'       => 'nullable',
 
         'course.focus'          => 'required',
-        'course.level'          => 'required',
+        'course.level'          => 'nullable',
+        'course.level_code'     => 'required',
         'course.level_number'   => 'nullable',
+        'course.level_label'    => 'nullable',
         'course.city_id'        => 'required',
         'course.type'           => 'required',
 
@@ -74,6 +76,12 @@ class Form extends Component
         
         'course.full_price'     => 'nullable',
         'course.reduced_price'  => 'nullable',    
+        'course.student_price'  => 'nullable',    
+        'course.unemployed_price'=> 'nullable',    
+        'course.senior_price'   => 'nullable',
+        
+        'course.dropping'       => 'nullable',
+        'course.dropping_price' => 'nullable|numeric',
         
         'course.thumbnail'      => 'nullable',
             
@@ -101,6 +109,25 @@ class Form extends Component
     {
         $room = Classroom::find($id);        
         $this->city = $room->location->id;
+    }
+
+    public function updatedCourseLevelCode($value)
+    {
+        if ($value == 'op') {
+            $this->course->level = 'open level';
+        }
+        if ($value == 'a1' || $value == 'a2' || $value == 'a3') {
+            $this->course->level = 'beginner';
+        }
+        if ($value == 'b1' || $value == 'b2' || $value == 'b3') {
+            $this->course->level = 'beginner';
+        }
+        if ($value == 'c1' || $value == 'c2' || $value == 'c3') {
+            $this->course->level = 'advanced';
+        }
+        if ($value == 'd1') {
+            $this->course->level = 'master';
+        }
     }
 
     public function updateInstructorsList($ids)

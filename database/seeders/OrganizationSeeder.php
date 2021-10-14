@@ -84,6 +84,7 @@ class OrganizationSeeder extends Seeder
 
         Organization::create([
             'name'          => 'Plesni Center Fever',
+            'shortname'     => 'Fever',
             'slug'          => 'plesni-center-fever',                                    
             'contact'       => 'Hrvoje Kraševac',                                    
             'status'        => 'active',
@@ -106,6 +107,7 @@ class OrganizationSeeder extends Seeder
         
         Organization::create([
             'name'          => 'La obsesion by Gloria',
+            'shortname'     => 'La obsesion',
             'slug'          => 'gloria',                                    
             'contact'       => 'Gloria Lazić',                                    
             'status'        => 'active',
@@ -193,6 +195,7 @@ class OrganizationSeeder extends Seeder
 
         Organization::create([
             'name'          => 'LatinaDance studio',
+            'shortname'     => 'Latina',
             'slug'          => 'latinadance-studio',                                    
             'contact'       => 'Kristina',                                    
             'status'        => 'active',
@@ -289,7 +292,7 @@ class OrganizationSeeder extends Seeder
             'oid'           => '',
             'phone'         => '',
             'email'         => '',
-            'facebook'      => '',
+            'facebook'      => 'https://www.facebook.com/schoolofstreetstyles.soss/',
             'instagram'     => '',
             'youtube'       => '',
             'address'       => '',
