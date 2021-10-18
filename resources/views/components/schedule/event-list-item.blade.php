@@ -6,7 +6,7 @@
             <div>
                 <a href="{{ route('show.event', $item) }}" class="block focus:outline-none">
                     <span class="absolute inset-0" aria-hidden="true"></span>
-                    <h2 class="text-sm font-medium text-gray-900 truncate">{{ $item->shortname ?? $item->name }}</h2>
+                    <h2 class="text-sm font-medium text-gray-900 truncate">{{ $item->name }}</h2>
                     <span class="text-sm text-gray-500 truncate inline-block">
                         {{ implode(', ',$item->styles->pluck('name')->toArray()) }}
                     </span>
@@ -18,7 +18,11 @@
             <div>
                 <p class="text-sm text-gray-500 truncate text-right">{{ $item->city->name }}</p>
                 <p class="text-sm text-gray-500 truncate text-right">
-                    {{ $item->location->name ?? 'online' }}
+                    @if ($item->is_online)
+                    online
+                    @else
+                    {{ $item->location->shortname ?? $item->location->name  }}
+                    @endif
                 </p>
                 <p>
                     <x-shared.price-display :model="$item" />
