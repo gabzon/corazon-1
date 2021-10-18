@@ -29,7 +29,7 @@ class Form extends Component
         'location.phone'        => 'nullable',
         'location.contract'     => 'nullable',
         'location.type'         => 'nullable',
-        'location.facebook_id'  => 'nullable|unique:locations',
+        'location.facebook_id'  => 'nullable|unique:locations,facebook_id,' . $this->location->id,
         'location.user_id'      => 'nullable',
         'location.city_id'      => 'required',
     ];

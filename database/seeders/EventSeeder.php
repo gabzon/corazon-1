@@ -23,6 +23,7 @@ class EventSeeder extends Seeder
             'type'          => 'festival',
             'status'        => 'active',    
             'start_date'    => Carbon::now(),                                            
+            'end_date'      => Carbon::now(),
             'user_id'       => 1,
             'website'       => 'https://zagrebpassion.net',
             'facebook'      => 'https://www.facebook.com/events/2097873480505114/',            
@@ -35,6 +36,7 @@ class EventSeeder extends Seeder
             'name'          => 'Rueda de Casino početni tečaj',
             'slug'          => 'rueda-de-casino-početni-tečaj',
             'start_date'    => Carbon::now(),
+            'end_date'      => Carbon::now(),
             'type'          => 'workshop',
             'facebook'      => 'https://www.facebook.com/events/608665280289818',
             'facebook_id'   => '608665280289818',
@@ -75,8 +77,8 @@ class EventSeeder extends Seeder
             'type'          => 'festival',
             'start_date'    => Carbon::now(),
             'end_date'      => Carbon::now(),
-            'facebook'      => 'https://www.facebook.com/events/914896189404237',
-            'facebook_id'   => '914896189404237',
+            'facebook'      => 'https://www.facebook.com/events/2420505851610776',
+            'facebook_id'   => '2420505851610776',
             'user_id'       => 1,
         ]);
         $all->styles()->attach([1,36,42]);
@@ -190,10 +192,49 @@ class EventSeeder extends Seeder
             'start_date'    => Carbon::now(),
             'end_date'      => Carbon::now(),
             'facebook'      => 'https://www.facebook.com/events/976306052893368',
-            'facebook_id'   => '',
+            'facebook_id'   => '976306052893368',
             'user_id'       => 1,
         ]);
         $beast->styles()->attach([2,6,8]);
+
+        $beast = Event::create([
+            'name'          => 'MILONGA - vikend seminar', 
+            // 'tagline'       => 'SAVAGE ...but Classy (Official)',
+            'slug'          => 'milonga-vikend-seminar-tango-zagreb',
+            'type'          => 'bootcamp',
+            'start_date'    => Carbon::now(),
+            'end_date'      => Carbon::now(),
+            'facebook'      => 'https://www.facebook.com/events/428205595340287',
+            'facebook_id'   => '428205595340287',
+            'user_id'       => 1,
+        ]);
+        $beast->styles()->attach([19]);
+
+        $stf = Event::create([
+            'name'          => 'Second Sarajevo Tango Festival', 
+            // 'tagline'       => 'SAVAGE ...but Classy (Official)',
+            'slug'          => 'milonga-vikend-seminar-tango-zagreb',
+            'type'          => 'festival',
+            'start_date'    => Carbon::now(),
+            'end_date'      => Carbon::now(),
+            'facebook'      => 'https://www.facebook.com/events/389389649343048',
+            'facebook_id'   => '389389649343048',
+            'user_id'       => 1,
+        ]);
+        $stf->styles()->attach([19]);
+
+        $fever = Event::create([
+            'name'          => 'Salsa radionice by Hrvoje Kraševac', 
+            // 'tagline'       => 'SAVAGE ...but Classy (Official)',
+            'slug'          => 'Salsa radionice by Hrvoje Kraševac',
+            'type'          => 'workshop',
+            'start_date'    => Carbon::now(),
+            'end_date'      => Carbon::now(),
+            'facebook'      => 'https://www.facebook.com/events/1329582187759539/',
+            'facebook_id'   => '1329582187759539',
+            'user_id'       => 1,
+        ]);
+        $fever->styles()->attach([19]);
     }
 }
 
