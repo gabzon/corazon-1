@@ -28,6 +28,7 @@ class CreateStylesTable extends Migration
             $table->string('year', 30)->nullable();
             $table->text('video')->nullable();
             $table->text('description')->nullable();
+            $table->bigInteger('parent_id')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->softDeletes();
             $table->timestamps();

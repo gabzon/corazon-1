@@ -21,30 +21,49 @@ class Location extends Model implements HasMedia
         'name',
         'slug',
         'shortname',
+        
         'address',        
         'address_info',
         'zip',        
-        'neighborhood',                
+        'neighborhood',
+        'entry_code',
+
         'comments',
         'type',
-        'contact',
+        
         'website',
         'facebook',
         'youtube',
         'instagram',
         'twitter',
         'tiktok',
+
+        'has_sink',
+        'has_bar',
+        'has_fridge',
+        'has_hall',
+        'has_changeroom',
+        'has_lockers',
+        'has_wc',
+        'has_separate_wc',
+        'has_shower',
+        
+        'contact',
         'email',
         'phone',
         'contract',
         'video',
-        'entry_code',
+        
+        'facebook_id',
+        'google_id',
+        'lng',
+        'lat',
+
         'google_maps_shortlink',
         'google_maps',
         'public_transportation',
         'user_id',
-        'city_id',
-        'facebook_id',
+        'city_id',        
     ];
 
     /**
@@ -53,8 +72,9 @@ class Location extends Model implements HasMedia
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'user_id' => 'integer',
+        'id'        => 'integer',
+        'user_id'   => 'integer',
+        'city_id'   => 'integer',
     ];
 
 

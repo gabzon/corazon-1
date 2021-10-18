@@ -45,6 +45,34 @@
                         <div class="max-w-6xl mx-auto">
                             @include('livewire.event.form._main')
 
+                            @if ($event->exists)
+                            <br>
+                            <br>
+                            <div class="mb-20">
+                                <div
+                                    class="pb-1 border-b border-gray-200 sm:flex sm:items-center sm:justify-between mb-4">
+                                    <h3 id="default" class="text-lg leading-6 font-medium text-gray-900">
+                                        Pricing
+                                    </h3>
+                                </div>
+                                <div class="relative flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="is_free" wire:model="event.is_free" name="is_free" type="checkbox"
+                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="is_free" class="font-medium text-gray-700">Free event</label>
+                                        <span class="text-gray-500">check this box if this event is free</span>
+                                    </div>
+                                </div>
+                                @if (!$event->is_free)
+                                <livewire:shared.price-form :model="$event" modelName="Event" />
+                                @endif
+                            </div>
+                            @endif
+                            <br>
+                            <br>
+                            <br>
                             <br>
                             <br>
                             <br>

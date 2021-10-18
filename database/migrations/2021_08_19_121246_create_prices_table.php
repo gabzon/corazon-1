@@ -15,11 +15,11 @@ class CreatePricesTable extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price');
+            $table->decimal('amount');
             $table->string('label');
             $table->string('currency');
             $table->text('description')->nullable();
-            $table->boolean('can_expire');
+            $table->boolean('can_expire')->nullable();
             $table->date('expiry_date')->nullable();
             $table->morphs('priceable');
             $table->timestamps();

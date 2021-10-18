@@ -13,11 +13,12 @@
 
     {{-- <livewire:component.select2 :model="$event" select="organizations" /> --}}
 
-    <x-form.select wire:model="event.status" name="event.status" :options="['active', 'draft', 'soon', 'expired']"
+    <x-form.select wire:model="event.status" name="event.status"
+        :options="['active' => 'Active', 'draft' => 'Draft', 'review' => 'Review', 'soon' => 'Soon', 'finished' => 'Finished']"
         label="Status" />
 
     <x-form.select wire:model="event.type" name="event.type"
-        :options="['party', 'festival', 'workshop', 'bootcamp', 'concert','show/performance', 'battle', 'practica']"
+        :options="['party' => 'Party', 'festival' => 'Festival', 'workshop' => 'Workshop', 'bootcamp' => 'Bootcamp', 'concert' => 'Concert', 'show' => 'Show / Performance', 'competition' => 'Competition / Battle', 'training' => 'Training / Practica']"
         label="Type" />
 
     {{-- <livewire:component.select2 :model="$event" select="styles" /> --}}

@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
             FeralTango::class,       
             PCSalsa::class, 
             Soss::class, 
+            EventSeeder::class,
             // CourseSeeder::class,
-            // EventSeeder::class,
             ]
         );        
     }

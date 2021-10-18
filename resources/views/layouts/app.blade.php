@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
 
     @livewireStyles
 
@@ -35,12 +36,15 @@
         </header>
         @endif
 
-        <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
     </div>
 
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    @stack('scripts')
     @stack('modals')
 
     @livewireScripts

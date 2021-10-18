@@ -39,8 +39,10 @@
                     </div>
                     <br>
                     <div class="mr-3 sm:mr-0">
+                        @if ($event->location)
                         <h3 class="flex-1 text-lg font-bold text-gray-900">Location</h3>
                         <x-location.details :location="$event->location" />
+                        @endif
                         <br>
                     </div>
                 </div>
@@ -54,11 +56,13 @@
                     <div>{!! $event->description !!}</div>
                 </div>
                 <br>
+                @if ($event->location)
                 <div class="mr-3 sm:mr-0">
                     <h3 class="flex-1 text-lg font-bold text-gray-900">Location</h3>
                     <x-location.details :location="$event->location" />
                     <br>
                 </div>
+                @endif
             </div>
             @endif
         </div>

@@ -31,10 +31,27 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-4 gap-6 flex items-center">
             <div class="col-span-5 sm:col-span-1">
                 <x-form.focus wire:model="course.focus" name="course.focus" />
             </div>
+            <div class="col-span-5 sm:col-span-2">
+                <div class="mt-5 relative flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="standby" wire:model="course.standby" name="standby" type="checkbox"
+                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="comments" class="font-medium text-gray-700">Standby</label>
+                        <span id="comments-description" class="text-gray-500">
+                            sets students to standby upon registration.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="grid grid-cols-4 gap-6">
             <div class="col-span-5 sm:col-span-1">
                 <x-form.city-select wire:model="course.city_id" name="course.city_id" />
             </div>

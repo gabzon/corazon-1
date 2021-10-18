@@ -281,7 +281,8 @@ class OrganizationSeeder extends Seeder
         ]);
 
         Organization::create([
-            'name'          => 'Soss',
+            'name'          => 'School Of Street Styles',
+            'shortname'     => 'Soss',
             'slug'          => 'soss', 
             'contact'       => 'Suzanna',
             'status'        => 'active',

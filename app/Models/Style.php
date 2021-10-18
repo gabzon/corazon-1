@@ -58,4 +58,14 @@ class Style extends Model implements HasMedia
     {
         return $this->belongsToMany(Course::class);
     }
+
+    public function childs()
+    {
+        return $this->hasMany(Style::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Style::class, 'parent_id');        
+    }
 }

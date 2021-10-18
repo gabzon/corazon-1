@@ -26,6 +26,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('phone', 100)->nullable();
             $table->string('website', 100)->nullable();
             $table->string('oid')->nullable();
+            $table->string('facebook_id')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

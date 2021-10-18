@@ -11,7 +11,7 @@
                 <div class="py-3 flex justify-between text-sm font-medium">
                     <dt class="text-gray-500">Date</dt>
                     <dd class="text-gray-900">{{ $event->start_date->format('M j Y') }} -
-                        {{ $event->end_date->format('M j Y')}}</dd>
+                        {{ $event->end_date->format('M j Y') }}</dd>
                 </div>
 
                 <div class="py-3 flex justify-between text-sm font-medium">
@@ -26,10 +26,13 @@
                     <dd class="text-gray-900 capitalize">{{ $event->type }}</dd>
                 </div>
 
+                @if ($event->is_free)
                 <div class="py-3 flex justify-between text-sm font-medium">
                     <dt class="text-gray-500">Price</dt>
-                    <dd class="text-gray-900 uppercase">{{ $event->price }}</dd>
+                    <dd class="text-gray-900 uppercase">Free</dd>
                 </div>
+                @endif
+
                 <div class="py-3 flex justify-between text-sm font-medium">
                     <dt class="text-gray-500">Style(s)</dt>
                     <dd class="text-gray-900 text-right">
@@ -41,7 +44,11 @@
             </dl>
         </div>
 
+        <x-shared.pricing-list :model="$event" />
+
+
         <x-partials.social-links :model="$event" />
+
         {{-- <div class="flex">
             <button type="button"
                 class="flex-1 bg-indigo-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

@@ -2,43 +2,76 @@
 
 namespace App\Http\Livewire\Shared;
 
+use App\Models\Event;
 use App\Models\Price;
 use Livewire\Component;
 
 class PriceForm extends Component
 {
+    public Price $price;
     public $pricing;
+    public string $modelName;
+    public $model;
+    public bool $showForm;
     
     protected $rules = [
-        'pricing.price'         => 'required',
-        'pricing.label'         => 'required',
-        'pricing.currency'      => 'required',
-        'pricing.description'   => 'nullable',
-        'pricing.can_expire'    => 'nullable',
-        'pricing.expiry_date'   => 'nullable',
-        'pricing.priceable'     => 'required',        
+        'price.amount'         => 'required',
+        'price.label'         => 'required',
+        'price.currency'      => 'required',
+        'price.description'   => 'nullable',
+        'price.can_expire'    => 'nullable',
+        'price.expiry_date'   => 'nullable',         
     ];
 
-    // public function save()
-    // {
-    //     $this->validate();
+    public function save()
+    {        
+        $this->validate();       
+
+        $this->model->prices()->save($this->price);     
         
-    //     $this->pricing->save();
-    // }
+        session()->flash('success', 'Price successfully added!');
+        
+        $this->showForm = false;   
+        $this->loadPricing();             
+    }
+
+    public function delete(Price $price)
+    {
+        $price->delete();
+        $this->loadPricing();
+    }
+
+    public function cancel()
+    {        
+        $this->showForm = false;
+    }
 
     public function add()
-    {
-        dd($this->pricing);
+    {                
+        $this->price = new Price;   
+        $this->showForm = true;
+    }
+
+    public function edit(Price $price)
+    {     
+        $this->showForm = true;        
+        $this->price = $price;        
+    }
+
+    public function loadPricing()
+    {        
+        // $type = "App\Models" . $this->modelName;
+        $this->pricing = Price::where('priceable_id', $this->model->id)
+                                ->where('priceable_type',get_class($this->model))->get();        
+        
     }
     
-    public function mount($pricing = null)
+    public function mount($model, string $modelName)
     {
-        // if ($pricing->exists) {
-        //     $this->pricing = $pricing;
-        // } else {
-        //     $this->pricing = new Price;
-        //     $this->pricing->currency = '';
-        // }
+        $this->model = $model;
+        $this->modelName = $modelName;
+        $this->loadPricing();
+            
     }
     
     public function render()

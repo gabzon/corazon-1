@@ -39,6 +39,9 @@ class CreateLocationsTable extends Migration
             $table->boolean('has_wc')->nullable();
             $table->boolean('has_separate_wc')->nullable();
             $table->boolean('has_shower')->nullable();
+            $table->boolean('has_parking')->nullable();
+            $table->boolean('has_parking_bike')->nullable();
+            $table->string('parking')->nullable();            
             $table->string('type')->nullable();
             $table->text('contract')->nullable();
             $table->text('video')->nullable();
@@ -47,7 +50,7 @@ class CreateLocationsTable extends Migration
             $table->string('zip')->nullable();            
             $table->string('neighborhood')->nullable();                                    
             $table->string('entry_code')->nullable();
-            $table->string('facebook_id')->nullable();
+            $table->string('facebook_id')->nullable();            
             $table->string('google_id')->nullable();
             $table->decimal('lng', 12, 9)->nullable();
             $table->decimal('lat', 12, 9)->nullable();

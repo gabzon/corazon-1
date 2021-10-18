@@ -61,11 +61,12 @@ class CreateCoursesTable extends Migration
             $table->decimal('student_price')->nullable();
             $table->decimal('unemployed_price')->nullable();
             $table->decimal('senior_price')->nullable();
-            $table->boolean('is_standby')->nullable()->default(false);
+            $table->boolean('standby')->nullable()->default(false);
             $table->string('thumbnail')->nullable();
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();
             $table->string('status', 40)->nullable();
+            $table->string('for', 20)->nullable();            
             $table->foreignId('user_id')->constrained();
             $table->foreignId('classroom_id')->nullable()->constrained();
             $table->foreignId('city_id')->nullable()->constrained();

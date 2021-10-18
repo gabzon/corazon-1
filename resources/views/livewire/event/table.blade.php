@@ -94,7 +94,7 @@
                                 {{ $event->style}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $event->start_date->format('d-m-y') }}
+                                {{ $event->start_date->format('M d, Y') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 
@@ -103,7 +103,7 @@
                                 teachers
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $event->city->name }}
+                                {{ $event->city->name ?? '' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $event->status }}

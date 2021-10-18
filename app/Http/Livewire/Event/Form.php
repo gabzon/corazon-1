@@ -34,6 +34,9 @@ class Form extends Component
             'event.start_time'      => 'required',
             'event.end_time'        => 'required',
             'event.video'           => 'nullable',
+            'event.is_online'       => 'nullable',
+            'event.is_recurrent'    => 'nullable',
+            'event.is_free'         => 'nullable',
             'event.thumbnail'       => 'nullable',
             'event.type'            => 'required',
             'event.status'          => 'required',
@@ -42,17 +45,17 @@ class Form extends Component
             'event.email'           => 'nullable',
             'event.phone'           => 'nullable',
             'event.website'         => 'nullable',
-            'event.facebook'        => 'nullable|unique:events,facebook',
-            'event.facebook_id'     => 'nullable|unique:events,facebook_id,'.$this->event->id,            
-            'event.twitter'         => 'nullable|unique:events,twitter',
-            'event.instagram'       => 'nullable|unique:events,instagram',
-            'event.youtube'         => 'nullable|unique:events,youtube',
-            'event.tiktok'          => 'nullable|unique:events,tiktok ',
+            'event.facebook'        => 'nullable|unique:events,facebook,'.$this->event->id,            
+            'event.facebook_id'     => 'nullable|unique:events,facebook_id,'.$this->event->id,
+            'event.twitter'         => 'nullable|unique:events,twitter'.$this->event->id,
+            'event.instagram'       => 'nullable|unique:events,instagram'.$this->event->id,
+            'event.youtube'         => 'nullable|unique:events,youtube'.$this->event->id,
+            'event.tiktok'          => 'nullable|unique:events,tiktok'.$this->event->id,
             'event.user_id'         => 'nullable',
             'event.location_id'     => 'nullable',
-            'event.city_id'         => 'required',
+            'event.city_id'         => 'required_if:event.is_online,false',
         ];
-    }
+    }    
 
     public function import()
     {
@@ -98,8 +101,7 @@ class Form extends Component
 
     public function updatedEventName()
     {
-        $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;
-        //TODO slug must include city and date
+        $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;        
     }
 
     public function save()

@@ -41,6 +41,8 @@ class Event extends Model implements HasMedia
         'facebook',
         'twitter',
         'instagram',
+        'is_online',
+        'is_recurrent',
         'youtube',
         'tiktok',
         'facebook_id',
@@ -48,6 +50,7 @@ class Event extends Model implements HasMedia
         'location_id',
         'city_id',
     ];
+         
 
     /**
      * The attributes that should be cast to native types.
@@ -64,8 +67,10 @@ class Event extends Model implements HasMedia
         'min_price'     => 'decimal:2',
         'max_price'     => 'decimal:2',                
         'user_id'       => 'integer',
-        'location_id'  => 'integer',
+        'location_id'   => 'integer',
         'city_id'       => 'integer',
+        'is_recurrent'  => 'boolean',
+        'is_online'     => 'boolean',
     ];
 
 

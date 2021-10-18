@@ -3,3 +3,4 @@
 * User picker tutorial : https://www.youtube.com/watch?v=L_f9gNaSCRE
 * pikaday.js & trix integration tutorials: https://laravel-livewire.com/screencasts/s6-refactor-pikaday-trix
 * responsive embed: https://www.themes.dev/blog/easily-embed-responsive-youtube-video-with-tailwind-css/
+* https://blog.codehunger.in/create-dynamic-categories-and-subcategories-in-laravel-7-8/

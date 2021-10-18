@@ -25,9 +25,9 @@ class CreateEventsTable extends Migration
             $table->date('end_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
-            $table->boolean('is_recurrent')->nullable();            
-            $table->boolean('is_online')->nullable();            
-            $table->string('day')->nullable();
+            $table->boolean('is_recurrent')->default(false)->nullable();
+            $table->string('recurrent_days')->nullable();
+            $table->boolean('is_online')->default(false)->nullable();
 
             $table->boolean('is_free')->nullable();
             $table->text('video')->nullable();
@@ -48,7 +48,8 @@ class CreateEventsTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();        
 
-            $table->string('facebook_id')->nullable()->unique();
+            // $table->string('facebook_id')->nullable()->unique();
+            $table->string('facebook_id')->nullable();
             
             $table->foreignId('user_id')->constrained();
             $table->foreignId('location_id')->nullable()->constrained();

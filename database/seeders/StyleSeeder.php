@@ -470,6 +470,62 @@ class StyleSeeder extends Seeder
         ]);
 
         Style::create([
+            'name'          => 'Bachata Moderna', 
+            'slug'          => 'bachata-moderna', 
+            'music'         => 'Bachata',
+            'family'        => 'Bachata', 
+            'description'   => 'Bachata is a genre of Latin American music that originated in the Dominican Republic in the first half of the 20th century. It is a fusion of European influences, mainly Spanish guitar music, with some remnants of indigenous Taino and African musical elements, representative of the cultural diversity of the Dominican population. (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Dominican Republic',
+            'year'          => '1980s',
+            'parent_id'     => 36,
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Sensual Bachata', 
+            'slug'          => 'sensual-bachata', 
+            'music'         => 'Bachata',
+            'family'        => 'Bachata', 
+            'description'   => 'Bachata is a genre of Latin American music that originated in the Dominican Republic in the first half of the 20th century. It is a fusion of European influences, mainly Spanish guitar music, with some remnants of indigenous Taino and African musical elements, representative of the cultural diversity of the Dominican population. (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Dominican Republic',
+            'year'          => '1980s',
+            'parent_id'     => 36,
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Dominican Bachata', 
+            'slug'          => 'Dominican bachata', 
+            'music'         => 'Bachata',
+            'family'        => 'Bachata', 
+            'description'   => 'Bachata is a genre of Latin American music that originated in the Dominican Republic in the first half of the 20th century. It is a fusion of European influences, mainly Spanish guitar music, with some remnants of indigenous Taino and African musical elements, representative of the cultural diversity of the Dominican population. (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Dominican Republic',
+            'year'          => '1980s',
+            'parent_id'     => 36,
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Bachata Fusion', 
+            'slug'          => 'bachata Fusion', 
+            'music'         => 'Bachata',
+            'family'        => 'Bachata', 
+            'description'   => 'Bachata is a genre of Latin American music that originated in the Dominican Republic in the first half of the 20th century. It is a fusion of European influences, mainly Spanish guitar music, with some remnants of indigenous Taino and African musical elements, representative of the cultural diversity of the Dominican population. (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => 'Dominican Republic',
+            'year'          => '1980s',
+            'parent_id'     => 36,
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
             'name'          => 'Reggaeton', 
             'slug'          => 'reggaeton', 
             'music'         => 'Reggaeton, Reggae, Dancehall ',
@@ -495,11 +551,25 @@ class StyleSeeder extends Seeder
             'user_id'       => 1,
         ]);
 
+
         Style::create([
             'name'          => 'Urban kiz', 
             'slug'          => 'urban-kiz', 
             'music'         => 'kizomba, urban kiz',
             'family'        => 'kizomba', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Semba', 
+            'slug'          => 'semba', 
+            'music'         => 'semba',
+            'family'        => 'Kizomba', 
             'description'   => '(source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 

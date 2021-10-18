@@ -94,7 +94,7 @@ class FBImportService
     {
         $event->name = $this->name;
         $event->slug = Str::slug($this->name, '-') . '-' . Carbon::now()->timestamp;
-        $event->description = $this->description;
+        $event->description = nl2br($this->description);
         $event->start_date = $this->start_date ?? '';
         $event->start_time = $this->start_time ?? '';
         $event->end_date = $this->end_date ?? '';

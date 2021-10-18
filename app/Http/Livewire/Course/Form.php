@@ -79,6 +79,8 @@ class Form extends Component
         'course.student_price'  => 'nullable',    
         'course.unemployed_price'=> 'nullable',    
         'course.senior_price'   => 'nullable',
+
+        'course.standby'        => 'nullable',
         
         'course.dropping'       => 'nullable',
         'course.dropping_price' => 'nullable|numeric',

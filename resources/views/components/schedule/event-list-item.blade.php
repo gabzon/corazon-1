@@ -20,8 +20,8 @@
                 <p class="text-sm text-gray-500 truncate text-right">
                     {{ $item->location->name ?? 'online' }}
                 </p>
-                <p class="text-sm text-gray-500 truncate text-right mt-1">
-                    {{ $item->price }}
+                <p>
+                    <x-shared.price-display :model="$item" />
                 </p>
             </div>
         </div>
