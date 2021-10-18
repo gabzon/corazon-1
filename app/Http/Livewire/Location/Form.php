@@ -18,21 +18,23 @@ class Form extends Component
     public $mediaComponentNames = ['contract'];
     public $contract;
     
-    protected $rules = [
-        'location.name'         => 'required|min:5',
-        'location.slug'         => 'required|min:5',
-        'location.shortname'    => 'nullable',
-        'location.comments'     => 'nullable',
-        'location.contact'      => 'nullable',
-        'location.website'      => 'nullable|min:12|url',
-        'location.email'        => 'nullable|min:5|email',
-        'location.phone'        => 'nullable',
-        'location.contract'     => 'nullable',
-        'location.type'         => 'nullable',
-        'location.facebook_id'  => 'nullable|unique:locations,facebook_id,' . $this->location->id,
-        'location.user_id'      => 'nullable',
-        'location.city_id'      => 'required',
-    ];
+    protected function rules() {
+        return [
+            'location.name'         => 'required|min:5',
+            'location.slug'         => 'required|min:5',
+            'location.shortname'    => 'nullable',
+            'location.comments'     => 'nullable',
+            'location.contact'      => 'nullable',
+            'location.website'      => 'nullable|min:12|url',
+            'location.email'        => 'nullable|min:5|email',
+            'location.phone'        => 'nullable',
+            'location.contract'     => 'nullable',
+            'location.type'         => 'nullable',
+            'location.facebook_id'  => 'nullable|unique:locations,facebook_id,' . $this->location->id,
+            'location.user_id'      => 'nullable',
+            'location.city_id'      => 'required',
+        ];
+    } 
 
     public function save()
     {         
