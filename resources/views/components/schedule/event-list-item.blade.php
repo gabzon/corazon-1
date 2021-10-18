@@ -7,10 +7,10 @@
                 <a href="{{ route('show.event', $item) }}" class="block focus:outline-none">
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     <h2 class="text-sm font-medium text-gray-900 truncate">{{ $item->name }}</h2>
-                    <span class="text-sm text-gray-500 truncate inline-block">
+                    <span class="text-sm text-gray-500 truncate block">
                         {{ implode(', ',$item->styles->pluck('name')->toArray()) }}
                     </span>
-                    <time datetime="2021-01-27T16:35" class="text-sm text-gray-500 inline-flex items-center">
+                    <time class="text-sm text-gray-500 inline-flex items-center">
                         {{ $item->start_date->format('M j, Y') }} @ {{ $item->getTime('start_time')->format('H:i') }}
                     </time>
                 </a>
