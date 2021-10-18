@@ -21,6 +21,7 @@ class Form extends Component
     
     protected $rules = [
         'organization.name'         => 'required',
+        'organization.shortname'    => 'nullable',
         'organization.slug'         => 'required',
         'organization.about'        => 'nullable',
         

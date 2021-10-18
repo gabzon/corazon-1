@@ -13,13 +13,19 @@
 
                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
 
-                    <div class="sm:col-span-3">
+                    <div class="sm:col-span-2">
                         <x-form.text-input wire:model="organization.name" name="organization.name" label="Name" />
                     </div>
 
-                    <div class="sm:col-span-3">
+                    <div class="sm:col-span-2">
                         <x-form.slug-input wire:model="organization.slug" />
                     </div>
+
+                    <div class="sm:col-span-2">
+                        <x-form.text-input wire:model="organization.shortname" name="organization.shortname"
+                            label="Shortname" />
+                    </div>
+
 
                     <div class="sm:col-span-6">
                         <x-form.textarea wire:model="organization.about" label="About" name="organization.about"
