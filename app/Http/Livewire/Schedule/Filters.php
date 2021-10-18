@@ -53,7 +53,8 @@ class Filters extends Component
     {        
         return view('livewire.schedule.filters', [
             'cities'    => \App\Models\City::has('courses')->get(),
-            'styles'    => Style::has('courses')->get()            
+            'styles'    => Style::has('courses')->get(),
+            'schools'   => \App\Models\Organization::has('courses')->orderBy('name','asc')->get(),
         ] );
     }
 }

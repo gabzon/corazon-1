@@ -28,7 +28,7 @@
             <select wire:model="school"
                 class="mt-1 w-full pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                 <option value="" selected>All Schools</option>
-                @foreach (\App\Models\Organization::orderBy('name','asc')->get() as $o)
+                @foreach ($schools as $o)
                 <option value="{{ $o->id }}">{{ $o->name }}</option>
                 @endforeach
             </select>
