@@ -20,7 +20,9 @@ class PriceDisplay extends Component
         if ($model->is_free) {
             $this->text = 'Free';
         }else {
-            if ($model->prices()->count() == 1) {
+            if ($model->prices()->count() == 0) {
+                $this->text = 'Not available';
+            } else if ($model->prices()->count() == 1) {
                 $this->price = $model->prices()->first();
                 $this->text = strtoupper($this->price->currency) . ' ' . abs($this->price->amount);
             }else{

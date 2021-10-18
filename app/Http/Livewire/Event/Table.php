@@ -13,7 +13,7 @@ class Table extends Component
     public function render()
     {
         return view('livewire.event.table', [
-            'events' => Event::paginate(10)
+            'events' => Event::latest()->paginate(10)
         ]);
     }
 }
