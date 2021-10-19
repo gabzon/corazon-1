@@ -80,12 +80,14 @@
 
         <div class="border-t bg-gray-50">
             <div class="container mx-auto mt-10">
-                <p class="my-3 max-w-sm mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
-                    If you would like to share your events, classes, ideas or comments please contact us by email to
-                    <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a> or on
-                    <a href="https://www.facebook.com/corazon.dance21" target="_blank"
-                        class="text-indigo-500">Facebook</a>
-                </p>
+                <div class="my-3 max-w-sm mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
+                    <p class="mx-3 sm:mx-4 md:mx-6 lg:mx-8">
+                        If you would like to share your events, classes, ideas or comments please contact us by email to
+                        <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a> or on
+                        <a href="https://www.facebook.com/corazon.dance21" target="_blank"
+                            class="text-indigo-500">Facebook</a>
+                    </p>
+                </div>
                 <br>
                 <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
                 <livewire:schedule.filters />
