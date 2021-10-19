@@ -22,9 +22,9 @@
     <div class="w-full flex flex-wrap">
         <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
             @if ($course->video1)
-            <main class="grid grid-cols-1 sm:grid-cols-5 gap-6 m-3">
+            <main class="grid grid-cols-1 sm:grid-cols-5 gap-10 my-3 mx-3 md:mx-6 lg:mx-8">
                 <div class="col-span-5 sm:col-span-2 space-y-6">
-                    <div class="block w-full aspect-w-10 aspect-h-6 rounded-lg overflow-hidden">
+                    <div>
                         @include('course.show.media')
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 </div>
             </main>
             @else
-            <div class="max-w-5xl mx-auto my-5 px-3 md:px-3 lg:px-2">
+            <div class="max-w-5xl mx-auto my-5 px-3 md:px-4 lg:px-6">
                 @include('course.show.details')
                 <br>
             </div>
