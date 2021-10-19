@@ -24,9 +24,9 @@
                     {{ $item->location->shortname ?? $item->location->name  }}
                     @endif
                 </p>
-                <p>
+                <div class="text-right">
                     <x-shared.price-display :model="$item" />
-                </p>
+                </div>
             </div>
         </div>
     </div>

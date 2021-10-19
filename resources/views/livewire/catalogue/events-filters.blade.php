@@ -1,7 +1,7 @@
-<div class="bg-gray-200 px-3 py-3 mx-3 mt-5 rounded-lg">
+<div class="bg-indigo-700  px-3 py-3 mx-3 mt-5 rounded-lg">
     <div class="flex flex-wrap -mx-3">
         <div class="w-full sm:w-1/2 md:w-1/5 lg:w-1/6 px-3">
-            <h3 class="text-lg text-bold mt-2 inline-flex items-center">
+            <h3 class="text-lg text-bold mt-2 inline-flex items-center text-white">
                 @include('icons.filter')
                 <span class="ml-2">Filters:</span>
             </h3>

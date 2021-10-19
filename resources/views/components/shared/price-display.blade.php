@@ -1,3 +1,3 @@
-<div class="text-sm text-gray-500 truncate text-right mt-1 capitalize">
+<div class="text-sm text-gray-900 truncate mt-1 capitalize">
     {{ $text }}
 </div>

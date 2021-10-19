@@ -1,39 +1,26 @@
 <div class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     @forelse ($events as $event)
-    <a href="{{ route('event.show', $event) }}" class="bg-white rounded-lg mb-4 mx-3 hover:shadow-md border">
-        <img src="{{ $event->thumbnail }}" alt="" class="overflow-hidden rounded-t-lg">
+    <a href="{{ route('event.show', $event) }}" class="group rounded-lg mb-4 mx-3">
+        <div class="">
+            <img src="{{ $event->thumbnail }}" alt=""
+                class="overflow-hidden h-48 object-cover w-full rounded-lg group-hover:opacity-75">
+        </div>
         <div class="p-3">
-            <h2 class="font-semibold text-lg text-gray-900">{{ $event->name }}</h2>
-            <p class="text-sm text-gray-500">
+            <h2 class="font-semibold text-gray-700 group-hover:text-gray-900">{{ $event->name }}</h2>
+            <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 {{ $event->tagline }}
             </p>
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">Date:</span> {{ $event->start_date->format('M j') }} -
-                {{ $event->end_date->format('M j') }}
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-gray-900">
+                {{ $event->start_date->format('M j, Y') }} @
+                {{ $event->start_time->format('H:i') }}
             </p>
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">Time:</span> {{ $event->start_time->format('H:i') }} -
-                {{ $event->end_time->format('H:i') }}
+            <p class="text-sm text-gray-500 group-hover:text-gray-900">
+                <span>{{ $event->location->shortname ?? $event->location->name  }}, {{ $event->city->name }}</span>
             </p>
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">Price:</span>
-                {{ $event->price }}
+            <p class="text-sm text-gray-500 group-hover:text-gray-900">
+                {{ $event->type }}
             </p>
-            <p class="text-sm text-gray-500">
-                {{-- <span class="font-medium">Location: </span> {{ $event->location->name }} --}}
-            </p>
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">City: </span> {{ $event->city->name }}
-            </p>
-
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">Type: </span> {{ $event->type }}
-            </p>
-            <p class="text-sm text-gray-500">
-                <span class="font-medium">status: </span> {{ $event->status }}
-            </p>
-            <div>
-            </div>
+            <x-shared.price-display :model="$event" />
         </div>
     </a>
     @empty
