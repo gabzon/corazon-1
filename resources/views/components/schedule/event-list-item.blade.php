@@ -21,7 +21,11 @@
                     @if ($item->is_online)
                     online
                     @else
+                    @isset($item->location)
                     {{ $item->location->shortname ?? $item->location->name  }}
+                    @else
+                    To be defined
+                    @endisset
                     @endif
                 </p>
                 <div class="text-right">
