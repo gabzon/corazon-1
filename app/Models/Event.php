@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -158,6 +159,35 @@ class Event extends Model implements HasMedia
     {
         return $query->whereStatus('active');
     }
+
+    public function scopeInCity($query, $city)
+    {
+        if (!empty($city)) {
+            return $query->where('city_id', $city);
+        }
+        return $query;
+    }
+
+    public function scopeStyle($query, $style)
+    {        
+        if (!empty($style)) {
+            return $query->whereHas('styles', function (Builder $query_style) use ($style) {
+                $query_style->where('style_id', $style);
+            });            
+        }
+        return $query;
+    }
+
+    public function scopeType($query, $type)
+    {
+        if (!empty($type)) {
+            return $query->where('type', $type);
+        }
+        return $query;
+    }
+
+
+
 
     public function prices()
     {

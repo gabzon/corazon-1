@@ -15,7 +15,11 @@
                 {{ $event->start_time->format('H:i') }}
             </p>
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
+                @isset($event->location)
                 <span>{{ $event->location->shortname ?? $event->location->name  }}, {{ $event->city->name }}</span>
+                @else
+                To be defined
+                @endisset
             </p>
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 {{ $event->type }}

@@ -25,14 +25,14 @@ class EventsFilters extends Component
     public function updatedType($v)
     {
         $this->type = $v;
-        $this->emit('levelEventUpdated', $this->level);
+        $this->emit('typeEventUpdated', $this->type);
     }
 
     public function render()
     {
-        return view('livewire.catalogue.events-filters');
+        return view('livewire.catalogue.events-filters', [
+            'cities'    => \App\Models\City::has('events')->orderBy('name')->get(),
+            'styles'    => \App\Models\Style::has('events')->get(),            
+        ]);
     }
 }
-
-
-

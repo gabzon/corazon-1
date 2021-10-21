@@ -17,9 +17,28 @@
         :options="['active' => 'Active', 'draft' => 'Draft', 'review' => 'Review', 'soon' => 'Soon', 'finished' => 'Finished']"
         label="Status" />
 
-    <x-form.select wire:model="event.type" name="event.type"
-        :options="['party' => 'Party', 'festival' => 'Festival', 'workshop' => 'Workshop', 'bootcamp' => 'Bootcamp', 'concert' => 'Concert', 'show' => 'Show / Performance', 'competition' => 'Competition / Battle', 'training' => 'Training / Practica']"
-        label="Type" />
+    <div>
+        <label for="event.type" class="block text-sm font-medium text-gray-700 capitalize">Type</label>
+
+        <select id="event.type" name="event.type" wire:model="event.type"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('event.type') border-red-600 @enderror">
+            <option value="" selected disabled>Choose type</option>
+
+            <option value="party">Party</option>
+            <option value="festival">Festival</option>
+            <option value="workshop">Workshop</option>
+            <option value="bootcamp">Bootcamp</option>
+            <option value="concert">Concert</option>
+            <option value="show">Show / Performance</option>
+            <option value="competition">Competition / Battle</option>
+            <option value="training">Training / Practica</option>
+        </select>
+        @error('event.type')
+        <span class="text-red-600 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
+
+
 
     {{-- <livewire:component.select2 :model="$event" select="styles" /> --}}
 
