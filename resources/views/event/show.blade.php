@@ -37,6 +37,7 @@
                         @endif
                         <div class="mb-5">{!! $event->description !!}</div>
                     </div>
+                    <x-shared.pricing-list :model="$event" />
                     <br>
                     <div class="mr-3 sm:mr-0">
                         @if ($event->location)
@@ -55,6 +56,7 @@
                     @endif
                     <div>{!! $event->description !!}</div>
                 </div>
+                <x-shared.pricing-list :model="$event" />
                 <br>
                 @if ($event->location)
                 <div class="mr-3 sm:mr-0">

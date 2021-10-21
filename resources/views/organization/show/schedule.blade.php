@@ -1,5 +1,6 @@
 <div>
     <h2 id="gallery-heading" class="sr-only">Schedule</h2>
+
     <section>
         <div class="grid grid-cols-5">
 

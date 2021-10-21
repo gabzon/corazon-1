@@ -44,9 +44,6 @@
             </dl>
         </div>
 
-        <x-shared.pricing-list :model="$event" />
-
-
         <x-partials.social-links :model="$event" />
 
         {{-- <div class="flex">

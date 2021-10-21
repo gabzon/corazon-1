@@ -1,22 +1,150 @@
 <div>
     @if (!$model->is_free && $model->prices()->count() > 0)
-    <div>
-        <h3 class="font-medium text-gray-900">Pricing</h3>
+    <div class="mt-4">
+        <h3 class="text-lg font-bold text-gray-900">Pricing</h3>
+        <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden border-b border-gray-200">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                @if ($type == 'Event')
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">Early
+                                        bird 1</th>
+                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
+                                        Early bird 2</th>
+                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
+                                        Early bird 3</th>
+                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
+                                        Early bird 4</th>
+                                </tr>
+                                @endif
+                                <tr>
+                                    <th scope="col" class="">
 
-        <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
-            @foreach ($model->prices as $price)
-            <div class="py-3 flex justify-between text-sm font-medium">
-                <dt class="text-gray-600 items-center">
-                    {{ $price->label }}
-                    @if ($price->description)
-                    <span class="text-sm font-light block">{{$price->description}}</span>
-                    @endif
-                </dt>
-                <dd class="text-gray-900 uppercase whitespace-nowrap">{{ $price->currency }} {{ abs($price->amount) }}
-                </dd>
+                                    </th>
+                                    <th scope="col"
+                                        class="py-1 text-right text-xs font-medium text-gray-500 uppercase tracking-wider mx-3">
+                                        Price
+                                    </th>
+                                    @if ($price1)
+                                    <th scope="col"
+                                        class="pl-3 py-1 text-right text-xs font-medium text-gray-500 tracking-wider mx-3">
+                                        @if ($type == 'Event')
+                                        <span class="whitespace-nowrap block">until</span>
+                                        <span class="whitespace-nowrap block">
+                                            {{ \Carbon\Carbon::parse($deadline1)->format('M d, Y') }}
+                                        </span>
+                                        <span class="whitespace-nowrap block">
+                                            @if (\Carbon\Carbon::parse($deadline1)->format('H:i') != '00:00')
+                                            @ {{ \Carbon\Carbon::parse($deadline1)->format('H:i') }}
+                                            @endif
+                                        </span>
+                                        @endif
+                                        @if ($type == 'Organization')
+                                        <span class="whitespace-nowrap block uppercase">{{ $label1 }}</span>
+                                        @endif
+                                    </th>
+                                    @endif
+                                    @if ($price2)
+                                    <th scope="col" class="pl-3 py-1 text-right text-xs font-medium text-gray-500">
+                                        @if ($type == 'Event')
+                                        <span class="whitespace-nowrap block">until</span>
+                                        <span class="whitespace-nowrap block">
+                                            {{ \Carbon\Carbon::parse($deadline2)->format('M d, Y') }}
+                                        </span>
+                                        <span class="whitespace-nowrap block">
+                                            @if (\Carbon\Carbon::parse($deadline2)->format('H:i') != '00:00')
+                                            @ {{ \Carbon\Carbon::parse($deadline2)->format('H:i') }}
+                                            @endif
+                                        </span>
+                                        @endif
+                                        @if ($type == 'Organization')
+                                        <span class="whitespace-nowrap block uppercase">{{ $label2 }}</span>
+                                        @endif
+                                    </th>
+                                    @endif
+                                    @if ($price3)
+                                    <th scope="col" class="pl-3 py-1 text-right text-xs font-medium text-gray-500">
+                                        @if ($type == 'Event')
+                                        <span class="whitespace-nowrap block">until</span>
+                                        <span class="whitespace-nowrap block">
+                                            {{ \Carbon\Carbon::parse($deadline3)->format('M d, Y') }}
+                                        </span>
+                                        <span class="whitespace-nowrap block">
+                                            @if (\Carbon\Carbon::parse($deadline3)->format('H:i') != '00:00')
+                                            @ {{ \Carbon\Carbon::parse($deadline3)->format('H:i') }}
+                                            @endif
+                                        </span>
+                                        @endif
+                                        @if ($type == 'Organization')
+                                        <span class="whitespace-nowrap block uppercase">{{ $label3 }}</span>
+                                        @endif
+                                    </th>
+                                    @endif
+                                    @if ($price4)
+                                    <th scope="col" class="pl-3 py-1 text-right text-xs font-medium text-gray-500">
+                                        @if ($type == 'Event')
+                                        <span class="whitespace-nowrap block">until</span>
+                                        <span class="whitespace-nowrap block">
+                                            {{ \Carbon\Carbon::parse($deadline4)->format('M d, Y') }}
+                                        </span>
+                                        <span class="whitespace-nowrap block">
+                                            @if (\Carbon\Carbon::parse($deadline4)->format('H:i') != '00:00')
+                                            @ {{ \Carbon\Carbon::parse($deadline4)->format('H:i') }}
+                                            @endif
+                                        </span>
+                                        @endif
+                                        @if ($type == 'Organization')
+                                        <span class="whitespace-nowrap block uppercase">{{ $label4 }}</span>
+                                        @endif
+                                    </th>
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                @foreach ($prices as $price)
+                                <tr>
+                                    <td class="py-2 text-sm font-medium text-gray-700">
+                                        {{ $price->label }}
+                                        @if ($price->description)
+                                        <span class="text-sm font-light block">{{$price->description}}</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-2 whitespace-nowrap text-right text-sm font-medium uppercase mx-3">
+                                        {{ $price->currency }} {{ abs($price->amount) }}
+                                    </td>
+                                    @if ($price1)
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 mx-3">
+                                        {{ abs($price->amount2) }}
+                                    </td>
+                                    @endif
+                                    @if ($price2)
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                        {{ abs($price->amount3) }}
+                                    </td>
+                                    @endif
+                                    @if ($price3)
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                        {{ abs($price->amount4) }}
+                                    </td>
+                                    @endif
+                                    @if ($price4)
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                        {{ abs($price->amount5) }}
+                                    </td>
+                                    @endif
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            @endforeach
-        </dl>
+        </div>
     </div>
     @endif
 </div>

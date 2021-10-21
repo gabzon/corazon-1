@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.4.1",
+        "flatpickr": "^4.6.9",
         "fslightbox": "^3.3.0-2"
     }
 }

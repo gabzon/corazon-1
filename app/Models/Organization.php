@@ -73,5 +73,10 @@ class Organization extends Model implements HasMedia
     {
         return $this->hasMany(Course::class);
     }
+    
+    public function prices()
+    {
+        return $this->morphMany(Price::class, 'priceable');
+    }
 
 }

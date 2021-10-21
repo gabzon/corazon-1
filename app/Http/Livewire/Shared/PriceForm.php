@@ -15,12 +15,27 @@ class PriceForm extends Component
     public bool $showForm;
     
     protected $rules = [
-        'price.amount'         => 'required',
-        'price.label'         => 'required',
-        'price.currency'      => 'required',
-        'price.description'   => 'nullable',
-        'price.can_expire'    => 'nullable',
-        'price.expiry_date'   => 'nullable',         
+        'price.amount'      => 'required',
+        'price.label'       => 'required',
+        'price.currency'    => 'required',
+        'price.description' => 'nullable',
+                
+        'price.amount2'     => 'nullable',
+        'price.label2'      => 'nullable',
+        'price.deadline2'   => 'nullable',
+
+        'price.amount3'     => 'nullable',
+        'price.label3'      => 'nullable',
+        'price.deadline3'   => 'nullable',
+
+        'price.amount4'     => 'nullable',
+        'price.label4'      => 'nullable',
+        'price.deadline4'   => 'nullable',
+
+        'price.amount5'     => 'nullable',
+        'price.label5'      => 'nullable',
+        'price.deadline5'   => 'nullable',
+        
     ];
 
     public function save()

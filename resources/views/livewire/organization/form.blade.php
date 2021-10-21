@@ -168,9 +168,23 @@
                     </div>
                 </div>
             </div>
+
+            @if ($organization->type == 'school')
+            <div class="pt-8">
+                <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Pricing Information
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500">
+                        Add school pricing system table
+                    </p>
+                </div>
+                <livewire:shared.price-form :model="$organization" modelName="Organization" />
+            </div>
+            @endif
         </div>
 
-        <div class="pt-5">
+        <div class="pt-6">
             <div class="flex justify-end">
                 <button type="button"
                     class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

@@ -14,8 +14,23 @@ class Price extends Model
         'label',
         'currency',
         'description',
-        'can_expire',
-        'expiry_date',
+        
+        'amount2',
+        'label2',
+        'deadline2',
+
+        'amount3',
+        'label3',
+        'deadline3',
+
+        'amount4',
+        'label4',
+        'deadline4',
+
+        'amount5',
+        'label5',
+        'deadline5',
+
         'priceable',
     ];    
 

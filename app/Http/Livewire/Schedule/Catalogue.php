@@ -89,7 +89,7 @@ class Catalogue extends Component
                                             ->level($this->level)
                                             ->dayOfWeek($this->day) 
                                             ->inRandomOrder()
-                                            ->paginate(30)
+                                            ->paginate(20)
         ]);
     }
 }
