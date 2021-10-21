@@ -12,14 +12,22 @@
                                 <tr>
                                     <th></th>
                                     <th></th>
+                                    @if ($price1)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">Early
                                         bird 1</th>
+                                    @endif
+                                    @if ($price2)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
                                         Early bird 2</th>
+                                    @endif
+                                    @if ($price3)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
                                         Early bird 3</th>
+                                    @endif
+                                    @if ($price4)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
                                         Early bird 4</th>
+                                    @endif
                                 </tr>
                                 @endif
                                 <tr>
