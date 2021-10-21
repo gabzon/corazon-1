@@ -126,28 +126,28 @@
                                         {{ $price->currency }} {{ abs($price->amount) }}
                                     </td>
                                     @if ($price1)
-                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 mx-3">
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 uppercase mx-3">
                                         @if ($price->amount2)
                                         {{ $price->currency }} {{ abs($price->amount2) }}
                                         @endif
                                     </td>
                                     @endif
                                     @if ($price2)
-                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 uppercase">
                                         @if ($price->amount3)
                                         {{ $price->currency }} {{ abs($price->amount3) }}
                                         @endif
                                     </td>
                                     @endif
                                     @if ($price3)
-                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 uppercase">
                                         @if ($price->amount4)
                                         {{ $price->currency }} {{ abs($price->amount4) }}
                                         @endif
                                     </td>
                                     @endif
                                     @if ($price4)
-                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500">
+                                    <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 uppercase">
                                         @if ($price->amount5)
                                         {{ $price->currency }} {{ abs($price->amount5) }}
                                         @endif
