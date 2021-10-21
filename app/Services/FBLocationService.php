@@ -52,7 +52,7 @@ class FBLocationService
 			if (in_array('longitude', $place['location']->getFieldNames())) {
 				$this->lng = $place->getField('location')['longitude'];
 			}
-
+			
 			if (in_array('street', $place['location']->getFieldNames())) {
 				$this->address = $place->getField('location')['street'];
 			}
@@ -62,13 +62,17 @@ class FBLocationService
 			}
 
 			$locationByFacebookID = $this->getLocationByFacebookID($this->fb_place_id);
-			$locationByNameAndAddress = $this->getLocationByNameAndAddress($this->name, $place['location']['street']);
-
+			$locationByNameAndAddress = null;
+			
+			if (in_array('street', $place['location']->getFieldNames())) {
+				$locationByNameAndAddress = $this->getLocationByNameAndAddress($this->name, $place['location']['street']);
+			}
+			
 			if ($locationByFacebookID != null) {
 				$this->location = $locationByFacebookID;
 			} elseif ($locationByNameAndAddress != null) {
 				$this->location = $locationByNameAndAddress;
-			} else {
+			} elseif($this->name && isset($this->address)) {
 				$this->location = $this->getLocationID();
 			}
 		}

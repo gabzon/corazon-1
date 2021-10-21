@@ -105,7 +105,7 @@ class FBImportService
         if (!$this->isOnline && $this->hasPlace) {
             $place = new FBLocationService($this->graphNode['place']);
             
-            if ($place->hasLocation) {
+            if ($place->hasLocation && isset($place->location)) {
                 $event->location_id = $place->location->id;                
 
                 if ($place->hasCity) {            
