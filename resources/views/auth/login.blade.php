@@ -98,7 +98,7 @@
         </div>
         <div class="hidden lg:block relative w-0 flex-1 bg-indigo-800">
             <img class="absolute inset-0 h-full w-full object-cover" src="https://source.unsplash.com/1920x1080/?heart"
-                alt="">
+                alt="corazon-unsplash" lazy="loading">
         </div>
     </div>
 </x-auth-layout>

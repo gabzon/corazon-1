@@ -6,8 +6,8 @@
         @if (isset($model))
         @if ($model->getMedia($collection)->last() != null)
         <div x-show="!changeThumb">
-            <img src="{{ $model->getMedia($collection)->last()->getUrl() }}" alt=""
-                class="w-36 object-cover rounded-md">
+            <img src="{{ $model->getMedia($collection)->last()->getUrl() }}" alt="" class="w-36 object-cover rounded-md"
+                lazy="loading">
             <button type="button" @click="changeThumb=true"
                 class="text-sm text-indigo-700 hover:text-indigo-500">Change</button>
         </div>

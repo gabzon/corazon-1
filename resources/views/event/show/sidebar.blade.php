@@ -26,6 +26,20 @@
                     <dd class="text-gray-900 capitalize">{{ $event->type }}</dd>
                 </div>
 
+                @if ($event->email)
+                <div class="py-3 flex justify-between text-sm font-medium">
+                    <dt class="text-gray-500">Email</dt>
+                    <dd class="text-gray-900 capitalize">{{ $event->email }}</dd>
+                </div>
+                @endif
+
+                @if ($event->phone)
+                <div class="py-3 flex justify-between text-sm font-medium">
+                    <dt class="text-gray-500">Phone</dt>
+                    <dd class="text-gray-900 capitalize">{{ $event->phone }}</dd>
+                </div>
+                @endif
+
                 @if ($event->is_free)
                 <div class="py-3 flex justify-between text-sm font-medium">
                     <dt class="text-gray-500">Price</dt>

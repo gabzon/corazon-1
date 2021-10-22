@@ -13,9 +13,24 @@
 
     {{-- <livewire:component.select2 :model="$event" select="organizations" /> --}}
 
-    <x-form.select wire:model="event.status" name="event.status"
-        :options="['active' => 'Active', 'draft' => 'Draft', 'review' => 'Review', 'soon' => 'Soon', 'finished' => 'Finished']"
-        label="Status" />
+    <div>
+        <label for="event.status" class="block text-sm font-medium text-gray-700 capitalize">Status</label>
+
+        <select id="event.status" name="event.status" wire:model="event.status"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('event.status') border-red-600 @enderror">
+            <option value="" selected disabled>Choose status</option>
+            <option value="active">Active</option>
+            <option value="draft">Draft</option>
+            <option value="review">Review</option>
+            <option value="soon">Soon</option>
+            <option value="finished">Finished</option>
+            <option value="canceled">Canceled</option>
+            <option value="postpone">Postpone</option>
+        </select>
+        @error('event.status')
+        <span class="text-red-600 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
 
     <div>
         <label for="event.type" class="block text-sm font-medium text-gray-700 capitalize">Type</label>

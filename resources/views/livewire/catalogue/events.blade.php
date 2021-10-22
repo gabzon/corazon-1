@@ -1,9 +1,11 @@
 <div class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     @forelse ($events as $event)
     <a href="{{ route('show.event', $event) }}" class="group rounded-lg mb-4 mx-3">
-        <div class="">
-            <img src="{{ $event->thumbnail }}" alt=""
-                class="overflow-hidden h-48 object-cover w-full rounded-lg group-hover:opacity-75">
+        <div>
+            {!! $event->getMedia('events')->last()->img('',['class'=>'overflow-hidden h-48 object-cover w-full
+            rounded-lg group-hover:opacity-75', 'alt'=> $event->name ]) !!}
+            {{-- <img src="{{ $event->thumbnail }}" alt=""
+            class="overflow-hidden h-48 object-cover w-full rounded-lg group-hover:opacity-75"> --}}
         </div>
         <div class="p-3">
             <h2 class="font-semibold text-gray-700 group-hover:text-gray-900">{{ $event->name }}</h2>

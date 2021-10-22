@@ -6,9 +6,9 @@
             <img class="inline-block h-8 w-8 rounded-full"
                 src="{{ $class->organization->getMedia('organization-icons')->last()->getUrl() }}" alt="">
             @else
-            <img class="inline-block h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="">
+            <span class="h-8 w-8 bg-indigo-800 rounded-full flex justify-center items-center text-indigo-200 text-2xl">
+                @include('icons.heart-fill')
+            </span>
             @endif
 
         </div>

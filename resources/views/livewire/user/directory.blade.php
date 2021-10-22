@@ -48,7 +48,7 @@
                     <div
                         class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
                         <div class="flex-shrink-0">
-                            <img class="h-10 w-10 rounded-full"
+                            <img class="h-10 w-10 rounded-full" lazy="loading"
                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=e9dAUWMFk3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                 alt="">
                         </div>
@@ -71,7 +71,7 @@
                     <div
                         class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
                         <div class="flex-shrink-0">
-                            <img class="h-10 w-10 rounded-full"
+                            <img class="h-10 w-10 rounded-full" lazy="loading"
                                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixqx=e9dAUWMFk3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                 alt="">
                         </div>
@@ -94,7 +94,7 @@
                     <div
                         class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
                         <div class="flex-shrink-0">
-                            <img class="h-10 w-10 rounded-full"
+                            <img class="h-10 w-10 rounded-full" lazy="loading"
                                 src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixqx=e9dAUWMFk3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                 alt="">
                         </div>

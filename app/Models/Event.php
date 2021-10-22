@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -74,6 +75,13 @@ class Event extends Model implements HasMedia
         'is_online'     => 'boolean',
     ];
 
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+              ->width(200)
+              ->height(200);              
+    }
+
 
     public function user()
     {
@@ -110,44 +118,12 @@ class Event extends Model implements HasMedia
         return Carbon::createFromFormat('H:i:s', $this->attributes[$time]);        
     }
 
-    public function getPriceAttribute()
-    {
-        $min = '';
-        $max = '';
-        if (isset($this->min_price)) {
-            if ($this->min_price > 0) {
-                $min = floatval($this->min_price);
-            }
-        }
-        
-        if (isset($this->max_price)) {
-            if ($this->max_price > 0) {
-                $max = floatval($this->max_price);
-            }
-        }
-
-        if ($min == $max) {
-            if ($min != 0) {
-                return $this->currency . ' '. $min;
-            }else{
-                return 'Free';
-            }            
-        } else {
-            if (!empty($min) && !empty($max)) {
-                return $this->currency . ' '. $min .' - '. $max;        
-            }elseif (!empty($min)) {
-                return $this->currency . ' '. $min;
-            }else{
-                return $this->currency . ' '. $max;
-            }
-        }
-        
-    }
-
     public function scopeShouldExpire($query)
-    {        
+    {      
+        $today = Carbon::now()->format('Y-m-d');          
+        
         return $query->where('status', 'active')                    
-                     ->where('end_date','<=', Carbon::now());
+                     ->whereDate('end_date','<', Carbon::now());                     
     }
 
     public function expire()
@@ -158,6 +134,11 @@ class Event extends Model implements HasMedia
     public function scopeIsActive($query)
     {
         return $query->whereStatus('active');
+    }
+
+    public function scopeDisplayList($query)
+    {
+        return $query->select(['id','name','start_date','start_time','city_id','thumbnail'])->with(['city:id,name,country','styles:name']);
     }
 
     public function scopeInCity($query, $city)
@@ -186,11 +167,10 @@ class Event extends Model implements HasMedia
         return $query;
     }
 
-
-
-
     public function prices()
     {
         return $this->morphMany(Price::class, 'priceable');
     }
+
+
 }

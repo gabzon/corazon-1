@@ -80,16 +80,29 @@ class Catalogue extends Component
     public function render()
     {
         Course::shouldExpire()->get()->each->expire();
-
+        
+        $fields = [
+            'id','name','level', 'focus', 
+            'monday', 'start_time_mon', 'end_time_mon', 
+            'tuesday', 'start_time_tue', 'end_time_tue', 
+            'wednesday', 'start_time_wed', 'end_time_wed', 
+            'thursday', 'start_time_thu', 'end_time_thu', 
+            'friday', 'start_time_fri', 'end_time_fri', 
+            'saturday', 'start_time_sat', 'end_time_sat', 
+            'sunday', 'start_time_sun', 'end_time_sun', 
+            'full_price','organization_id', 'classroom_id'
+        ];
+        
         return view('livewire.schedule.catalogue',[
-            'courses' => Course::isActive()
-                                            ->inCity($this->city)
-                                            ->organization($this->school)
-                                            ->style($this->style)
-                                            ->level($this->level)
-                                            ->dayOfWeek($this->day) 
-                                            ->inRandomOrder()
-                                            ->paginate(20)
+            'courses' => Course::select($fields)
+                                ->isActive()
+                                ->inCity($this->city)
+                                ->organization($this->school)
+                                ->style($this->style)
+                                ->level($this->level)
+                                ->dayOfWeek($this->day) 
+                                ->inRandomOrder()
+                                ->paginate(20)
         ]);
     }
 }

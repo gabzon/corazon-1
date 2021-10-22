@@ -40,6 +40,13 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 Route::get('/auth/redirect', [LoginController::class,'redirectToFacebook']);
 Route::get('/auth/callback', [LoginController::class, 'handleFacebookCallback']);
 
+Route::get('test', function(){
+  $item = \App\Models\Event::find(1);
+  return $item->getMedia('events')->last();
+  // return \App\Models\Event::displayList()->where('type','festival')->orderBy('start_date','asc')->latest()->get();
+  // return \App\Models\Event::select(['id','name','start_date','start_time'])->IsActive()->where('type','festival')->orderBy('start_date','asc')->latest()->get();
+});
+
 
 Route::get('mail', function(){
     // dd('hola');

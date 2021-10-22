@@ -125,7 +125,7 @@
                                 Thumbnail
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                <img src="{{ asset($style->thumbnail) }}" alt="{{ $style->name }}">
+                                <img src="{{ asset($style->thumbnail) }}" alt="{{ $style->name }}" lazy="loading">
                             </dd>
                         </div>
                         <div class="sm:col-span-2">

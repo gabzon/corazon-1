@@ -119,7 +119,7 @@
             aria-label="Global">
             <div class="h-16 flex items-center justify-between px-4 sm:px-6">
                 <a href="#">
-                    <img class="block h-8 w-auto"
+                    <img class="block h-8 w-auto" lazy="loading"
                         src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500" alt="Workflow">
                 </a>
                 <button type="button" @click="mobileMenu=false"

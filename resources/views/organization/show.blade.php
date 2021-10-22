@@ -4,7 +4,7 @@
             <div class="flex-1 min-w-0">
                 <h1 class="inline-flex text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate items-center">
                     @if ($organization->getMedia('organization-icons')->last() != null)
-                    <img class="inline-block h-10 w-10 rounded-full mr-2 bg-gray-100"
+                    <img class="inline-block h-10 w-10 rounded-full mr-2 bg-gray-100" lazy="loading"
                         src="{{ $organization->getMedia('organization-icons')->last()->getUrl() }}"
                         alt="{{ $organization->name }}">
                     @endif

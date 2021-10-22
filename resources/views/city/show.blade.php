@@ -28,7 +28,7 @@
                         <div class="flex items-center">
                             <div class="mr-2">
                                 <img src="{{ $city->getMedia('city-emblem')->last()->getUrl() }}"
-                                    alt="corazon {{ $city->name }} image" class="h-12">
+                                    alt="corazon {{ $city->name }} image" class="h-12" lazy="loading">
                             </div>
                             <div class="">
                                 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -147,7 +147,7 @@
                         </dl>
                     </div>
                     <img src="{{ $city->getMedia('city-image')->last()->getUrl() }}"
-                        alt="corazon {{ $city->name }} image">
+                        alt="corazon {{ $city->name }} image" lazy="loading">
                 </div>
             </div>
             <div class="my-40"></div>
