@@ -8,4 +8,23 @@
             </div>
         </div>
     </main>
+    @push('scripts')
+    <script>
+        document.addEventListener("livewire:load", function(event) {
+            window.livewire.hook('message.processed', (component) => {
+                refreshImages();
+            })
+        });
+        function refreshImages(){
+            var images = document.querySelectorAll('img[srcset*="responsive-images"]');
+            window.requestAnimationFrame( function(){
+                for(i = 0 ; i < images.length; i++){
+                    var size = images[i].getBoundingClientRect().width;
+                    var sizes = Math.ceil(size/window.innerWidth*100)+'vw';
+                    images[i].sizes=sizes;
+                }
+            });
+        }
+    </script>
+    @endpush
 </x-guest-layout>
