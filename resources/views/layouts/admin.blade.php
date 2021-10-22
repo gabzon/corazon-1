@@ -16,12 +16,13 @@
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSK345PG0Y"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{config('services.google.measurement_id')}}">
+    </script>
     <script>
         window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', config('services.google.measurement_id'));
+            gtag('config', {{config('services.google.measurement_id')}});
     </script>
 
     {{ $css ?? ''}}
