@@ -20,7 +20,7 @@
         window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', config('services.google.measurement_id'));
+            gtag('config', 'G-GSK345PG0Y');
     </script>
 
     @livewireStyles

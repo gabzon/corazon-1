@@ -18,11 +18,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSK345PG0Y"></script>
 
     <script>
-        ga = @json(config('services.google.measurement_id'))
         window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', ga);
+            gtag('config', 'G-GSK345PG0Y');
     </script>
 
     @livewireStyles
