@@ -24,6 +24,8 @@
 * url input component (with icons)
 * Add title to trix component
 
+* https://purchasing-power-parity.com
+
 
 - add tooltip to sidebar https://atomiks.github.io/tippyjs/ or https://microtip.vercel.app
 - Check php 8 doc https://stitcher.io/blog/new-in-php-8

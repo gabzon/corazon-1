@@ -23,7 +23,7 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Teacher(s)
+                                School/Organization
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -42,7 +42,8 @@
                                 <x-form.search-input wire:model="search" name="search" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="style" :options="\App\Models\Style::all()" />
+                                <x-form.select wire:model="style" name="style"
+                                    :options="\App\Models\Style::has('courses')->get()" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 <x-form.select name="day" wire:model="day"
@@ -56,10 +57,11 @@
                                 <x-form.select name="teacher" :options="\App\Models\User::all()" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="status" :options="[ 'Active', 'Expired', 'Draft','Inactive']" />
+                                <x-form.select name="status" wire:model="status"
+                                    :options="[ 'active', 'draft', 'review','soon', 'finished','canceled', 'postponed']" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                City
+                                <x-form.select name="City" :options="\App\Models\City::has('courses')->get()" />
                             </th>
                             <th>
 
@@ -67,35 +69,37 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse ($courses as $item)
+                        @forelse ($courses as $course)
                         <tr>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <a href="{{ route('course.show', $item) }}"
+                                <a href="{{ route('course.show', $course) }}"
                                     class="text-sm font-medium text-gray-900 hover:text-indigo-600">
-                                    {{ $item->name }}
+                                    {{ $course->name }}
                                 </a>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                {{ $item->style}}
+                                <x-shared.styles-list :list="$course->styles" />
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                <x-partials.days-of-week :class="$item" />
+                                <x-partials.days-of-week :class="$course" />
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                {{ $item->level }}
+                                {{ $course->level }}
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                teachers
+                                {{ $course->organization->name }}
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500 ">
+                                <x-shared.status-badge status="{{ $course->status }}" />
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                {{ $item->status }}
+                                {{ $course->city->name }}
                             </td>
-                            <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                                {{ $item->city->name }}
-                            </td>
-                            <td class="px-6 py-3 flex justify-end">
-                                <a href="{{ route('course.edit', $item) }}" class="text-gray-400 hover:text-indigo-700">
-                                    @include('icons.pencil')
+                            <td class="px-6 py-4 flex justify-end">
+                                <a href="{{ route('course.edit', $course) }}"
+                                    class="text-sm font-medium text-indigo-500 hover:text-indigo-700">
+                                    {{-- @include('icons.pencil') --}}
+                                    edit
                                 </a>
                             </td>
                         </tr>

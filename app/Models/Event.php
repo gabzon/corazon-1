@@ -167,6 +167,14 @@ class Event extends Model implements HasMedia
         return $query;
     }
 
+    public function getThumbAttribute()
+    {        
+        if ($this->getMedia('events')->last() != null) {
+            return $this->getMedia('events')->last()->getUrl('thumb');
+        }
+        return 'null';
+    }
+
     public function prices()
     {
         return $this->morphMany(Price::class, 'priceable');

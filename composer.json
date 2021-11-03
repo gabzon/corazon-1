@@ -21,7 +21,8 @@
         "pragmarx/countries-laravel": "^0.7.0",
         "socialiteproviders/facebook": "^4.1",
         "spatie/laravel-medialibrary": "^9.0.0",
-        "spatie/laravel-medialibrary-pro": "^1.0.0"
+        "spatie/laravel-medialibrary-pro": "^1.0.0",
+        "tailflow/laravel-orion": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

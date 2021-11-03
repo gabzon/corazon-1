@@ -9,6 +9,7 @@
         </div>
     </main>
     @push('scripts')
+    {{-- https://github.com/spatie/laravel-medialibrary/issues/2290 --}}
     <script>
         document.addEventListener("livewire:load", function(event) {
             window.livewire.hook('message.processed', (component) => {

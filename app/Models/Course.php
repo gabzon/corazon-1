@@ -169,6 +169,14 @@ class Course extends Model implements HasMedia
         return $query;
     }
 
+    public function scopeStatus($query, $status)
+    {
+        if (!empty($status)) {
+            return $query->where('status', $status);
+        }
+        return $query;
+    }
+
     public function scopeStyle($query, $style)
     {
         // dd($style);
