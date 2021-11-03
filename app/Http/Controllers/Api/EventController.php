@@ -18,6 +18,8 @@ class EventController extends Controller
         
         $collection = Event::with(['city:id,name,alpha2Code','location:id,name,shortname,neighborhood', 'media'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
+                            ->whereStatus('active')
+                            ->orderBy('start_date','asc')
                             ->get();
         
         return EventResource::collection($collection);
@@ -29,6 +31,7 @@ class EventController extends Controller
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('party')
                             ->whereStatus('active')
+                            ->orderBy('start_date','asc')
                             ->get();
         
         return EventResource::collection($collection);
@@ -40,6 +43,7 @@ class EventController extends Controller
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('workshop')
                             ->whereStatus('active')
+                            ->orderBy('start_date','asc')
                             ->get();
         
         return EventResource::collection($collection);
@@ -51,6 +55,7 @@ class EventController extends Controller
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('festival')
                             ->whereStatus('active')
+                            ->orderBy('start_date','asc')
                             ->get();
         
         return EventResource::collection($collection);
