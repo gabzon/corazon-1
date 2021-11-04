@@ -13,8 +13,7 @@ class EventResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {        
-        // $city = $this->city->name;
+    {                
         return [
             'id'            => $this->id,
             'name'          => $this->name,
@@ -26,14 +25,28 @@ class EventResource extends JsonResource
             'thumbnail'     => $this->thumbnail,
             'type'          => $this->type, 
             'location_id'   => $this->location_id, 
-            'city_id'       => $this->city_id,                 
+            'city_id'       => $this->city_id,
+            'is_online'     => $this->is_online,
+            'is_free'       => $this->is_free,
+            'status'        => $this->status,
             'thumb'         => $this->thumb, 
+            'contact'       => $this->contact,
+            'email'         => $this->email,
+            'phone'         => $this->phone,
+            'website'       => $this->website,
+            'facebook'      => $this->facebook,
+            'twitter'       => $this->twitter,
+            'instagram'     => $this->instagram,
+            'youtube'       => $this->youtube,
+            'tiktok'        => $this->tiktok,
             'city'          => $this->city->name ?? null,
+            'styles'        => implode(', ',$this->styles->pluck('name')->toArray()),
             'country_code'  => $this->city->alpha2Code ?? null,
             'location_name' => $this->location->name ?? null,
-            'location_shortname' => $this->location->shortname ?? null,
             'neighborhood'  => $this->location->neighborhood ?? null,
-            'styles'        => implode(', ',$this->styles->pluck('name')->toArray())                    
-        ];;
+            'location_shortname' => $this->location->shortname ?? null,
+            'description'   => $this->description,
+            'video'         => $this->video,            
+        ];
     }
 }

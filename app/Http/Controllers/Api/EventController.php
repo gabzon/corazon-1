@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
-use Illuminate\Http\Request;
 use App\Models\Event;
 // use Orion\Concerns\DisableAuthorization;
 // use Orion\Http\Controllers\Controller;
@@ -18,16 +17,16 @@ class EventController extends Controller
         
         $collection = Event::with(['city:id,name,alpha2Code','location:id,name,shortname,neighborhood', 'media', 'styles:name'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
-                            // ->whereStatus('active')
+                            ->whereStatus('active')
                             ->orderBy('start_date','asc')
                             ->get();
         
-        return EventResource::collection($collection);
+        return EventResource::collection($collection);        
     }
 
     public function parties(){
         
-        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media'])
+        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('party')
                             ->whereStatus('active')
@@ -39,7 +38,7 @@ class EventController extends Controller
 
     public function workshops(){
         
-        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media'])
+        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('workshop')
                             ->whereStatus('active')
@@ -51,7 +50,7 @@ class EventController extends Controller
 
     public function festivals(){
         
-        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media'])
+        $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
                             ->whereType('festival')
                             ->whereStatus('active')
@@ -70,7 +69,7 @@ class EventController extends Controller
         if (!$event) {
             abort(404, 'Event not found');
         }
-        return $event;
+        return new EventResource($event);
     }
 
     // public function update(Request $request, $id){}
