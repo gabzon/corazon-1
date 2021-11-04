@@ -53,14 +53,7 @@
             </div>
             @else
             <div class="max-w-5xl mx-auto my-5 px-3 md:px-3 lg:px-2">
-                <div class="plyr__video-embed" id="player">
-                    <iframe
-                        src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-                        allowfullscreen allowtransparency allow="autoplay"></iframe>
-                </div>
-
                 <div class="prose leading-5">
-                    {{ $event->thumb }}
                     @if ($event->tagline)
                     <h3>{{ $event->tagline }}</h3>
                     @endif

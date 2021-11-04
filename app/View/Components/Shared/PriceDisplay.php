@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class PriceDisplay extends Component
 {
     public $model;    
-    public string $text = '';
+    public $text = '';
     protected $price;
     /**
      * Create a new component instance.

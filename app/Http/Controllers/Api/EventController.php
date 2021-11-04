@@ -16,9 +16,9 @@ class EventController extends Controller
 
     public function index(){
         
-        $collection = Event::with(['city:id,name,alpha2Code','location:id,name,shortname,neighborhood', 'media'])
+        $collection = Event::with(['city:id,name,alpha2Code','location:id,name,shortname,neighborhood', 'media', 'styles:name'])
                             ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
-                            ->whereStatus('active')
+                            // ->whereStatus('active')
                             ->orderBy('start_date','asc')
                             ->get();
         

@@ -32,7 +32,8 @@ class EventResource extends JsonResource
             'country_code'  => $this->city->alpha2Code ?? null,
             'location_name' => $this->location->name ?? null,
             'location_shortname' => $this->location->shortname ?? null,
-            'neighborhood'  => $this->location->neighborhood ?? null,                
+            'neighborhood'  => $this->location->neighborhood ?? null,
+            'styles'        => implode(', ',$this->styles->pluck('name')->toArray())                    
         ];;
     }
 }
