@@ -12,11 +12,38 @@ class EventController extends Controller
 {
     // use DisableAuthorization;    
     // protected $model = Event::class;
-
+    public $selectedFields = [
+        'id',
+        'name',
+        'tagline',
+        'start_date',
+        'end_date', 
+        'start_time',
+        'end_time',
+        'thumbnail',
+        'type',
+        'location_id',
+        'city_id',
+        'is_online',
+        'is_free',
+        'status',
+        'contact',
+        'email',
+        'phone',
+        'website',
+        'facebook',
+        'twitter',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'description',
+        'video',
+    ];
+    
     public function index(){
         
         $collection = Event::with(['city:id,name,alpha2Code','location:id,name,shortname,neighborhood', 'media', 'styles:name'])
-                            ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
+                            ->select($this->selectedFields)
                             ->whereStatus('active')
                             ->orderBy('start_date','asc')
                             ->get();
@@ -27,7 +54,7 @@ class EventController extends Controller
     public function parties(){
         
         $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
-                            ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
+                            ->select($this->selectedFields)
                             ->whereType('party')
                             ->whereStatus('active')
                             ->orderBy('start_date','asc')
@@ -39,7 +66,7 @@ class EventController extends Controller
     public function workshops(){
         
         $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
-                            ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
+                            ->select($this->selectedFields)
                             ->whereType('workshop')
                             ->whereStatus('active')
                             ->orderBy('start_date','asc')
@@ -51,7 +78,7 @@ class EventController extends Controller
     public function festivals(){
         
         $collection = Event::with(['city:id,name,alpha2Code', 'location:id,name,shortname,neighborhood', 'media', 'styles:name'])
-                            ->select(['id','name','tagline','start_date','end_date', 'start_time','end_time','thumbnail','type', 'location_id', 'city_id'])
+                            ->select($this->selectedFields)
                             ->whereType('festival')
                             ->whereStatus('active')
                             ->orderBy('start_date','asc')
