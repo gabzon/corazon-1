@@ -8,6 +8,7 @@
 * Show: Bug:getUrl() => Create component to view mediaLibrary images
 * Show: delete city
 * Index: city id column added
+* Index: Add column number of courses
 
 # v0.1.4: Tuesday November 9th, 2021
 * Media library Image component updated with label field 

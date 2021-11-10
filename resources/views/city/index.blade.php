@@ -20,7 +20,7 @@
     </x-slot>
 
     <div class="py-12 h-screen overflow-y-scroll">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <livewire:city.table />
             </div>

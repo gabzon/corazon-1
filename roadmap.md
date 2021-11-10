@@ -21,6 +21,10 @@
 * Authentication: index: can edit city
 * Authentication: view: can view city details
 * Authentication: edit: can delete city
+$ Show: table of events of this city
+$ Show: table of courses of this city
+$ Show: table of organizations of this city
+$ Show: table of locations of this city
 
 
 # Location

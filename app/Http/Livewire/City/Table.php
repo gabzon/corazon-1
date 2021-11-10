@@ -11,10 +11,10 @@ class Table extends Component
     use WithPagination;
 
     public array $searchColumns = [
-        'name'  => '',
-        'state'  => '',
-        'region'  => '',
-        'country'  => '',
+        'name'      => '',
+        'state'     => '',
+        'region'    => '',
+        'country'   => '',
     ];
 
     public function updating($value, $name)
@@ -24,12 +24,8 @@ class Table extends Component
 
     public function render()    
     {
-        $cities = City::with(['events'])
+        $cities = City::with(['events','courses'])
                         ->select(['id', 'name', 'state', 'region', 'country']);
-                        // ->where('name', 'like', '%'. $this->searchName .'%')
-                        // ->where('state', 'like', '%'. $this->searchState .'%')
-                        // ->where('region', 'like', '%'. $this->searchRegion .'%')
-                        // ->where('country', 'like', '%'. $this->searchCountry .'%');
 
         foreach ($this->searchColumns as $column => $value) {
             if (!empty($value)) {
