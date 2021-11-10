@@ -62,9 +62,9 @@ class Event extends Model implements HasMedia
     protected $casts = [
         'id'            => 'integer',
         'start_date'    => 'date:Y-m-d',
-        // 'start_time'    => 'datetime:H:i',
+        'start_time'    => 'datetime:H:i',
         'end_date'      => 'date:Y-m-d',
-        // 'end_time'      => 'datetime:H:i',
+        'end_time'      => 'datetime:H:i',
         'publish_at'    => 'date:Y-m-d',
         'min_price'     => 'decimal:2',
         'max_price'     => 'decimal:2',                
