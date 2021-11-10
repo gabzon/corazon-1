@@ -38,16 +38,16 @@
 
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.search-input wire:model="searchName" name="Search name" />
+                                <x-form.search-input wire:model="searchColumns.name" name="Search name" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.search-input wire:model="searchState" name="Search state" />
+                                <x-form.search-input wire:model="searchColumns.state" name="Search state" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.search-input wire:model="searchRegion" name="Search region" />
+                                <x-form.search-input wire:model="searchColumns.region" name="Search region" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.search-input wire:model="searchCountry" name="Search country" />
+                                <x-form.search-input wire:model="searchColumns.country" name="Search country" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 

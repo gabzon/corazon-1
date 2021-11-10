@@ -24,6 +24,9 @@
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <livewire:city.table />
             </div>
+            <div class="my-10">
+                <br>
+            </div>
         </div>
     </div>
 </x-admin-layout>
