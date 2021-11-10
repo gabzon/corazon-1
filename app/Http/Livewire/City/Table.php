@@ -42,7 +42,7 @@ class Table extends Component
                             ->where('state', 'like', '%'. $this->searchState .'%')
                             ->where('region', 'like', '%'. $this->searchRegion .'%')
                             ->where('country', 'like', '%'. $this->searchCountry .'%')
-                            ->orderBy('name','asc')
+                            ->latest()
                             ->paginate(10)
         ]);
     }
