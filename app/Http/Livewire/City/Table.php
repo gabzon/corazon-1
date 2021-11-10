@@ -38,7 +38,7 @@ class Table extends Component
     public function render()
     {
         return view('livewire.city.table', [
-            'cities' => City::paginate(20)
+            'cities' => City::paginate(10)
         ]);
     }
 }
