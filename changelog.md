@@ -1,3 +1,16 @@
+# v0.1.5: Wednesday 10th, 2021
+* Index: Default order Alphabetically
+* Index: Filter Admin City table by name
+* Index: Filter Admin city table by state
+* Index: Filter Admin city table by region
+* Index: Filter Admin city table by country
+* Index: Add column number of events
+* Show: Bug:getUrl() => Create component to view mediaLibrary images
+* Show: delete city
+
+# v0.1.4: Tuesday November 9th, 2021
+* Media library Image component updated with label field 
+
 # v0.1.3: Wednesday August 4th, 2021
 * Fixed styles scroll down
 * Catalog page

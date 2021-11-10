@@ -6,17 +6,18 @@ use Illuminate\View\Component;
 
 class MediaLibrary extends Component
 {
-    public $name, $model, $collection;
+    public $name, $model, $collection, $label;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $model, $collection)
+    public function __construct($name, $model, $collection, $label = null)
     {        
         $this->name = $name;
         $this->model = $model;
-        $this->collection = $collection;        
+        $this->collection = $collection;
+        $this->label = $label;
     }
 
     /**

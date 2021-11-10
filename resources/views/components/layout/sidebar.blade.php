@@ -27,75 +27,77 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.pinpoint')
                     </a>
-                    {{-- <a href="#" id="attendance" data-tippy-placement="right" data-tippy-content="Attendance"
+                    <a href="#" id="attendance" data-tippy-placement="right" data-tippy-content="Attendance"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.presence')
-                    </a> --}}
-                    {{-- <a href="#" id="orders" data-tippy-placement="right" data-tippy-content="Orders"
+                    </a>
+                    <a href="#" id="orders" data-tippy-placement="right" data-tippy-content="Orders"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.orders')
-                    </a> --}}
-                    {{-- <a href="#" id="transactions" data-tippy-placement="right" data-tippy-content="Transactions"
+                    </a>
+                    <a href="#" id="transactions" data-tippy-placement="right" data-tippy-content="Transactions"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.transactions')
-                    </a> --}}
-                    {{-- <a href="#" id="moves" data-tippy-placement="right" data-tippy-content="Moves"
+                    </a>
+                    <a href="#" id="moves" data-tippy-placement="right" data-tippy-content="Moves"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.dance')
-                    </a> --}}
-                    {{-- <a href="#" id="users" data-tippy-placement="right" data-tippy-content="Users"
+                    </a>
+                    <a href="{{ route('user.index') }}" id="users" data-tippy-placement="right"
+                        data-tippy-content="Users"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.users')
-                    </a> --}}
+                    </a>
                 </nav>
             </div>
             <div class="flex-shrink-0 flex flex-col">
                 <nav aria-label="Sidebar" class="py-6 flex flex-col items-center space-y-1">
+                    @if (auth()->user()->role == 'admin')
                     <a href="{{ route('style.index') }}" id="styles" data-tippy-placement="right"
                         data-tippy-content="Styles"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.music-genre')
                     </a>
-                    {{-- <a href="{{ route('skill.index') }}" id="skills" data-tippy-placement="right"
-                    data-tippy-content="Skills"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.award-fill')
-                    </a> --}}
-                    {{-- <a href="{{ route('challenge.index') }}" id="challenges" data-tippy-placement="right"
-                    data-tippy-content="Challenges"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.challenge')
-                    </a> --}}
-                    {{-- <a href="{{ route('post.index') }}" id="posts" data-tippy-placement="right"
-                    data-tippy-content="Posts"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.post')
-                    </a> --}}
-                    {{-- <a href="{{ route('tag.index') }}" id="tags" data-tippy-placement="right"
-                    data-tippy-content="Tags"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.tags')
-                    </a> --}}
+                    @endif
+                    <a href="{{ route('skill.index') }}" id="skills" data-tippy-placement="right"
+                        data-tippy-content="Skills"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.award-fill')
+                    </a>
+                    <a href="{{ route('challenge.index') }}" id="challenges" data-tippy-placement="right"
+                        data-tippy-content="Challenges"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.challenge')
+                    </a>
+                    <a href="{{ route('post.index') }}" id="posts" data-tippy-placement="right"
+                        data-tippy-content="Posts"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.post')
+                    </a>
+                    <a href="{{ route('tag.index') }}" id="tags" data-tippy-placement="right" data-tippy-content="Tags"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.tags')
+                    </a>
                     <a href="{{ route('organization.index') }}" id="organizations" data-tippy-placement="right"
                         data-tippy-content="Organizations"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.school')
                     </a>
-                    {{-- <a href="{{ route('product.index') }}" id="products" data-tippy-placement="right"
-                    data-tippy-content="Products"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.product')
-                    </a> --}}
+                    <a href="{{ route('product.index') }}" id="products" data-tippy-placement="right"
+                        data-tippy-content="Products"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.product')
+                    </a>
                     <a href="{{ route('city.index') }}" id="cities" data-tippy-placement="right"
                         data-tippy-content="Cities"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.city')
                     </a>
-                    {{-- <a href="{{ route('setting.index') }}" id="settings" data-tippy-placement="right"
-                    data-tippy-content="Settings"
-                    class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                    @include('icons.settings')
-                    </a> --}}
+                    <a href="{{ route('setting.index') }}" id="settings" data-tippy-placement="right"
+                        data-tippy-content="Settings"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.settings')
+                    </a>
                     <a href="#" id="logout" data-tippy-placement="right" data-tippy-content="Logout"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.logout')

@@ -29,7 +29,7 @@ class ProductFactory extends Factory
             'video' => $this->faker->text,
             'thumbnail' => $this->faker->word,
             'qty' => $this->faker->numberBetween(-10000, 10000),
-            'price' => $this->faker->randomFloat(0, 0, 9999999999.),
+            'price' => $this->faker->randomFloat(2, 0, 9999999.),
             'currency' => $this->faker->regexify('[A-Za-z0-9]{20}'),
             'dealine' => $this->faker->dateTime(),
         ];

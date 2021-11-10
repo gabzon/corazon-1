@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "870c6da17139e36c43ac2221fcce63b5",
+    "content-hash": "6fcc091f468547eb1f3a2679890a3c53",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8811,6 +8811,56 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "jasonmccreary/laravel-test-assertions",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasonmccreary/laravel-test-assertions.git",
+                "reference": "f70f51ed7cdb7d5818d927522401d8ccc467fa25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasonmccreary/laravel-test-assertions/zipball/f70f51ed7cdb7d5818d927522401d8ccc467fa25",
+                "reference": "f70f51ed7cdb7d5818d927522401d8ccc467fa25",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/testing": "^8.0",
+                "mockery/mockery": "^1.4.2",
+                "php": ">=7.3",
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JMac\\Testing\\AdditionalAssertionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JMac\\Testing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason McCreary",
+                    "email": "jason@pureconcepts.net"
+                }
+            ],
+            "description": "A set of helpful assertions when testing Laravel applications.",
+            "support": {
+                "issues": "https://github.com/jasonmccreary/laravel-test-assertions/issues",
+                "source": "https://github.com/jasonmccreary/laravel-test-assertions/tree/v2.0.0"
+            },
+            "time": "2021-09-28T18:47:10+00:00"
         },
         {
             "name": "laravel-shift/blueprint",

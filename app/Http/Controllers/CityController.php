@@ -82,9 +82,19 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, City $city)
-    {
-        $city->delete();
+    {       
+                 
+        if ($city->events->count() < 1) {
+            $city->delete();
 
-        return redirect()->route('city.index');
+            session()->flash('success','City deleted successfully!');
+
+            return redirect()->route('city.index');
+        }else{
+            
+            session()->flash('warning','This city cannot be deleted because is attached to one or more events');
+            
+            return back();
+        }
     }
 }

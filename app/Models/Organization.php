@@ -59,10 +59,15 @@ class Organization extends Model implements HasMedia
     ];
 
 
-    public function user()
+    public function creator()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\Models\User::class,'user_id');
     }
+
+    // public function managers()
+    // {
+    //     return $this->belongsToMany(\App\Models\User::class);
+    // }
     
     public function city()
     {

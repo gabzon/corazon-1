@@ -2,7 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\City;
+use App\Models\City;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use JMac\Testing\Traits\AdditionalAssertions;
@@ -33,13 +34,13 @@ class CityControllerTest extends TestCase
     /**
      * @test
      */
-    public function create_displays_view()
-    {
-        $response = $this->get(route('city.create'));
+    // public function create_displays_view()
+    // {
+    //     $response = $this->get(route('city.create'));
 
-        $response->assertOk();
-        $response->assertViewIs('city.create');
-    }
+    //     $response->assertOk();
+    //     $response->assertViewIs('city.create');
+    // }
 
 
     /**
@@ -57,56 +58,56 @@ class CityControllerTest extends TestCase
     /**
      * @test
      */
-    public function store_saves_and_redirects()
-    {
-        $name = $this->faker->name;
-        $slug = $this->faker->slug;
+    // public function store_saves_and_redirects()
+    // {
+    //     $name = $this->faker->name;
+    //     $slug = $this->faker->slug;
 
-        $response = $this->post(route('city.store'), [
-            'name' => $name,
-            'slug' => $slug,
-        ]);
+    //     $response = $this->post(route('city.store'), [
+    //         'name' => $name,
+    //         'slug' => $slug,
+    //     ]);
 
-        $cities = City::query()
-            ->where('name', $name)
-            ->where('slug', $slug)
-            ->get();
-        $this->assertCount(1, $cities);
-        $city = $cities->first();
+    //     $cities = City::query()
+    //         ->where('name', $name)
+    //         ->where('slug', $slug)
+    //         ->get();
+    //     $this->assertCount(1, $cities);
+    //     $city = $cities->first();
 
-        $response->assertRedirect(route('city.index'));
-        $response->assertSessionHas('city.id', $city->id);
-    }
-
-
-    /**
-     * @test
-     */
-    public function show_displays_view()
-    {
-        $city = City::factory()->create();
-
-        $response = $this->get(route('city.show', $city));
-
-        $response->assertOk();
-        $response->assertViewIs('city.show');
-        $response->assertViewHas('city');
-    }
+    //     $response->assertRedirect(route('city.index'));
+    //     $response->assertSessionHas('city.id', $city->id);
+    // }
 
 
     /**
      * @test
      */
-    public function edit_displays_view()
-    {
-        $city = City::factory()->create();
+    // public function show_displays_view()
+    // {
+    //     $city = City::factory()->create();
 
-        $response = $this->get(route('city.edit', $city));
+    //     $response = $this->get(route('city.show', $city));
 
-        $response->assertOk();
-        $response->assertViewIs('city.edit');
-        $response->assertViewHas('city');
-    }
+    //     $response->assertOk();
+    //     $response->assertViewIs('city.show');
+    //     $response->assertViewHas('city');
+    // }
+
+
+    /**
+     * @test
+     */
+    // public function edit_displays_view()
+    // {
+    //     $city = City::factory()->create();
+
+    //     $response = $this->get(route('city.edit', $city));
+
+    //     $response->assertOk();
+    //     $response->assertViewIs('city.edit');
+    //     $response->assertViewHas('city');
+    // }
 
 
     /**
@@ -124,38 +125,47 @@ class CityControllerTest extends TestCase
     /**
      * @test
      */
-    public function update_redirects()
-    {
-        $city = City::factory()->create();
-        $name = $this->faker->name;
-        $slug = $this->faker->slug;
+    // public function update_redirects()
+    // {
+    //     $city = City::factory()->create();
+    //     $name = $this->faker->name;
+    //     $slug = $this->faker->slug;
 
-        $response = $this->put(route('city.update', $city), [
-            'name' => $name,
-            'slug' => $slug,
-        ]);
+    //     $response = $this->put(route('city.update', $city), [
+    //         'name' => $name,
+    //         'slug' => $slug,
+    //     ]);
 
-        $city->refresh();
+    //     $city->refresh();
 
-        $response->assertRedirect(route('city.index'));
-        $response->assertSessionHas('city.id', $city->id);
+    //     $response->assertRedirect(route('city.index'));
+    //     $response->assertSessionHas('city.id', $city->id);
 
-        $this->assertEquals($name, $city->name);
-        $this->assertEquals($slug, $city->slug);
-    }
+    //     $this->assertEquals($name, $city->name);
+    //     $this->assertEquals($slug, $city->slug);
+    // }
 
 
     /**
      * @test
      */
-    public function destroy_deletes_and_redirects()
-    {
-        $city = City::factory()->create();
+    // public function destroy_deletes_and_redirects()
+    // {
+    //     $city = City::factory()->create();
 
-        $response = $this->delete(route('city.destroy', $city));
+    //     $response = $this->delete(route('city.destroy', $city));
 
-        $response->assertRedirect(route('city.index'));
+    //     $response->assertRedirect(route('city.index'));
 
-        $this->assertDeleted($city);
-    }
+    //     $this->assertDeleted($city);
+    // }
+
+    // public function test_user_cannot_access_cities()
+    // {
+    //     $user = User::factory()->create();
+                
+    //     $response = $this->actingAs($user)->get('cities');
+    //     $response->assertStatus(403);
+    // }
 }
+

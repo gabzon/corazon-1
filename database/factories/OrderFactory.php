@@ -24,18 +24,18 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'subtotal' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'vat' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'quantity_discount' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'user_status_discount' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'coupon_discount' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'coupon_code' => $this->faker->word,
-            'total' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'comments' => $this->faker->text,
-            'method' => $this->faker->word,
-            'status' => $this->faker->randomElement(["open","canceled","paid","expired","partial"]),
-            'author_id' => User::factory(),
+            'user_id'               => User::factory(),
+            'subtotal'              => $this->faker->randomFloat(2, 0, 999999.),
+            'vat'                   => $this->faker->randomFloat(0, 0, 999999.),
+            'quantity_discount'     => $this->faker->randomFloat(0, 0, 999999.),
+            'user_status_discount'  => $this->faker->randomFloat(0, 0, 999999.),
+            'coupon_discount'       => $this->faker->randomFloat(0, 0, 999999.),
+            'coupon_code'           => $this->faker->word,
+            'total'                 => $this->faker->randomFloat(0, 0, 999999.),
+            'comments'              => $this->faker->text,
+            'method'                => $this->faker->word,
+            'status'                => $this->faker->randomElement(["open","canceled","paid","expired","partial"]),
+            'author_id'             => User::factory(),
         ];
     }
 }

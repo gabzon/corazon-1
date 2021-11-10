@@ -46,6 +46,7 @@
                     </p>
                     <p class="mt-1 text-sm text-gray-500">
                         {{ session()->get('success') }}
+                        {{ session()->get('warning') }}
                     </p>
                 </div>
                 <div class="ml-4 flex-shrink-0 flex">

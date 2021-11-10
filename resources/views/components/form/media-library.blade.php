@@ -1,6 +1,6 @@
 <div class="w-full">
     <label for="thumbnail" class="block text-sm font-medium text-gray-700 mb-1">
-        Thumbnail
+        {{ $label ?? 'Thumbnail' }}
     </label>
     <div x-data="{changeThumb:false}">
         @if (isset($model))

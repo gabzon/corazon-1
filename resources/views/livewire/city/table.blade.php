@@ -23,10 +23,30 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Code
+                                Nb Events
                             </th>
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                        <tr class="border-t">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.search-input wire:model="searchName" name="Search name" />
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.search-input wire:model="searchState" name="Search state" />
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.search-input wire:model="searchRegion" name="Search region" />
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.search-input wire:model="searchCountry" name="Search country" />
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
                             </th>
                         </tr>
                     </thead>
@@ -48,7 +68,7 @@
                                 {{ $city->country }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $city->alpha2Code }}
+                                {{ $city->events->count() }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end">
                                 <a href="{{ route('city.edit', $city) }}" class="text-gray-400 hover:text-indigo-700">

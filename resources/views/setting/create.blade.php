@@ -1,7 +1,3 @@
-{{--
-    @extends('layouts.app')
-
-    @section('content')
-        setting.create template
-    @endsection
---}}
+<x-app-layout>
+    Settings
+</x-app-layout>

@@ -28,7 +28,7 @@ class TransactionFactory extends Factory
             'code' => $this->faker->word,
             'provider' => $this->faker->word,
             'method' => $this->faker->word,
-            'amount' => $this->faker->word,
+            'amount' => $this->faker->randomFloat(2, 0, 9999999.),
             'amount_received' => $this->faker->word,
             'currency' => $this->faker->word,
             'molley_payment_id' => $this->faker->word,

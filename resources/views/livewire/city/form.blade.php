@@ -62,21 +62,11 @@
 
                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                     <div class="sm:col-span-3">
-                        <label for="image" class="block text-sm font-medium text-gray-700">
-                            Image
-                        </label>
-                        <div class="mt-1 flex items-center">
-                            <x-form.media-library name="image" :model="$city" collection="city-image" />
-                        </div>
+                        <x-form.media-library name="image" :model="$city" collection="city-image" label="Image" />
                     </div>
 
                     <div class="sm:col-span-3">
-                        <label for="Emblem" class="block text-sm font-medium text-gray-700">
-                            Emblem
-                        </label>
-                        <div class="mt-1 flex items-center">
-                            <x-form.media-library name="emblem" :model="$city" collection="city-emblem" />
-                        </div>
+                        <x-form.media-library name="emblem" :model="$city" collection="city-emblem" label="Emblem" />
                     </div>
                 </div>
             </div>

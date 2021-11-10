@@ -25,7 +25,9 @@
             gtag('config', 'G-GSK345PG0Y');
     </script>
 
+    {{ $css ?? ''}}
     @livewireStyles
+    @bukStyles(true)
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -33,23 +35,57 @@
 
 <body class="font-sans antialiased">
     <x-jet-banner />
+    <div class="max-h-screen overflow-hidden bg-gray-100 flex flex-col">
+        <!-- Top nav-->
+        <x-layout.navbar />
 
-    <div class="min-h-screen bg-gray-50">
-        @livewire('navigation-menu')
+        <!-- Bottom section -->
+        <div class="min-h-0 flex-1 flex overflow-hidden">
+            <!-- Narrow sidebar-->
+            <x-layout.sidebar />
 
-        <!-- Page Heading -->
-        @if (isset($header))
-        <header class="bg-white shadow">
-            <div class="max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-        @endif
+            @if (session()->has('success'))
+            <x-partials.flash-message />
+            @endif
 
-        <main>
-            {{ $slot }}
-        </main>
+            @if (session()->has('warning'))
+            <x-partials.flash-message type="warning" />
+            @endif
+
+            <!-- Main area -->
+            <main class="min-w-0 flex-1 border-t border-gray-200 lg:flex z-0 overflow-hidden">
+                <!-- Primary column -->
+                <section aria-labelledby="primary-heading"
+                    class="min-w-0 flex-1 h-screen flex flex-col overflow-hidden overflow-y-scroll lg:order-last">
+
+                    <!-- Page Heading -->
+                    @if (isset($header))
+                    <header class="bg-white shadow z-10">
+                        <div class="max-w-full mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                    @endif
+
+                    <div class="sm:max-h-screen">
+                        {{ $slot }}
+                    </div>
+
+                </section>
+
+                @if (isset($aside))
+                <!-- Secondary column (hidden on smaller screens) -->
+                <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
+                    <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100">
+                        {{$aside}}
+                    </div>
+                </aside>
+                @endif
+            </main>
+        </div>
     </div>
+
+    {{-- @livewire('navigation-menu') --}}
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
@@ -58,6 +94,7 @@
     @stack('modals')
 
     @livewireScripts
+    @bukScripts(true)
 </body>
 
 </html>

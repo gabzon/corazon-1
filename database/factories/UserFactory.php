@@ -56,7 +56,7 @@ class UserFactory extends Factory
             'price_hour'            => null,
             'address'               => $this->faker->streetAddress,
             'address_info'          => $this->faker->optional()->word,
-            'postal_code'           => $this->faker->postcode,
+            'zip'                   => $this->faker->postcode,
             'city'                  => $this->faker->randomElement(['Zagreb','Split','Osijek','Zadar', 'Pula','Sibenik','Rijeka','Rovinj']),
             'state'                 => $this->faker->postcode,
             'country'               => 'Croatia',

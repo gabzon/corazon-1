@@ -1,7 +1,3 @@
-{{--
-    @extends('layouts.app')
-
-    @section('content')
-        transaction.index template
-    @endsection
---}}
+<x-app-layout>
+    index
+</x-app-layout>

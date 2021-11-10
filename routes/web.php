@@ -16,6 +16,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
 use Facebook\Facebook;
@@ -102,6 +103,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
     return view('schedule.index');
 })->name('schedule');
 
+
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
     
@@ -121,8 +124,10 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('admin/setting', 'SettingController');
     Route::resource('admin/city', CityController::class);
     Route::resource('admin/challenge', ChallengeController::class);
-    Route::resource('admin/organization', OrganizationController::class);    
+    Route::resource('admin/organization', OrganizationController::class);
+    Route::resource('admin/user', UserController::class);        
 });
 
 
 Route::mediaLibrary();
+
