@@ -97,6 +97,6 @@
         </div>
     </div>
     <div class="my-3 mx-4">
-        {{-- {{ $cities->links() }} --}}
+        {{ $cities->links() }}
     </div>
 </div>
