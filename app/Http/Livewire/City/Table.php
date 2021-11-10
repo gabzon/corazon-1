@@ -38,14 +38,15 @@ class Table extends Component
     public function render()
     {
         return view('livewire.city.table', [
-            'cities' => City::where('name', 'like', '%'. $this->searchName .'%')
-                            ->where('state', 'like', '%'. $this->searchState .'%')
-                            ->where('region', 'like', '%'. $this->searchRegion .'%')
-                            ->where('country', 'like', '%'. $this->searchCountry .'%')
-                            ->paginate(20)
+            'cities' => City::paginate(20)
         ]);
     }
 }
+
+// where('name', 'like', '%'. $this->searchName .'%')
+//                             ->where('state', 'like', '%'. $this->searchState .'%')
+//                             ->where('region', 'like', '%'. $this->searchRegion .'%')
+//                             ->where('country', 'like', '%'. $this->searchCountry .'%')
 
 
 
