@@ -7,6 +7,10 @@
                         <tr>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                ID
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Name
                             </th>
                             <th scope="col"
@@ -23,15 +27,11 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Time
+                                City
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Organizer(s)
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                City
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -43,37 +43,34 @@
                         </tr>
                         <tr class="border-t">
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <div class="relative rounded-md shadow-sm">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        @include('icons.search',['style' => 'w-4 h-4 text-gray-400'])
-                                    </div>
-                                    <input type="text" name="search" id="email"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Search event...">
-                                </div>
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="type"
+                                <x-form.search-input wire:model="filterColumns.name" name="Search name" />
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.select wire:model="filterColumns.type" name="type"
                                     :options="['party','festival','workshop', 'bootcamp', 'concernt']" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="style" :options="\App\Models\Style::all()" />
+                                <x-form.select wire:model="style" name="style"
+                                    :options="\App\Models\Style::has('events')->get()" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <x-form.select wire:model="filterColumns.date" name="date"
+                                    :options="['january','february','march', 'april', 'may','june','july','august','september','october','november','december']" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-
+                                <x-form.select wire:model="filterColumns.city" name="city"
+                                    :options="\App\Models\City::has('events')->get()" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 <x-form.select name="organizer" :options="\App\Models\Organization::all()" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="city" :options="\App\Models\City::all()" />
+                                <x-form.select wire:model="filterColumns.status" name="status"
+                                    :options="[ 'active', 'finished', 'draft','review', 'soon','canceled', 'postpone']" />
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <x-form.select name="status" :options="[ 'Active', 'Expired', 'Draft','Inactive']" />
-                            </th>
-                            <th>
 
                             </th>
                         </tr>
@@ -81,36 +78,45 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($events as $event)
                         <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {{ $event->id }}
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <a href="{{ route('event.show', $event) }}"
                                     class="text-sm font-medium text-gray-900 hover:text-indigo-600">
                                     {{ $event->name }}
                                 </a>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                 {{ $event->type }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $event->style}}
+                                <ul>
+                                    @foreach ($event->styles as $s)
+                                    <li>{{ $s->name }}</li>
+                                    @endforeach
+                                </ul>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                 {{ $event->start_date->format('M d, Y') }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                teachers
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                 {{ $event->city->name ?? '' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $event->status }}
+                                <ul>
+                                    @foreach ($event->organizations as $organizer)
+                                    <li>{{ $organizer->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <x-shared.status-badge status="{{ $event->status }}" />
                             </td>
                             <td class="px-6 py-4 flex justify-end">
-                                <a href="{{ route('event.edit', $event) }}" class="text-gray-400 hover:text-indigo-700">
-                                    @include('icons.pencil')
+                                <a href="{{ route('event.edit', $event) }}"
+                                    class="text-sm text-indigo-500 hover:text-indigo-700">
+                                    edit
                                 </a>
                             </td>
                         </tr>

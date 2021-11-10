@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
@@ -25,4 +25,4 @@
         </div>
     </div>
 
-</x-admin-layout>
+</x-app-layout>

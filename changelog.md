@@ -1,14 +1,16 @@
 # v0.1.5: Wednesday 10th, 2021
-* Index: Default order Alphabetically
-* Index: Filter Admin City table by name
-* Index: Filter Admin city table by state
-* Index: Filter Admin city table by region
-* Index: Filter Admin city table by country
-* Index: Add column number of events
-* Show: Bug:getUrl() => Create component to view mediaLibrary images
-* Show: delete city
-* Index: city id column added
-* Index: Add column number of courses
+* city Index: Default order Alphabetically
+* city Index: Filter Admin City table by name
+* city Index: Filter Admin city table by state
+* city Index: Filter Admin city table by region
+* city Index: Filter Admin city table by country
+* city Index: Add column number of events
+* city Show: Bug:getUrl() => Create component to view mediaLibrary images
+* city Show: delete city
+* city Index: city id column added
+* city Index: Add column number of courses
+* city Index: table min-w-full
+* event index: filters
 
 # v0.1.4: Tuesday November 9th, 2021
 * Media library Image component updated with label field 

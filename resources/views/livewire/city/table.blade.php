@@ -84,10 +84,10 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $city->country }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                 {{ $city->events->count() }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                 {{ $city->courses->count() }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end">
