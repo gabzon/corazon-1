@@ -113,9 +113,9 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <x-shared.status-badge status="{{ $event->status }}" />
                             </td>
-                            <td class="px-6 py-4 flex justify-end">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <a href="{{ route('event.edit', $event) }}"
-                                    class="text-sm text-indigo-500 hover:text-indigo-700">
+                                    class="text-indigo-500 hover:text-indigo-700">
                                     edit
                                 </a>
                             </td>

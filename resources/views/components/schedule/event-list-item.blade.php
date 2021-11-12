@@ -4,8 +4,6 @@
     <img class="h-16 w-16 bg-indigo-100 object-cover" src="{{ $item->getMedia('events')->last()->getUrl('thumb') }}"
         alt="{{ $item->name }}">
     @endif
-
-
     <div class="ml-3 w-full">
         <div class="grid grid-cols-2">
             <div>
@@ -34,7 +32,7 @@
                     @endif
                 </p>
                 <div class="text-right">
-                    <x-shared.price-display :model="$item" />
+                    <x-shared.price-display class="text-sm text-gray-600 truncate mt-1 capitalize" :model="$item" />
                 </div>
             </div>
         </div>

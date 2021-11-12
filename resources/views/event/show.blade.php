@@ -1,7 +1,5 @@
 <x-guest-layout>
-    <x-slot name="head">
-        <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
-    </x-slot>
+
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
@@ -24,60 +22,20 @@
         </div>
     </x-slot>
 
-    <div class="w-full flex flex-wrap">
-        <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
-            @if ($event->video)
-            <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 m-3">
-                <div class="col-span-5 sm:col-span-2 space-y-6">
-                    <div class="block w-full aspect-w-10 aspect-h-6 rounded-lg overflow-hidden">
-                        {!! $event->video !!}
-                    </div>
+    <div class="bg-gray-50">
+        <div class="max-w-2xl mx-auto py-10 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+                <!-- Image gallery -->
+                <div class="flex flex-col-reverse">
+                    @include('event.show.left')
                 </div>
-                <div class="col-span-5 sm:col-span-3 space-y-6">
-                    <div class="prose leading-5">
-                        @if ($event->tagline)
-                        <h3>{{ $event->tagline }}</h3>
-                        @endif
-                        <div class="mb-5">{!! $event->description !!}</div>
-                    </div>
-                    <x-shared.pricing-list :model="$event" />
-                    <br>
-                    <div class="mr-3 sm:mr-0">
-                        @if ($event->location)
-                        <h3 class="flex-1 text-lg font-bold text-gray-900">Location</h3>
-                        <x-location.details :location="$event->location" />
-                        @endif
-                        <br>
-                    </div>
+
+                <!-- Product info -->
+                <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+                    @include('event.show.right')
                 </div>
             </div>
-            @else
-            <div class="max-w-5xl mx-auto my-5 px-3 md:px-3 lg:px-2">
-                <div class="prose leading-5">
-                    @if ($event->tagline)
-                    <h3>{{ $event->tagline }}</h3>
-                    @endif
-                    <div>{!! $event->description !!}</div>
-                </div>
-                <x-shared.pricing-list :model="$event" />
-                <br>
-                @if ($event->location)
-                <div class="mr-3 sm:mr-0">
-                    <h3 class="flex-1 text-lg font-bold text-gray-900">Location</h3>
-                    <x-location.details :location="$event->location" />
-                    <br>
-                </div>
-                @endif
-            </div>
-            @endif
-        </div>
-        <div class="w-full md:w-1/4">
-            @include('event.show.sidebar')
         </div>
     </div>
-
-    @push('scripts')
-    <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
-    @endpush
 
 </x-guest-layout>

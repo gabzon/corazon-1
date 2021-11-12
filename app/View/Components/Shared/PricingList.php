@@ -24,14 +24,17 @@ class PricingList extends Component
     public $deadline3;
     public $deadline4;
 
+    public bool $title;
+
     public $type;
 
-    public function __construct($model)
+    public function __construct($model, $title = true)
     {
         $this->model = $model;
         $this->type = class_basename($model);
         $this->prices = $this->model->prices;
         $this->setDeadlines();
+        $this->title = $title;;
     }
 
     protected function setDeadlines()

@@ -15,8 +15,7 @@
                         <div class="grid grid-cols-6 gap-6">
 
                             <div class="col-span-6">
-                                {{--
-                                <livewire:component.select2.organizations :model="$event" /> --}}
+                                <livewire:component.select2.organizations :model="$event" />
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">

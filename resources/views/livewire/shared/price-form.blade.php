@@ -30,55 +30,55 @@
 
 
             <div x-show="open">
-                <div class="mt-3 grid grid-cols-10 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <x-form.text-input wire:model="price.label2" name="price.label2"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Label 1' : 'Discount Label 1' }}" />
+                <div class="mt-3 grid grid-cols-8 gap-6">
+                    <div class="col-span-8 sm:col-span-4">
+                        <x-form.text-input wire:model="price.label2" name="price.label2" placeholder="ex: Early Bird"
+                            label="{{ $modelName == 'Event' ? 'Label 1' : 'Discount Label 1' }}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.price-input wire:model="price.amount2" name="price.amount2"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Price 1' : 'Discount Price 1' }}" />
+                            label="{{ $modelName == 'Event' ? 'Price 1' : 'Discount Price 1' }}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.flatpickr wire:model="price.deadline2" name="price.deadline2" label="Deadline 1" />
                     </div>
                 </div>
-                <div class="mt-3 grid grid-cols-10 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <x-form.text-input wire:model="price.label3" name="price.label3"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Label 2 (optional)' : 'Discount Label 2'}}" />
+                <div class="mt-3 grid grid-cols-8 gap-6">
+                    <div class="col-span-8 sm:col-span-4">
+                        <x-form.text-input wire:model="price.label3" name="price.label3" placeholder="ex: Early Bird"
+                            label="{{ $modelName == 'Event' ? 'Label 2 (optional)' : 'Discount Label 2'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.price-input wire:model="price.amount3" name="price.amount3"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Price 2' : 'Discount Price 2'}}" />
+                            label="{{ $modelName == 'Event' ? 'Price 2' : 'Discount Price 2'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.flatpickr wire:model="price.deadline3" name="price.deadline3" label="Deadline 2" />
                     </div>
                 </div>
-                <div class="mt-3 grid grid-cols-10 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <x-form.text-input wire:model="price.label4" name="price.label4"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Label 3 (optional)' : 'Discount Label 3'}}" />
+                <div class="mt-3 grid grid-cols-8 gap-6">
+                    <div class="col-span-8 sm:col-span-4">
+                        <x-form.text-input wire:model="price.label4" name="price.label4" placeholder="ex: Early Bird"
+                            label="{{ $modelName == 'Event' ? 'Label 3 (optional)' : 'Discount Label 3'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.price-input wire:model="price.amount4" name="price.amount4"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Price 3' : 'Discount Price 3'}}" />
+                            label="{{ $modelName == 'Event' ? 'Price 3' : 'Discount Price 3'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.flatpickr wire:model="price.deadline4" name="price.deadline4" label="Deadline 3" />
                     </div>
                 </div>
-                <div class="mt-3 grid grid-cols-10 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <x-form.text-input wire:model="price.label5" name="price.label5"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Label 4 (optional)' : 'Discount Label 4'}}" />
+                <div class="mt-3 grid grid-cols-8 gap-6">
+                    <div class="col-span-8 sm:col-span-4">
+                        <x-form.text-input wire:model="price.label5" name="price.label5" placeholder="ex: Early Bird"
+                            label="{{ $modelName == 'Event' ? 'Label 4 (optional)' : 'Discount Label 4'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.price-input wire:model="price.amount5" name="price.amount5"
-                            label="{{ $modelName == 'Event' ? 'Early Bird Price 4' : 'Discount Price 4'}}" />
+                            label="{{ $modelName == 'Event' ? 'Price 4' : 'Discount Price 4'}}" />
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
+                    <div class="col-span-8 sm:col-span-2">
                         <x-form.flatpickr wire:model="price.deadline5" name="price.deadline5" label="Deadline 4" />
                     </div>
                 </div>

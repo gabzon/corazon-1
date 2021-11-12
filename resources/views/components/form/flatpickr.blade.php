@@ -1,5 +1,5 @@
 <div x-data="{ picker: @entangle($name) }"
-    x-init="flatpickr( $refs.datepicker, {enableTime: true, dateFormat: 'Y-m-d H:i'})"
+    x-init="flatpickr( $refs.datepicker, {enableTime: true, dateFormat: 'Y-m-d H:i', altFormat: 'Y-m-d H:i'})"
     x-on:change="picker = $event.target.value">
     <label for="{{ $label }}" class="block text-sm font-medium text-gray-700 capitalize">
         {{ $label ?? $name }}

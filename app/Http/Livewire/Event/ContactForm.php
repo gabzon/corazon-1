@@ -18,6 +18,11 @@ class ContactForm extends Component
         'event.email'   => 'nullable|email',
         'event.phone'   => 'nullable|string|min:5|max:16',
     ];
+    
+    public function updateOrganizations($organizations)
+    {
+        $this->organizations = $organizations;
+    }
 
     public function save()
     {                   

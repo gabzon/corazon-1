@@ -24,15 +24,19 @@
     document.addEventListener("livewire:load", () => {
         let el = $('#select2-organization');
         initSelect();
+
         Livewire.hook('message.processed', (message, component) => {
           initSelect()
         })
+        
         Livewire.on('selectedOrganizations', values => {
-          el.val(values).trigger('change.select2-organizations')
+          el.val(values).trigger('change.select2')
         })
+        
         el.on('change', function (e) {
           @this.set('selected', el.select2("val"))
         })
+        
         function initSelect () {
           el.select2({
             placeholder: '{{__('Choose organizations')}}',

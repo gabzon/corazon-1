@@ -21,7 +21,7 @@ class PriceDisplay extends Component
             $this->text = 'Free';
         }else {
             if ($model->prices()->count() == 0) {
-                $this->text = 'Not available';
+                $this->text = '';
             } else if ($model->prices()->count() == 1) {
                 $this->price = $model->prices()->first();
                 $this->text = strtoupper($this->price->currency) . ' ' . abs($this->price->amount);

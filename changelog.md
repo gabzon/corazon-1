@@ -1,4 +1,10 @@
-# v0.1.6:
+# v0.1.7: Friday 12th, 2021
+* Event table: edit centered aligned
+* Event flatpickr debugged
+* Pricing livewire component layout improved
+* Event page redesign
+
+# v0.1.6: Thursday 11th, 2021
 * Redesign of event backend admin
 * Event livewire create form
 * Event livewire edit: default form
@@ -6,6 +12,8 @@
 * Event livewire edit: pricing form
 * Event livewire edit: social media form
 * Event livewire edit: contact form
+* Location table city name optional
+* migration event date type changed to datetime
 
 # v0.1.5: Wednesday 10th, 2021
 * city Index: Default order Alphabetically

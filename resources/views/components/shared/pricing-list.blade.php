@@ -1,42 +1,46 @@
 <div>
     @if (!$model->is_free && $model->prices()->count() > 0)
-    <div class="mt-4">
+    <div class="mb-4">
+        @if ($title)
         <h3 class="text-lg font-bold text-gray-900">Pricing</h3>
+        @endif
+
+
         <div class="flex flex-col">
-            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden border-b border-gray-200">
+            <div class="overflow-x-auto">
+                <div class="py-2 align-middle inline-block min-w-full">
+                    <div class="overflow-hidden border-gray-200 rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 @if ($type == 'Event')
                                 <tr>
                                     <th></th>
-                                    <th></th>
                                     @if ($price1)
-                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">Early
-                                        bird 1</th>
+                                    <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
+                                        {{ $label1 ?? 'Early bird 1'}}
+                                    </th>
                                     @endif
                                     @if ($price2)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
-                                        Early bird 2</th>
+                                        {{ $label2 ?? 'Early bird 2'}}
+                                    </th>
                                     @endif
                                     @if ($price3)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
-                                        Early bird 3</th>
+                                        {{ $label3 ?? 'Early bird 3'}}
+                                    </th>
                                     @endif
                                     @if ($price4)
                                     <th class="py-1 text-right text-xs font-medium text-gray-500 uppercase">
-                                        Early bird 4</th>
+                                        {{ $label4 ?? 'Early bird 4'}}
+                                    </th>
                                     @endif
+                                    <th></th>
                                 </tr>
                                 @endif
                                 <tr>
                                     <th scope="col" class="">
 
-                                    </th>
-                                    <th scope="col"
-                                        class="py-1 text-right text-xs font-medium text-gray-500 uppercase tracking-wider mx-3">
-                                        Price
                                     </th>
                                     @if ($price1)
                                     <th scope="col"
@@ -111,19 +115,20 @@
                                         @endif
                                     </th>
                                     @endif
+                                    <th scope="col"
+                                        class="py-1 text-right text-xs font-medium text-gray-500 uppercase tracking-wider mx-3">
+                                        Price
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 @foreach ($prices as $price)
                                 <tr>
-                                    <td class="py-2 text-sm font-medium text-gray-700">
+                                    <td class="pl-2 py-2 text-sm font-medium text-gray-700">
                                         {{ $price->label }}
                                         @if ($price->description)
                                         <span class="text-sm font-light block">{{$price->description}}</span>
                                         @endif
-                                    </td>
-                                    <td class="py-2 whitespace-nowrap text-right text-sm font-medium uppercase mx-3">
-                                        {{ $price->currency }} {{ abs($price->amount) }}
                                     </td>
                                     @if ($price1)
                                     <td class="py-2 whitespace-nowrap text-right text-sm text-gray-500 uppercase mx-3">
@@ -153,6 +158,10 @@
                                         @endif
                                     </td>
                                     @endif
+                                    <td
+                                        class="pr-1 py-2 whitespace-nowrap text-right text-sm font-medium uppercase mx-3">
+                                        {{ $price->currency }} {{ abs($price->amount) }}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

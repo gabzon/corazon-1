@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Str;
 
 class Event extends Model implements HasMedia
 {
@@ -67,9 +68,9 @@ class Event extends Model implements HasMedia
         'is_recurrent'  => 'boolean',
         'is_online'     => 'boolean',                
         'publish_at'    => 'datetime:Y-m-d H:i',          
+        'start_date'    => 'datetime:Y-m-d H:i',          
+        'end_date'      => 'datetime:Y-m-d H:i',          
     ];
-
-    protected $dates = ['start_date', 'end_date'];
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -181,5 +182,12 @@ class Event extends Model implements HasMedia
         return $this->morphMany(Price::class, 'priceable');
     }
 
+    public function getYoutubeIdFromEmbedAttribute()
+    {        
+        if ($this->video) {
+            return Str::between($this->video, '<iframe width="560" height="315" src="https://www.youtube.com/embed/', '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+        }
+        return null;        
+    }
 
 }
