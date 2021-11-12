@@ -47,7 +47,7 @@
                                     {{ $item->email }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $item->city->name }}
+                                    {{ $item->city->name ?? '' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $item->neighborhood }}
