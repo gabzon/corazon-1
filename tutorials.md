@@ -5,3 +5,4 @@
 * responsive embed: https://www.themes.dev/blog/easily-embed-responsive-youtube-video-with-tailwind-css/
 * https://blog.codehunger.in/create-dynamic-categories-and-subcategories-in-laravel-7-8/
 * customizing media library display: https://github.com/spatie/laravel-medialibrary/issues/1348
+* flatpiker https://notes-about.dev/laravel-livewire-und-flatpickr-using-a-wirekey-trick-to-change-options/

@@ -35,7 +35,7 @@
 
 <body class="font-sans antialiased">
     <x-jet-banner />
-    <div class="min-h-screen overflow-hidden bg-gray-100 flex flex-col">
+    <div class="h-screen overflow-hidden bg-gray-100 flex flex-col">
         <!-- Top nav-->
         <x-layout.navbar />
 

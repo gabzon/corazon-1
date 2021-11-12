@@ -91,7 +91,7 @@ class FBImportService
     }
 
     public function matchImport($event)
-    {
+    {        
         $event->name = $this->name;
         $event->slug = Str::slug($this->name, '-') . '-' . Carbon::now()->timestamp;
         $event->description = nl2br($this->description);
@@ -113,7 +113,7 @@ class FBImportService
                 }
             }
 
-        }
+        }        
     }
 }
 

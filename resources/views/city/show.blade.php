@@ -26,7 +26,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-5 sm:px-6">
@@ -159,22 +159,25 @@
                         alt="{{ $city->name }}" />
                 </div>
             </div>
-            <br>
-            <hr>
-            <br>
-            <div>
-                <div class="md:flex md:items-center md:justify-between mb-1">
-                    <div class="flex-1 min-w-0">
-                        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                            Events in {{ $city->name }}
-                        </h2>
-                    </div>
-                </div>
+        </div>
 
+        <hr class="my-14">
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between mb-1">
+                <div class="flex-1 min-w-0">
+                    <h2
+                        class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mx-3 sm:mx-2 md:mx-1 lg:-mx-8">
+                        Events in {{ $city->name }}
+                    </h2>
+                </div>
+            </div>
+
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <livewire:event.table city="{{ $city->id }}" />
             </div>
         </div>
-
+        <div class="my-20"></div>
     </div>
 
 </x-app-layout>

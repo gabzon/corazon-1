@@ -17,7 +17,7 @@
                 <div class="py-3 flex justify-between text-sm font-medium">
                     <dt class="text-gray-500">Time</dt>
                     <dd class="text-gray-900">
-                        {{ $event->start_time->format('H:i') }} - {{ $event->end_time->format('H:i') }}
+                        {{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }}
                     </dd>
                 </div>
 

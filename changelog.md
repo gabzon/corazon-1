@@ -1,3 +1,12 @@
+# v0.1.6:
+* Redesign of event backend admin
+* Event livewire create form
+* Event livewire edit: default form
+* Event livewire edit: options form
+* Event livewire edit: pricing form
+* Event livewire edit: social media form
+* Event livewire edit: contact form
+
 # v0.1.5: Wednesday 10th, 2021
 * city Index: Default order Alphabetically
 * city Index: Filter Admin City table by name

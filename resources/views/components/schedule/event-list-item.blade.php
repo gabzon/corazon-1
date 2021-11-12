@@ -1,7 +1,10 @@
 <li
     class="relative flex bg-white py-3 px-3 hover:bg-gray-100 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 overflow-hidden">
+    @if ($item->getMedia('events')->last() != null)
     <img class="h-16 w-16 bg-indigo-100 object-cover" src="{{ $item->getMedia('events')->last()->getUrl('thumb') }}"
         alt="{{ $item->name }}">
+    @endif
+
 
     <div class="ml-3 w-full">
         <div class="grid grid-cols-2">
@@ -24,7 +27,7 @@
                     online
                     @else
                     @isset($item->location)
-                    {{ $item->location->shortname ?? $item->location->name  }}
+                    {{ $item->location->shortname ?? $item->location->name }}
                     @else
                     To be defined
                     @endisset

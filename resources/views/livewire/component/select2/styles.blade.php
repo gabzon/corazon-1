@@ -1,26 +1,26 @@
 <div>
-    <div>
-        <label for="styles" class="block text-sm font-medium text-gray-700 capitalize">Styles</label>
-        <div class="mt-1" wire:ignore>
-            <select name="styles" id="select2-style" multiple
-                class="w-full select2 @error('styles') border-red-600 @enderror">
-                @foreach ($collection as $item)
-                <option value="{{ $item->id }}" {{ $model->hasStyle($item->id) ? 'selected' : '' }}>
-                    {{ $item->name }}
-                </option>
-                @endforeach
-            </select>
-        </div>
-        @error('styles')
-        <div class="text-sm text-red-600">
-            {{ $message }}
-        </div>
-        @enderror
+  <div>
+    <label for="styles" class="block text-sm font-medium text-gray-700 capitalize">Styles</label>
+    <div class="mt-1" wire:ignore>
+      <select name="styles" id="select2-style" multiple
+        class="w-full select2 @error('styles') border-red-600 @enderror">
+        @foreach ($collection as $item)
+        <option value="{{ $item->id }}" {{ $model->hasStyle($item->id) ? 'selected' : '' }}>
+          {{ $item->name }}
+        </option>
+        @endforeach
+      </select>
     </div>
+    @error('styles')
+    <div class="text-sm text-red-600">
+      {{ $message }}
+    </div>
+    @enderror
+  </div>
 
-    @push('scripts')
-    <script>
-        document.addEventListener("livewire:load", () => {
+  @push('scripts')
+  <script>
+    document.addEventListener("livewire:load", () => {
             let el = $('#select2-style');
             initSelect();
             Livewire.hook('message.processed', (message, component) => {
@@ -39,6 +39,6 @@
               })
             }
           })
-    </script>
-    @endpush
+  </script>
+  @endpush
 </div>

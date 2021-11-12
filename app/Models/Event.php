@@ -61,19 +61,15 @@ class Event extends Model implements HasMedia
      */
     protected $casts = [
         'id'            => 'integer',
-        'start_date'    => 'date:Y-m-d',
-        'start_time'    => 'datetime:H:i',
-        'end_date'      => 'date:Y-m-d',
-        'end_time'      => 'datetime:H:i',
-        'publish_at'    => 'date:Y-m-d',
-        'min_price'     => 'decimal:2',
-        'max_price'     => 'decimal:2',                
         'user_id'       => 'integer',
         'location_id'   => 'integer',
         'city_id'       => 'integer',
         'is_recurrent'  => 'boolean',
-        'is_online'     => 'boolean',
+        'is_online'     => 'boolean',                
+        'publish_at'    => 'datetime:Y-m-d H:i',          
     ];
+
+    protected $dates = ['start_date', 'end_date'];
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -111,6 +107,11 @@ class Event extends Model implements HasMedia
     public function organizations()
     {
         return $this->belongsToMany(Organization::class);
+    }
+    
+    public function hasOrganization($id)
+    {
+        return in_array($id, $this->organizations()->pluck('organization_id')->toArray());
     }
 
     public function getTime($time)
