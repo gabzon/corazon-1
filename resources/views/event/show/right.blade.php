@@ -3,18 +3,34 @@
 <h2 class="text-gray-600 text-xl">{{ $event->tagline }}</h2>
 @endif
 
-<div class="mt-3">
-    <h2 class="sr-only">Product information</h2>
-    <x-shared.price-display class="text-3xl text-gray-900" :model="$event" />
+<div class="mt-3 grid grid-cols-2 items-center">
+    <div>
+        <h2 class="sr-only">Product information</h2>
+        <x-shared.price-display class="text-3xl text-gray-900" :model="$event" />
+    </div>
+    <div>
+        @if ($event->status == 'active')
+        <span
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            {{ $event->start_date->diffForHumans() }}
+        </span>
+        @endif
+        @if ($event->status == 'canceled')
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+            canceled
+        </span>
+        @endif
+    </div>
 </div>
 
 
-<div class="mt-6">
+<div class="mt-2">
     <h3 class="sr-only">Description</h3>
 
     <div>
-        <h3 class="font-medium text-gray-900 pb-1">Information</h3>
-        <div class="w-full sm:w-2/3 md:w-1/2">
+        {{-- <h3 class="font-medium text-gray-900 pb-1">Information</h3> --}}
+
+        <div class="w-full">
             <table class="text-sm font-medium">
                 <tr>
                     <td class="text-gray-500 py-2">Date</td>
@@ -41,9 +57,7 @@
                 <tr>
                     <td class="text-gray-500 capitalize pr-5 py-2">{{ $event->type }}</td>
                     <td class="text-gray-900">
-                        @foreach ($event->styles as $item)
-                        <span class="block">{{ $item->name }}</span>
-                        @endforeach
+                        {{ implode(', ', $event->styles->pluck('name')->toArray()) }}
                     </td>
                 </tr>
             </table>
