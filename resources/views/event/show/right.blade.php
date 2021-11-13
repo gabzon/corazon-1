@@ -84,7 +84,8 @@
 
         @if ($event->prices->count() > 0 )
         <div x-data="{ open : false }">
-            <button type="button" class="group relative w-full py-6 flex justify-between items-center text-left"
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
@@ -105,7 +106,8 @@
         @endif
 
         <div x-data="{ open : false }">
-            <button type="button" class="group relative w-full py-6 flex justify-between items-center text-left"
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
@@ -126,8 +128,10 @@
             </div>
         </div>
 
+        @if ($event->contact || $event->email || $event->phone )
         <div x-data="{ open : false }">
-            <button type="button" class="group relative w-full py-6 flex justify-between items-center text-left"
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
@@ -161,9 +165,12 @@
                 </div>
             </div>
         </div>
+        @endif
+
 
         <div id="location" x-data="{ open : true }">
-            <button type="button" class="group relative w-full py-6 flex justify-between items-center text-left"
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
