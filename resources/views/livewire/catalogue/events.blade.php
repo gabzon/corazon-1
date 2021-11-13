@@ -5,7 +5,7 @@
             {!! $event->getMedia('events')->last()->img('',['class'=>'overflow-hidden h-48 object-cover w-full
             rounded-lg group-hover:opacity-75', 'alt'=> $event->name ]) !!}
             {{-- <img src="{{ $event->thumbnail }}" alt=""
-            class="overflow-hidden h-48 object-cover w-full rounded-lg group-hover:opacity-75"> --}}
+                class="overflow-hidden h-48 object-cover w-full rounded-lg group-hover:opacity-75"> --}}
         </div>
         <div class="p-3">
             <h2 class="font-semibold text-gray-700 group-hover:text-gray-900">{{ $event->name }}</h2>
@@ -14,11 +14,11 @@
             </p>
             <p class="text-sm text-gray-500 mt-1 group-hover:text-gray-900">
                 {{ $event->start_date->format('M j, Y') }} @
-                {{ $event->start_time->format('H:i') }}
+                {{ $event->start_date->format('H:i') }}
             </p>
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 @isset($event->location)
-                <span>{{ $event->location->shortname ?? $event->location->name  }}, {{ $event->city->name }}</span>
+                <span>{{ $event->location->shortname ?? $event->location->name }}, {{ $event->city->name }}</span>
                 @else
                 To be defined
                 @endisset
