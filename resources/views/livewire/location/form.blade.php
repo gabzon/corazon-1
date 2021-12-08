@@ -41,6 +41,10 @@
                     <x-form.select wire:model="location.type" name="location.type" :options="[ 'dance-studio'  => __('Dance studio'), 
                                     'hotel'         => __('Hotel'), 
                                     'bar-restaurant'=> __('Bar/Restaurant'), 
+                                    'Fitness'       => __('Fitness'), 
+                                    'Kindergarden'  => __('Kindergarden'), 
+                                    'Sport center'  => __('Sport center'),
+                                    'Other'         => __('Other'),
                                     'event-hall'    => __('Event Hall')]" label="Type" />
                 </div>
 

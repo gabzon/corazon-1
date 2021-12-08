@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Classroom;
+use App\Models\Space;
 use Illuminate\Database\Seeder;
 
 class ClassroomSeeder extends Seeder
@@ -14,7 +14,7 @@ class ClassroomSeeder extends Seeder
      */
     public function run()
     {        
-        Classroom::create([
+        Space::create([
             'name' => 'Havana',
             'slug' => 'havana',
             'm2' => 100,
@@ -24,7 +24,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);      
 
-        Classroom::create([
+        Space::create([
             'name' => 'Santiago de Cuba',
             'slug' => 'santiago-de-cuba',
             'm2' => 60,
@@ -34,7 +34,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Guantanamo',
             'slug' => 'Guantanamo',
             'm2' => 40,
@@ -44,7 +44,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Matanzas',
             'slug' => 'matanzas',
             'm2' => 40,
@@ -54,7 +54,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Santa Clara',
             'slug' => 'santa-clara',
             'm2' => 20,
@@ -64,7 +64,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Velika soba',
             'slug' => 'velika-soba',
             'm2' => 60,
@@ -74,7 +74,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Mala soba',
             'slug' => 'mala-soba',
             'm2' => 40,
@@ -84,7 +84,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Salsa fusion',
             'slug' => 'salsa-fusion',
             'm2' => 60,
@@ -94,7 +94,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Velika soba',
             'slug' => 'velika-soba',
             'm2' => 60,
@@ -104,7 +104,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Mala soba',
             'slug' => 'mala-soba',
             'm2' => 40,
@@ -114,7 +114,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);
 
-        Classroom::create([
+        Space::create([
             'name' => 'Soss',
             'slug' => 'soss',
             'm2' => 40,

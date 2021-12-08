@@ -6,3 +6,5 @@
 
 @import 'styles';
 /* @import 'vendor/spatie/laravel-medialibrary-pro/resources/js/media-library-pro-styles'; */
+
+[x-cloak] { display: none; }

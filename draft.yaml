@@ -44,7 +44,7 @@ models:
     type: string:40 nullable
     status: string:40 nullable    
     user_id: id foreign
-    classroom_id: id foreign
+    space_id: id foreign
     city_id: id foreign
     school_id: id foreign
     softDeletes
@@ -204,7 +204,7 @@ models:
     youtube: string nullable
     tiktok: string nullable    
     user_id: id foreign
-    classroom_id: id foreign
+    space_id: id foreign
     city_id: id foreign
     softDeletes
   Post:

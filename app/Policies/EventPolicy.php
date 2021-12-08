@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class EventPolicy
 {
@@ -41,7 +42,7 @@ class EventPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->role === 'admin' || $user->role === 'publisher';
     }
 
     /**
@@ -53,7 +54,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event)
     {
-        //
+        return $user->role === 'admin' || $user->role === 'publisher';
     }
 
     /**
@@ -65,7 +66,7 @@ class EventPolicy
      */
     public function delete(User $user, Event $event)
     {
-        //
+        return $user->role === 'admin' || $user->role === 'publisher';
     }
 
     /**
@@ -77,7 +78,7 @@ class EventPolicy
      */
     public function restore(User $user, Event $event)
     {
-        //
+        return $user->role === 'admin' || $user->role === 'publisher';
     }
 
     /**
@@ -89,6 +90,32 @@ class EventPolicy
      */
     public function forceDelete(User $user, Event $event)
     {
-        //
+        return $user->role === 'admin' || $user->role === 'publisher';
+    }
+
+    public function register(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot register to a class/event that does not exists.");
+        }
+
+        if ($user->isRegistered($event)) {
+            return Response::deny("Cannot register for the same thing twice");
+        }
+
+        return Response::allow();            
+    }
+
+    public function unregister(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot unregister to a event that does not exists.");
+        }
+
+        if (! $user->isRegistered($event)) {
+            return Response::deny("Cannot unregister without registering first");
+        }
+
+        return Response::allow();
     }
 }

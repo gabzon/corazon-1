@@ -33,7 +33,7 @@ class ClassroomFactory extends Factory
             'price_hour' => $this->faker->numberBetween(10,1000),
             'price_month' => $this->faker->numberBetween(2,1000),
             'dance_shoes' => $this->faker->boolean,
-            'comments' => $this->faker->text,
+            'description' => $this->faker->text,
             'color' => $this->faker->word,
             'location_id' => Location::factory(),
             'user_id' => User::factory(),

@@ -111,8 +111,8 @@
                     @include('organization.show.general')
                 </section>
                 <section class="mt-8 pb-16" aria-labelledby="gallery-heading" x-show="orgTabs === 'Students'">
-                    <h2 id="gallery-heading" class="sr-only">Courses</h2>
-                    Students
+                    <h2 id="gallery-heading" class="sr-only">Students</h2>
+                    @include('organization.show.students')
                 </section>
                 <section class="mt-8 pb-16" aria-labelledby="gallery-heading" x-show="orgTabs === 'Instructors'">
                     <h2 id="gallery-heading" class="sr-only">Courses</h2>

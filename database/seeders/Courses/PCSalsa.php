@@ -32,7 +32,7 @@ class PCSalsa extends Seeder
             'full_price'     => 250, 'reduced_price' => null,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 7,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $s1->styles()->attach(3);
 
@@ -48,7 +48,7 @@ class PCSalsa extends Seeder
             'full_price'     => 150, 'reduced_price' => null,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 7,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $s1->styles()->attach(36);
     }

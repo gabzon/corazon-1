@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use App\Contracts\Lessonable;
+use App\Contracts\Likeable;
+use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Organization extends Model implements HasMedia
+class Organization extends Model implements HasMedia, Likeable
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, SoftDeletes, InteractsWithMedia, Likes;
 
     /**
      * The attributes that are mass assignable.
@@ -64,10 +68,44 @@ class Organization extends Model implements HasMedia
         return $this->belongsTo(\App\Models\User::class,'user_id');
     }
 
-    // public function managers()
-    // {
-    //     return $this->belongsToMany(\App\Models\User::class);
-    // }
+    public function managers()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'manager')
+                    ->withTimestamps();
+    }
+
+    public function hasManagers($id)
+    {
+        return in_array($id, $this->managers()->pluck('user_id')->toArray());
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'instructor')
+                    ->withTimestamps();
+    }
+    
+    public function hasTeacher($id)
+    {
+        return in_array($id, $this->teachers()->pluck('user_id')->toArray());
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'student')
+                    ->withTimestamps();
+    }
+
+    public function hasStudent($id)
+    {
+        return in_array($id, $this->students()->pluck('user_id')->toArray());
+    }
     
     public function city()
     {
@@ -84,4 +122,35 @@ class Organization extends Model implements HasMedia
         return $this->morphMany(Price::class, 'priceable');
     }
 
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);        
+    }
+
+    public function hasLesson(Lessonable $lessonable):bool
+    {
+        if (! $lessonable->exists) {
+            return false;
+        }
+        return $lessonable->lessons()->whereHas('organization', fn(Builder $query) => $query->whereId($this->id))->exists();
+    }
+
+    public function addLesson(Lessonable $lessonable):self
+    {
+        if ($this->hasLesson($lessonable)) {            
+            return $this;
+        }
+
+        (new Lesson())
+                ->organization()->associate($this)
+                ->user()->associate(auth()->user())
+                ->lessonable()->associate($lessonable)
+                ->save();
+        return $this;
+    }
+
+    public function removeLesson(Lessonable $lessonable):self
+    {
+        
+    }
 }

@@ -6,3 +6,8 @@
 * https://blog.codehunger.in/create-dynamic-categories-and-subcategories-in-laravel-7-8/
 * customizing media library display: https://github.com/spatie/laravel-medialibrary/issues/1348
 * flatpiker https://notes-about.dev/laravel-livewire-und-flatpickr-using-a-wirekey-trick-to-change-options/
+* Select2 : https://stackoverflow.com/questions/68335165/livewire-doesnt-sent-select2-variable
+* Dropdown select with search: https://codepen.io/dixie0704/pen/jOVxGXL
+* https://eloquentbyexample.com
+* Polimorphyc likes: https://dev.to/bdelespierre/how-to-implement-a-simple-like-system-with-laravel-lfe
+

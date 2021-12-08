@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Http\Requests\CourseStoreRequest;
 use App\Http\Requests\CourseUpdateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -50,6 +51,11 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         return view('course.show', compact('course'));
+    }
+
+    public function view(Request $request, Course $course)
+    {
+        return view('course.view', compact('course'));
     }
 
     /**

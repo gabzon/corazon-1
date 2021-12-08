@@ -82,4 +82,19 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function likes()
+    {
+        return view('profile.likes');
+    }
+
+    public function interests()
+    {
+        return view('profile.interests');
+    }
+
+    public function registrations()
+    {
+        return view('profile.registrations');
+    }
 }

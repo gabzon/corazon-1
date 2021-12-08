@@ -1,14 +1,26 @@
 <div>
-    {{ $users }}
-
-    $table->string('name');
-    $table->foreignId('current_team_id')->nullable();
-    $table->text('profile_photo_path')->nullable();
-    $table->date('birthday')->nullable();
-    $table->string('work_status')->default('working');
-
-
-
+    <div class="mb-3 grid grid-cols-7 gap-6">
+        <div class="col-span-1">
+            <x-form.select wire:model="paginate" name="paginate" :options="[10,15,20,25,50,100]" />
+        </div>
+        <div class="col-span-2">
+            <x-form.search-input wire:model="filterColumns.name" name="Search name" />
+        </div>
+        <div class="col-span-1">
+            <x-form.select wire:model="filterColumns.role" name="role"
+                :options="['all','admin','publisher','user','manager','instructor']" />
+        </div>
+        <div class="col-span-1">
+            <x-form.select wire:model="filterColumns.gender" name="gender" :options="['male','female']" />
+        </div>
+        <div class="col-span-1">
+            <x-form.select wire:model="filterColumns.organization" name="organization"
+                :options="App\Models\Organization::all()" />
+        </div>
+        <div class="col-span-1">
+            <x-form.select wire:model="filterColumns.city" name="city" :options="App\Models\city::all()" />
+        </div>
+    </div>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -18,7 +30,15 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Birthday
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -34,6 +54,14 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Work Status
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    City
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Role
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
@@ -42,25 +70,35 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-
                             @foreach ($users as $user)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="text-sm text-gray-500">{{ $user->id }}</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
-                                            <img class="h-10 w-10 rounded-full"
-                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
-                                                alt="">
+                                            <a href="{{ route('user.show', $user) }}">
+                                                <img class="h-10 w-10 rounded-full" src="{{$user->photo}}" alt="">
+                                            </a>
                                         </div>
                                         <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{ $user->name }}
+                                            <div>
+                                                <a href="{{ route('user.show', $user) }}"
+                                                    class="text-sm leading-5 font-medium text-gray-900 hover:text-indigo-700">
+                                                    {{$user->name}}
+                                                </a>
+                                                @if(auth()->user()->isAdmin())
+                                                <a wire:click="impersonate({{$user->id}})" href="#"
+                                                    class="text-xs text-indigo-600 hover:text-indigo-800 ml-1">Impersonate</a>
+                                                @endif
                                             </div>
-                                            <div class="text-sm text-gray-500">
-                                                {{ $user->email}}
-                                            </div>
+                                            <div class="text-sm leading-5 text-gray-500">{{$user->email}}</div>
                                         </div>
                                     </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $user->birthday }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{ $user->gender }}</div>
@@ -75,10 +113,17 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    Admin
+                                    {{ $user->work_status }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $user->city }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $user->role }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="{{ route('user.edit', $user) }}"
+                                        class="text-indigo-500 hover:text-indigo-700">edit</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -87,6 +132,8 @@
                 </div>
             </div>
         </div>
+        <div class="m-3">
+            {{ $users->links() }}
+        </div>
     </div>
-
 </div>

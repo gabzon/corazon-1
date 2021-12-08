@@ -5,10 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\City;
-use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Organization;
-use App\Models\School;
+use App\Models\Space;
 use App\Models\User;
 
 class CourseFactory extends Factory
@@ -71,7 +70,7 @@ class CourseFactory extends Factory
             'type'              => $this->faker->regexify('[A-Za-z0-9]{40}'),
             'status'            => 'Active',
             'user_id'           => User::factory(),
-            'classroom_id'      => Classroom::factory(),
+            'space_id'          => Space::factory(),
             'city_id'           => City::factory(),
             'organization_id'   => Organization::factory(),
         ];

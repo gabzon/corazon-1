@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
@@ -19,12 +19,13 @@
         </div>
     </x-slot>
 
-    <div class="py-12 h-screen overflow-y-scroll">
+    <div class="py-5 h-screen overflow-y-scroll">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <livewire:schedule.filters />
             <div class="py-10">
                 <livewire:schedule.catalogue />
             </div>
+            <div class="my-14">&nbsp;</div>
         </div>
     </div>
-</x-admin-layout>
+</x-app-layout>

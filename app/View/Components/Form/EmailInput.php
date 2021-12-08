@@ -6,14 +6,19 @@ use Illuminate\View\Component;
 
 class EmailInput extends Component
 {
+    public $label;
+    public $name;
+    public $description;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name, $label = null, $description =  null)
     {
-        //
+        $this->name = $name;
+        $this->label = $label;
+        $this->description = $description;
     }
 
     /**

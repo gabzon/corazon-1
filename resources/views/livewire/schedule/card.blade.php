@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg p-2 mb-4 mx-3 hover:shadow-md border">
-    <a href="{{ route('show.course', $class) }}">
+    <a href="{{ route('course.view', $class) }}">
         <div class="mt-1 text-xs flex justify-between items-center space-x-1">
             <x-partials.days-of-week :class="$class" />
             @if ($class->organization->getMedia('organization-icons')->last() != null)
@@ -18,41 +18,41 @@
             {{-- <div class="flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Period</dt>
                 <dd class="text-gray-900">{{ $class->start_date->format('M j') }} -
-            {{ $class->end_date->format('M j')}}</dd>
-</div> --}}
+                    {{ $class->end_date->format('M j')}}</dd>
+            </div> --}}
 
-<div class="mt-1 flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">Schedule</dt>
-    <dd class="text-gray-900">
-        <x-partials.display-day-time :course="$class" />
-    </dd>
-</div>
+            <div class="mt-1 flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Schedule</dt>
+                <dd class="text-gray-900">
+                    <x-partials.display-day-time :course="$class" />
+                </dd>
+            </div>
 
-<div class="flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">Level</dt>
-    <dd class="text-gray-900">{{ $class->level }} {{ $class->level_number }}</dd>
-</div>
+            <div class="flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Level</dt>
+                <dd class="text-gray-900">{{ $class->level }} {{ $class->level_number }}</dd>
+            </div>
 
-<div class="flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">School</dt>
-    <dd class="text-gray-900">{{ $class->organization->shortname ?? $class->organization->name }}</dd>
-</div>
+            <div class="flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">School</dt>
+                <dd class="text-gray-900">{{ $class->organization->shortname ?? $class->organization->name }}</dd>
+            </div>
 
-<div class="flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">Location</dt>
-    <dd class="text-gray-900">{{ $class->classroom->location->neighborhood }}</dd>
-</div>
+            <div class="flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Location</dt>
+                <dd class="text-gray-900">{{ $class->space->location->neighborhood }}</dd>
+            </div>
 
-<div class="flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">Focus</dt>
-    <dd class="text-gray-900">{{ $class->focus }}</dd>
-</div>
+            <div class="flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Focus</dt>
+                <dd class="text-gray-900">{{ $class->focus }}</dd>
+            </div>
 
-<div class="flex justify-between text-sm font-medium">
-    <dt class="text-gray-500">Price</dt>
-    <dd class="text-gray-900">Kn {{ abs($class->full_price) }}</dd>
-</div>
-</dl>
+            <div class="flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Price</dt>
+                <dd class="text-gray-900">Kn {{ abs($class->full_price) }}</dd>
+            </div>
+        </dl>
 
-</a>
+    </a>
 </div>

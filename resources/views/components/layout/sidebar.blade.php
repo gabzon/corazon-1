@@ -3,29 +3,20 @@
         <div class="flex flex-col h-0 flex-1 overflow-y-auto bg-indigo-600">
             <div class="flex-1 flex flex-col">
                 <nav aria-label="Sidebar" class="py-6 flex flex-col items-center space-y-1">
-                    <a href="{{ route('dashboard') }}" id="home" data-tippy-placement="right" data-tippy-content="Home"
+                    <a href="{{ route('dashboard') }}" id="home" data-tippy-placement="right"
+                        data-tippy-content="Dashboard"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.home')
                     </a>
-                    <a href="{{ route('courses.schedule') }}" id="catalogue" data-tippy-placement="right"
-                        data-tippy-content="Catalogue"
+                    <a href="{{ route('courses.schedule') }}" id="schedule" data-tippy-placement="right"
+                        data-tippy-content="Courses Schedule"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.catalogue')
                     </a>
-                    <a href="{{ route('course.index') }}" id="courses" data-tippy-placement="right"
-                        data-tippy-content="Courses"
+                    <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
+                        data-tippy-content="Event Catalogue"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.courses')
-                    </a>
-                    <a href="{{ route('event.index') }}" id="events" data-tippy-placement="right"
-                        data-tippy-content="Events"
-                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.events')
-                    </a>
-                    <a href="{{ route('location.index') }}" id="locations" data-tippy-placement="right"
-                        data-tippy-content="Locations"
-                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.pinpoint')
+                        @include('icons.event-list')
                     </a>
                     {{-- <a href="#" id="attendance" data-tippy-placement="right" data-tippy-content="Attendance"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
@@ -43,15 +34,28 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.dance')
                     </a> --}}
+                </nav>
+            </div>
+            <div class="flex-shrink-0 flex flex-col">
+                <nav aria-label="Sidebar" class="py-6 flex flex-col items-center space-y-1">
+
                     <a href="{{ route('user.index') }}" id="users" data-tippy-placement="right"
                         data-tippy-content="Users"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.users')
                     </a>
-                </nav>
-            </div>
-            <div class="flex-shrink-0 flex flex-col">
-                <nav aria-label="Sidebar" class="py-6 flex flex-col items-center space-y-1">
+
+                    <a href="{{ route('course.index') }}" id="courses" data-tippy-placement="right"
+                        data-tippy-content="Courses"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.courses')
+                    </a>
+                    <a href="{{ route('event.index') }}" id="events" data-tippy-placement="right"
+                        data-tippy-content="Events"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.events')
+                    </a>
+
                     @if (auth()->user()->role == 'admin')
                     <a href="{{ route('style.index') }}" id="styles" data-tippy-placement="right"
                         data-tippy-content="Styles"
@@ -59,6 +63,12 @@
                         @include('icons.music-genre')
                     </a>
                     @endif
+
+                    <a href="{{ route('location.index') }}" id="locations" data-tippy-placement="right"
+                        data-tippy-content="Locations"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.pinpoint')
+                    </a>
                     {{-- <a href="{{ route('skill.index') }}" id="skills" data-tippy-placement="right"
                         data-tippy-content="Skills"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
@@ -112,6 +122,7 @@
 @push('modals')
 <script>
     tippy('#home');
+    tippy('#schedule');
     tippy('#catalogue');
     tippy('#courses');
     tippy('#events');

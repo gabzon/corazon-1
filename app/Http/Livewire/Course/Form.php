@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Course;
 
-use App\Models\Classroom;
+use App\Models\Space;
 use App\Models\Course;
 use App\Models\User;
 use Carbon\Carbon;
@@ -90,7 +90,7 @@ class Form extends Component
         'course.status'         => 'required',        
         
         'course.user_id'        => 'nullable',
-        'course.classroom_id'   => 'required',
+        'course.space_id'       => 'required',
         
         'course.organization_id'=> 'required',
     ];
@@ -109,7 +109,7 @@ class Form extends Component
 
     public function updatedClassroom(int $id)
     {
-        $room = Classroom::find($id);        
+        $room = Space::find($id);        
         $this->city = $room->location->id;
     }
 

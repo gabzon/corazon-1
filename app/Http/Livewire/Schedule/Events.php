@@ -28,9 +28,9 @@ class Events extends Component
         Event::shouldExpire()->get()->each->expire();
 
         return view('livewire.schedule.events', [
-            'parties'   => Event::displayList()->IsActive()->where('type','party')->orderBy('start_date','asc')->latest()->get(),
-            'workshops' => Event::IsActive()->where('type',"workshop")->orderBy('start_date','asc')->latest()->get(),
-            'festivals' => Event::IsActive()->where('type',"festival")->orderBy('start_date','asc')->latest()->get(),
+            'parties'   => Event::isActive()->where('type','party')->orderBy('start_date','asc')->latest()->get(),
+            'workshops' => Event::isActive()->where('type',"workshop")->orderBy('start_date','asc')->latest()->get(),
+            'festivals' => Event::isActive()->where('type',"festival")->orderBy('start_date','asc')->latest()->get(),
         ]);
     }
 }

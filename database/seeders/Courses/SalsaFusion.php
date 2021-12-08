@@ -31,7 +31,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $salsa1->styles()->attach(4);
 
@@ -50,7 +50,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $s2->styles()->attach(4);
 
@@ -69,7 +69,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $sfl->styles()->attach(11);
 
@@ -85,7 +85,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $lady->styles()->attach(11);
 
@@ -101,7 +101,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $sf->styles()->attach(11);
 
@@ -121,7 +121,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $hh->styles()->attach(14);
 
@@ -137,7 +137,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $sf->styles()->attach(4);
 
@@ -152,7 +152,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
 
         $su = Course::create([            
@@ -167,7 +167,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
 
         $sf2 = Course::create([            
@@ -182,7 +182,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $sf2->styles()->attach(11);
 
@@ -198,7 +198,7 @@ class SalsaFusion extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
-            'classroom_id'   => 8,
+            'space_id'   => 8,
         ]);
         $ho->styles()->attach(15);
 

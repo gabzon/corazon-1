@@ -1,3 +1,31 @@
+# V0
+## General
+* Improve Course Dashboard
+* Improve Event Dashboard
+* Roles (organizer, publisher, dj, instructor, embassador, artist, volonteer)
+* Performance: Follow tutorial https://laraveldaily.teachable.com/p/better-eloquent-performance
+* Organization: Follow tutorial: https://laraveldaily.teachable.com/p/solid-code-in-laravel
+* Organization: Follow tutorial: https://laraveldaily.teachable.com/p/how-to-structure-database-in-laravel
+* Frontend: flutter tutorial: https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps
+* Photo Gallery Component
+* url input component (with icons)
+* Add title to trix component
+* Improving API: https://laraveldaily.teachable.com/p/how-to-create-laravel-api
+* https://purchasing-power-parity.com
+* MediaLibrary component add label option
+* test code: https://github.com/nunomaduro/larastan
+* Sidebar logout button not working
+* remove admin layout, keep only guest and app
+* Redisign login/register/forgot password/reenter password
+* add Founded column date to organization
+* add type colum (ex: dance studio, bar, restaurant, event hall, hotel) to locations table
+* CRUD Post
+* "+" button, dropdown user can add course, event, attendance
+
+## Price
+* Make Price many to many relationships
+* Make video many to many relationships
+
 # City
 * Index: Add city avatar
 * Index: Sort by name
@@ -26,8 +54,7 @@ $ Show: table of courses of this city
 $ Show: table of organizations of this city
 $ Show: table of locations of this city
 
-
-# Location
+## Location
 * index: change name by shortname
 * index: Add location type
 * index: Add country flag next to city
@@ -39,19 +66,15 @@ $ Show: table of locations of this city
 * form: add icon field
 * form: photos validation (max 4 photos, max size 500kb/photo, format['png','jpeg','gif'])
 
-# User
+## User
 * index: users table
 * index: users filter by name and email
 * index: users filter by active
 * index: users filter by gender
 
 
-- Redisign login/register/forgot password/reenter password
-- add Founded column date to organization
-- add type colum (ex: dance studio, bar, restaurant, event hall, hotel) to locations table
-- CRUD Post
 
-# Home page: 
+## Home page: 
 - Display message if there is no events
 - Displya messsage if there is no courses
 - Display all events with filters
@@ -59,36 +82,30 @@ $ Show: table of locations of this city
 - If date > today change status to expired 
 
 
-# Events 
+## Events 
 * Integrate trix component
 * Sidebar scrollbar
 * Add is recurrency
 * Add publish at
 * Form: Fuse Datetime in one field and component
+* Add instructor to event
 
+# Course
+* Add instructor to course
+
+## Attendance
+* Crud attendance
+* user can add a video
 
 # Authentication
 * Do tutorial https://laraveldaily.teachable.com/p/practical-roles-and-permissions-in-laravel
 
-# General
-* Performance: Follow tutorial https://laraveldaily.teachable.com/p/better-eloquent-performance
-* Organization: Follow tutorial: https://laraveldaily.teachable.com/p/solid-code-in-laravel
-* Organization: Follow tutorial: https://laraveldaily.teachable.com/p/how-to-structure-database-in-laravel
-* Frontend: flutter tutorial: https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps
-* Photo Gallery Component
-* url input component (with icons)
-* Add title to trix component
-* Improving API: https://laraveldaily.teachable.com/p/how-to-create-laravel-api
-* https://purchasing-power-parity.com
-* MediaLibrary component add label option
-* test code: https://github.com/nunomaduro/larastan
-* Sidebar logout button not working
-* remove admin layout, keep only guest and app
+# V1 
+
 
 - add tooltip to sidebar https://atomiks.github.io/tippyjs/ or https://microtip.vercel.app
 - Check php 8 doc https://stitcher.io/blog/new-in-php-8
 - add https://simplemde.com
-- buy https://livewirekit.com
 - https://iconstore.co
 - Trix rich editor livewire component
 - https://www.youtube.com/channel/UCTuplgOBi6tJIlesIboymGA/community

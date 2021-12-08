@@ -74,7 +74,7 @@ class CourseControllerTest extends TestCase
     //         'name' => $name,
     //         'slug' => $slug,
     //         'user_id' => $user->id,
-    //         'classroom_id' => $classroom->id,
+    //         'space_id' => $classroom->id,
     //         'city_id' => $city->id,
     //         'school_id' => $school->id,
     //     ]);
@@ -83,7 +83,7 @@ class CourseControllerTest extends TestCase
     //         ->where('name', $name)
     //         ->where('slug', $slug)
     //         ->where('user_id', $user->id)
-    //         ->where('classroom_id', $classroom->id)
+    //         ->where('space_id', $classroom->id)
     //         ->where('city_id', $city->id)
     //         ->where('school_id', $school->id)
     //         ->get();
@@ -154,7 +154,7 @@ class CourseControllerTest extends TestCase
     //         'name' => $name,
     //         'slug' => $slug,
     //         'user_id' => $user->id,
-    //         'classroom_id' => $classroom->id,
+    //         'space_id' => $classroom->id,
     //         'city_id' => $city->id,
     //         'school_id' => $school->id,
     //     ]);
@@ -167,7 +167,7 @@ class CourseControllerTest extends TestCase
     //     $this->assertEquals($name, $course->name);
     //     $this->assertEquals($slug, $course->slug);
     //     $this->assertEquals($user->id, $course->user_id);
-    //     $this->assertEquals($classroom->id, $course->classroom_id);
+    //     $this->assertEquals($classroom->id, $course->space_id);
     //     $this->assertEquals($city->id, $course->city_id);
     //     $this->assertEquals($school->id, $course->school_id);
     // }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\City;
 use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class OrganizationSeeder extends Seeder
@@ -447,34 +448,12 @@ class OrganizationSeeder extends Seeder
             'zip'           => '',
             'about'         => '',                                 
             'video'         => '',
-        ]);
-        // Salsa, Bachata 
+        ]);        
 
-        // $city = City::all();
-        // Organization::factory(5)->create([
-        //     'city_id' => $city->random(1)->pluck('id')[0], 
-        // ]);
+        foreach (Organization::all() as $org) {
+            $org->students()->saveMany(User::factory(rand(10,20))->create());
+            $org->teachers()->saveMany(User::factory(rand(2,5))->create());
+            $org->managers()->saveMany(User::factory(rand(1,2))->create());            
+        }
     }
 }
-
-
-// Organization::create([
-//     'name'          => '',
-//     'slug'          => '',                                    
-//     'contact'       => '',                                    
-//     'status'        => '',
-//     'type'          => '',
-//     'city_id'       => ,
-//     'user_id'       => 1,
-//     'website'       => '',
-//     'oid'           => '',
-//     'phone'         => '',
-//     'email'         => '',
-//     'facebook'      => '',
-//     'instagram'     => '',
-//     'youtube'       => '',
-//     'address'       => '',
-//     'zip'           => '',
-//     'about'         => '',                                 
-//     'video'         => '',
-// ]);

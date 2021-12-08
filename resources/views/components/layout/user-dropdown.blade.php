@@ -4,8 +4,7 @@
             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <button
                 class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                <img class="h-8 w-8 rounded-full object-cover" lazy="loading"
-                    src="{{ Auth::user()->avatar ?? Auth::user()->profile_photo_url }}"
+                <img class="h-8 w-8 rounded-full object-cover" lazy="loading" src="{{ Auth::user()->photo }}"
                     alt="{{ Auth::user()->name }}" />
             </button>
             @else
@@ -31,8 +30,16 @@
                 {{ __('Manage Account') }}
             </div>
 
-            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+            <x-jet-dropdown-link href="{{ route('dashboard') }}">
+                {{ __('Dashboard') }}
+            </x-jet-dropdown-link>
+
+            <x-jet-dropdown-link href="{{ route('user.show', auth()->user()) }}">
                 {{ __('Profile') }}
+            </x-jet-dropdown-link>
+
+            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                {{ __('Edit Profile') }}
             </x-jet-dropdown-link>
 
             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

@@ -31,7 +31,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $hh->styles()->attach(14);  
         
@@ -50,7 +50,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $hh2->styles()->attach(14);  
 
@@ -66,7 +66,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $funk->styles()->attach(40);
 
@@ -85,7 +85,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $mix->styles()->attach([13,14,15]);
 
@@ -101,7 +101,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
 
         $afro = Course::create([            
@@ -116,7 +116,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $afro->styles()->attach([13]);
 
@@ -132,7 +132,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $h->styles()->attach([13]);
 
@@ -148,7 +148,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $h2->styles()->attach([15]);
 
@@ -164,7 +164,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $afro2->styles()->attach([13]);
 
@@ -180,7 +180,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $w1->styles()->attach([41]);
 
@@ -196,7 +196,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $w2->styles()->attach([41]);
         
@@ -212,7 +212,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $lo1->styles()->attach([42]);
 
@@ -231,7 +231,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $hh3->styles()->attach([14]);
 
@@ -247,7 +247,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $lo2->styles()->attach([42]);
 
@@ -263,7 +263,7 @@ class Soss extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 13,
-            'classroom_id'   => 9,
+            'space_id'   => 9,
         ]);
         $fe->styles()->attach([42]);
 

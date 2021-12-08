@@ -24,8 +24,10 @@ class EventController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request)    
     {
+        $this->authorize('create');
+
         return view('event.create');
     }
 
@@ -33,8 +35,10 @@ class EventController extends Controller
      * @param \App\Http\Requests\EventStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventStoreRequest $request)
+    public function store(EventStoreRequest $request)    
     {
+        $this->authorize('create');
+
         $event = Event::create($request->validated());
 
         $request->session()->flash('event.id', $event->id);
@@ -48,8 +52,13 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Event $event)
-    {
+    {        
         return view('event.show', compact('event'));
+    }
+
+    public function view(Request $request, Event $event)
+    {        
+        return view('event.view', compact('event'));
     }
 
     /**
@@ -59,6 +68,8 @@ class EventController extends Controller
      */
     public function edit(Request $request, Event $event)
     {
+        $this->authorize('update', $event);
+        
         return view('event.edit', compact('event'));
     }
 
@@ -69,6 +80,8 @@ class EventController extends Controller
      */
     public function update(EventUpdateRequest $request, Event $event)
     {
+        $this->authorize('update', $event);
+
         $event->update($request->validated());
 
         $request->session()->flash('event.id', $event->id);
@@ -90,6 +103,11 @@ class EventController extends Controller
 
     public function catalogue()
     {
-        return view('pages.events');
+        if (auth()->check()) {
+            return view('event.catalogue');
+        }else{
+            return view('pages.events');
+        }
+        
     }
 }

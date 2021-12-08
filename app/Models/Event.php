@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+use App\Contracts\Interestable;
+use App\Contracts\Likeable;
+use App\Contracts\Registrable;
+use App\Models\Concerns\Interests;
+use App\Models\Concerns\Likes;
+use App\Models\Concerns\Registrations;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,15 +18,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
 
-class Event extends Model implements HasMedia
+class Event extends Model implements HasMedia, Likeable, Interestable, Registrable
 {
     use HasFactory, SoftDeletes;
     use InteractsWithMedia;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use Likes;
+    use Interests;
+    use Registrations;
+
     protected $fillable = [
         'name',
         'slug',
@@ -70,7 +75,7 @@ class Event extends Model implements HasMedia
         'publish_at'    => 'datetime:Y-m-d H:i',          
         'start_date'    => 'datetime:Y-m-d H:i',          
         'end_date'      => 'datetime:Y-m-d H:i',          
-    ];
+    ];    
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -78,7 +83,6 @@ class Event extends Model implements HasMedia
               ->width(200)
               ->height(200);              
     }
-
 
     public function user()
     {

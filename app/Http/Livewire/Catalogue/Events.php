@@ -37,7 +37,8 @@ class Events extends Component
     public function render()
     {
         return view('livewire.catalogue.events', [
-            'events' => Event::IsActive()
+            'events' => Event::withoutGlobalScopes()
+                                ->IsActive()
                                 ->inCity($this->city)
                                 ->style($this->style)
                                 ->type($this->type)

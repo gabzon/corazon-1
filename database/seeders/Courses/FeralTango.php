@@ -32,7 +32,7 @@ class FeralTango extends Seeder
             'full_price'     => 300, 'reduced_price' => 250,            
             'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'classroom_id'   => 10,
+            'space_id'   => 10,
         ]);
         $t1->styles()->attach(19);
 
@@ -52,7 +52,7 @@ class FeralTango extends Seeder
             'full_price'     => 500, 'reduced_price' => 450,            
             'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'classroom_id'   => 10,
+            'space_id'   => 10,
         ]);
         $t1->styles()->attach(19);
 
@@ -72,7 +72,7 @@ class FeralTango extends Seeder
             'full_price'     => 500, 'reduced_price' => 450,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'classroom_id'   => 10,
+            'space_id'   => 10,
         ]);
         $t1->styles()->attach(19);
 
@@ -91,7 +91,7 @@ class FeralTango extends Seeder
             'full_price'     => 500, 'reduced_price' => 450,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'classroom_id'   => 10,
+            'space_id'   => 10,
         ]);
         $t4->styles()->attach(19);
     }

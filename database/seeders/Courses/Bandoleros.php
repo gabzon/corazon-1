@@ -30,7 +30,7 @@ class Bandoleros extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
-            'classroom_id'   => 6,
+            'space_id'   => 6,
         ]);
         $s1->styles()->attach(3);
 
@@ -50,7 +50,7 @@ class Bandoleros extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
-            'classroom_id'   => 6,
+            'space_id'   => 6,
         ]);
         $s2->styles()->attach(3);
 
@@ -70,7 +70,7 @@ class Bandoleros extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
-            'classroom_id'   => 6,
+            'space_id'       => 6,
         ]);
         $kiz->styles()->attach(38);
 
@@ -90,7 +90,7 @@ class Bandoleros extends Seeder
             'full_price'     => 250, 'reduced_price' => 200,            
             'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
-            'classroom_id'   => 7,
+            'space_id'      => 7,
         ]);
         $r->styles()->attach(37);
     }

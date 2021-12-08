@@ -90,7 +90,7 @@ class Catalogue extends Component
             'friday', 'start_time_fri', 'end_time_fri', 
             'saturday', 'start_time_sat', 'end_time_sat', 
             'sunday', 'start_time_sun', 'end_time_sun', 
-            'full_price','organization_id', 'classroom_id'
+            'full_price','organization_id', 'space_id'
         ];
         
         return view('livewire.schedule.catalogue',[

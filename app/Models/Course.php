@@ -2,6 +2,14 @@
 
 namespace App\Models;
 
+use App\Contracts\Interestable;
+use App\Contracts\Lessonable;
+use App\Contracts\Likeable;
+use App\Contracts\Registrable;
+use App\Models\Concerns\Interests;
+use App\Models\Concerns\Lessons;
+use App\Models\Concerns\Likes;
+use App\Models\Concerns\Registrations;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,10 +18,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model implements HasMedia
+class Course extends Model implements HasMedia, Likeable, Interestable, Registrable, Lessonable
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
+    use Likes;
+    use Interests;
+    use Registrations;
+    use Lessons;
 
     /**
      * The attributes that are mass assignable.
@@ -71,7 +83,7 @@ class Course extends Model implements HasMedia
         'type',
         'status',
         'user_id',
-        'classroom_id',
+        'space_id',
         'city_id',
         'organization_id',
     ];
@@ -102,7 +114,7 @@ class Course extends Model implements HasMedia
         'unemployed_price'  => 'decimal:2',
         'senior_price'      => 'decimal:2',
         'user_id'           => 'integer',
-        'classroom_id'      => 'integer',
+        'space_id'          => 'integer',
         'city_id'           => 'integer',
         'organization_id'   => 'integer',     
         'level'             => 'string',   
@@ -118,9 +130,9 @@ class Course extends Model implements HasMedia
         return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')->using(Registration::class)->wherePivot('role', 'instructor');
     }
 
-    public function classroom()
+    public function space()
     {
-        return $this->belongsTo(\App\Models\Classroom::class);
+        return $this->belongsTo(\App\Models\Space::class);
     }
 
     public function city()
@@ -196,10 +208,10 @@ class Course extends Model implements HasMedia
         return $query;
     }
 
-    public function scopeClassroom($query, $classroom)
+    public function scopeSpace($query, $space)
     {
-        if (!empty($classroom)) {
-            return $query->where('classroom_id', $classroom);
+        if (!empty($space)) {
+            return $query->where('space_id', $space);
         }
         return $query;
     }
@@ -289,5 +301,10 @@ class Course extends Model implements HasMedia
     {
         return $this->update([ 'status' => 'finished' ]);
     }
+
+    // public function lessons()
+    // {
+    //     return $this->morphToMany(Lesson::class, 'lessonable');
+    // }
 
 }

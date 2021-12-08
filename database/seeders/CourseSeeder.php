@@ -27,7 +27,7 @@ class CourseSeeder extends Seeder
             'full_price'     => 220, 'reduced_price' => 200,            
             'focus'          => 'footwork', 'type' => 'class', 'status' => 'Active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 1,
-            'classroom_id'   => 3
+            'space_id'       => 3
         ]);
         $c1->styles()->attach([1]);
 
@@ -43,7 +43,7 @@ class CourseSeeder extends Seeder
             'full_price'        => 220, 'reduced_price' => 200,            
             'focus'             => 'parnerwork', 'type' => 'class', 'status' => 'Active',
             'user_id'           => 1, 'city_id' => 1, 'organization_id'   => 1,
-            'classroom_id'      => 1,
+            'space_id'      => 1,
         ]);
 
         $c2 = Course::create([
@@ -58,7 +58,7 @@ class CourseSeeder extends Seeder
             'full_price'        => 220, 'reduced_price' => 200,            
             'focus'             => 'partnerwork', 'type' => 'class', 'status' => 'Active',
             'user_id'           => 1, 'city_id' => 1, 'organization_id'   => 1,
-            'classroom_id'      => 1,
+            'space_id'      => 1,
         ]);
 
         $c1 = Course::create([
@@ -76,7 +76,7 @@ class CourseSeeder extends Seeder
             'full_price'        => 220, 'reduced_price' => 200,            
             'focus'             => 'footwork', 'type' => 'class', 'status' => 'Active',
             'user_id'           => 1, 'city_id'           => 1, 'organization_id'   => 1,
-            'classroom_id'      => 6,
+            'space_id'      => 6,
         ]);
 
         Course::factory(40)->create();      

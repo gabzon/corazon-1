@@ -44,6 +44,7 @@
             <!-- Narrow sidebar-->
             <x-layout.sidebar />
 
+
             @if (session()->has('success'))
             <x-partials.flash-message />
             @endif
@@ -54,18 +55,23 @@
 
             <!-- Main area -->
             <main class="min-w-0 flex-1 border-t border-gray-200 lg:flex z-0 overflow-hidden">
+
+
                 <!-- Primary column -->
                 <section aria-labelledby="primary-heading"
                     class="min-w-0 flex-1 h-screen flex flex-col overflow-hidden overflow-y-scroll lg:order-last">
 
                     <!-- Page Heading -->
                     @if (isset($header))
-                    <header class="bg-white shadow z-10">
+                    <header class="bg-gray-50 shadow z-10">
                         <div class="max-w-full mx-auto py-4 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>
                     </header>
                     @endif
+
+                    <x-impersonate />
+
 
                     <div class="sm:max-h-screen">
                         {{ $slot }}

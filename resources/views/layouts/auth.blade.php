@@ -24,6 +24,7 @@
             gtag('config', 'G-GSK345PG0Y');
     </script>
 
+    {{ $css ?? ''}}
     @livewireStyles
 
     <!-- Scripts -->
@@ -37,6 +38,7 @@
         {{ $slot }}
     </main>
 
+    @stack('scripts')
     @stack('modals')
 
     @livewireScripts

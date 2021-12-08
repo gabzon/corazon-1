@@ -3,53 +3,57 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Support\Str;
 
-class Registration extends Pivot
+class Registration extends Model
 {
     use HasFactory;
-    protected $table = 'registrations';  
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+        
     protected $fillable = [
         'status',
         'role',
         'option',
-        'course_id',
         'user_id',
         'order_id',
+        'registrable_id',
+        'registrable_type',
+        'price_id',
     ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    
     protected $casts = [
-        'id'        => 'integer',
-        'course_id' => 'integer',
-        'user_id'   => 'integer',
-        'order_id'  => 'integer',
+        'id'            => 'integer',
+        'registrable_id'=> 'integer',
+        'user_id'       => 'integer',
+        'order_id'      => 'integer',
+        'price_id'      => 'integer',
     ];
 
     protected $dates = ['created_at', 'updated_at'];
 
-
-    public function course()
-    {
-        return $this->belongsTo(\App\Course::class);
-    }
-
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(User::class)->withDefault();
     }
 
     public function order()
     {
-        return $this->belongsTo(\App\Order::class);
+        return $this->belongsTo(Order::class)->withDefault();
+    }
+
+    public function price()
+    {
+        return $this->belongsTo(Price::class)->withDefault();
+    }
+
+    public function registrable()
+    {
+        return $this->morphTo();
+    }
+
+    public function getTypeAttribute()
+    {        
+        return Str::afterLast($this->registrable_type, '\\');
     }
 }

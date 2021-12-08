@@ -51,7 +51,7 @@ class EventStoreRequest extends FormRequest
             'youtube' => ['string'],
             'tiktok' => ['string'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'classroom_id' => ['required', 'integer', 'exists:classrooms,id'],
+            'space_id' => ['required', 'integer', 'exists:classrooms,id'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
         ];
     }

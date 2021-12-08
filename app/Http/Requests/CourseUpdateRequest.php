@@ -68,7 +68,7 @@ class CourseUpdateRequest extends FormRequest
             'type' => ['string', 'max:40'],
             'status' => ['string', 'max:40'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'classroom_id' => ['required', 'integer', 'exists:classrooms,id'],
+            'space_id' => ['required', 'integer', 'exists:classrooms,id'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'school_id' => ['required', 'integer', 'exists:schools,id'],
         ];

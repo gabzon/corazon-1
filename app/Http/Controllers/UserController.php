@@ -46,7 +46,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.show')->with('user', $user);
     }
 
     /**
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit')->with('user', $user);
     }
 
     /**
@@ -81,5 +81,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function requiredData(User $user)
+    {
+        return view('user.required-data')->with('user', $user);
     }
 }

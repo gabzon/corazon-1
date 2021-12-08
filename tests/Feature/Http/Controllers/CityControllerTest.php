@@ -19,16 +19,16 @@ class CityControllerTest extends TestCase
     /**
      * @test
      */
-    public function index_displays_view()
-    {
-        $cities = City::factory()->count(3)->create();
+    // public function index_displays_view()
+    // {
+    //     $cities = City::factory()->count(3)->create();
 
-        $response = $this->get(route('city.index'));
+    //     $response = $this->get(route('city.index'));
 
-        $response->assertOk();
-        $response->assertViewIs('city.index');
-        $response->assertViewHas('cities');
-    }
+    //     $response->assertOk();
+    //     $response->assertViewIs('city.index');
+    //     $response->assertViewHas('cities');
+    // }
 
 
     /**

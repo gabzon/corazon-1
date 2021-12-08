@@ -1,3 +1,31 @@
+- City duplication bug
+- User registration bug
+- Event can add image
+
+# v0.1.10: Tuesday 7th, 2021
+* Locations seeder
+
+
+# v0.1.9: Sunday 28th, 2021
+* Rename Classroom Table to Space table
+* Likes added to user dashboard
+* Interests added to user dashboard
+* Registrations added to user dashboard
+
+# v0.1.9: Friday 26th, 2021
+* User can register to an event
+* User can register to a course
+* registrable relation
+* User can interest an event
+* User can interest a course
+* Interestable relation
+* User can like an event
+* User can like a course
+* Likeable relation
+
+# v0.1.8: Monday 15th, 2021
+* x-cloak on navbar
+
 # v0.1.7: Friday 12th, 2021
 * Event table: edit centered aligned
 * Event flatpickr debugged

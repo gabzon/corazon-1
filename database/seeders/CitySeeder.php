@@ -26,7 +26,7 @@ class CitySeeder extends Seeder
             'region'        => 'Zagreb',            
             'lng'           => 15.981919,
             'lat'           => 45.815010,
-            'zip'           => '10000',
+            'zip'           => '10000', 
             'country'       => 'Croatia',
             'alpha2Code'    => 'HR',
             'alpha3Code'    => 'HRV',
@@ -602,23 +602,150 @@ class CitySeeder extends Seeder
 
         
 
-        // City::create([
-        //     'name' => '',
-        //     'slug' => Str::slug('', '-'),
-        //     'description' => $faker->paragraphs(3, true),
-        //     'state' => '',
-        //     'region' => '',
-        //     'subregion' => '',
-        //     'code' => $faker->regexify('[A-Za-z0-9]{20}'),
-        //     'lng' => ,
-        //     'lat' => ,
-        //     'zip' => '',
-        //     'country' => 'Croatia',
-        //     'alpha2Code' => 'HR',
-        //     'alpha3Code' => 'HRV',
-        //     'iataCode' => '',
-        // ]);
-        // Budva
+        City::create([
+            'name' => 'Budapest',
+            'slug' => 'budapest-hungary',
+            'description' => '',
+            // 'state' => '',
+            // 'region' => '',
+            // 'subregion' => '',
+            // 'code' => '',
+            'lng' => 19.040236,
+            'lat' => 47.497913,            
+            'country' => 'Hungary',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Milano',
+            'slug' => 'milano-italy',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            'lat' => 45.464203,
+            'lng' => 9.189982,
+            'zip' => '',
+            'country' => 'Italy',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+        
+        City::create([
+            'name' => 'Augsburg',
+            'slug' => 'augsburg-germany',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            'lat' => 48.370544,
+            'lng' => 10.897790,
+            'zip' => '',
+            'country' => 'Germany',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Zenica',
+            'slug' => 'Zenica-bih',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lng' => '',
+            // 'lat' => '',
+            'zip' => '',
+            'country' => 'Bosnia and Herzegovina',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Ljubljana',
+            'slug' => 'ljubljana-slovenia',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lng' => '',
+            // 'lat' => '',
+            'zip' => '',
+            'country' => 'Slovenia',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+        
+        City::create([
+            'name' => 'Geneva',
+            'slug' => 'geneva-switzerland',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lng' => '',
+            // 'lat' => '',
+            'zip' => '',
+            'country' => 'Switzerland',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Solin',
+            'slug' => 'solin-croatia',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lat' => '',
+            // 'lng' => '',
+            'zip' => '',
+            'country' => 'Croatia',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Warsaw',
+            'slug' => 'warsaw-poland',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lat' => '',
+            // 'lng' => '',
+            'zip' => '',
+            'country' => 'Poland',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+
+        City::create([
+            'name' => 'Vojnic',
+            'slug' => 'vojnic-croatia',
+            'description' => '',
+            'state' => '',
+            'region' => '',            
+            'code' => '',
+            // 'lng' => '',
+            // 'lat' => '',
+            'zip' => '',
+            'country' => 'Croatia',
+            'alpha2Code' => '',
+            'alpha3Code' => '',
+            'iataCode' => '',
+        ]);
+        
 
 
 

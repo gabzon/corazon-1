@@ -13,6 +13,10 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Type
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Contact
                                 </th>
                                 <th scope="col"
@@ -39,6 +43,9 @@
                                     <a href="{{ route('location.show', $item) }}" class="hover:text-indigo-700">
                                         {{ $item->name }}
                                     </a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $item->type }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $item->contact }}

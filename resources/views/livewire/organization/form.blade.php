@@ -182,6 +182,11 @@
                 <livewire:shared.price-form :model="$organization" modelName="Organization" />
             </div>
             @endif
+
+            <div class="pt-8">
+                <livewire:organization.instructor-form :org="$organization" />
+            </div>
+
         </div>
 
         <div class="pt-6">

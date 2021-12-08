@@ -5,13 +5,18 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ImpersonateController;
+use App\Http\Controllers\InterestController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\TagController;
@@ -92,10 +97,10 @@ Route::get('mail', function(){
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
-Route::get('/event/{event}', [EventController::class, 'show'])->name('show.event');
-Route::get('/course/{course}', [CourseController::class, 'show'])->name('show.course');
+Route::get('/event/{event}', [EventController::class, 'view'])->name('event.view');
+Route::get('/course/{course}', [CourseController::class, 'view'])->name('course.view');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
@@ -104,10 +109,24 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
 })->name('schedule');
 
 
-
 Route::middleware(['auth'])->group(function(){
+    Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
     Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
+    Route::get('user-required-data', [UserController::class, 'requiredData'])->name('user-required-data');
     
+    Route::post('like', [LikeController::class,'like'])->name('like');
+    Route::delete('like', [LikeController::class,'unlike'])->name('unlike');
+    
+    Route::post('interest', [InterestController::class, 'interest'])->name('interest');
+    Route::delete('uninterest', [InterestController::class, 'uninterest'])->name('uninterest');
+  
+    Route::post('register', [RegistrationController::class, 'register'])->name('register');
+    Route::delete('unregister', [RegistrationController::class, 'unregister'])->name('unregister');
+
+    Route::get('likes', [ProfileController::class, 'likes'])->name('profile.likes');
+    Route::get('interests', [ProfileController::class, 'interests'])->name('profile.interests');
+    Route::get('registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
+  
     Route::resource('admin/course', CourseController::class);
     Route::resource('admin/location', LocationController::class);
     Route::resource('admin/skill', SkillController::class);

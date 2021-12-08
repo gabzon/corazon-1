@@ -5,6 +5,7 @@ namespace Tests\Feature\Http\Controllers;
 use App\Models\City;
 use App\Models\Classroom;
 use App\Models\Event;
+use App\Models\Location;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -16,20 +17,20 @@ use Tests\TestCase;
  */
 class EventControllerTest extends TestCase
 {
-    use AdditionalAssertions, RefreshDatabase, WithFaker;        
+    use AdditionalAssertions, RefreshDatabase, WithFaker;
 
     /**
      * @test
      */
     // public function index_displays_view()
     // {
-    //     $events = Event::factory()->count(3)->create();
+    // $events = Event::factory(3)->create();
 
-    //     $response = $this->get(route('event.index'));
+    // $response = $this->get(route('event.index'));
 
-    //     $response->assertOk();
-    //     $response->assertViewIs('event.index');
-    //     $response->assertViewHas('events');
+    // $response->assertOk();
+    // $response->assertViewIs('event.index');
+    // $response->assertViewHas('events');
     // }
 
 
@@ -65,14 +66,14 @@ class EventControllerTest extends TestCase
     //     $name = $this->faker->name;
     //     $slug = $this->faker->slug;
     //     $user = User::factory()->create();
-    //     $classroom = Classroom::factory()->create();
+    //     $location = Location::factory()->create();
     //     $city = City::factory()->create();
 
     //     $response = $this->post(route('event.store'), [
     //         'name' => $name,
     //         'slug' => $slug,
     //         'user_id' => $user->id,
-    //         'classroom_id' => $classroom->id,
+    //         'space_id' => $location->id,
     //         'city_id' => $city->id,
     //     ]);
 
@@ -80,9 +81,12 @@ class EventControllerTest extends TestCase
     //         ->where('name', $name)
     //         ->where('slug', $slug)
     //         ->where('user_id', $user->id)
-    //         ->where('classroom_id', $classroom->id)
+    //         ->where('location_id', $location->id)
     //         ->where('city_id', $city->id)
     //         ->get();
+
+    //     $response->dumb();
+
     //     $this->assertCount(1, $events);
     //     $event = $events->first();
 
@@ -149,7 +153,7 @@ class EventControllerTest extends TestCase
     //         'name' => $name,
     //         'slug' => $slug,
     //         'user_id' => $user->id,
-    //         'classroom_id' => $classroom->id,
+    //         'space_id' => $classroom->id,
     //         'city_id' => $city->id,
     //     ]);
 
@@ -161,7 +165,7 @@ class EventControllerTest extends TestCase
     //     $this->assertEquals($name, $event->name);
     //     $this->assertEquals($slug, $event->slug);
     //     $this->assertEquals($user->id, $event->user_id);
-    //     $this->assertEquals($classroom->id, $event->classroom_id);
+    //     $this->assertEquals($classroom->id, $event->space_id);
     //     $this->assertEquals($city->id, $event->city_id);
     // }
 

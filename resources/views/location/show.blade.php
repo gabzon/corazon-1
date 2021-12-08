@@ -32,7 +32,7 @@
 
                 <div class="my-8">
                     <header>
-                        <h2 class="flex-1 text-lg font-bold text-gray-900">Classrooms</h2>
+                        <h2 class="flex-1 text-lg font-bold text-gray-900">Spaces</h2>
                     </header>
 
                     <div class="my-3">

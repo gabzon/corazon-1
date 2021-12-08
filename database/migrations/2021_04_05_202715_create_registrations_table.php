@@ -22,7 +22,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('option')->nullable();
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('order_id')->nullable();
+            $table->foreignId('order_id')->nullable();            
             $table->timestamps();
         });
 

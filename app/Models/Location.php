@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Contracts\Likeable;
+use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Location extends Model implements HasMedia
+class Location extends Model implements HasMedia, Likeable
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, SoftDeletes, InteractsWithMedia, Likes;
 
     /**
      * The attributes that are mass assignable.
@@ -88,8 +90,8 @@ class Location extends Model implements HasMedia
         return $this->belongsTo(\App\Models\City::class);
     }
 
-    public function classrooms()
+    public function spaces()
     {
-        return $this->hasMany(\App\Models\Classroom::class);
+        return $this->hasMany(\App\Models\Space::class);
     }
 }

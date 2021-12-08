@@ -51,9 +51,9 @@
                                 <span class="ml-2 text-sm">Login with Facebook</span>
                             </a> --}}
                             {{-- <a href=""
-                            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-indigo-100 bg-indigo-600 hover:bg-indigo-700">
+                                class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-indigo-100 bg-indigo-600 hover:bg-indigo-700">
 
-                        </a> --}}
+                            </a> --}}
                         </div>
                         <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                             {{-- <a href="#main"

@@ -72,11 +72,12 @@
         <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
             <nav aria-label="Global" class="flex space-x-4">
                 {{-- <a href="{{ route('schedule') }}"
-                class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Courses</a> --}}
+                    class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Courses</a> --}}
                 {{-- <a href="#" class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">
                     Events
                 </a> --}}
-                {{-- <a href="#" class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Blog</a> --}}
+                {{-- <a href="#" class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Blog</a>
+                --}}
             </nav>
             <div class="flex items-center space-x-8">
                 {{-- <span class="inline-flex">
@@ -102,7 +103,7 @@
 
     <!-- Mobile menu, show/hide this `div` based on menu open/closed state -->
 
-    <div x-show="mobileMenu" class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
+    <div x-show="mobileMenu" x-cloak class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
         <!-- Off-canvas menu overlay, show/hide based on off-canvas menu state. -->
         <!-- Entering: "transition-opacity ease-linear duration-300" From: "opacity-0" To: "opacity-100" -->
         <!-- Leaving: "transition-opacity ease-linear duration-300" From: "opacity-100" To: "opacity-0" -->
@@ -178,29 +179,30 @@
                     </div>
                     <div class="ml-3 min-w-0 flex-1">
                         {{-- <div class="text-base font-medium text-gray-800 truncate">{{ auth()->user()->name }}</div>
-                    --}}
-                    {{-- <div class="text-sm font-medium text-gray-500 truncate">{{ auth()->user()->email }}
-                </div> --}}
-            </div>
-            <a href="#" class="ml-auto flex-shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500">
-                <span class="sr-only">View notifications</span>
-                <!-- Heroicon name: outline/bell -->
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-            </a>
-    </div>
-    <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
-        <a href="{{ route('profile.show') }}"
-            class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Your
-            Profile</a>
+                        --}}
+                        {{-- <div class="text-sm font-medium text-gray-500 truncate">{{ auth()->user()->email }}
+                        </div> --}}
+                    </div>
+                    <a href="#" class="ml-auto flex-shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">View notifications</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
+                    <a href="{{ route('profile.show') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Your
+                        Profile</a>
 
-        <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Sign
-            out</a>
-    </div>
-    </div>
-    </nav>
+                    <a href="#"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Sign
+                        out</a>
+                </div>
+            </div>
+        </nav>
     </div>
 </header>
