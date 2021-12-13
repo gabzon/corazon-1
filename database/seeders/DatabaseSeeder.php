@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             Hrvoje::class,
             BailaConmigo::class,
             CenterOfDance::class,
-            // TangoZagreb::class,
+            TangoZagreb::class,
             // Casablanka::class,
             // CourseSeeder::class,
             ]
