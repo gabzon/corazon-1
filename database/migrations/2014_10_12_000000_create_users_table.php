@@ -65,6 +65,7 @@ class CreateUsersTable extends Migration
             $table->string('twitter')->nullable()->unique(); 
 
             $table->string('role')->default('user');
+            $table->boolean('is_super')->default(false);
             $table->boolean('preferences_verified')->default(false);
             $table->boolean('in_newsletter')->default(false);
         });

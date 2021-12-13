@@ -10,6 +10,8 @@
 * Dropdown select with search: https://codepen.io/dixie0704/pen/jOVxGXL
 * https://eloquentbyexample.com
 * Polimorphyc likes: https://dev.to/bdelespierre/how-to-implement-a-simple-like-system-with-laravel-lfe
+* github credentials: https://gist.github.com/jonjack/bf295d4170edeb00e96fb158f9b1ba3c
+
 
 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
 
