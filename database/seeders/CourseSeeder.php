@@ -25,7 +25,7 @@ class CourseSeeder extends Seeder
             'end_time_tue'   => '20:30:00',                                                      
             'level'          => 'beginner',            
             'full_price'     => 220, 'reduced_price' => 200,            
-            'focus'          => 'footwork', 'type' => 'class', 'status' => 'Active',
+            'focus'          => 'footwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 1,
             'space_id'       => 3
         ]);
