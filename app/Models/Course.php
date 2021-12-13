@@ -169,8 +169,13 @@ class Course extends Model implements HasMedia, Likeable, Interestable, Registra
     }
 
     public function getTime($time)
-    {        
-        return Carbon::createFromFormat('H:i:s', $this->attributes[$time]);        
+    {
+        if ($this->attributes[$time]) {
+            return Carbon::createFromFormat('H:i:s', $this->attributes[$time]);    
+        }else{
+            return Carbon::createFromFormat('H:i:s','00:00:00');
+        }
+                
     }
 
     public function scopeFocus($query, $focus)
