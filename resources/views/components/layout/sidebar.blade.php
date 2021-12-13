@@ -18,6 +18,16 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.event-list')
                     </a>
+                    <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
+                        data-tippy-content="Bookmarks"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.bookmark-star')
+                    </a>
+                    <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
+                        data-tippy-content="Favorites"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.heart')
+                    </a>
                     {{-- <a href="#" id="attendance" data-tippy-placement="right" data-tippy-content="Attendance"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.presence')
@@ -56,13 +66,6 @@
                         @include('icons.events')
                     </a>
 
-                    @if (auth()->user()->role == 'admin')
-                    <a href="{{ route('style.index') }}" id="styles" data-tippy-placement="right"
-                        data-tippy-content="Styles"
-                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.music-genre')
-                    </a>
-                    @endif
 
                     <a href="{{ route('location.index') }}" id="locations" data-tippy-placement="right"
                         data-tippy-content="Locations"
@@ -103,6 +106,12 @@
                         data-tippy-content="Cities"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.city')
+                    </a>
+
+                    <a href="{{ route('style.index') }}" id="styles" data-tippy-placement="right"
+                        data-tippy-content="Styles"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.music-genre')
                     </a>
                     {{-- <a href="{{ route('setting.index') }}" id="settings" data-tippy-placement="right"
                         data-tippy-content="Settings"

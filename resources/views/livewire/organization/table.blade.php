@@ -1,8 +1,30 @@
 <div>
+    <div class="grid grid-cols-10 gap-6 mb-4">
+        <div class="col-span-10 sm:col-span-2">
+            <x-form.search-input wire:model="filterColumns.name" name="Search name" />
+        </div>
+        <div class="col-span-10 sm:col-span-2">
+            <x-form.search-input wire:model="filterColumns.contact" name="Search contact" />
+        </div>
+        <div class="col-span-10 sm:col-span-2">
+            <x-form.search-input wire:model="filterColumns.email" name="Search email" />
+        </div>
+        <div class="col-span-10 sm:col-span-1">
+            <x-form.select wire:model="filterColumns.status" name="Status"
+                :options="['school','business','organizer','partner','association']" />
+        </div>
+        <div class="col-span-10 sm:col-span-1">
+            <x-form.select wire:model="filterColumns.type" name="Type"
+                :options="['active','inactive','standby','closed','open']" />
+        </div>
+        <div class="col-span-8 sm:col-span-1">
+            <x-form.city-select wire:model="filterColumns.city" name="filterColumns.city" :withLabel="false" />
+        </div>
+    </div>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="overflow-hidden border border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -38,7 +60,7 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($collection as $item)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                <td class="px-6 py-4 break-normal text-sm font-medium text-gray-900">
                                     <a href="{{ route('organization.show', $item) }}" class="hover:text-indigo-600">
                                         {{ $item->name }}
                                     </a>

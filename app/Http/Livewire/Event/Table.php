@@ -29,7 +29,6 @@ class Table extends Component
     public function mount($city = null)
     {
         $this->city = (int)$city;
-
     }
     
     public function render()

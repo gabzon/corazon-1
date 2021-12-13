@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class CitySelect extends Component
 {
     public $name;
+    public bool $withLabel;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name, $withLabel = true)
     {
         $this->name = $name;
+        $this->withLabel = $withLabel;
     }
 
     /**

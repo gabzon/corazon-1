@@ -113,7 +113,8 @@ class FBLocationService
 
 	public function getCityID(): int
 	{
-		$city = City::where('name', 'LIKE', "%{ $this->fbCity }%")->first();		
+		$city = City::where('name', $this->fbCity)->first();		
+		
 		if ($city != null) {
 			return $city->id;
 		} else {	

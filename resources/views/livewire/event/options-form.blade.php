@@ -15,7 +15,8 @@
 
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <livewire:component.thumbnail image="{{ $event->thumbnail }}" />
+                                <x-form.media-library name="thumbnail" :model="$event" collection="events"
+                                    label="Thumbnail" />
                             </div>
                         </div>
 

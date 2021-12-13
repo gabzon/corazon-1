@@ -59,7 +59,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birthday'          => 'date'
+        'birthday'          => 'date:Y-m-d'
     ];
 
     /**

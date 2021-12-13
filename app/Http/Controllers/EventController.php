@@ -26,7 +26,7 @@ class EventController extends Controller
      */
     public function create(Request $request)    
     {
-        $this->authorize('create');
+        // $this->authorize('create');
 
         return view('event.create');
     }
@@ -37,7 +37,7 @@ class EventController extends Controller
      */
     public function store(EventStoreRequest $request)    
     {
-        $this->authorize('create');
+        // $this->authorize('create');
 
         $event = Event::create($request->validated());
 
@@ -68,7 +68,7 @@ class EventController extends Controller
      */
     public function edit(Request $request, Event $event)
     {
-        $this->authorize('update', $event);
+        // $this->authorize('update', $event);
         
         return view('event.edit', compact('event'));
     }

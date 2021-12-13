@@ -3,10 +3,20 @@
     <div class="w-full aspect-h-1">
         <!-- Tab panel, show/hide based on tab state. -->
         <div x-show="tab === 'cover'" id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-            <img src="{{ $event->thumbnail ?? asset('images/defaults/event.jpg') }}"
+
+            @if ($event->getMedia('events')->last() != null)
+            <div class="w-full object-center object-cover rounded-lg overflow-hidden">
+                {{ $event->getFirstMedia('events') }}
+            </div>
+            @else
+            <img src="{{ asset('images/defaults/event.jpg') }}"
                 alt="Angled front view with bag zipped and handles upright."
                 class="w-full object-center object-cover rounded-lg">
+            @endif
+
         </div>
+
+
 
         @if ($event->video)
         <div x-show="tab === 'video'" id="tabs-2-panel-2" aria-labelledby="tabs-2-tab-2" role="tabpanel" tabindex="1">

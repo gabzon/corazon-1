@@ -22,6 +22,8 @@ class CreateLocationsTable extends Migration
             $table->string('shortname', 30)->nullable();
             $table->text('comments')->nullable();
             $table->string('contact')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('facade')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();

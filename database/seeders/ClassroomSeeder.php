@@ -14,6 +14,7 @@ class ClassroomSeeder extends Seeder
      */
     public function run()
     {        
+        // 1
         Space::create([
             'name' => 'Havana',
             'slug' => 'havana',
@@ -24,6 +25,7 @@ class ClassroomSeeder extends Seeder
             'user_id' => 1,
         ]);      
 
+        // 2
         Space::create([
             'name' => 'Santiago de Cuba',
             'slug' => 'santiago-de-cuba',
@@ -121,6 +123,67 @@ class ClassroomSeeder extends Seeder
             'capacity' => 40,
             'limit_couples' => 40,                        
             'location_id' => 5,
+            'user_id' => 1,
+        ]);
+
+        Space::create([
+            'name' => 'Mint Fitness Factory Dance Studio',
+            'slug' => 'mint-fitness-factory-dance-studio',
+            'location_id' => 21,
+            'user_id' => 1,
+        ]);
+
+        Space::create([
+            'name' => '1st floor hall',
+            'slug' => '1st-floor-hall', 
+            'location_id' => 24,
+            'user_id' => 1,
+        ]);
+
+        Space::create([
+            'name'          => 'Vitalnost',
+            'slug'          => 'vitalnost', 
+            'm2'            => 60,
+            'capacity'      => 20,
+            'limit_couples' => 10,
+            'mirror_type'   => 'full',
+            'floor_type'    => 'parket',
+            'location_id'   => 28,
+            'user_id'       => 1,
+        ]);
+
+        Space::create([
+            'name' => 'Žižula',
+            'slug' => 'zizula', 
+            'location_id' => 29,
+            'user_id' => 1,
+        ]);
+
+        Space::create([
+            'name' => 'Pomak',
+            'slug' => 'pomak', 
+            'location_id' => 30,
+            'user_id' => 1,
+        ]);
+        
+        Space::create([
+            'name' => 'Dance Center',
+            'slug' => 'dance-center-split', 
+            'location_id' => 31,
+            'user_id' => 1,
+        ]);
+        
+        Space::create([
+            'name' => 'Tango Zagreb',
+            'slug' => 'tango-zagreb', 
+            'location_id' => 37,
+            'user_id' => 1,
+        ]);
+
+        Space::create([
+            'name' => 'CasaBlanka',
+            'slug' => 'casablanka', 
+            'location_id' => 40,
             'user_id' => 1,
         ]);
     }

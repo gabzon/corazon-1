@@ -20,6 +20,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('shortname', 30)->nullable();
             $table->text('video')->nullable();
             $table->string('logo')->nullable();
+            $table->string('icon')->nullable();
             $table->text('about')->nullable();
             $table->string('contact', 100)->nullable();
             $table->string('email', 100)->nullable();

@@ -8,7 +8,7 @@ trait WithThumbnail
 {
     public function handleThumbnailUpload($model, array|string $thumb)
     {   
-        $tableName = $model->getTable();
+        $tableName = $model->getTable();        
 
         if (gettype($thumb) == 'string') {
             

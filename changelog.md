@@ -1,10 +1,15 @@
-- City duplication bug
+# v0.1.12: Thursday 9th, 2021
 - User registration bug
-- Event can add image
+- Courses seeders
+- Add Gloria classes to seeders
+
+# v0.1.11: Wednesday 8th, 2021
+* Locations index: Filters added to locations table
+* City duplication bug
+* Event can add image
 
 # v0.1.10: Tuesday 7th, 2021
 * Locations seeder
-
 
 # v0.1.9: Sunday 28th, 2021
 * Rename Classroom Table to Space table

@@ -8,43 +8,49 @@ use Livewire\WithPagination;
 
 class Table extends Component
 {
-    use WithPagination;
+    use WithPagination;    
 
-    public string $search = '';
-    public string $level = '';
-    public string $day = '';
-    public string $status = '';
     public int|string $style = '';
-    public int|string $organization = '';
-    public int|string $city = '';
+    public string|null $day = '';
 
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function updatedStyle($v)
+    public array $filterColumns = [
+        'name'          => '',                
+        'level'         => '',
+        'organization'  => 0,
+        'status'        => '',
+        'city'          => 0,
+    ];
+    
+    public function updating($name, $value)
     {                
-        $this->style = $v;
-    }
-
-    public function updatedStatus($v)
-    {
-        $this->status = $v;
+        $this->resetPage();        
     }
 
     public function render()
     {
+        $courses = Course::with(['styles'])
+                            ->style($this->style)
+                            ->DayOfWeek($this->day)
+                            ->latest();
+
+        foreach ($this->filterColumns as $column => $value) {
+            if (!empty($value)) {
+                if ($column == 'name') {                    
+                    $courses->where('name', 'LIKE', '%' . $value . '%');     
+                }else if ($column == 'level') {
+                    $courses->where('level', $value);
+                }else if ($column == 'organization') {
+                    $courses->where('organization_id', $value);
+                } else if ($column == 'city'){
+                    $courses->where('city_id',$value);
+                } else {
+                    $courses->where('status', $value);
+                }                              
+            }
+        }
+
         return view('livewire.course.table', [
-            'courses' => Course::where('name', 'like', '%'. $this->search .'%')
-                                ->with(['styles'])
-                                ->style($this->style)
-                                ->DayOfWeek($this->day)
-                                ->level($this->level)
-                                ->status($this->status)
-                                ->inCity($this->city)
-                                ->latest()
-                                ->paginate(10)
+            'courses' => $courses->paginate(10),
         ]);
     }
 }
