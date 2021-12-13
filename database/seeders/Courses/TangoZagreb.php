@@ -35,7 +35,7 @@ class TangoZagreb extends Seeder
             'end_date'       => Carbon::now()->add(10, 'month'),
             'thursday'       => true,
             'start_time_thu' => '20:30:00',
-            'end_time_thu'   => '',                        
+            'end_time_thu'   => '22:00:00',                        
             'user_id'        => 1, 
             'city_id'        => $city->id, 
             'organization_id'=> $school->id,
