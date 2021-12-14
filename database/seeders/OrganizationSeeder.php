@@ -94,7 +94,7 @@ class OrganizationSeeder extends Seeder
         $sf->addMediaFromUrl(asset('images/schools/salsafusion.jpg'))->toMediaCollection('organization-logos','public');
         $sf->addMediaFromUrl(asset('images/schools/salsafusion-icon.jpg'))->toMediaCollection('organization-icons','public');
 
-        $pc = Organization::create([
+        Organization::create([
             'name'          => 'Plesni Center Fever',
             'shortname'     => 'Fever',
             'slug'          => 'plesni-center-fever',                                    
@@ -117,9 +117,6 @@ class OrganizationSeeder extends Seeder
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/bt5zaXY2PB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
         // salsa, bachata, kizomba, merengue, cha cha cha, standardni i latinoamerički plesovi
-        
-        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-logos','public');
-        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-icons','public');
 
         $gloria =Organization::create([
             'name'          => 'La obsesion by Gloria',
@@ -168,7 +165,7 @@ class OrganizationSeeder extends Seeder
         ]);
         // Bachata
 
-        Organization::create([
+        $pc = Organization::create([
             'name'          => 'Plesni Centar Salsa',
             'slug'          => 'pc-salsa-zagreb',
             'shortname'     => 'PC Salsa',
@@ -189,6 +186,8 @@ class OrganizationSeeder extends Seeder
             'about'         => 'Salsa tečajevi, plesne salsa radionice, privatni sati salse i bachate, plesni tulumi i isplesavanja, plesna putovanja, show nastupi, humanitarna gostovanja.',                                 
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/BdPqNJ8pUCM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
+        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-logos','public');
+        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-icons','public');
 
         Organization::create([
             'name'          => 'Salsa de Fuego',
@@ -212,7 +211,7 @@ class OrganizationSeeder extends Seeder
         ]);
         // Salsa y Bachata 
 
-        Organization::create([
+        $latina = Organization::create([
             'name'          => 'LatinaDance studio',
             'shortname'     => 'Latina',
             'slug'          => 'latinadance-studio',                                    
@@ -233,6 +232,8 @@ class OrganizationSeeder extends Seeder
             'about'         => 'Professional Dance Studio where we enjoy teaching students while sharing passion of dance, knowledge and experience with everyone.',                                 
             'video'         => '',
         ]);
+        $latina->addMediaFromUrl(asset('images/schools/latina.jpg'))->toMediaCollection('organization-logos','public');
+        $latina->addMediaFromUrl(asset('images/schools/latina.jpg'))->toMediaCollection('organization-icons','public');
         // Bachata, Salsa and Kizomba
 
         Organization::create([
@@ -257,7 +258,7 @@ class OrganizationSeeder extends Seeder
         ]);
         // Društveni plesovi, Latin plesovi, Individualna poduka, poduka za mladence, dječja plesna igraonica, plesovi za djecu i mladež
 
-        Organization::create([
+        $iys = Organization::create([
             'name'          => 'Ivan & Sara - FeralTango',
             'slug'          => 'ivan-sara',
             'shortname'     => 'FeralTango',
@@ -278,8 +279,10 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);
+        $iys->addMediaFromUrl(asset('images/schools/feral-tango.jpeg'))->toMediaCollection('organization-icons','public');
+        $iys->addMediaFromUrl(asset('images/schools/feral-tango.jpeg'))->toMediaCollection('organization-logos','public');
 
-        Organization::create([
+        $tz = Organization::create([
             'name'          => 'Tango Zagreb',
             'slug'          => 'tango-zagreb',
             'shortname'     => 'Tango Zagreb',
@@ -304,8 +307,10 @@ class OrganizationSeeder extends Seeder
             Posjeti web stranicu www.tangoargentino.hr',                                 
             'video'         => '',
         ]);
+        $tz->addMediaFromUrl(asset('images/schools/tango-zagreb.png'))->toMediaCollection('organization-icons','public');
+        $tz->addMediaFromUrl(asset('images/schools/tango-zagreb.png'))->toMediaCollection('organization-logos','public');
 
-        Organization::create([
+        $soss = Organization::create([
             'name'          => 'School Of Street Styles',
             'shortname'     => 'Soss',
             'slug'          => 'soss', 
@@ -326,6 +331,9 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);
+        
+        $soss->addMediaFromUrl(asset('images/schools/soss-icon.png'))->toMediaCollection('organization-icons','public');
+        $soss->addMediaFromUrl(asset('images/schools/soss.jpg'))->toMediaCollection('organization-logos','public');
 
         Organization::create([
             'name'          => 'Tormenta latina',
@@ -348,7 +356,7 @@ class OrganizationSeeder extends Seeder
             'video'         => '',
         ]);
 
-        Organization::create([
+        $nera = Organization::create([
             'name'          => 'La negrita',
             'slug'          => 'la-negrita',                                    
             'contact'       => 'Nera y tia',                                    
@@ -368,6 +376,9 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);
+
+        $nera->addMediaFromUrl(asset('images/schools/negrita-logo.jpg'))->toMediaCollection('organization-icons','public');
+        $nera->addMediaFromUrl(asset('images/schools/negrita-logo.jpg'))->toMediaCollection('organization-logos','public');
 
         Organization::create([
             'name'          => 'Buenavista',
@@ -523,7 +534,7 @@ class OrganizationSeeder extends Seeder
         $bc->addMediaFromUrl(asset('images/schools/baila-conmigo-icon.jpg'))->toMediaCollection('organization-icons','public');
         $bc->addMediaFromUrl(asset('images/schools/bailaconmigo-logo.jpg'))->toMediaCollection('organization-logos','public');
 
-        Organization::create([
+        $baba = Organization::create([
             'name'          => 'Babalú, studio za ples i pokret',
             'slug'          => 'babalu-studio-za-ples-i-pokret-1636017491',
             'shortname'     => 'Babalú',
@@ -547,6 +558,8 @@ class OrganizationSeeder extends Seeder
             'zip'           => '',
             'video'         => '',
         ]);
+        $baba->addMediaFromUrl(asset('images/schools/babalu.png'))->toMediaCollection('organization-icons','public');
+        $baba->addMediaFromUrl(asset('images/schools/babalu.png'))->toMediaCollection('organization-logos','public');
 
         Organization::create([
             'name'          => 'Hrvoje Cigić',
@@ -571,7 +584,7 @@ class OrganizationSeeder extends Seeder
             'video'         => '',
         ]);
 
-        Organization::create([
+        $tonci = Organization::create([
             'name'          => 'Plesni Studio Tonći i Ivana',
             'slug'          => 'plesni-studio-tonci-i-ivana-1635680847',
             'shortname'     => 'Tonći i Ivana',
@@ -593,6 +606,8 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);
+        $tonci->addMediaFromUrl(asset('images/schools/tonciiivana.jpg'))->toMediaCollection('organization-logos','public');
+        $tonci->addMediaFromUrl(asset('images/schools/tonciiivana.jpg'))->toMediaCollection('organization-icons','public');
 
         Organization::create([
             'name'          => 'Kizzadar',
