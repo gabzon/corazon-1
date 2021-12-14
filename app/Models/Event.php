@@ -13,17 +13,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
 
-class Event extends Model implements HasMedia, Likeable, Interestable, Registrable
+class Event extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes;
     use InteractsWithMedia;
-    use Likes;
-    use Interests;
+    use Likes;    
     use Registrations;
 
     protected $fillable = [
@@ -33,8 +33,6 @@ class Event extends Model implements HasMedia, Likeable, Interestable, Registrab
         'description',
         'start_date',
         'end_date',
-        'start_time',
-        'end_time',
         'publish_at',
         'is_free',                
         'video',
@@ -181,9 +179,24 @@ class Event extends Model implements HasMedia, Likeable, Interestable, Registrab
         return 'null';
     }
 
+    public function bookmarks(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'bookmark_event','event_id','user_id')->withTimeStamps();        
+    }
+
+    // public function bookmarked(User $user):bool
+    // {        
+    //     if ($user->exists) {
+    //         $id = $user->id;
+    //     } else {
+    //         $id = Auth::id();
+    //     }
+    //     return $this::where('user_id', $id))->where('course_id', $this->id)->first();
+    // }
+
     public function prices()
     {
-        return $this->morphMany(Price::class, 'priceable');
+        return $this->hasMany(EventPrice::class, 'event_price', );
     }
 
     public function getYoutubeIdFromEmbedAttribute()

@@ -15,6 +15,7 @@ use Database\Seeders\Courses\Split\Negrita;
 use Database\Seeders\Courses\TangoZagreb;
 use Database\Seeders\Courses\Zadar\Kizzadar;
 use Database\Seeders\Courses\Zadar\Tonciivana;
+use Database\Seeders\Courses\Zagreb\Obsession;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -48,6 +49,7 @@ class DatabaseSeeder extends Seeder
             CenterOfDance::class,
             TangoZagreb::class,
             Casablanka::class,
+            Obsession::class,
             // CourseSeeder::class,
             ]
         );        

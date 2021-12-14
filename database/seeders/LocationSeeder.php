@@ -550,6 +550,7 @@ class LocationSeeder extends Seeder
             'user_id'               => 1,
             'city_id'               => 1,
         ]); 
+        
         Location::create([
             'name'                  => 'Sangate Hotel Airport',
             'slug'                  => 'sangate-hotel-airport-1636031719',

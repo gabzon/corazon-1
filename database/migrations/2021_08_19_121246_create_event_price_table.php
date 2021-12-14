@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAmountsToPrices extends Migration
+class CreateEventPriceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class AddAmountsToPrices extends Migration
      */
     public function up()
     {
-        Schema::table('prices', function (Blueprint $table) {
-            $table->dropColumn('expiry_date');
-            $table->dropColumn('can_expire');
+        Schema::create('event_price', function (Blueprint $table) {
+            $table->id();
+            $table->decimal('amount');
+            $table->string('label');
+            $table->string('currency');
+            $table->text('description')->nullable();
 
             $table->decimal('amount2')->nullable();
             $table->string('label2')->nullable();
             $table->dateTime('deadline2')->nullable();
-            
+
             $table->decimal('amount3')->nullable();
             $table->string('label3')->nullable();
             $table->dateTime('deadline3')->nullable();
@@ -32,6 +35,8 @@ class AddAmountsToPrices extends Migration
             $table->decimal('amount5')->nullable();
             $table->string('label5')->nullable();
             $table->dateTime('deadline5')->nullable();
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -42,25 +47,6 @@ class AddAmountsToPrices extends Migration
      */
     public function down()
     {
-        Schema::table('prices', function (Blueprint $table) {
-            $table->boolean('can_expire')->nullable();
-            $table->date('expiry_date')->nullable();
-
-            $table->dropColumn('amount2');
-            $table->dropColumn('label2');
-            $table->dropColumn('deadline2');
-            
-            $table->dropColumn('amount3');
-            $table->dropColumn('label3');
-            $table->dropColumn('deadline3');
-
-            $table->dropColumn('amount4');
-            $table->dropColumn('label4');
-            $table->dropColumn('deadline4');
-
-            $table->dropColumn('amount5');
-            $table->dropColumn('label5');
-            $table->dropColumn('deadline5');
-        });
+        Schema::dropIfExists('prices');
     }
 }

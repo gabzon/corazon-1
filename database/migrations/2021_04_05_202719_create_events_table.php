@@ -21,10 +21,8 @@ class CreateEventsTable extends Migration
             $table->string('slug', 120);
             $table->string('tagline')->nullable();
             $table->longText('description')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
+            $table->datetime('start_date')->nullable();
+            $table->datetime('end_date')->nullable();                        
             $table->boolean('is_recurrent')->default(false)->nullable();
             $table->string('recurrent_days')->nullable();
             $table->boolean('is_online')->default(false)->nullable();

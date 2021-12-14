@@ -81,15 +81,15 @@
                                 <div
                                     class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                                     <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <a href="{{ route('profile.interests') }}"
+                                        <a href="{{ route('profile.bookmarks') }}"
                                             class="inline-flex items-center text-gray-600 hover:text-indigo-700">
                                             <span class="mr-2">
                                                 @include('icons.star')
                                             </span>
                                             {{ trans_choice('{0} no interest|{1} :count interest|[2,*] :count
-                                            interests',
-                                            count(auth()->user()->interests), ['count' =>
-                                            count(auth()->user()->interests)]) }}
+                                            bookmarks',
+                                            count(auth()->user()->bookmarkedEvents), ['count' =>
+                                            count(auth()->user()->bookmarkedEvents)]) }}
                                         </a>
                                     </div>
 
@@ -100,8 +100,8 @@
                                                 @include('icons.heart-fill')
                                             </span>
                                             {{ trans_choice('{0} no like|{1} :count like|[2,*] :count likes',
-                                            count(auth()->user()->likes), ['count' =>
-                                            count(auth()->user()->likes)]) }}
+                                            count(auth()->user()->likesCourses), ['count' =>
+                                            count(auth()->user()->likesCourses)]) }}
                                         </a>
                                     </div>
 
@@ -113,17 +113,19 @@
                                             </span>
                                             {{ trans_choice('{0} no registration|{1} :count registration|[2,*] :count
                                             registrations',
-                                            count(auth()->user()->registrations), ['count' =>
-                                            count(auth()->user()->registrations)]) }}
+                                            count(auth()->user()->coursesRegistrations), ['count' =>
+                                            count(auth()->user()->coursesRegistrations)]) }}
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        <x-profile.week-registrations />
+                        {{--
+                        <x-profile.week-registrations /> --}}
 
-                        <x-profile.month-registrations />
+                        {{--
+                        <x-profile.month-registrations /> --}}
 
                     </div>
 

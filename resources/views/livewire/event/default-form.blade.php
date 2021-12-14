@@ -59,6 +59,12 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-form.text-input wire:model="event.name" name="event.name" label="Name" />
                             </div>
+                            @if (auth()->user()->facebook_token)
+                            <div class="col-span-6 sm:col-span-2">
+                                <x-form.text-input wire:model="event.facebook_id" name="event.facebook_id"
+                                    label="Facebook ID" />
+                            </div>
+                            @endif
                             <div class="col-span-6 sm:col-span-4">
                                 <x-form.slug-input wire:model="event.slug" />
                             </div>
@@ -102,10 +108,18 @@
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <div class="inline-flex items-center">
                             <x-partials.saved-confirmation />
-                            <button type="submit"
-                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
-                            </button>
+                            <div>
+                                @if (auth()->user()->facebook_token)
+                                <button type="button" wire:click="reimport"
+                                    class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Import from FB
+                                </button>
+                                @endif
+                                <button type="submit"
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Save
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

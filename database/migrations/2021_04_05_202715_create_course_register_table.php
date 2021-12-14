@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegistrationsTable extends Migration
+class CreateCourseRegisterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('registrations', function (Blueprint $table) {
+        Schema::create('course_register', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ["waiting","pre-registered","registered","canceled","standby","open","partial","rejected"])->default('pre-registered');
             $table->enum('role', ["instructor","assistant","student","guest"]);

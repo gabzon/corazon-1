@@ -186,5 +186,12 @@ class ClassroomSeeder extends Seeder
             'location_id' => 40,
             'user_id' => 1,
         ]);
+
+        Space::create([
+            'name' => 'XXL 2',
+            'slug' => 'xxl-2-zagreb',
+            'location_id' => 26,
+            'user_id' => 1,
+        ]);
     }
 }

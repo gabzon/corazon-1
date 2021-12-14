@@ -9,7 +9,7 @@ use App\Models\Style;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class  extends Seeder
+class TormentaLatina extends Seeder
 {
     /**
      * Run the database seeds.

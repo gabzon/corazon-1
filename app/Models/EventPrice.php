@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Price extends Model
+class EventPrice extends Model
 {
     use HasFactory;
 
@@ -34,8 +34,8 @@ class Price extends Model
         'priceable',
     ];    
 
-    public function priceable()
+    public function event()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Event::class,'event_price','');
     }
 }

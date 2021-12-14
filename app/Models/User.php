@@ -121,9 +121,10 @@ class User extends Authenticatable implements HasMedia
         return $this->avatar ?? 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background='. $background .'&color=ffffff';
     }
 
-    public function likes()
+    public function likesCourses()
     {
-        return $this->hasMany(Like::class);
+        
+        return $this->belongsToMany(Course::class,'course_like','user_id','course_id')->withTimeStamps();
     }
 
     public function like(Likeable $likeable): self
@@ -157,48 +158,47 @@ class User extends Authenticatable implements HasMedia
         return $likeable->likes()->whereHas('user', fn(Builder $q) => $q->whereId($this->id))->exists();
     }
 
-    public function interests()
+    public function bookmarkedEvents()
     {
-        return $this->hasMany(Interest::class);
+        return $this->belongsToMany(Event::class,'bookmark_event','user_id','event_id')->withTimeStamps();
     }
 
-    public function interest(Interestable $interestable): self
+    public function bookmarkEvent(Event $event):self
     {
-        if ($this->hasInterest($interestable)) {
+        if ($this->hasEventBookmarked($event)) {
             return $this;
         }
-
-        (new Interest())->user()->associate($this)->interestable()->associate($interestable)->save();
-
-        return $this;
-    }
-
-    public function uninterest(Interestable $interestable):self
-    {
-        if (! $this->hasInterest($interestable)) {
-            return $this;    
-        }
-
-        $interestable->interests()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->delete();
+        (new BookmarkEvent())->user()->associate($this)->event()->associate($event)->save();        
 
         return $this;
     }
 
-    public function hasInterest(Interestable $interestable):bool
+    public function hasEventBookmarked(Event $event):bool
     {
-        if (! $interestable->exists) {
+        if (! $event->exists) {
             return false;
         }
 
-        return $interestable->interests()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
+        return $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
     }
 
-    public function registrations()
+    public function unbookmarkEvent(Event $event):self
     {
-        return $this->hasMany(Registration::class);
+        if (! $this->hasEventBookmarked($event)) {
+            return $this;    
+        }
+
+        $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->delete();
+
+        return $this;
     }
 
-    public function register(Registrable $registrable): self
+    public function coursesRegistrations()
+    {
+        return $this->belongsToMany(Course::class,'course_register','user_id','course_id')->withTimestamps();
+    }
+
+    public function registerForCourse(Course $course): self
     {
         if ($this->isRegistered($registrable)) {
             return $this;
@@ -222,12 +222,12 @@ class User extends Authenticatable implements HasMedia
         return $this;
     }
     
-    public function isRegistered(Registrable $registrable):bool
+    public function isRegisteredForCourse(Course $course):bool
     {
-        if (! $registrable->exists) {
+        if (! $course->exists) {
             return false;
         }
 
-        return $registrable->registrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
+        return $course->registrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
     }
 }

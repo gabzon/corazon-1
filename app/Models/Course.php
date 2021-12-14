@@ -2,30 +2,19 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Lessonable;
-use App\Contracts\Likeable;
-use App\Contracts\Registrable;
-use App\Models\Concerns\Interests;
-use App\Models\Concerns\Lessons;
-use App\Models\Concerns\Likes;
-use App\Models\Concerns\Registrations;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model implements HasMedia, Likeable, Interestable, Registrable, Lessonable
+class Course extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
-    use Likes;
-    use Interests;
-    use Registrations;
-    use Lessons;
 
     /**
      * The attributes that are mass assignable.
@@ -307,9 +296,9 @@ class Course extends Model implements HasMedia, Likeable, Interestable, Registra
         return $this->update([ 'status' => 'finished' ]);
     }
 
-    // public function lessons()
-    // {
-    //     return $this->morphToMany(Lesson::class, 'lessonable');
-    // }
+    public function registrations():BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'course_register','course_id','user_id')->withTimeStamps();                
+    }
 
 }

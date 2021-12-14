@@ -73,7 +73,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.price-form :event="$event" />
+            {{--
+            <livewire:event.price-form :event="$event" /> --}}
         </div>
     </div>
 

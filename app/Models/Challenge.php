@@ -9,11 +9,9 @@ use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Challenge extends Model implements Likeable, Interestable
+class Challenge extends Model
 {
-    use HasFactory;
-    use Likes;
-    use Interests;
+    use HasFactory;    
 
     /**
      * The attributes that are mass assignable.

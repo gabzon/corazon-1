@@ -48,10 +48,10 @@
                 <dd class="text-gray-900">{{ $class->focus }}</dd>
             </div>
 
-            <div class="flex justify-between text-sm font-medium">
+            {{-- <div class="flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Price</dt>
                 <dd class="text-gray-900">Kn {{ abs($class->full_price) }}</dd>
-            </div>
+            </div> --}}
         </dl>
 
     </a>

@@ -32,7 +32,9 @@
                     @endif
                 </p>
                 <div class="text-right">
+                    {{--
                     <x-shared.price-display class="text-sm text-gray-600 truncate mt-1 capitalize" :model="$item" />
+                    --}}
                 </div>
             </div>
         </div>

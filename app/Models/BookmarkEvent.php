@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Interest extends Model
+class BookmarkEvent extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,8 @@ class Interest extends Model
         return $this->belongsTo(User::class)->withDefault();
     }
 
-    public function interestable()
+    public function event()
     {
-        return $this->morphTo();
-    }
-
-    public function getTypeAttribute()
-    {        
-        return Str::afterLast($this->likeable_type, '\\');
+        return $this->belongsTo(Event::class)->withDefault();
     }
 }

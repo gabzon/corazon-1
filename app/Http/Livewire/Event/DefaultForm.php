@@ -2,34 +2,51 @@
 
 namespace App\Http\Livewire\Event;
 
+use App\Http\Livewire\Traits\WithThumbnail;
 use App\Models\Event;
+use App\Services\FBImportService;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
 class DefaultForm extends Component
 {    
+    use WithThumbnail;
     public Event $event;
     public $styles;
 
-    protected $listeners = ['selectedStyles' => 'updateStyles'];
+    protected $listeners = ['selectedStyles' => 'updateStyles', 'thumbnail' => 'updateThumbnail'];
+
+    public $thumbnail;
 
     protected $rules = [
         'event.name'            => 'required',
         'event.slug'            => 'required',
-        'event.start_date'      => 'required',
-        'event.start_time'      => 'nullable',
-        'event.end_date'        => 'required',
-        'event.end_time'        => 'nullable',
+        'event.start_date'      => 'required',        
+        'event.end_date'        => 'required',        
         'event.type'            => 'required',
         'event.status'          => 'required',
         'event.user_id'         => 'nullable',
         'event.location_id'     => 'nullable',
         'event.city_id'         => 'required',
+        'event.facebook_id'     => 'nullable',
+        'event.description'     => 'nullable',
     ];
 
     public function updateStyles($styles)
     {
         $this->styles = $styles;
+    }
+
+    public function reimport()
+    {
+        
+        $fbImport = new FBImportService($this->event->facebook_id);                     
+                        
+        $fbImport->matchImport($this->event);            
+        
+        if ($fbImport->hasCover) {                        
+            $this->thumbnail = $fbImport->graphNode->getField('cover')['source'];             
+        }
     }
 
     public function save()
@@ -41,8 +58,14 @@ class DefaultForm extends Component
         if ($this->styles) {            
             $this->event->styles()->sync($this->styles);
         }
+        
+        if ($this->thumbnail) {
+            $this->handleThumbnailUpload($this->event, $this->thumbnail);
+        }
 
         $this->event->save();
+
+
 
         session()->flash('success', 'Event saved successfully.');        
     }

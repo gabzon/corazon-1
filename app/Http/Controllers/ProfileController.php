@@ -88,9 +88,9 @@ class ProfileController extends Controller
         return view('profile.likes');
     }
 
-    public function interests()
+    public function bookmarks()
     {
-        return view('profile.interests');
+        return view('profile.bookmarks');
     }
 
     public function registrations()

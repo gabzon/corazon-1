@@ -124,7 +124,7 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('unregister', [RegistrationController::class, 'unregister'])->name('unregister');
 
     Route::get('likes', [ProfileController::class, 'likes'])->name('profile.likes');
-    Route::get('interests', [ProfileController::class, 'interests'])->name('profile.interests');
+    Route::get('bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
     Route::get('registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
   
     Route::resource('admin/course', CourseController::class);

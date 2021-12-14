@@ -2,22 +2,16 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Likeable;
-use App\Models\Concerns\Interests;
-use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Style extends Model implements HasMedia, Likeable, Interestable
+class Style extends Model implements HasMedia
 {       
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
-    use Likes;
-    use Interests;
 
     /**
      * The attributes that are mass assignable.
@@ -73,10 +67,5 @@ class Style extends Model implements HasMedia, Likeable, Interestable
     public function parent()
     {
         return $this->belongsTo(Style::class, 'parent_id');        
-    }
-
-    public function interested()
-    {
-        return $this->morphMany(Interest::class, 'interestable');
     }
 }

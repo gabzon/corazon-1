@@ -16,7 +16,7 @@ class OrganizationSeeder extends Seeder
      */
     public function run()
     {
-        Organization::create([
+        $su = Organization::create([
             'name'          => 'Suavecita',
             'slug'          => 'suavecita',
             'contact'       => 'Tajana Varunek',                        
@@ -37,10 +37,11 @@ class OrganizationSeeder extends Seeder
             'about'         => 'Plesni studio Suavecita je plesni studio u Zagrebu kojeg vodi Tajana Varunek, koja je već odgojila mnogo generacija plesača i posljednjih 17. godina stvarala zagrebačku i hrvatsku plesnu scenu.',                                 
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/qiDKnnCdcVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
-
         // styles= Salse On2, Mambo, Lady styling
+        $su->addMediaFromUrl(asset('images/schools/suavecita-logo.png'))->toMediaCollection('organization-logos','public');
+        $su->addMediaFromUrl(asset('images/schools/suavecita-icon.jpg'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $ban = Organization::create([
             'name'          => 'Udruga Plesača Bandoleros',
             'slug'          => 'bandoleros',
             'shortname'     => 'Bandoleros',
@@ -63,8 +64,10 @@ class OrganizationSeeder extends Seeder
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/FPzu7Yvajtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
         // styles=Salsa, Reggaeton,Hip Hop, Dancehall Kizomba,Bachata,  
+        $ban->addMediaFromUrl(asset('images/schools/bandoleros.jpeg'))->toMediaCollection('organization-logos','public');
+        $ban->addMediaFromUrl(asset('images/schools/bandoleros.jpeg'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $sf = Organization::create([
             'name'          => 'Salsa Fusion by Nataša',
             'slug'          => 'salsa-fusion-by-natasa',
             'shortname'     => 'Salsa Fusion',
@@ -88,7 +91,10 @@ class OrganizationSeeder extends Seeder
         ]);
         // SALSA on2, salsa IMPROVER, SALSA INTERMEDIATE i LADIES' CHOREO PROJECT, salsa fusion lab
 
-        Organization::create([
+        $sf->addMediaFromUrl(asset('images/schools/salsafusion.jpg'))->toMediaCollection('organization-logos','public');
+        $sf->addMediaFromUrl(asset('images/schools/salsafusion-icon.jpg'))->toMediaCollection('organization-icons','public');
+
+        $pc = Organization::create([
             'name'          => 'Plesni Center Fever',
             'shortname'     => 'Fever',
             'slug'          => 'plesni-center-fever',                                    
@@ -112,7 +118,10 @@ class OrganizationSeeder extends Seeder
         ]);
         // salsa, bachata, kizomba, merengue, cha cha cha, standardni i latinoamerički plesovi
         
-        Organization::create([
+        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-logos','public');
+        $pc->addMediaFromUrl(asset('images/schools/pcsalsa.jpeg'))->toMediaCollection('organization-icons','public');
+
+        $gloria =Organization::create([
             'name'          => 'La obsesion by Gloria',
             'shortname'     => 'La obsesion',
             'slug'          => 'gloria',                                    
@@ -134,6 +143,8 @@ class OrganizationSeeder extends Seeder
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/-IwgxjBO6UI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
         // Bachata, Društveni stilovi, Lady styling, poduka za mladence
+        $gloria->addMediaFromUrl(asset('images/schools/obsesion.jpg'))->toMediaCollection('organization-logos','public');
+        $gloria->addMediaFromUrl(asset('images/schools/obsesion.jpg'))->toMediaCollection('organization-icons','public');
 
         Organization::create([
             'name'          => 'Bachata inspired',
@@ -248,8 +259,9 @@ class OrganizationSeeder extends Seeder
 
         Organization::create([
             'name'          => 'Ivan & Sara - FeralTango',
-            'slug'          => 'ivan-sara',                                    
-            'contact'       => 'Sara Grdan',                                    
+            'slug'          => 'ivan-sara',
+            'shortname'     => 'FeralTango',
+            'contact'       => 'Sara Grdan',
             'status'        => 'active',
             'type'          => 'school',
             'city_id'       => 1,
@@ -487,7 +499,7 @@ class OrganizationSeeder extends Seeder
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/zB-QcShpWJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
 
-        Organization::create([
+        $bc = Organization::create([
             'name'          => 'Baila conmigo by Jerko & Maja',
             'slug'          => 'baila-conmigo-by-jerko-maja-1636023655',
             'shortname'     => 'Baila conmigo',
@@ -508,6 +520,8 @@ class OrganizationSeeder extends Seeder
             'zip'           => '',
             'video'         => '<iframe width="560" height="315" src="https://www.youtube.com/embed/7v5gyUeuQGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
+        $bc->addMediaFromUrl(asset('images/schools/baila-conmigo-icon.jpg'))->toMediaCollection('organization-icons','public');
+        $bc->addMediaFromUrl(asset('images/schools/bailaconmigo-logo.jpg'))->toMediaCollection('organization-logos','public');
 
         Organization::create([
             'name'          => 'Babalú, studio za ples i pokret',
@@ -603,7 +617,7 @@ class OrganizationSeeder extends Seeder
             'video'         => '',
         ]);
 
-        Organization::create([
+        $bd = Organization::create([
             'name'          => 'Plesna škola B dance',
             'slug'          => 'plesna-skola-b-dance-1635250665',
             'shortname'     => 'Bdance',
@@ -626,8 +640,10 @@ class OrganizationSeeder extends Seeder
             'zip'           => '10000',
             'video'         => '',
         ]);
+        $bd->addMediaFromUrl(asset('images/schools/bdance.png'))->toMediaCollection('organization-logos','public');
+        $bd->addMediaFromUrl(asset('images/schools/bdance.png'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $shine = Organization::create([
             'name'          => 'Plesni studio Shine',
             'slug'          => 'plesni-studio-shine-1635165524',
             'shortname'     => 'Shine',
@@ -649,8 +665,10 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);
+        $shine->addMediaFromUrl(asset('images/schools/shine-osijek.png'))->toMediaCollection('organization-logos','public');
+        $shine->addMediaFromUrl(asset('images/schools/shine-osijek.png'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $fe = Organization::create([
             'name'          => 'ŠPU Feniks Osijek',
             'slug'          => 'spu-feniks-osijek-1635162622',
             'shortname'     => 'Feniks',
@@ -672,8 +690,10 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);    
+        $fe->addMediaFromUrl(asset('images/schools/feniks-osijek-square.jpg'))->toMediaCollection('organization-logos','public');
+        $fe->addMediaFromUrl(asset('images/schools/feniks-osijek.jpg'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $bo = Organization::create([
             'name'          => 'Plesni klub "Bolero" Osijek - Bolero Dance',
             'slug'          => 'plesni-klub-bolero-osijek-bolero-dance-1635164106',
             'shortname'     => 'Bolero',
@@ -695,8 +715,10 @@ class OrganizationSeeder extends Seeder
             'about'         => '',                                 
             'video'         => '',
         ]);   
+        $bo->addMediaFromUrl(asset('images/schools/bolero-red-blue.jpg'))->toMediaCollection('organization-logos','public');
+        $bo->addMediaFromUrl(asset('images/schools/bolero-yellow.jpg'))->toMediaCollection('organization-icons','public');
 
-        Organization::create([
+        $ilu =Organization::create([
             'name'          => 'Plesni Studio Illusion',
             'slug'          => 'plesni-studio-illusion-1635165253',
             'shortname'     => 'Illusion',
@@ -718,12 +740,14 @@ class OrganizationSeeder extends Seeder
             'about'         => '',
             'video'         => '',
         ]);        
-
+        $ilu->addMediaFromUrl(asset('images/schools/illusion.jpg'))->toMediaCollection('organization-logos','public');
+        $ilu->addMediaFromUrl(asset('images/schools/illusion.jpg'))->toMediaCollection('organization-icons','public');
 
         Organization::create([
             'name'          => 'Sportsko rekreacijski i plesni klub CasaBlanka',
             'slug'          => 'sportsko-rekreacijski-i-plesni-klub-casablanka',                                    
             'contact'       => 'CasaBlanka',
+            'shortname'     => 'Casablanka',
             'about'         => 'CasaBlanka klub nudi Vam punoooooo aktivnosti i programa u kojima ćete sigurno pronaći neku za sebe! U našem novom ekskluzivno uređenom klubu u centru grada, očekuju Vas pristupačni,ljubazni i stručni voditelji!
             Zaplešite s nama, vježbajte s nama, zabavite se s nama, odaberite program za sebe!
             Plesna škola:

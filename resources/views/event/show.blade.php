@@ -78,8 +78,9 @@
                                             </div>
                                         </div>
                                         <div class="mt-5 flex justify-center sm:mt-0">
+                                            {{--
                                             <livewire:profile.user-registration-status-badge :model="$event"
-                                                size="medium" />
+                                                size="medium" /> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -87,23 +88,25 @@
                                     class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                                     <div class="px-6 py-2 text-sm font-medium text-center">
                                         <span class="text-gray-600">
-                                            <livewire:shared.like :model="$event" withCount="true" />
+                                            {{--
+                                            <livewire:shared.like :model="$event" withCount="true" /> --}}
                                         </span>
                                     </div>
 
                                     <div class="px-6 py-2 text-sm font-medium text-center">
                                         <span class="text-gray-600">
-                                            <livewire:shared.interest :model="$event" withCount="true" />
+                                            {{--
+                                            <livewire:shared.interest :model="$event" withCount="true" /> --}}
                                         </span>
                                     </div>
 
                                     <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <span class="text-gray-600">
+                                        {{-- <span class="text-gray-600">
                                             {{ trans_choice('{0} no registration|{1} :count registration|[2,*] :count
                                             registrations',
                                             count($event->registrations), ['count' =>
                                             count($event->registrations)]) }}
-                                        </span>
+                                        </span> --}}
                                     </div>
                                 </div>
                             </div>

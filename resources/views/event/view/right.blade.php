@@ -4,12 +4,13 @@
 @endif
 
 <div class="mt-3 grid grid-cols-2 items-center">
-    @if ($event->prices()->count() > 0 )
+    {{-- @if ($event->prices()->count() > 0 )
     <div class="col-span-2 sm:col-span-1">
         <h2 class="sr-only">Product information</h2>
+
         <x-shared.price-display class="text-3xl text-gray-900" :model="$event" />
     </div>
-    @endif
+    @endif --}}
     <div class="col-span-2 sm:col-span-1">
         @if ($event->status == 'active')
         <span
@@ -73,7 +74,7 @@
     <div class="inline-flex items-center">
         <a href="http://"
             class="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">
-            Login
+            Login to enroll
         </a>
         <a href="" class="ml-2 text-sm font-medium text-gray-500 hover:text-indigo-700">
             or create an account here <span aria-hidden="true">&rarr;</span>
@@ -81,9 +82,12 @@
     </div>
     @endguest
     @auth
-    <livewire:shared.registration-button :model="$event" />
-    <livewire:shared.like :model="$event" />
-    <livewire:shared.interest :model="$event" />
+    {{--
+    <livewire:shared.registration-button :model="$event" /> --}}
+    {{--
+    <livewire:shared.like :model="$event" /> --}}
+    {{--
+    <livewire:shared.interest :model="$event" /> --}}
     @endauth
 </div>
 
@@ -99,7 +103,7 @@
 
     <div class="border-t divide-y divide-gray-200">
 
-        @if ($event->prices->count() > 0 )
+        {{-- @if ($event->prices->count() > 0 )
         <div x-data="{ open : false }">
             <button type="button"
                 class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
@@ -120,7 +124,7 @@
                 <x-shared.pricing-list :model="$event" :title="false" />
             </div>
         </div>
-        @endif
+        @endif --}}
 
         <div x-data="{ open : false }">
             <button type="button"

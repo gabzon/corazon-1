@@ -28,7 +28,8 @@
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 {{ $event->type }}
             </p>
-            <x-shared.price-display :model="$event" />
+            {{--
+            <x-shared.price-display :model="$event" /> --}}
         </div>
     </a>
     @empty

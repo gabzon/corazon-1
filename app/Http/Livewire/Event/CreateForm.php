@@ -21,10 +21,8 @@ class CreateForm extends Component
     protected $rules = [
         'event.name'            => 'required',
         'event.slug'            => 'required',
-        'event.start_date'      => 'required',
-        'event.start_time'      => 'nullable',
+        'event.start_date'      => 'required',        
         'event.end_date'        => 'required',
-        'event.end_time'        => 'nullable',
         'event.type'            => 'required',
         'event.status'          => 'required',
         'event.description'     => 'nullable',
