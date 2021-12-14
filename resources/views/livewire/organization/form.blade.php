@@ -179,7 +179,8 @@
                         Add school pricing system table
                     </p>
                 </div>
-                <livewire:shared.price-form :model="$organization" modelName="Organization" />
+                {{--
+                <livewire:shared.price-form :model="$organization" modelName="Organization" /> --}}
             </div>
             @endif
 

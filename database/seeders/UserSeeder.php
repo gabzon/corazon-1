@@ -40,6 +40,19 @@ class UserSeeder extends Seeder
             'role'              => 'publisher',
             'gender'            => 'male',
         ]);
+
+        $gabriel = User::firstOrCreate([
+            'name'              => 'Gabriel Zambrano',
+            'email'             => 'gab.zambrano@gmail.com',
+            'email_verified_at' => now(),                   
+            'password'          => Hash::make('password'),                            
+            'remember_token'    => Str::random(10),
+            'role'              => 'admin',
+            'gender'            => 'male',
+            'mobile'            => '+41 76 571 4931',
+            'username'          => 'gabzam',
+            'birthday'          => '1983-07-02',
+        ]);
         
         User::factory(5)->create();        
         
