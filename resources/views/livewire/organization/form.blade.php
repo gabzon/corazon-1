@@ -65,7 +65,7 @@
 
                     <div class="sm:col-span-2">
                         <x-form.select wire:model="organization.status" name="organization.status"
-                            :options="['Active', 'Inactive', 'Standby', 'Pending', 'Closed']" label="Status" />
+                            :options="['active', 'inactive', 'standby', 'pending', 'open', 'closed']" label="Status" />
                     </div>
 
                     <div class="sm:col-span-2">
@@ -185,7 +185,8 @@
             @endif
 
             <div class="pt-8">
-                <livewire:organization.instructor-form :org="$organization" />
+                {{--
+                <livewire:organization.instructor-form :org="$organization" /> --}}
             </div>
 
         </div>

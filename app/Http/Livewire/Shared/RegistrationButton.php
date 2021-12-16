@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire\Shared;
 
+use App\Models\Event;
 use Livewire\Component;
 
 class RegistrationButton extends Component
 {
-    public $model;
+    public Event $event;
     
-    public function mount($model)
+    public function mount(Event $event)
     {
-        $this->model = $model;
+        $this->event = $event;
     }
 
     public function render()

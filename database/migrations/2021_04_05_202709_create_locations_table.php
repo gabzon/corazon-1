@@ -62,6 +62,7 @@ class CreateLocationsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('city_id')->nullable()->constrained();
             $table->softDeletes();
+            $table->unique(['name','type','city_id']);
             $table->timestamps();
         });
 

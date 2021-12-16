@@ -3,7 +3,7 @@
 <h2 class="text-gray-600 text-xl">{{ $event->tagline }}</h2>
 @endif
 
-<div class="mt-3 grid grid-cols-2 items-center">
+{{-- <div class="mt-3 grid grid-cols-2 items-center"> --}}
     {{-- @if ($event->prices()->count() > 0 )
     <div class="col-span-2 sm:col-span-1">
         <h2 class="sr-only">Product information</h2>
@@ -11,7 +11,7 @@
         <x-shared.price-display class="text-3xl text-gray-900" :model="$event" />
     </div>
     @endif --}}
-    <div class="col-span-2 sm:col-span-1">
+    {{-- <div class="col-span-2 sm:col-span-1">
         @if ($event->status == 'active')
         <span
             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
@@ -23,8 +23,9 @@
             canceled
         </span>
         @endif
-    </div>
-</div>
+    </div> --}}
+    {{--
+</div> --}}
 
 
 <div class="mt-2">
@@ -39,6 +40,20 @@
                     <td class="text-gray-500 py-2">Date</td>
                     <td class="text-gray-900">
                         {{ $event->start_date->format('M j Y') }} - {{ $event->end_date->format('M j Y') }}
+                        <div class="inline sm:ml-2">
+                            @if ($event->status == 'active')
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                {{ $event->start_date->diffForHumans() }}
+                            </span>
+                            @endif
+                            @if ($event->status == 'canceled')
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                canceled
+                            </span>
+                            @endif
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -69,7 +84,9 @@
 </div>
 
 
-<div class="mt-9 pb-3 flex sm:flex-col1">
+<div class="mt-4 pb-3 flex items-center">
+    @if ($event->organizations()->count() > 0)
+    @if ($event->hasActiveOrganizations())
     @guest
     <div class="inline-flex items-center">
         <a href="http://"
@@ -82,13 +99,14 @@
     </div>
     @endguest
     @auth
-    {{--
-    <livewire:shared.registration-button :model="$event" /> --}}
+    <livewire:shared.registration-button :event="$event" />
+    @endauth
+    @endif
+    @endif
+    <livewire:shared.bookmark :model="$event" />
     {{--
     <livewire:shared.like :model="$event" /> --}}
-    {{--
-    <livewire:shared.interest :model="$event" /> --}}
-    @endauth
+
 </div>
 
 <form class="mt-3">

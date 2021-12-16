@@ -13,9 +13,9 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Organization extends Model implements HasMedia, Likeable
+class Organization extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Likes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -87,6 +87,11 @@ class Organization extends Model implements HasMedia, Likeable
                     ->withPivot('role')
                     ->wherePivot('role', 'instructor')
                     ->withTimestamps();
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
     }
     
     public function hasTeacher($id)

@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
 
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            
             $table->string('name', 100);
             $table->string('slug', 120);
             $table->string('tagline')->nullable();
@@ -48,6 +49,7 @@ class CreateEventsTable extends Migration
 
             // $table->string('facebook_id')->nullable()->unique();
             $table->string('facebook_id')->nullable();
+            $table->boolean('is_private')->default(false);
             
             $table->foreignId('user_id')->constrained();
             $table->foreignId('location_id')->nullable()->constrained();

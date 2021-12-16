@@ -31,40 +31,42 @@ class LoginController extends Controller
         
         $fbUser = Socialite::driver('facebook')->stateless()->user();
         
-        // $token = $user->token;
-        // $refreshToken = $user->refreshToken;
-        // $expiresIn = $user->expiresIn;
         $imgUrl = $fbUser->avatar_original . "&access_token={$fbUser->token}";
                 
-        $user = User::firstOrCreate(['facebook_id' => $fbUser->getId()], [
-            'name'              => $fbUser->getName(),
-            'email'             => $fbUser->getEmail(),
-            'username'          => $fbUser->getNickname(),
-            'avatar'            => $imgUrl,
-            'facebook_id'       => $fbUser->getId(),                
-            'profile_photo_path'=> $imgUrl,   
+        // $user = User::firstOrCreate(['facebook_id' => $fbUser->getId()], [
+        //     'name'              => $fbUser->getName(),
+        //     'email'             => $fbUser->getEmail(),
+        //     'username'          => $fbUser->getNickname(),
+        //     'avatar'            => $imgUrl,
+        //     'facebook_id'       => $fbUser->getId(),                
+        //     'profile_photo_path'=> $imgUrl,   
+        // ]);
 
-        ]);
+        $user = User::where('facebook_id',$fbUser->getId())->orWhere('email', $fbUser->getEmail())->first();
+        
+        if ($user->exists) {
+            if (! $user->facebook_id) {
+                $user->facebook_id = $fbUser->getId();
+            }
+        } else {
+            $user = User::Create([
+                'name'              => $fbUser->getName(),
+                'email'             => $fbUser->getEmail(),
+                'username'          => $fbUser->getNickname(),
+                'facebook_id'       => $fbUser->getId(),
+                'avatar'            => $imgUrl,
+                'facebook_id'       => $fbUser->getId(),                
+                'profile_photo_path'=> $imgUrl, 
+            ]);
+        }
 
         $user->facebook_token = $fbUser->token;
         $user->save();
         
-        if ($user->avatar == NULL) {
-            // dd($imgUrl);
-            $user->avatar = $imgUrl;
-            // dd($user->avatar);
-            $user->save();
-            // dd($person);
+        if ($user->avatar == NULL) {         
+            $user->avatar = $imgUrl;         
+            $user->save();         
         }
-        // $contents = file_get_contents($imgUrl);
-        // $name = substr($imgUrl, strrpos($imgUrl, '/') + 1);
-        // $path = Storage::putFile('profile-photos', $contents);
-        
-        // $person->profile_photo_path->store('profile-photos', $contents);
-        // $person->profile_photo_path = $path;
-        // $person->save();
-        //$person->addMediaFromUrl($imgUrl)->toMediaCollection();
-        // $person->updateProfilePhoto($contents);
         
         Auth::login($user, true);
         

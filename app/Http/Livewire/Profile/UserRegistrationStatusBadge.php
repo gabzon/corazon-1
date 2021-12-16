@@ -13,18 +13,17 @@ class UserRegistrationStatusBadge extends Component
 
     
     public function mount($model, $size = null, $style = 'rounded-full')
-    {
-        $this->model = $model;
+    {        
         $this->style = $style;
-
-        $registration = auth()->user()->registrations->where('registrable_id',$model->id)->first();
-
-        $this->status = $registration->status ?? null;
+        
+        if (get_class($model) == "App\Models\Event") {
+            $this->status = auth()->user()->getEventRegistrationStatus($model);
+        }    
 
         if ($this->status != null) {
             switch ($this->status) {
                 case 'pre-registered':
-                    $this->color = 'bg-pink-100 text-pink-800';
+                    $this->color = 'bg-orange-100 text-orange-800';
                     break;    
                 case 'registered':
                     $this->color = 'bg-green-700 text-green-100';

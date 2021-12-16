@@ -111,6 +111,10 @@ class Event extends Model implements HasMedia
     {
         return $this->belongsToMany(Organization::class);
     }
+    public function hasActiveOrganizations():bool
+    {
+        return in_array('active', $this->organizations()->pluck('status')->toArray());
+    }
     
     public function hasOrganization($id)
     {
@@ -207,4 +211,8 @@ class Event extends Model implements HasMedia
         return null;        
     }
 
+    public function registrations(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class,'event_registrations','event_id','user_id')->withPivot(['status','role','option'])->withTimestamps();
+    }
 }

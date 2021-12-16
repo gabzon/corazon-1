@@ -4,9 +4,10 @@ namespace App\Http\Livewire\Shared;
 
 use Livewire\Component;
 
-class Interest extends Component
+class Bookmark extends Component
 {
     public $model;
+    
     public $withCount;
     
     public function mount($model, $withCount = false)
@@ -17,6 +18,6 @@ class Interest extends Component
 
     public function render()
     {
-        return view('livewire.shared.interest');
+        return view('livewire.shared.bookmark');
     }
 }

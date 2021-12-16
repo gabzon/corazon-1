@@ -11,15 +11,13 @@ class OrganizationSelect extends Component
     public string $type;
 
     public function add()
-    {   
-        dd($this->selected);    
+    {               
         if ($this->type == 'manager') {
             $this->emit('organizationToManage', $this->selected);
         }
         if ($this->type == 'instructor') {
             $this->emit('organizationToInstruct', $this->selected);
-        }         
-        
+        }                 
     }
 
     public function mount($city = null, $type = 'instructor')

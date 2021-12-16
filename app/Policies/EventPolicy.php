@@ -96,7 +96,7 @@ class EventPolicy
     public function register(User $user, Event $event)
     {
         if (! $event->exists) {
-            return Response::deny("Cannot register to a class/event that does not exists.");
+            return Response::deny("Cannot register to a event that does not exists.");
         }
 
         if ($user->isRegistered($event)) {
@@ -114,6 +114,32 @@ class EventPolicy
 
         if (! $user->isRegistered($event)) {
             return Response::deny("Cannot unregister without registering first");
+        }
+
+        return Response::allow();
+    }
+
+    public function bookmark(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot bookmark an event that does not exists");
+        }
+        
+        if ($user->hasBookmarkedEvent($event)) {
+            return Response::deny("Cannot bookmark the same event twice");
+        }
+
+        return Response::allow();
+    }
+
+    public function unbookmark(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot unbookmark an event that does not exists");
+        }
+        
+        if (! $user->hasBookmarkedEvent($event)) {
+            return Response::deny("Cannot unbookmark without bookmarking first");
         }
 
         return Response::allow();

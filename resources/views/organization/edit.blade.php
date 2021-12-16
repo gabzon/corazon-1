@@ -18,7 +18,19 @@
     <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
-                <livewire:organization.form :organization="$organization" />
+                <livewire:organization.form.default-form :organization="$organization" />
+
+                <x-jet-section-border />
+
+                <livewire:organization.form.general-form :organization="$organization" />
+
+                <x-jet-section-border />
+
+                <livewire:organization.form.address-form :organization="$organization" />
+
+                <x-jet-section-border />
+
+                <livewire:shared.social-media-form :model="$organization" />
             </div>
             <div class="my-36"></div>
         </div>

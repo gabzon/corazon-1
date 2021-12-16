@@ -86,10 +86,10 @@
                                             <span class="mr-2">
                                                 @include('icons.star')
                                             </span>
-                                            {{ trans_choice('{0} no interest|{1} :count interest|[2,*] :count
+                                            {{ trans_choice('{0} no bookmarks|{1} :count bookmark|[2,*] :count
                                             bookmarks',
-                                            count(auth()->user()->bookmarkedEvents), ['count' =>
-                                            count(auth()->user()->bookmarkedEvents)]) }}
+                                            count(auth()->user()->bookmarkEvents), ['count' =>
+                                            count(auth()->user()->bookmarkEvents)]) }}
                                         </a>
                                     </div>
 

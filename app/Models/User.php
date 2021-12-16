@@ -6,6 +6,7 @@ use App\Contracts\Interestable;
 use App\Contracts\Likeable;
 use App\Contracts\Registrable;
 use App\Models\Like;
+use App\Models\Event;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -158,28 +159,20 @@ class User extends Authenticatable implements HasMedia
         return $likeable->likes()->whereHas('user', fn(Builder $q) => $q->whereId($this->id))->exists();
     }
 
-    public function bookmarkedEvents()
+    public function bookmarkEvents()
     {
         return $this->belongsToMany(Event::class,'bookmark_event','user_id','event_id')->withTimeStamps();
     }
 
-    public function bookmarkEvent(Event $event):self
-    {
-        if ($this->hasEventBookmarked($event)) {
-            return $this;
-        }
-        (new BookmarkEvent())->user()->associate($this)->event()->associate($event)->save();        
 
-        return $this;
-    }
-
-    public function hasEventBookmarked(Event $event):bool
+    public function hasBookmarkedEvent(Event $event):bool
     {
         if (! $event->exists) {
             return false;
         }
 
-        return $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
+        // return $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
+        return in_array($event->id, $this->bookmarkEvents()->pluck('event_id')->toArray());
     }
 
     public function unbookmarkEvent(Event $event):self
@@ -200,13 +193,13 @@ class User extends Authenticatable implements HasMedia
 
     public function registerForCourse(Course $course): self
     {
-        if ($this->isRegistered($registrable)) {
+        if ($this->isRegisteredInCourse($course)) {
             return $this;
         }
 
-        (new Registration(['role'=>'student', 'option' => $registrable->name ]))
+        (new Registration(['role'=>'student', 'option' => $course->name ]))
             ->user()->associate($this, ['role'=>'student'])
-            ->registrable()->associate($registrable)
+            ->registrable()->associate($course)
             ->save();
             
         return $this;
@@ -222,7 +215,7 @@ class User extends Authenticatable implements HasMedia
         return $this;
     }
     
-    public function isRegisteredForCourse(Course $course):bool
+    public function isRegisteredInCourse(Course $course):bool
     {
         if (! $course->exists) {
             return false;
@@ -230,4 +223,48 @@ class User extends Authenticatable implements HasMedia
 
         return $course->registrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
     }
+
+    public function eventRegistrations()
+    {
+        return $this->belongsToMany(Event::class, 'event_registrations','user_id','event_id')->withPivot(['status','role','option'])->withTimestamps();
+    }
+
+    public function isRegisteredInEvent($event): bool
+    {                
+        if (! $event->exists ) {            
+            return false;
+        }
+        
+        return $event->registrations()->where('user_id', $this->id)->exists();        
+    }
+
+    public function getEventRegistrationStatus($event)
+    {
+        if (! $event->exists) {
+            return false;
+        }
+
+        return $event->registrations()->where('user_id',$this->id)->first()->pivot->status;
+    }
+    
+    // public function registerForEvent(Event $event):self
+    // {
+    //     if ($this->isRegisteredInEvent($event)) {
+    //         return $this;
+    //     }
+
+    //     $this->eventRegistrations($event->id,['role'=>'student']);  
+    //     return $this;                                                    
+    // }      
+    
+    // public function unregisterFromEvent(Event $event):self
+    // {
+    //     if (! $this->isRegisteredInEvent($event)) {
+    //         return $this;
+    //     }
+        
+    //     $event->eventRegistrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->delete();
+        
+    //     return $this;
+    // }
 }

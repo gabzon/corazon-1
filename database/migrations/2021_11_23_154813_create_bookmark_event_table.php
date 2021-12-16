@@ -15,7 +15,7 @@ class CreateBookmarkEventTable extends Migration
     {
         Schema::create('bookmark_event', function (Blueprint $table) {
             $table->id();            
-            $table->foreignId('event_id');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');            
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->unique(['user_id','event_id']);
             $table->timestamps();

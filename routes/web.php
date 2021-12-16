@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BookmarkEventController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\ImpersonateController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\LessonController;
@@ -117,11 +119,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('like', [LikeController::class,'like'])->name('like');
     Route::delete('like', [LikeController::class,'unlike'])->name('unlike');
     
-    Route::post('interest', [InterestController::class, 'interest'])->name('interest');
-    Route::delete('uninterest', [InterestController::class, 'uninterest'])->name('uninterest');
+    Route::post('event/bookmark', [BookmarkEventController::class, 'bookmark'])->name('event.bookmark');
+    Route::delete('event/unbookmark', [BookmarkEventController::class, 'unbookmark'])->name('event.unbookmark');
   
-    Route::post('register', [RegistrationController::class, 'register'])->name('register');
-    Route::delete('unregister', [RegistrationController::class, 'unregister'])->name('unregister');
+    Route::post('event/register', [EventRegistrationController::class, 'register'])->name('event.register');
+    Route::delete('event/unregister', [EventRegistrationController::class, 'unregister'])->name('event.unregister');
 
     Route::get('likes', [ProfileController::class, 'likes'])->name('profile.likes');
     Route::get('bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
