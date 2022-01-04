@@ -66,7 +66,7 @@
                                         :user="$user" wire:key="{{ $user->id }}" />
                                 </td>
                                 <td class="p-4 text-sm text-gray-500">
-                                    {{ $user->getEventRegistrationRole($model) }}
+                                    {{ $user->getRegistrationRole($model) }}
                                 </td>
                                 <td class="p-4 text-sm">
                                     <button wire:click="update({{$user}})"

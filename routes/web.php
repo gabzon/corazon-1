@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BookmarkEventController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClassroomController;
@@ -9,7 +9,6 @@ use App\Http\Controllers\CourseRegistrationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\ImpersonateController;
-use App\Http\Controllers\InterestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocationController;
@@ -100,7 +99,7 @@ Route::get('mail', function(){
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('event.view');
-Route::get('/course/{course}', [CourseController::class, 'dashboard'])->name('course.view');
+Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.view');
 
 Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -115,6 +114,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
     Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
     
+    Route::get('event/{event}/dashboard', [CourseController::class, 'dashboard'])->name('event.dashboard');
+    Route::get('event/{event}/info', [CourseController::class, 'info'])->name('event.info');
+    Route::get('event/{event}/students', [CourseController::class, 'students'])->name('event.students');
+    Route::get('event/{event}/stats', [CourseController::class, 'stats'])->name('event.stats');
+
     Route::get('course/{course}/dashboard', [CourseController::class, 'dashboard'])->name('course.dashboard');
     Route::get('course/{course}/info', [CourseController::class, 'info'])->name('course.info');
     Route::get('course/{course}/students', [CourseController::class, 'students'])->name('course.students');
@@ -125,14 +129,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('like', [LikeController::class,'like'])->name('like');
     Route::delete('like', [LikeController::class,'unlike'])->name('unlike');
     
-    Route::post('event/bookmark', [BookmarkEventController::class, 'bookmark'])->name('event.bookmark');
-    Route::delete('event/unbookmark', [BookmarkEventController::class, 'unbookmark'])->name('event.unbookmark');
+    Route::post('bookmark', [BookmarkController::class, 'bookmark'])->name('bookmark');
+    Route::delete('unbookmark', [BookmarkController::class, 'unbookmark'])->name('unbookmark');
     
-    Route::post('event/register', [EventRegistrationController::class, 'register'])->name('event.register');
-    Route::delete('event/unregister', [EventRegistrationController::class, 'unregister'])->name('event.unregister');
-
-    Route::post('course/register', [CourseRegistrationController::class, 'register'])->name('course.register');
-    Route::delete('course/unregister', [CourseRegistrationController::class, 'unregister'])->name('course.unregister');
+    Route::post('user/register', [RegistrationController::class, 'register'])->name('enroll');
+    Route::delete('user/unregister', [RegistrationController::class, 'unregister'])->name('unenroll');
 
     Route::get('likes', [ProfileController::class, 'likes'])->name('profile.likes');
     Route::get('bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');

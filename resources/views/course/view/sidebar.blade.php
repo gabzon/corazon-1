@@ -72,11 +72,12 @@
     </div>
     @endguest
     @auth
+    <div class="flex space-x-1">
+        <livewire:shared.registration-button :model="$course" />
+        <livewire:shared.bookmark :model="$course" />
+        <livewire:shared.like :model="$course" />
+    </div>
 
-    <livewire:course.registration-button :course="$course" />
-    {{-- {{--
-    <livewire:shared.like :model="$course" />
-    <livewire:shared.interest :model="$course" /> --}}
     @endauth
 </div>
 

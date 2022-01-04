@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Contracts\Bookmarkable;
+use App\Contracts\Likeable;
 use App\Contracts\Registrable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model implements HasMedia, Registrable
+class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarkable
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;

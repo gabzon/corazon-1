@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Contracts\Bookmarkable;
+use App\Contracts\Likeable;
 use App\Contracts\Registrable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +16,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
 
-class Event extends Model implements HasMedia, Registrable
+class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkable
 {
     use HasFactory, SoftDeletes;
     use InteractsWithMedia;    
@@ -210,4 +212,5 @@ class Event extends Model implements HasMedia, Registrable
     {
         return $this->belongsToMany(User::class,'event_registrations','event_id','user_id')->withPivot(['status','role','option'])->withTimestamps();
     }
+
 }

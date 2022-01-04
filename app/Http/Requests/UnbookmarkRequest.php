@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\InterestRequest;
+use App\Http\Requests\BookmarkRequest;
 
-class UninterestRequest extends InterestRequest
+class UnbookmarkRequest extends BookmarkRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class UninterestRequest extends InterestRequest
      */
     public function authorize()
     {
-        return $this->user()->can('uninterest', $this->interestable());
+        return $this->user()->can('unbookmark', $this->bookmarkable());
     }
 
     /**

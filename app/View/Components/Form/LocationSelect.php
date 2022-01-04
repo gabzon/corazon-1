@@ -16,14 +16,10 @@ class LocationSelect extends Component
      * @return void
      */
     public function __construct($name, $city = null)
-    {
+    {        
         $this->name = $name;
         
-        if ($city) {
-            $this->city = $city;            
-        };
-
-        $this->locations = Location::all();        
+        $this->locations = Location::byCity($city)->orderBy('name', 'asc')->get();        
     }
 
     /**

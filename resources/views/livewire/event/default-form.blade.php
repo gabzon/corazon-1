@@ -27,7 +27,8 @@
                                 <x-form.city-select wire:model="event.city_id" name="event.city_id" />
                             </div>
                             <div class="col-span-6 sm:col-span-2">
-                                <x-form.location-select wire:model="event.location_id" name="event.location_id" />
+                                <x-form.location-select wire:model="event.location_id" name="event.location_id"
+                                    city="{{ $event->city_id }}" />
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <div>

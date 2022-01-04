@@ -1,3 +1,11 @@
+# v0.1.16: Tuesday 4th, 2022
+* Create event: when start date is added it automatically fills end date
+* Event show: label place/location changed for venue
+* Event form: when city selected location is filtered
+* Registrable interface
+* Likeable interface
+* Bookable interface
+
 # v0.1.15: Monday 3th, 2022
 * Course info page
 * Dashboard improvements

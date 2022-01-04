@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Contracts\Registrable;
 use App\Models\Course;
 use App\Models\Event;
 
@@ -17,56 +18,61 @@ trait UserRegistrationsTrait {
         return $this->belongsToMany(Event::class, 'event_registrations','user_id','event_id')->withPivot(['status','role','option'])->withTimestamps();
     }
 
-    public function isRegisteredInCourse(Course $course): bool
-    {                
-        if (! $course->exists ) { return false; }        
-        return $course->registrations()->where('user_id', $this->id)->exists();        
-    }
-
-    public function isRegisteredInEvent($event): bool
-    {                
-        if (! $event->exists ) { return false; }        
-        return $event->registrations()->where('user_id', $this->id)->exists();        
-    }
-
-    public function registerCourse(Course $course): self
+    public function isRegistered(Registrable $registrable):bool
     {
-        if ($this->isRegisteredInCourse($course)) { return $this; }
-        $course->registrations()->attach($this->id);        
+        if (! $registrable->exists) {
+            return false;
+        }
+        // return in_array($this->id, $registrable->registrations()->pluck('user_id')->toArray());    
+        return $registrable->registrations()->where('user_id', $this->id)->exists();       
+    }
+
+    public function register(Registrable $registrable): self
+    {        
+        if ($this->isRegistered($registrable)) {
+            return $this;
+        }
+
+        $registrable->registrations()->attach($this->id);
+
         return $this;
     }
 
-    public function registerEvent(Event $event): self
+    public function unregister(Registrable $registrable): self
     {
-        if ($this->isRegisteredInEvent($event)) { return $this; }
-        $event->registrations()->attach($this->id);        
+        if (! $this->isRegistered($registrable)) { return $this; }
+        $registrable->registrations()->detach($this->id);        
         return $this;
     }
     
-    public function getEventRegistrationRole($event)
+    public function getRegistrationRole(Registrable $registrable)
     {        
-        if (! $event->exists ) {            
+        if (! $registrable->exists ) {            
             return;
         }
-        return $event->registrations()->where('user_id',$this->id)->first()->pivot->role;
+        return $registrable->registrations()->where('user_id',$this->id)->first()->pivot->role;
     }
 
-    public function getCourseRegistrationStatus(Course $course)
+    public function getRegistrationStatus(Registrable $registrable)
     {
-        if (! $course->exists) {
+        if (! $registrable->exists) {
             return false;
         }
 
-        return $course->registrations()->where('user_id',$this->id)->first()->pivot->status;
+        return $registrable->registrations()->where('user_id',$this->id)->first()->pivot->status;
     }
 
-    public function getEventRegistrationStatus($event)
+    public function registrationIs(Registrable $registrable, $status):bool
     {
-        if (! $event->exists) {
+        if (! $registrable->exists) {
             return false;
         }
 
-        return $event->registrations()->where('user_id',$this->id)->first()->pivot->status;
+        if (! $this->isRegistered($registrable)) {
+            return false;
+        }
+
+        return $registrable->registrations()->where('user_id',$this->id)->first()->pivot->status === $status;
     }
 
     public function numberOfRegistrations():int

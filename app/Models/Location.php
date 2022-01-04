@@ -94,6 +94,14 @@ class Location extends Model implements HasMedia
         return $this->hasMany(\App\Models\Space::class);
     }
 
+    public function scopeByCity($query, $city)
+    {
+        if ($city) {
+            return $query->where('city_id', $city);
+        }
+        return $query;
+    }
+
     public function getPhotoAttribute()
     {
         // $this->avatar ?? $course->location->photo ?? ''

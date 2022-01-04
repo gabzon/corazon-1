@@ -19,9 +19,9 @@
                                     @endif
                                 </a>
                                 <p class="text-sm text-gray-500 truncate">
-                                    {{$registration->start_date->format('d M, Y') }} -
-                                    {{$registration->end_date->format('d M, Y') }}
-                                    @ {{$registration->start_date->format('H:i') }}
+                                    {{ $registration->start_date->format('d M, Y') }} -
+                                    {{ $registration->end_date->format('d M, Y') }}
+                                    @ {{ $registration->start_date->format('H:i') }}
                                 </p>
                             </div>
                             <div>

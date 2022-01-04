@@ -62,8 +62,8 @@
                     <ul role="list" class="-my-4 divide-y divide-gray-200">
                         @forelse ($course->students as $student)
 
-                        @if ($student->getCourseRegistrationStatus($course) == 'registered' ||
-                        $student->getCourseRegistrationStatus($course) == 'partial')
+                        @if ($student->getRegistrationStatus($course) == 'registered' ||
+                        $student->getRegistrationStatus($course) == 'partial')
                         <li class="flex items-center py-4 space-x-3">
                             <div class="flex-shrink-0">
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ $student->photo }}"

@@ -60,9 +60,18 @@
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-2">
                                 <x-form.city-select wire:model="event.city_id" name="event.city_id" />
+                                <a href="{{ route('city.create') }}"
+                                    class="text-indigo-500 text-xs mt-1 hover:text-indigo-800 ml-2">
+                                    Add city <span aria-hidden="true">&rarr;</span>
+                                </a>
                             </div>
                             <div class="col-span-6 sm:col-span-2">
-                                <x-form.location-select wire:model="event.location_id" name="event.location_id" />
+                                <x-form.location-select wire:model="event.location_id" name="event.location_id"
+                                    city="{{ $event->city_id }}" />
+                                <a href="{{ route('city.create') }}"
+                                    class="text-indigo-500 text-xs mt-1 hover:text-indigo-800 ml-2">
+                                    Add Location <span aria-hidden="true">&rarr;</span>
+                                </a>
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <div>
@@ -72,15 +81,9 @@
                                     <select id="event.type" name="event.type" wire:model="event.type"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('event.type') border-red-600 @enderror">
                                         <option value="" selected disabled>Choose type</option>
-
-                                        <option value="party">Party</option>
-                                        <option value="festival">Festival</option>
-                                        <option value="workshop">Workshop</option>
-                                        <option value="bootcamp">Bootcamp</option>
-                                        <option value="concert">Concert</option>
-                                        <option value="show">Show / Performance</option>
-                                        <option value="competition">Competition / Battle</option>
-                                        <option value="training">Training / Practica</option>
+                                        <option value="party">Party / Concert / Show / Competition</option>
+                                        <option value="workshop">Workshop / Training / Practica</option>
+                                        <option value="festival">Festival / Bootcamp</option>
                                     </select>
                                     @error('event.type')
                                     <span class="text-red-600 text-xs">{{ $message }}</span>
@@ -117,11 +120,11 @@
                                         <option value="" selected disabled>Choose status</option>
                                         <option value="active">Active</option>
                                         <option value="draft">Draft</option>
-                                        <option value="review">Review</option>
-                                        <option value="soon">Soon</option>
+                                        {{-- <option value="review">Review</option> --}}
+                                        {{-- <option value="soon">Soon</option> --}}
                                         <option value="finished">Finished</option>
                                         <option value="canceled">Canceled</option>
-                                        <option value="postpone">Postpone</option>
+                                        {{-- <option value="postpone">Postpone</option> --}}
                                     </select>
                                     @error('event.status')
                                     <span class="text-red-600 text-xs">{{ $message }}</span>

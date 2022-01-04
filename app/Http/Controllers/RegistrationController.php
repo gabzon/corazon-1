@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     public function register(RegisterRequest $request)
-    {        
+    {                
         $request->user()->register($request->registrable());
 
         if ($request->ajax()) {

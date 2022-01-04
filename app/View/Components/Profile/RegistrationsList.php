@@ -15,7 +15,9 @@ class RegistrationsList extends Component
      */
     public function __construct(User $user)
     {
-        $this->list = $user->registrations()->paginate(10);        
+        $events = $user->eventRegistrations;
+        $courses = $user->courseRegistrations;
+        $this->list = $events->merge($courses); 
     }
 
     /**

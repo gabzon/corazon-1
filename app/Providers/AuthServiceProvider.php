@@ -31,50 +31,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-        
-        
-        Gate::define('like', function(User $user, Likeable $likeable){
-            if (! $likeable->exists) {
-                return Response::deny("Cannot like an object that doesn't exists");
-            }
-            if ($user->hasLiked($likeable)) {
-                return Response::deny("Cannot like the same thing twice");
-            }
-            return Response::allow();
-        });
-
-        Gate::define('unlike', function(User $user, Likeable $likeable){
-            if (! $likeable->exists) {
-                return Response::deny("Cannot unlike an object that doesn't exists");
-            }
-
-            if(! $user->hasLiked($likeable)){
-                return Response::deny("Cannot unlike without liking first");
-            }
-            return Response::allow();
-        });
-
-        Gate::define('interest', function(User $user, Interestable $interestable){
-            if (! $interestable->exists) {
-                return Response::deny("Cannot interest an object that does not exists");
-            }
-            if ($user->hasInterest($interestable)) {
-                return Response::deny("Cannot be interested in the same thing twice");
-            }
-            return Response::allow();
-        });
-
-
-        Gate::define('uninterest', function(User $user, Interestable $interestable){
-            if (! $interestable->exists) {
-                return Response::deny("Cannot uninterest an object that do not exists");
-            }            
-            if (! $user->hasInterest($interestable)) {
-                return Response::deny("Cannot uninterest without interesting first");
-            }
-            return Response::allow();
-        }); 
-        
+        $this->registerPolicies();        
     }
 }

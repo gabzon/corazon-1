@@ -99,8 +99,8 @@ class EventPolicy
             return true;
         }
 
-        if ($user->isRegisteredInEvent($event)) {
-            if ($user->getEventRegistrationRole($event) == 'instructor') {
+        if ($user->isRegistered($event)) {
+            if ($user->getRegistrationRole($event) == 'instructor') {
                 return true;
             }            
         }
@@ -161,7 +161,7 @@ class EventPolicy
             return Response::deny("Cannot bookmark an event that does not exists");
         }
         
-        if ($user->hasBookmarkedEvent($event)) {
+        if ($user->hasBookmarked($event)) {
             return Response::deny("Cannot bookmark the same event twice");
         }
 
@@ -174,8 +174,34 @@ class EventPolicy
             return Response::deny("Cannot unbookmark an event that does not exists");
         }
         
-        if (! $user->hasBookmarkedEvent($event)) {
+        if (! $user->hasBookmarked($event)) {
             return Response::deny("Cannot unbookmark without bookmarking first");
+        }
+
+        return Response::allow();
+    }
+
+    public function like(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot like an event that does not exists");
+        }
+        
+        if ($user->hasLiked($event)) {
+            return Response::deny("Cannot like the same event twice");
+        }
+
+        return Response::allow();
+    }
+
+    public function unlike(User $user, Event $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot like an event that does not exists");
+        }
+        
+        if (! $user->hasLiked($event)) {
+            return Response::deny("Cannot like without liking first");
         }
 
         return Response::allow();

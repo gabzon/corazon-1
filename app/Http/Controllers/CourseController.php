@@ -54,44 +54,25 @@ class CourseController extends Controller
     }
 
     public function dashboard(Request $request, Course $course)
-    {
-        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
-            return view('course.dashboard', compact('course'));   
-        }
-        return view('course.view', compact('course'));
+    {        
+        return view('course.dashboard', compact('course'));                   
     }
 
     public function info(Request $request, Course $course)
-    {
-        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
-            return view('course.info', compact('course'));   
-        }
-        return view('course.view', compact('course'));
+    {        
+        return view('course.info', compact('course'));                   
     }
 
     public function students(Request $request, Course $course)
-    {
-        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
-            return view('course.students', compact('course'));   
-        }
-        return view('course.view', compact('course'));
+    {        
+        return view('course.students', compact('course'));                   
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request, Course $course)
     {
         return view('course.edit', compact('course'));
     }
 
-    /**
-     * @param \App\Http\Requests\CourseUpdateRequest $request
-     * @param \App\Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function update(CourseUpdateRequest $request, Course $course)
     {
         $course->update($request->validated());
@@ -101,11 +82,6 @@ class CourseController extends Controller
         return redirect()->route('course.index');
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, Course $course)
     {
         $course->delete();

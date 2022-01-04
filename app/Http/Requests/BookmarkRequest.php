@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Contracts\Interestable;
+use App\Contracts\Bookmarkable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
 
-class InterestRequest extends FormRequest
+class BookmarkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class InterestRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('interest', $this->interestable());        
+        return $this->user()->can('bookmark', $this->bookmarkable());
     }
 
     /**
@@ -26,7 +26,7 @@ class InterestRequest extends FormRequest
     public function rules()
     {
         return [
-            'interestable_type' => [
+            'bookmarkable_type' => [
                 "bail",
                 'required',
                 'string',
@@ -39,15 +39,15 @@ class InterestRequest extends FormRequest
                         $fail($value . " is not Illuminate\Database\Eloquent\Model");
                     }
 
-                    if (! in_array(Interestable::class, class_implements($value))) {
-                        $fail($value . " is not App\Contracts\Interestable");
+                    if (! in_array(Bookmarkable::class, class_implements($value))) {
+                        $fail($value . " is not App\Contracts\Bookable");
                     }
                 }
             ],
             'id' => [
                 'required',
                 function($attribute, $value, $fail){
-                    $class = $this->input('interestable_type');
+                    $class = $this->input('bookmarkable_type');
 
                     if (! $class::where('id', $value)->exists()) {
                         $fail($value . ' does not exists in database');
@@ -57,12 +57,11 @@ class InterestRequest extends FormRequest
         ];
     }
 
-    public function interestable(): Interestable
-    {
-        $class = $this->input('interestable_type');
+    public function bookmarkable(): Bookmarkable
+    {        
+        $class = $this->input('bookmarkable_type');
 
         return $class::findOrFail($this->input('id'));
     }
 }
-
 

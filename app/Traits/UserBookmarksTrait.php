@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Contracts\Bookmarkable;
 use App\Models\Course;
 use App\Models\Event;
 
@@ -17,43 +18,29 @@ trait UserBookmarksTrait {
         return $this->belongsToMany(Event::class,'bookmark_event','user_id','event_id')->withTimeStamps();
     }
 
-    public function hasBookmarkedCourse(Course $course):bool
+    public function hasBookmarked(Bookmarkable $bookmarkable):bool
     {
-        if (! $course->exists) { return false; }
-        return in_array($course->id, $this->bookmarkedCourses()->pluck('course_id')->toArray());        
+        if (! $bookmarkable->exists) {
+            return false;
+        }
+        return in_array($this->id, $bookmarkable->bookmarks()->pluck('user_id')->toArray());     
     }
 
-    public function hasBookmarkedEvent(Event $event):bool
-    {
-        if (! $event->exists) { return false; }
-        return in_array($event->id, $this->bookmarkedEvents()->pluck('event_id')->toArray());
-    }
-
-    public function bookmarkCourse(Course $course): self
+    public function bookmark(Bookmarkable $bookmarkable): self
     {        
-        if ($this->hasBookmarkedCourse($course)) { return $this; }
-        $course->bookmarks()->attach($this->id);
+        if ($this->hasBookmarked($bookmarkable)) {
+            return $this;
+        }
+
+        $bookmarkable->bookmarks()->attach($this->id);
+
         return $this;
     }
 
-    public function bookmarkEvent(Event $event): self
+    public function unbookmark(Bookmarkable $bookmarkable): self
     {
-        if ($this->hasBookmarkedEvent($event)) { return $this; }
-        $event->bookmarks()->attach($this->id);        
-        return $this;
-    }
-
-    public function unbookmarkCourse(Course $course): self
-    {
-        if (! $this->hasBookmarkedCourse($course)) { return $this; }
-        $course->bookmarks()->detach($this->id);        
-        return $this;
-    }
-
-    public function unbookmarkEvent(Event $event): self
-    {
-        if (! $this->hasBookmarkedEvent($event)) { return $this; }
-        $event->bookmarks()->detach($this->id);        
+        if (! $this->hasBookmarked($bookmarkable)) { return $this; }
+        $bookmarkable->bookmarks()->detach($this->id);        
         return $this;
     }
 

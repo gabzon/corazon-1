@@ -64,7 +64,7 @@
                 </tr>
                 @if ($event->location)
                 <tr>
-                    <td class="text-gray-500 capitalize pr-5 py-2">Place</td>
+                    <td class="text-gray-500 capitalize pr-5 py-2">Venue</td>
                     <td class="text-gray-900">
                         <a href="#location" class="text-indigo-500 hover:text-indigo-700">
                             {{ $event->location->name }}, {{ $event->location->city->name }}
@@ -84,7 +84,7 @@
 </div>
 
 
-<div class="mt-4 pb-3 flex items-center">
+<div class="mt-4 pb-3 flex items-center space-x-1">
     @if ($event->organizations()->count() > 0)
     @if ($event->hasActiveOrganizations())
     @guest
@@ -99,14 +99,14 @@
     </div>
     @endguest
     @auth
-    <livewire:shared.registration-button :event="$event" />
+    <livewire:shared.registration-button :model="$event" />
     @endauth
     @endif
     @endif
+    @auth
     <livewire:shared.bookmark :model="$event" />
-    {{--
-    <livewire:shared.like :model="$event" /> --}}
-
+    <livewire:shared.like :model="$event" />
+    @endauth
 </div>
 
 <form class="mt-3">
@@ -214,7 +214,7 @@
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
                     class="text-gray-900 text-sm font-medium">
-                    Location
+                    Venue
                 </span>
 
                 <div class="ml-6 flex items-center">

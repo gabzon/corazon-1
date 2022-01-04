@@ -15,10 +15,14 @@ class LikesList extends Component
      *
      * @return void
      */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-        $this->list = $user->likes()->paginate(10);
+    public function __construct(User $user = null)
+    {        
+        
+        $this->user = $user ?? auth()->user();
+
+        $courses = $this->user->likedCourses;
+        $events = $this->user->likedEvents;
+        $this->list = $courses->merge($events)->sortBy('start_date');
     }
 
     /**

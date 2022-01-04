@@ -5,9 +5,9 @@ namespace App\View\Components\Profile;
 use App\Models\User;
 use Illuminate\View\Component;
 
-class InterestsList extends Component
-{
-    public $list;
+class Bookmarks extends Component
+{    
+    public $bookmarkable;
     /**
      * Create a new component instance.
      *
@@ -15,7 +15,10 @@ class InterestsList extends Component
      */
     public function __construct(User $user)
     {                
-        $this->list = $user->interests;        
+        $courses = $user->bookmarkedCourses;        
+        $events = $user->bookmarkedEvents;     
+        $merge = $courses->merge($events);
+        $this->bookmarkable = $merge->sortBy('start_date')->sortBy('status');
     }
 
     /**
@@ -25,6 +28,6 @@ class InterestsList extends Component
      */
     public function render()
     {
-        return view('components.profile.interests-list');
+        return view('components.profile.bookmarks');
     }
 }

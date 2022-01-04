@@ -20,12 +20,7 @@ class UserRegistrationStatusBadge extends Component
             $user = auth()->user();
         }
         
-        if (get_class($model) == "App\Models\Event") {
-            $this->status = $user->getEventRegistrationStatus($model);
-        }   
-        if (get_class($model) == "App\Models\Course") {
-            $this->status = $user->getCourseRegistrationStatus($model);
-        }    
+        $this->status = $user->getRegistrationStatus($model);         
 
         if ($this->status != null) {
             switch ($this->status) {

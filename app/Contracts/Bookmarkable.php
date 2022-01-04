@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-interface Likeable
+interface Bookmarkable
 {
-    public function likes(): BelongsToMany;
+    public function bookmarks(): BelongsToMany;
 }

@@ -14,7 +14,7 @@ class RegisterRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
+    {        
         return $this->user()->can('register', $this->registrable());
     }
 

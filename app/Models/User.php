@@ -108,6 +108,8 @@ class User extends Authenticatable implements HasMedia
         return $this->avatar ?? 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background='. $background .'&color=ffffff';
     }
 
+    
+
     // public function videoLessons()
     // {
     //     return $this->belongsToMany();

@@ -25,7 +25,8 @@ class RegisteredTable extends Component
     public function save()
     {
         //dd([ 'status' => $this->status, 'role' => $this->status, 'username' => $this->user->username] );
-        $this->user->courseRegistrations()->updateExistingPivot($this->model->id, ['status'=> $this->status, 'role'=> $this->role]);
+        // $this->user->courseRegistrations()
+        $this->model->registrations()->updateExistingPivot($this->user->id, ['status'=> $this->status, 'role'=> $this->role]);
         $this->showForm = false;
         return redirect()->route('course.students', $this->model);
     }
@@ -33,14 +34,10 @@ class RegisteredTable extends Component
     public function update(User $user)
     {
         $this->user = $user;
-        if (get_class($this->model) == "App\Models\Event") {
-            $this->status = $user->getEventRegistrationStatus($this->model);
-        }   
-        if (get_class($this->model) == "App\Models\Course") {
-            $this->status = $user->getCourseRegistrationStatus($this->model);
-        } 
 
-        $this->role = $user->getEventRegistrationRole($this->model);
+        $this->status = $user->getRegistrationStatus($this->model);
+        $this->role = $user->getRegistrationRole($this->model);
+
         $this->showForm = true;
     }
 

@@ -19,10 +19,10 @@ class CreateForm extends Component
     public array $fbResults = [];
 
     protected $rules = [
-        'event.name'            => 'required',
+        'event.name'            => 'required|string|max:100',
         'event.slug'            => 'required',
-        'event.start_date'      => 'required',        
-        'event.end_date'        => 'required',
+        'event.start_date'      => 'required|date|after:today',        
+        'event.end_date'        => 'required|date|after_or_equal:event.start_date',
         'event.type'            => 'required',
         'event.status'          => 'required',
         'event.description'     => 'nullable',
@@ -33,6 +33,13 @@ class CreateForm extends Component
         'event.location_id'     => 'nullable',
         'event.city_id'         => 'required',
     ];
+
+    public function updatedEventStartDate()
+    {
+        if (! $this->event->end_date) {
+            $this->event->end_date = $this->event->start_date;
+        }
+    }    
 
     public function import()    
     {        

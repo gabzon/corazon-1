@@ -93,9 +93,20 @@ class CoursePolicy
         //
     }
 
+    public function dashboard(User $user, Course $course)
+    {
+        if ($user->role == 'admin') {
+            return Response::allow();
+        }
+
+        if (!$user->registrationIs($course, 'registered') || !$user->registrationIs($course, 'partial')) {
+            return Response::deny("Cannot like if not registered");   
+        }
+    }
+
     public function register(User $user, Course $course)
     {
-        if (! $course->exists) {
+        if (!$course->exists) {
             return Response::deny("Cannot register to a course that does not exists.");
         }
 
@@ -103,17 +114,72 @@ class CoursePolicy
             return Response::deny("Cannot register for the same thing twice");
         }
 
-        return Response::allow();            
+        return Response::allow();
     }
 
     public function unregister(User $user, Course $course)
     {
-        if (! $course->exists) {
+        if (!$course->exists) {
             return Response::deny("Cannot unregister to a course that does not exists.");
         }
 
-        if (! $user->isRegistered($course)) {
+        if (!$user->isRegistered($course)) {
             return Response::deny("Cannot unregister without registering first");
+        }
+
+        return Response::allow();
+    }
+
+    public function bookmark(User $user, Course $course)
+    {
+        if (! $course->exists) {
+            return Response::deny("Cannot bookmark a course that does not exists");
+        }
+
+        if ($user->hasBookmarked($course)) {
+            return Response::deny("Cannot bookmark the same course twice");
+        }
+
+        return Response::allow();
+    }
+
+    public function unbookmark(User $user, Course $course)
+    {
+        if (!$course->exists) {
+            return Response::deny("Cannot unbookmark a course that does not exists");
+        }
+
+        if (!$user->hasBookmarked($course)) {
+            return Response::deny("Cannot unbookmark without bookmarking first");
+        }
+
+        return Response::allow();
+    }
+
+    public function like(User $user, Course $course)
+    {
+        if ( !$course->exists ) {
+            return Response::deny("Cannot like a course that does not exists");
+        }
+        if ($user->hasLiked($course)) {
+            return Response::deny("Cannot like the same course twice");   
+        }
+
+        if (!$user->registrationIs($course, 'registered') || !$user->registrationIs($course, 'partial')) {
+            return Response::deny("Cannot like if not registered");   
+        }
+
+        return Response::allow();
+    }
+    
+    public function unlike(User $user, Course $course)
+    {
+        if (!$course->exists) {
+            return Response::deny("Cannot unlike a course that does not exists");
+        }
+
+        if (!$user->hasLiked($course)) {
+            return Response::deny("Cannot like without liking it first");
         }
 
         return Response::allow();

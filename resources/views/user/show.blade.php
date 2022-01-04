@@ -6,7 +6,6 @@
             <div class="lg:w-8/12 lg:mx-auto mb-8">
 
                 <header class="flex flex-wrap items-center p-4 md:py-8">
-
                     <div class="md:w-3/12 md:ml-16">
                         <!-- profile image -->
                         <img class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
@@ -59,23 +58,19 @@
             </div>
         </main>
 
-        <div>
+        <div x-data="{ tab: 'account' }">
             <div class="sm:hidden">
                 <label for="tabs" class="sr-only">Select a tab</label>
                 <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-                <select id="tabs" name="tabs"
+                <select id="tabs" name="tabs" x-on:change="tab = $event.target.value"
                     class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-                    <option>My Account</option>
-
-                    <option>Company</option>
-
-                    <option selected>Team Members</option>
-
-                    <option>Billing</option>
+                    <option value="account">Account</option>
+                    <option value="events">Events</option>
+                    <option value="courses">Courses</option>
                 </select>
             </div>
 
-            <div class="hidden sm:block" x-data="{ tab: 'account' }">
+            <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8 justify-center" aria-label="Tabs">
                         <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'account', 'text-gray-400 group-hover:text-gray-500' : tab != 'account' }"
@@ -115,20 +110,20 @@
 
                     </nav>
                 </div>
-                <div>
-                    <div x-show="tab === 'account'">
-                        @include('user.show.account')
-                    </div>
-                    <div x-show="tab === 'courses'">
-                        @include('user.show.courses')
-                    </div>
-                    <div x-show="tab === 'events'">
-                        @include('user.show.events')
-                    </div>
-                    {{-- <div x-show="tab === 'roles'">
-                        @include('user.show.roles')
-                    </div> --}}
+            </div>
+            <div>
+                <div x-show="tab === 'account'">
+                    @include('user.show.account')
                 </div>
+                <div x-show="tab === 'courses'">
+                    @include('user.show.courses')
+                </div>
+                <div x-show="tab === 'events'">
+                    @include('user.show.events')
+                </div>
+                {{-- <div x-show="tab === 'roles'">
+                    @include('user.show.roles')
+                </div> --}}
             </div>
         </div>
     </div>

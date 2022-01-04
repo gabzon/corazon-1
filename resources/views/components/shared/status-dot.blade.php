@@ -1,0 +1,1 @@
+<span class="inline-flex items-center w-2 h-2 rounded-full text-xs font-medium {{ $styles }}"> </span>

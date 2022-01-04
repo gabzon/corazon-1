@@ -9,14 +9,19 @@ use Illuminate\View\Component;
 class WeekRegistrations extends Component
 {
     public $registrations;    
+    public $merged;
     /**
      * Create a new component instance.
      *
      * @return void
      */
     public function __construct()
-    {        
-        $this->registrations = auth()->user()->courseRegistrations->filter(function($course){            
+    {     
+        $courses = auth()->user()->courseRegistrations;
+        $bookmarks = auth()->user()->bookmarkedEvents;
+        $this->merged = $courses->merge($bookmarks);
+
+        $this->registrations = $this->merged->filter(function($course){            
             if ($course->end_date >= Carbon::today() && $course->start_date <= Carbon::today()->addDays(7)) {
                 return  $course;
             }                

@@ -5,7 +5,7 @@
         <input type="hidden" name="likeable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
         <button
-            class="py-3 px-3 rounded-full flex items-center justify-center text-indigo-400 hover:bg-indigo-100 hover:text-indigo-700">
+            class="p-2 rounded-full flex items-center justify-center text-indigo-400 hover:bg-indigo-100 hover:text-indigo-700">
             {{-- @lang('Like') --}}
             @include('icons.heart')
             <span class="sr-only">Add to favorites</span>
@@ -20,7 +20,7 @@
         <input type="hidden" name="likeable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
         <button
-            class="py-3 px-3 rounded-full flex items-center justify-center text-indigo-500 hover:bg-indigo-100 hover:text-indigo-700">
+            class="p-2 rounded-full flex items-center justify-center text-indigo-500 hover:bg-indigo-100 hover:text-indigo-700">
             {{-- @lang('Unlike') --}}
             @include('icons.heart-fill')
             <span class="sr-only">Remove from favorites</span>

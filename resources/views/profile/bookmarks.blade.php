@@ -9,11 +9,9 @@
         </div>
     </x-slot>
 
-    <div class="py-12 h-screen overflow-y-scroll">
+    <div class="py-6 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{--
-            <x-profile.interests-list :user="auth()->user()" />
-            --}}
+            <x-profile.bookmarks :user="auth()->user()" />
         </div>
     </div>
 </x-app-layout>
