@@ -12,12 +12,19 @@ class UserRegistrationStatusBadge extends Component
     public $status;
 
     
-    public function mount($model, $size = null, $style = 'rounded-full')
+    public function mount($model, $user = null,  $size = null, $style = 'rounded-full')
     {        
         $this->style = $style;
+
+        if ($user == null) {
+            $user = auth()->user();
+        }
         
         if (get_class($model) == "App\Models\Event") {
-            $this->status = auth()->user()->getEventRegistrationStatus($model);
+            $this->status = $user->getEventRegistrationStatus($model);
+        }   
+        if (get_class($model) == "App\Models\Course") {
+            $this->status = $user->getCourseRegistrationStatus($model);
         }    
 
         if ($this->status != null) {

@@ -31,6 +31,10 @@
                 <x-jet-section-border />
 
                 <livewire:shared.social-media-form :model="$organization" />
+
+                <x-jet-section-border />
+
+                <livewire:organization.form.teachers :organization="$organization" />
             </div>
             <div class="my-36"></div>
         </div>

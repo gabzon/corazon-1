@@ -2,19 +2,13 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Likeable;
-use App\Models\Concerns\Interests;
-use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lesson extends Model implements Likeable, Interestable
+class Lesson extends Model
 {
     use HasFactory, SoftDeletes;
-    use Likes;
-    use Interests;
 
     /**
      * The attributes that are mass assignable.
@@ -22,9 +16,12 @@ class Lesson extends Model implements Likeable, Interestable
      * @var array
      */
     protected $fillable = [
+        'title',
         'date',
+        'description',
         'comments',
         'user_id',
+        'course_id',
     ];
 
     /**
@@ -39,19 +36,19 @@ class Lesson extends Model implements Likeable, Interestable
     ];
 
 
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
 
-    public function organization()
+    public function course()
     {
-        return $this->belongsTo(\App\organization::class);
+        return $this->belongsTo(\App\Models\Course::class);
     }
 
-    public function lessonable()
+    public function videos()
     {
-        return $this->morphTo();
+        return $this->belongsToMany(Video::class)->withTimestamps();
     }
  
 }

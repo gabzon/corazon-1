@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Contracts\Likeable;
 use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,9 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Location extends Model implements HasMedia, Likeable
+class Location extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Likes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -94,4 +93,13 @@ class Location extends Model implements HasMedia, Likeable
     {
         return $this->hasMany(\App\Models\Space::class);
     }
+
+    public function getPhotoAttribute()
+    {
+        // $this->avatar ?? $course->location->photo ?? ''
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
 }
+
+
+

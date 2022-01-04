@@ -36,6 +36,10 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
                                 </th>
                                 <th scope="col"
@@ -70,8 +74,11 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse ($courses as $course)
                             <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $course->id }}
+                                </td>
                                 <td class="px-6 py-3 whitespace-nowrap">
-                                    <a href="{{ route('course.show', $course) }}"
+                                    <a href="{{ route('course.view', $course) }}"
                                         class="text-sm font-medium text-gray-900 hover:text-indigo-600">
                                         {{ $course->name }}
                                     </a>

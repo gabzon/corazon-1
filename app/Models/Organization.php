@@ -158,4 +158,13 @@ class Organization extends Model implements HasMedia
     {
         
     }
+
+    public function getPhotoAttribute()
+    {
+        if ($this->getMedia('organization-icons')->last() != null) 
+        {
+            return $this->getMedia('organization-icons')->last()->getUrl();
+        }
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
 }

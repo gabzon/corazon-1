@@ -48,13 +48,32 @@ class CourseController extends Controller
      * @param \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Course $course)
+    public function show(Request $request, Course $course)    
     {
-        return view('course.show', compact('course'));
+        return view('course.view', compact('course'));
     }
 
-    public function view(Request $request, Course $course)
+    public function dashboard(Request $request, Course $course)
     {
+        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
+            return view('course.dashboard', compact('course'));   
+        }
+        return view('course.view', compact('course'));
+    }
+
+    public function info(Request $request, Course $course)
+    {
+        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
+            return view('course.info', compact('course'));   
+        }
+        return view('course.view', compact('course'));
+    }
+
+    public function students(Request $request, Course $course)
+    {
+        if (Auth::check() && auth()->user()->isRegisteredInCourse($course)) {
+            return view('course.students', compact('course'));   
+        }
         return view('course.view', compact('course'));
     }
 

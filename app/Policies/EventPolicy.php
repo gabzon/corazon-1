@@ -93,6 +93,42 @@ class EventPolicy
         return $user->role === 'admin' || $user->role === 'publisher';
     }
 
+    public function viewInscribed(User $user, Event $event)
+    {
+        if ($user->role == 'admin' || $event->user_id == $user->id) {
+            return true;
+        }
+
+        if ($user->isRegisteredInEvent($event)) {
+            if ($user->getEventRegistrationRole($event) == 'instructor') {
+                return true;
+            }            
+        }
+
+        if ($event->organizations()->count() > 0) {
+            foreach ($event->organizations as $org) {
+                return $user->manageOrganization($org->id) || $user->teachInOrganization($org->id);
+            }
+        }
+
+        return false;        
+    }
+
+    public function stats(User $user, Event $event)
+    {
+        if ($user->role == 'admin' || $event->user_id == $user->id) {
+            return true;
+        }
+
+        if ($event->organizations()->count() > 0) {
+            foreach ($event->organizations as $org) {
+                return $user->manageOrganization($org->id);
+            }
+        }
+
+        return false;     
+    }
+
     public function register(User $user, Event $event)
     {
         if (! $event->exists) {

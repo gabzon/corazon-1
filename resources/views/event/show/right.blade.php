@@ -1,100 +1,237 @@
-<div class="sticky top-4 space-y-4">
-    <section aria-labelledby="who-to-follow-heading">
-        <div class="bg-white rounded-lg shadow">
-            <div class="p-6">
-                <h2 id="who-to-follow-heading" class="text-base font-medium text-gray-900">
-                    Instructors
-                </h2>
-                <div class="mt-6 flow-root">
-                    <ul role="list" class="-my-4 divide-y divide-gray-200">
-                        <li class="flex items-center py-4 space-x-3">
-                            <div class="flex-shrink-0">
-                                <img class="h-8 w-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-sm font-medium text-gray-900">
-                                    <a href="#">Leonard Krasner</a>
-                                </p>
-                                <p class="text-sm text-gray-500">
-                                    <a href="#">@leonardkrasner</a>
-                                </p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <button type="button"
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full bg-rose-50 text-sm font-medium text-rose-700 hover:bg-rose-100">
-                                    <!-- Heroicon name: solid/plus-sm -->
-                                    <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span>
-                                        Follow
-                                    </span>
-                                </button>
-                            </div>
-                        </li>
+<h1 class="text-3xl font-extrabold tracking-tight text-gray-900">{{ $event->name }}</h1>
+@if ($event->tagline)
+<h2 class="text-gray-600 text-xl">{{ $event->tagline }}</h2>
+@endif
 
-                        <!-- More people... -->
-                    </ul>
-                </div>
-                <div class="mt-6">
-                    <a href="#"
-                        class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                        View all
-                    </a>
-                </div>
-            </div>
+{{-- <div class="mt-3 grid grid-cols-2 items-center"> --}}
+    {{-- @if ($event->prices()->count() > 0 )
+    <div class="col-span-2 sm:col-span-1">
+        <h2 class="sr-only">Product information</h2>
+
+        <x-shared.price-display class="text-3xl text-gray-900" :model="$event" />
+    </div>
+    @endif --}}
+    {{-- <div class="col-span-2 sm:col-span-1">
+        @if ($event->status == 'active')
+        <span
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            {{ $event->start_date->diffForHumans() }}
+        </span>
+        @endif
+        @if ($event->status == 'canceled')
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+            canceled
+        </span>
+        @endif
+    </div> --}}
+    {{--
+</div> --}}
+
+
+<div class="mt-2">
+    <h3 class="sr-only">Description</h3>
+
+    <div>
+        {{-- <h3 class="font-medium text-gray-900 pb-1">Information</h3> --}}
+
+        <div class="w-full">
+            <table class="text-sm font-medium">
+                <tr>
+                    <td class="text-gray-500 py-2">Date</td>
+                    <td class="text-gray-900">
+                        {{ $event->start_date->format('M j Y') }} - {{ $event->end_date->format('M j Y') }}
+                        <div class="inline sm:ml-2">
+                            @if ($event->status == 'active')
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                {{ $event->start_date->diffForHumans() }}
+                            </span>
+                            @endif
+                            @if ($event->status == 'canceled')
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                canceled
+                            </span>
+                            @endif
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-gray-500 py-2">Time</td>
+                    <td class="text-gray-900">
+                        {{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }}
+                    </td>
+                </tr>
+                @if ($event->location)
+                <tr>
+                    <td class="text-gray-500 capitalize pr-5 py-2">Place</td>
+                    <td class="text-gray-900">
+                        <a href="#location" class="text-indigo-500 hover:text-indigo-700">
+                            {{ $event->location->name }}, {{ $event->location->city->name }}
+                        </a>
+                    </td>
+                </tr>
+                @endif
+                <tr>
+                    <td class="text-gray-500 capitalize pr-5 py-2">{{ $event->type }}</td>
+                    <td class="text-gray-900">
+                        {{ implode(', ', $event->styles->pluck('name')->toArray()) }}
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
-    <section aria-labelledby="trending-heading">
-        <div class="bg-white rounded-lg shadow">
-            <div class="p-6">
-                <h2 id="trending-heading" class="text-base font-medium text-gray-900">
-                    Students
-                </h2>
-                <div class="mt-6 flow-root">
-                    <ul role="list" class="-my-4 divide-y divide-gray-200">
-                        @forelse ($event->registrations as $registration)
-                        <li class="flex items-center py-4 space-x-3">
-                            <div class="flex-shrink-0">
-                                <img class="h-8 w-8 object-cover rounded-full" src="{{ $registration->user->photo }}"
-                                    alt="">
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-sm font-medium text-gray-900">
-                                    <a href="#">{{ $registration->user->name }}</a>
-                                </p>
-                                <p class="text-sm text-gray-500">
-                                    <a href="#">{{ '@' . $registration->user->username}}</a>
-                                </p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <button type="button"
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full bg-rose-50 text-sm font-medium text-rose-700 hover:bg-rose-100">
-                                    <span>
-                                        {{ $registration->status }}
-                                    </span>
-                                </button>
-                            </div>
-                        </li>
-                        @empty
-
-                        @endforelse
-
-
-                    </ul>
-                </div>
-                <div class="mt-6">
-                    <a href="#"
-                        class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                        View all
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 </div>
+
+
+<div class="mt-4 pb-3 flex items-center">
+    @if ($event->organizations()->count() > 0)
+    @if ($event->hasActiveOrganizations())
+    @guest
+    <div class="inline-flex items-center">
+        <a href="http://"
+            class="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">
+            Login to enroll
+        </a>
+        <a href="" class="ml-2 text-sm font-medium text-gray-500 hover:text-indigo-700">
+            or create an account here <span aria-hidden="true">&rarr;</span>
+        </a>
+    </div>
+    @endguest
+    @auth
+    <livewire:shared.registration-button :event="$event" />
+    @endauth
+    @endif
+    @endif
+    <livewire:shared.bookmark :model="$event" />
+    {{--
+    <livewire:shared.like :model="$event" /> --}}
+
+</div>
+
+<form class="mt-3">
+    <div>
+        <x-partials.social-links :model="$event" />
+    </div>
+
+</form>
+
+<section aria-labelledby="details-heading" class="mt-12">
+    <h2 id="details-heading" class="sr-only">Additional details</h2>
+
+    <div class="border-t divide-y divide-gray-200">
+
+        {{-- @if ($event->prices->count() > 0 )
+        <div x-data="{ open : false }">
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
+                @click="open = !open">
+
+                <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
+                    class="text-gray-900 text-sm font-medium">
+                    Pricing
+                </span>
+
+                <div class="ml-6 flex items-center">
+                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
+                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                </div>
+
+            </button>
+            <div x-show="open">
+                <x-shared.pricing-list :model="$event" :title="false" />
+            </div>
+        </div>
+        @endif --}}
+
+        <div x-data="{ open : false }">
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
+                @click="open = !open">
+
+                <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
+                    class="text-gray-900 text-sm font-medium">
+                    Description
+                </span>
+
+                <div class="ml-6 flex items-center">
+                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
+                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                </div>
+
+            </button>
+            <div x-show="open">
+                <div class="pb-6 prose prose-sm">
+                    <div class="mb-5">{!! $event->description !!}</div>
+                </div>
+            </div>
+        </div>
+
+        @if ($event->contact || $event->email || $event->phone )
+        <div x-data="{ open : false }">
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
+                @click="open = !open">
+
+                <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
+                    class="text-gray-900 text-sm font-medium">
+                    Contact information
+                </span>
+
+                <div class="ml-6 flex items-center">
+                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
+                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                </div>
+
+            </button>
+
+            <div x-show="open">
+                <div class="pb-6 prose prose-sm">
+                    <ul role="list">
+                        @if ($event->contact)
+                        <li>{{ $event->contact }}</li>
+                        @endif
+
+                        @if ($event->email)
+                        <li>{{ $event->email }}</li>
+                        @endif
+
+                        @if ($event->phone)
+                        <li>{{ $event->phone }}</li>
+                        @endif
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @endif
+
+
+        <div id="location" x-data="{ open : true }">
+            <button type="button"
+                class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
+                @click="open = !open">
+
+                <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
+                    class="text-gray-900 text-sm font-medium">
+                    Location
+                </span>
+
+                <div class="ml-6 flex items-center">
+                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
+                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                </div>
+
+            </button>
+            <div x-show="open">
+                @if ($event->location)
+                <x-location.details :location="$event->location" />
+                @endif
+            </div>
+        </div>
+
+    </div>
+
+
+
+</section>

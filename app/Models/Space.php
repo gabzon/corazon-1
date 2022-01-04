@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use App\Contracts\Likeable;
-use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Space extends Model implements HasMedia, Likeable
+class Space extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Likes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
 
     /**

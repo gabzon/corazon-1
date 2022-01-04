@@ -82,7 +82,8 @@
     <x-jet-section-border />
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.interested-styles-form :user="$user" />
+        {{--
+        <livewire:user.interested-styles-form :user="$user" /> --}}
     </div>
 
     <div class="my-20">&nbsp;</div>

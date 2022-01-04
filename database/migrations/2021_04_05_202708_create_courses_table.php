@@ -62,6 +62,7 @@ class CreateCoursesTable extends Migration
             $table->decimal('unemployed_price')->nullable();
             $table->decimal('senior_price')->nullable();
             $table->boolean('standby')->nullable()->default(false);
+            $table->boolean('is_private')->default(false);
             $table->string('thumbnail')->nullable();
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();

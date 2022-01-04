@@ -14,8 +14,8 @@ class RequiredData extends Component
     public bool $hasIdn = false;
 
     protected $rules = [
-        'user.gender'   => 'required|string',
-        'user.username' => 'required|string|max:30',
+        'user.gender'   => 'required|string|max:8',
+        'user.username' => 'required|string|max:30|unique:users|alpha_dash',
         'user.mobile'   => 'required',        
         'user.birthday' => 'required|date',
     ];

@@ -17,9 +17,7 @@
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    @lang('Add Lesson')
-                </h2>
+                <x-typo.page-heading title="{{ __('Add Lesson') }}" />
             </div>
             <div class="mt-4 flex md:mt-0 md:ml-4">
                 <a href="{{ url()->previous() }}"
@@ -31,10 +29,9 @@
     </x-slot>
 
 
-
     <div class="py-12 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:lesson.form.default-form />
+            <livewire:lesson.form.default-form :cid="$cid" />
         </div>
     </div>
 

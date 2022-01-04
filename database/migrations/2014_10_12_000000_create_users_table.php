@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('idn')->nullable();
             $table->timestamps();
 
-            $table->string('username')->nullable();                    
+            $table->string('username')->nullable()->unique();                    
             $table->date('birthday')->nullable();
             $table->text('avatar')->nullable();            
             $table->enum('gender',['male','female'])->nullable();            
@@ -44,7 +44,7 @@ class CreateUsersTable extends Migration
             $table->boolean('work_status_verified')->nullable();
             $table->string('mobile')->nullable();            
             $table->string('phone')->nullable();            
-            $table->timestamp('mobile_verified_at')->nullable();           
+            $table->timestamp('mobile_verified_at')->nullable();     //asdlkfjalsdfkja      
             $table->timestamp('phone_verified_at')->nullable();  
             
             $table->decimal('price_hour')->nullable();            

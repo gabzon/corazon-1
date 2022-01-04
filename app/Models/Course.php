@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Contracts\Registrable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model implements HasMedia
+class Course extends Model implements HasMedia, Registrable
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
@@ -116,7 +117,12 @@ class Course extends Model implements HasMedia
 
     public function instructors()
     {
-        return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')->using(Registration::class)->wherePivot('role', 'instructor');
+        return $this->belongsToMany(User::class, 'course_registrations', 'course_id', 'user_id')->using(CourseRegistration::class)->wherePivot('role', 'instructor');        
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'course_registrations', 'course_id', 'user_id')->using(CourseRegistration::class)->wherePivot('role', 'student');        
     }
 
     public function space()
@@ -132,6 +138,11 @@ class Course extends Model implements HasMedia
     public function organization()
     {
         return $this->belongsTo(\App\Models\Organization::class);
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 
     public function styles()
@@ -296,9 +307,19 @@ class Course extends Model implements HasMedia
         return $this->update([ 'status' => 'finished' ]);
     }
 
+    public function bookmarks(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'bookmark_course','course_id','user_id')->withTimeStamps();        
+    }
+
+    public function likes(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'course_like','course_id','user_id')->withTimeStamps();        
+    }
+
     public function registrations():BelongsToMany
     {        
-        return $this->belongsToMany(User::class,'course_register','course_id','user_id')->withTimeStamps();                
+        return $this->belongsToMany(User::class,'course_registrations','course_id','user_id')->withPivot(['status','role','option'])->withTimeStamps();                
     }
 
 }

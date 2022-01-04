@@ -22,7 +22,6 @@
                                     <x-form.date-input wire:model="lesson.date" name="lesson.date" label="Date" />
                                 </div>
 
-
                                 <div class="col-span-6">
                                     <x-form.rich-text name="lesson.description"
                                         description="Detailed description of the event." />
@@ -30,12 +29,27 @@
 
                                 <div class="col-span-6">
                                     <x-form.textarea wire:model="lesson.comments" label="Comments" name="comments"
-                                        rows="4" description="Please write any comments regarding this lesson" />
+                                        rows="2" description="Please write any comments regarding this lesson" />
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                    <x-form.organization-select wire:model="lesson.organization_id"
-                                        name="lesson.organization_id" />
+                                    <div>
+                                        <label for="course"
+                                            class="block text-sm font-medium text-gray-700">Course</label>
+                                        <select id="school" name="school" wire:model="lesson.course_id"
+                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('lesson.course_id') border-red-600 @enderror">
+                                            <option value="" default selected>Choose Course</option>
+                                            @foreach (\App\Models\Course::all() as $course)
+                                            <option value="{{ $lesson->course_id }}">
+                                                {{ $lesson->course->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        @error('lesson.course_id')
+                                        <span class="text-red-600 text-xs">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

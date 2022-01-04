@@ -20,7 +20,7 @@ class CreateEventRegistrationsTable extends Migration
             $table->foreignId('order_id')->nullable()->constrained();
             
             $table->string('role')->default('student'); // ["instructor","assistant","student","guest","staff","dj","volonteer","artist","vip",""]
-            $table->enum('status', ["waiting","pre-registered","registered","canceled","standby","open","partial","rejected"])->default('pre-registered');
+            $table->enum('status', ["waiting","pre-registered","registered","canceled","standby","open","partial","invitee"])->default('pre-registered');
             $table->string('option')->nullable();
 
             $table->timestamps();
@@ -37,4 +37,3 @@ class CreateEventRegistrationsTable extends Migration
         Schema::dropIfExists('event_registrations');
     }
 }
-   

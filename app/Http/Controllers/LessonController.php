@@ -25,8 +25,8 @@ class LessonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
-        return view('lesson.create');
+    {                
+        return view('lesson.create')->with('cid', $request->cid);
     }
 
     /**

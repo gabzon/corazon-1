@@ -7,6 +7,9 @@ use App\Contracts\Likeable;
 use App\Contracts\Registrable;
 use App\Models\Like;
 use App\Models\Event;
+use App\Traits\UserBookmarksTrait;
+use App\Traits\UserLikesTrait;
+use App\Traits\UserRegistrationsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,12 +30,10 @@ class User extends Authenticatable implements HasMedia
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use UserLikesTrait;
+    use UserBookmarksTrait;
+    use UserRegistrationsTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -41,11 +42,6 @@ class User extends Authenticatable implements HasMedia
         'role',        
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -53,21 +49,11 @@ class User extends Authenticatable implements HasMedia
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'birthday'          => 'date:Y-m-d'
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'profile_photo_url',
     ];
@@ -122,130 +108,10 @@ class User extends Authenticatable implements HasMedia
         return $this->avatar ?? 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background='. $background .'&color=ffffff';
     }
 
-    public function likesCourses()
-    {
-        
-        return $this->belongsToMany(Course::class,'course_like','user_id','course_id')->withTimeStamps();
-    }
-
-    public function like(Likeable $likeable): self
-    {
-        if ($this->hasLiked($likeable)) {
-            return $this;            
-        }
-
-        (new Like())->user()->associate($this)->likeable()->associate($likeable)->save();
-        
-        return $this;
-    }
-
-    public function unlike(Likeable $likeable): self
-    {
-        if (! $this->hasLiked($likeable)) {
-            return $this;
-        }
-        
-        $likeable->likes()->whereHas('user', fn(Builder $q) => $q->whereId($this->id))->delete();
-        
-        return $this;
-    }
-
-    public function hasLiked(Likeable $likeable):bool
-    {
-        if (! $likeable->exists) {
-            return false;
-        }
-                
-        return $likeable->likes()->whereHas('user', fn(Builder $q) => $q->whereId($this->id))->exists();
-    }
-
-    public function bookmarkEvents()
-    {
-        return $this->belongsToMany(Event::class,'bookmark_event','user_id','event_id')->withTimeStamps();
-    }
-
-
-    public function hasBookmarkedEvent(Event $event):bool
-    {
-        if (! $event->exists) {
-            return false;
-        }
-
-        // return $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
-        return in_array($event->id, $this->bookmarkEvents()->pluck('event_id')->toArray());
-    }
-
-    public function unbookmarkEvent(Event $event):self
-    {
-        if (! $this->hasEventBookmarked($event)) {
-            return $this;    
-        }
-
-        $event->bookmarks()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->delete();
-
-        return $this;
-    }
-
-    public function coursesRegistrations()
-    {
-        return $this->belongsToMany(Course::class,'course_register','user_id','course_id')->withTimestamps();
-    }
-
-    public function registerForCourse(Course $course): self
-    {
-        if ($this->isRegisteredInCourse($course)) {
-            return $this;
-        }
-
-        (new Registration(['role'=>'student', 'option' => $course->name ]))
-            ->user()->associate($this, ['role'=>'student'])
-            ->registrable()->associate($course)
-            ->save();
-            
-        return $this;
-    }
-
-    public function unregister(Registrable $registrable):self
-    {
-        if (! $this->isRegistered($registrable)) {
-            return $this;
-        }
-        $registrable->registrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->delete();
-        
-        return $this;
-    }
-    
-    public function isRegisteredInCourse(Course $course):bool
-    {
-        if (! $course->exists) {
-            return false;
-        }
-
-        return $course->registrations()->whereHas('user', fn(Builder $query) => $query->whereId($this->id))->exists();
-    }
-
-    public function eventRegistrations()
-    {
-        return $this->belongsToMany(Event::class, 'event_registrations','user_id','event_id')->withPivot(['status','role','option'])->withTimestamps();
-    }
-
-    public function isRegisteredInEvent($event): bool
-    {                
-        if (! $event->exists ) {            
-            return false;
-        }
-        
-        return $event->registrations()->where('user_id', $this->id)->exists();        
-    }
-
-    public function getEventRegistrationStatus($event)
-    {
-        if (! $event->exists) {
-            return false;
-        }
-
-        return $event->registrations()->where('user_id',$this->id)->first()->pivot->status;
-    }
+    // public function videoLessons()
+    // {
+    //     return $this->belongsToMany();
+    // }
     
     // public function registerForEvent(Event $event):self
     // {

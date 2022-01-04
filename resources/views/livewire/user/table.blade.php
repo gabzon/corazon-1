@@ -79,7 +79,8 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <a href="{{ route('user.show', $user) }}">
-                                                <img class="h-10 w-10 rounded-full" src="{{$user->photo}}" alt="">
+                                                <img class="h-10 w-10 rounded-full object-cover" src="{{$user->photo}}"
+                                                    alt="">
                                             </a>
                                         </div>
                                         <div class="ml-4">

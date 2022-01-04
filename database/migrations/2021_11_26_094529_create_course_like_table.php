@@ -16,7 +16,8 @@ class CreateCourseLikeTable extends Migration
         Schema::create('course_like', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');                        
+            $table->unique(['user_id','course_id']);
             $table->timestamps();
         });
     }

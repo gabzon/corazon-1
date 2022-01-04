@@ -20,8 +20,7 @@ class CreateLessonsTable extends Migration
             $table->text('description')->nullable();
             $table->text('comments')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('organization_id')->nullable()->constrained();
-            $table->morphs('lessonable');
+            $table->foreignId('course_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();
         });        

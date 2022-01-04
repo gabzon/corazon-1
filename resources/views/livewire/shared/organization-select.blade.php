@@ -20,7 +20,7 @@
             <div class="flex flex-col items-center">
                 <div class="w-full flex flex-col items-center">
                     <div class="w-full">
-                        <div x-data="selectConfigs()" x-init="fetchOptions()"
+                        <div x-data="selectConfigs()" x-init="fetchOptions()" x-id="{{$type}}"
                             class="flex flex-col items-center relative">
                             <div class="w-full">
                                 <div @click.away="close()"
@@ -41,7 +41,6 @@
                                                     d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                                                     clip-rule="evenodd" />
                                             </svg>
-
                                         </button>
                                     </div>
                                 </div>
@@ -77,7 +76,7 @@
             </div>
         </div>
         <div class="col-span-2">
-            <button type="button" wire:click="add"
+            <button type="button" wire:click="add()"
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Add
             </button>
@@ -163,9 +162,9 @@
                         this.filter = '';
                         this.selected = null;
                     } else {
-                        this.selected = selected;
+                        this.selected = selected;                        
                         this.filter = this.selectedOrg();                        
-                    }
+                    }                    
                     
                     @this.set('selected', selected);
                     

@@ -72,8 +72,9 @@
     </div>
     @endguest
     @auth
-    {{--
-    <livewire:shared.registration-button :model="$course" />
+
+    <livewire:course.registration-button :course="$course" />
+    {{-- {{--
     <livewire:shared.like :model="$course" />
     <livewire:shared.interest :model="$course" /> --}}
     @endauth

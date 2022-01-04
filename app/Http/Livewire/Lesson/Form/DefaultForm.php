@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Lesson\Form;
 
+use App\Models\Course;
 use App\Models\Lesson;
 use Livewire\Component;
 
 class DefaultForm extends Component
 {
-    public Lesson $lesson;
+    public Lesson $lesson;    
     public string $method = 'store';
 
     protected $rules = [
@@ -16,34 +17,32 @@ class DefaultForm extends Component
         'lesson.description'   => 'nullable|string',
         'lesson.comments'      => 'nullable|string',
         'lesson.user_id'       => 'required',
-        'lesson.organization_id' => 'required',
+        'lesson.course_id'     => 'required',
     ];
 
     public function save()
-    {
+    {        
         $this->validate();        
 
         $this->lesson->save();
-
+        
         session()->flash('success','Lesson saved successfully!');
         
-        if ($this->method == 'store') {
+        if ($this->method == 'store') {            
             return redirect()->route('lesson.edit', $this->lesson);
         }
 
     }
 
-    public function mount(Lesson $lesson = null, int $oid = null)
-    {
+    public function mount(Lesson $lesson = null, $cid = null)
+    {                       
         if ($lesson->exists) {
             $this->lesson = $lesson;
             $this->method = 'update';
-        }else{            
+        } else {            
             $this->lesson = new Lesson();
-            $this->lesson->user_id = auth()->user()->id;
-            if ($oid) {
-                $this->lesson->organization_id = $oid;
-            }                                                    
+            $this->lesson->course_id = $cid;
+            $this->lesson->user_id = auth()->user()->id;                                                             
         }
     }
 

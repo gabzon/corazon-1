@@ -11,6 +11,8 @@
 * https://eloquentbyexample.com
 * Polimorphyc likes: https://dev.to/bdelespierre/how-to-implement-a-simple-like-system-with-laravel-lfe
 * github credentials: https://gist.github.com/jonjack/bf295d4170edeb00e96fb158f9b1ba3c
+* naming conventions: https://laracasts.com/discuss/channels/laravel/what-is-the-proper-folder-name-for-traits-concerns-or-traits
+* vimeo thumbnails: https://vumbnail.com
 
 
 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

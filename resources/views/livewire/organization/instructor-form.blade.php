@@ -13,7 +13,7 @@
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
-                        <livewire:shared.user-select />
+                        <livewire:shared.user-select wire:key="instructor" />
 
                         <div class="flex flex-col">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

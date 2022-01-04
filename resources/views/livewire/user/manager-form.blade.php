@@ -15,7 +15,7 @@
                         <div class="grid grid-cols-6 gap-6">
 
                             <div class="col-span-6">
-                                <livewire:shared.organization-select type="manager" />
+                                <livewire:shared.organization-select type="manager" wire:key="manager" />
                             </div>
 
                             <div class="col-span-6">

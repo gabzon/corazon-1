@@ -2,12 +2,7 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Likeable;
 use App\Contracts\Registrable;
-use App\Models\Concerns\Interests;
-use App\Models\Concerns\Likes;
-use App\Models\Concerns\Registrations;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,12 +14,10 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
 
-class Event extends Model implements HasMedia
+class Event extends Model implements HasMedia, Registrable
 {
     use HasFactory, SoftDeletes;
-    use InteractsWithMedia;
-    use Likes;    
-    use Registrations;
+    use InteractsWithMedia;    
 
     protected $fillable = [
         'name',
@@ -188,15 +181,10 @@ class Event extends Model implements HasMedia
         return $this->belongsToMany(User::class,'bookmark_event','event_id','user_id')->withTimeStamps();        
     }
 
-    // public function bookmarked(User $user):bool
-    // {        
-    //     if ($user->exists) {
-    //         $id = $user->id;
-    //     } else {
-    //         $id = Auth::id();
-    //     }
-    //     return $this::where('user_id', $id))->where('course_id', $this->id)->first();
-    // }
+    public function likes(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'event_like','event_id','user_id')->withTimeStamps();        
+    }
 
     public function prices()
     {
@@ -210,6 +198,13 @@ class Event extends Model implements HasMedia
         }
         return null;        
     }
+    // public function getVimeoIDfromEmbedAttribute()
+    // {
+    //     if ($this->video) {
+    //         return Str::between($this->video,'<iframe src="https://player.vimeo.com/video/660749181?h')
+    //     }
+    //     <img srcset="https://vumbnail.com/12714406.jpg 640w, https://vumbnail.com/12714406_large.jpg 640w, https://vumbnail.com/12714406_medium.jpg 200w, https://vumbnail.com/12714406_small.jpg 100w" sizes="(max-width: 640px) 100vw, 640px" src="https://vumbnail.com/12714406.jpg" alt="Vimeo Thumbnail" />
+    // }
 
     public function registrations(): BelongsToMany
     {

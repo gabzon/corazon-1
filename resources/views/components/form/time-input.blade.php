@@ -20,7 +20,7 @@
     </p>
     @endif
     @error($name)
-    <span class="text-red-600 text-xs">{{ $message }}</span>
+    <span class="text-red-600 text-xs block">{{ $message }}</span>
     @enderror
 </div>
 

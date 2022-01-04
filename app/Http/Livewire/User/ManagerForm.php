@@ -13,7 +13,7 @@ class ManagerForm extends Component
     protected $listeners = ['organizationToManage' => 'addManager'];
 
     public function addManager($org)
-    {                           
+    {                                       
         if (!$this->user->manageOrganization($org['id'])) {             
             $this->user->manages()->attach($org['id'],['role'=>'manager']);
             session()->flash('success','User manager role added successfully!');

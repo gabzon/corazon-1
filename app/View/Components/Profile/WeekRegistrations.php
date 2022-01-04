@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Profile;
 
+use App\Contracts\Registrable;
 use Carbon\Carbon;
 use Illuminate\View\Component;
 
@@ -15,10 +16,9 @@ class WeekRegistrations extends Component
      */
     public function __construct()
     {        
-        
-        $this->registrations = auth()->user()->registrations->filter(function($item){            
-            if ($item->registrable->end_date >= Carbon::today() && $item->registrable->start_date <= Carbon::today()->addDays(7)) {
-                return  $item;
+        $this->registrations = auth()->user()->courseRegistrations->filter(function($course){            
+            if ($course->end_date >= Carbon::today() && $course->start_date <= Carbon::today()->addDays(7)) {
+                return  $course;
             }                
         });
     }

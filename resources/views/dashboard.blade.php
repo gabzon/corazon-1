@@ -84,12 +84,9 @@
                                         <a href="{{ route('profile.bookmarks') }}"
                                             class="inline-flex items-center text-gray-600 hover:text-indigo-700">
                                             <span class="mr-2">
-                                                @include('icons.star')
+                                                @include('icons.bookmark-star')
                                             </span>
-                                            {{ trans_choice('{0} no bookmarks|{1} :count bookmark|[2,*] :count
-                                            bookmarks',
-                                            count(auth()->user()->bookmarkEvents), ['count' =>
-                                            count(auth()->user()->bookmarkEvents)]) }}
+                                            {{ auth()->user()->bookmarksCount() }}
                                         </a>
                                     </div>
 
@@ -97,11 +94,9 @@
                                         <a href="{{ route('profile.likes') }}"
                                             class="inline-flex items-center text-gray-600 hover:text-indigo-700">
                                             <span class="mr-2">
-                                                @include('icons.heart-fill')
+                                                @include('icons.heart')
                                             </span>
-                                            {{ trans_choice('{0} no like|{1} :count like|[2,*] :count likes',
-                                            count(auth()->user()->likesCourses), ['count' =>
-                                            count(auth()->user()->likesCourses)]) }}
+                                            {{ auth()->user()->likesCount() }}
                                         </a>
                                     </div>
 
@@ -111,18 +106,14 @@
                                             <span class="mr-2">
                                                 @include('icons.edit')
                                             </span>
-                                            {{ trans_choice('{0} no registration|{1} :count registration|[2,*] :count
-                                            registrations',
-                                            count(auth()->user()->coursesRegistrations), ['count' =>
-                                            count(auth()->user()->coursesRegistrations)]) }}
+                                            {{ auth()->user()->registrationsCount() }}
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        {{--
-                        <x-profile.week-registrations /> --}}
+                        <x-profile.week-registrations />
 
                         {{--
                         <x-profile.month-registrations /> --}}

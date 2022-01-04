@@ -1,10 +1,20 @@
+# v0.1.15: Monday 3th, 2022
+* Course info page
+* Dashboard improvements
+* Course dashboard student page
+* Course registered tabled
+
+# v0.1.14: Thursday 16th, 2021
+* Organization CRUD form refactored
+* Event Items list images rounded corners added
+
 # v0.1.13: Monday 13th, 2021
 * yts imported https://www.facebook.com/ytsfestival
 
 # v0.1.12: Thursday 9th, 2021
-- User registration bug
-- Courses seeders
-- Add Gloria classes to seeders
+* User registration bug
+* Courses seeders
+* Add Gloria classes to seeders
 
 # v0.1.11: Wednesday 8th, 2021
 * Locations index: Filters added to locations table

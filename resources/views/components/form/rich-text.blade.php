@@ -7,7 +7,7 @@
         <input id="x" type="hidden" name="content">
         <div class=" w-full">
             <trix-editor input="x" x-ref="trix" class="bg-white border-gray-300 prose"
-                style="max-width:100%; height: 350px; overflow-y:auto;">
+                style="max-width:100%; height: 300px; overflow-y:auto;">
             </trix-editor>
         </div>
     </div>
