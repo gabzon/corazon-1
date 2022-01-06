@@ -83,33 +83,9 @@
     </div>
 </div>
 
+<x-shared.register-like-bookmark-buttons :model="$event" />
 
-<div class="mt-4 pb-3 flex items-center space-x-1">
-    @if ($event->organizations()->count() > 0)
-    @if ($event->hasActiveOrganizations())
-    @guest
-    <div class="inline-flex items-center">
-        <a href="http://"
-            class="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">
-            Login to enroll
-        </a>
-        <a href="" class="ml-2 text-sm font-medium text-gray-500 hover:text-indigo-700">
-            or create an account here <span aria-hidden="true">&rarr;</span>
-        </a>
-    </div>
-    @endguest
-    @auth
-    <livewire:shared.registration-button :model="$event" />
-    @endauth
-    @endif
-    @endif
-    @auth
-    <livewire:shared.bookmark :model="$event" />
-    <livewire:shared.like :model="$event" />
-    @endauth
-</div>
-
-<form class="mt-3">
+<form class=" mt-3">
     <div>
         <x-partials.social-links :model="$event" />
     </div>
@@ -167,7 +143,7 @@
             </div>
         </div>
 
-        @if ($event->contact || $event->email || $event->phone )
+        @if ($event->contact || $event->email || $event->phone || $event->organizations()->count() > 0)
         <div x-data="{ open : false }">
             <button type="button"
                 class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
@@ -175,7 +151,7 @@
 
                 <span :class="{ 'text-indigo-600': open, 'text-gray-900' : !open}"
                     class="text-gray-900 text-sm font-medium">
-                    Contact information
+                    Organisers
                 </span>
 
                 <div class="ml-6 flex items-center">
@@ -186,20 +162,35 @@
             </button>
 
             <div x-show="open">
-                <div class="pb-6 prose prose-sm">
-                    <ul role="list">
+                @foreach ($event->organizations as $org)
+                <ul role="list" class="divide-y divide-gray-200">
+                    <li class="py-4 flex justify-between items-center">
+                        <a href="{{ route('organization.show', $org) }}" class="flex">
+                            <img class="h-10 w-10 rounded-full" src="{{ $org->photo }}" alt="">
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">{{ $org->shortname ?? $org->name }}</p>
+                                <p class="text-sm text-gray-500">{{ $org->email }}</p>
+                            </div>
+                        </a>
+                        <div>
+                            <x-partials.social-links :model="$org" />
+                        </div>
+                    </li>
+                </ul>
+                @endforeach
+                <div class="text-gray-600 text-sm mt-3 mb-8">
+                    <ul role="list-none">
                         @if ($event->contact)
-                        <li>{{ $event->contact }}</li>
+                        <li><span class="text-gray-900 font-medium">Contact</span> {{ $event->contact }}</li>
                         @endif
 
                         @if ($event->email)
-                        <li>{{ $event->email }}</li>
+                        <li><span class="text-gray-900 font-medium">Email</span> {{ $event->email }}</li>
                         @endif
 
                         @if ($event->phone)
-                        <li>{{ $event->phone }}</li>
+                        <li><span class="text-gray-900 font-medium">Phone</span> {{ $event->phone }}</li>
                         @endif
-
                     </ul>
                 </div>
             </div>

@@ -17,6 +17,7 @@ class OptionsForm extends Component
     public $thumbnail;
 
     protected $rules = [
+        'event.registration_url'=> 'nullable|url',
         'event.tagline'         => 'nullable',
         'event.description'     => 'nullable',
         'event.video'           => 'nullable',

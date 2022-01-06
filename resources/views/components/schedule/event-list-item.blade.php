@@ -7,7 +7,7 @@
     <div class="ml-3 w-full">
         <div class="grid grid-cols-2">
             <div>
-                <a href="{{ route('event.view', $item) }}" class="block focus:outline-none">
+                <a href="{{ route('event.show', $item) }}" class="block focus:outline-none">
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     <h2 class="text-sm font-medium text-gray-900 truncate">{{ $item->name }}</h2>
                     <span class="text-sm text-gray-500 truncate block">

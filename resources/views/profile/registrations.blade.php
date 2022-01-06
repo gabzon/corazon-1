@@ -11,7 +11,7 @@
 
     <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-profile.registrations-list :user="auth()->user()" />
+            <x-profile.registrations-list :list="$list" :user="auth()->user()" />
         </div>
     </div>
 </x-app-layout>

@@ -98,8 +98,10 @@ Route::get('mail', function(){
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
-Route::get('/event/{event}', [EventController::class, 'show'])->name('event.view');
-Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.view');
+Route::get('event/{event}', [EventController::class, 'show'])->name('event.show');
+// Route::get('event/{event}', [EventController::class, 'show'])->name('event.view');
+// Route::get('course/{course}', [CourseController::class, 'show'])->name('course.view');
+Route::get('course/{course}', [CourseController::class, 'show'])->name('course.show');
 
 Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -114,10 +116,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
     Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
     
-    Route::get('event/{event}/dashboard', [CourseController::class, 'dashboard'])->name('event.dashboard');
-    Route::get('event/{event}/info', [CourseController::class, 'info'])->name('event.info');
-    Route::get('event/{event}/students', [CourseController::class, 'students'])->name('event.students');
-    Route::get('event/{event}/stats', [CourseController::class, 'stats'])->name('event.stats');
+    
+    Route::get('event/{event}/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard');
+    Route::get('event/{event}/info', [EventController::class, 'info'])->name('event.info');
+    Route::get('event/{event}/students', [EventController::class, 'students'])->name('event.students');
+    Route::get('event/{event}/stats', [EventController::class, 'stats'])->name('event.stats');
 
     Route::get('course/{course}/dashboard', [CourseController::class, 'dashboard'])->name('course.dashboard');
     Route::get('course/{course}/info', [CourseController::class, 'info'])->name('course.info');
@@ -139,7 +142,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
     Route::get('registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
   
-    Route::resource('admin/course', CourseController::class);
+    Route::resource('admin/course', CourseController::class)->except(['show']);
     Route::resource('admin/location', LocationController::class);
     Route::resource('admin/skill', SkillController::class);
     Route::resource('admin/transaction', TransactionController::class);
@@ -148,7 +151,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('admin/order', OrderController::class);
     Route::resource('admin/figure', FigureController::class);    
     Route::resource('admin/tag', TagController::class);
-    Route::resource('admin/event', EventController::class);
+    Route::resource('admin/event', EventController::class)->except(['show']);
     Route::resource('admin/post', PostController::class);
     Route::resource('admin/product', ProductController::class);
     Route::resource('admin/lesson', LessonController::class);

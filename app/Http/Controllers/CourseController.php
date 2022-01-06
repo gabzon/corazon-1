@@ -50,6 +50,9 @@ class CourseController extends Controller
      */
     public function show(Request $request, Course $course)    
     {
+        if (auth()->check()) {
+            return view('course.show', compact('course'));
+        }
         return view('course.view', compact('course'));
     }
 

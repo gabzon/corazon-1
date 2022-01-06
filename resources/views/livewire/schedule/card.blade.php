@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg p-2 mb-4 mx-3 hover:shadow-md border">
-    <a href="{{ route('course.view', $class) }}">
+    <a href="{{ route('course.show', $class) }}">
         <div class="mt-1 text-xs flex justify-between items-center space-x-1">
             <x-partials.days-of-week :class="$class" />
             @if ($class->organization->getMedia('organization-icons')->last() != null)

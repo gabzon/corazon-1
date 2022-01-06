@@ -2,22 +2,23 @@
 
 namespace App\View\Components\Profile;
 
+use App\Contracts\Registrable;
 use App\Models\User;
 use Illuminate\View\Component;
 
 class RegistrationsList extends Component
 {
     public $list;
+
+    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(User $user)
-    {
-        $events = $user->eventRegistrations;
-        $courses = $user->courseRegistrations;
-        $this->list = $events->merge($courses); 
+    public function __construct($list, User $user = null)
+    {    
+        $this->list = $list; 
     }
 
     /**

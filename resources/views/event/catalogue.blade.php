@@ -2,9 +2,7 @@
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
-                <h2 class="text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate">
-                    {{ __('Events') }}
-                </h2>
+                <x-typo.page-heading title="{{ __('Events') }}" />
             </div>
             <div class="mt-4 flex md:mt-0 md:ml-4">
                 <button type="button"

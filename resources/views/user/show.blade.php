@@ -10,7 +10,7 @@
                         <!-- profile image -->
                         <img class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
                        border-2 {{ $user->gender == 'male' ? 'border-indigo-600' : 'border-pink-600'}} p-1"
-                            src="{{ $user->avatar ?? $user->profile_photo_url }}" alt="profile">
+                            src="{{ auth()->user()->photo }}" alt="profile">
                     </div>
 
                     <!-- profile meta -->
@@ -24,25 +24,27 @@
                         <!-- post, following, followers list for medium screens -->
                         <ul class="hidden md:flex space-x-8 mb-4">
                             <li>
-                                <span class="font-semibold">136</span>
+                                <span class="font-semibold">{{ $user->courseRegistrations()->count() }}</span>
                                 courses
                             </li>
 
                             <li>
-                                <span class="font-semibold">40.5k</span>
+                                <span class="font-semibold">{{ $user->eventRegistrations()->count() }}</span>
                                 events
                             </li>
-                            <li>
+                            {{-- <li>
                                 <span class="font-semibold">302</span>
                                 following
-                            </li>
+                            </li> --}}
                         </ul>
 
                         <!-- user meta form medium screens -->
                         <div class="hidden md:block">
                             <h1 class="font-semibold">{{ '@' . $user->username }}</h1>
-                            <span>Travel, Nature and Music</span>
-                            <p>{{ $user->biography }}</p>
+                            <span class="text-sm">
+                                {{-- Roles --}}
+                            </span>
+                            <p class="text-sm text-gray-500">{{ $user->biography }}</p>
                         </div>
 
                     </div>
@@ -50,7 +52,9 @@
                     <!-- user meta form small screens -->
                     <div class="md:hidden text-sm my-2">
                         <h1 class="font-semibold">{{ '@' . $user->username }}</h1>
-                        <span>Travel, Nature and Music</span>
+                        <span>
+                            {{-- Roles --}}
+                        </span>
                         <p>{{ $user->biography }}</p>
                     </div>
 
@@ -58,7 +62,7 @@
             </div>
         </main>
 
-        <div x-data="{ tab: 'account' }">
+        <div x-data="{ tab: 'events' }">
             <div class="sm:hidden">
                 <label for="tabs" class="sr-only">Select a tab</label>
                 <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
@@ -72,29 +76,26 @@
 
             <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
-                    <nav class="-mb-px flex space-x-8 justify-center" aria-label="Tabs">
-                        <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'account', 'text-gray-400 group-hover:text-gray-500' : tab != 'account' }"
-                            x-on:click.prevent="tab = 'account'" href="#"
-                            class="border-transparent text-gray-500 hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
-                            <svg class="-ml-0.5 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                aria-hidden="true">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span>My Account</span>
-                        </a>
-                        <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'courses', 'text-gray-500 group-hover:text-gray-500' : tab != 'courses' }"
-                            x-on:click.prevent="tab = 'courses'" href="#"
-                            class="border-transparent hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
-                            @include('icons.courses', ['style' => '-ml-0.5 mr-2 h-5 w-5'])
-                            <span>Courses</span>
-                        </a>
-                        <a class="border-transparent hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
-                            :class="{ 'text-indigo-600 border-indigo-500': tab === 'events' , 'text-gray-500 group-hover:text-gray-500' : tab != 'events' }"
+                    <nav class="-mb-px flex space-x-5 justify-center" aria-label="Tabs">
+                        <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'events' , 'text-gray-500 group-hover:text-gray-500' : tab != 'events' }"
+                            class="border-transparent hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
                             x-on:click.prevent="tab = 'events'" href="#">
                             @include('icons.events', ['style' => '-ml-0.5 mr-2 h-5 w-5'])
                             <span>Events</span>
                         </a>
+                        <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'courses', 'text-gray-500 group-hover:text-gray-500' : tab != 'courses' }"
+                            class="border-transparent hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+                            x-on:click.prevent="tab = 'courses'" href="#">
+                            @include('icons.courses', ['style' => '-ml-0.5 mr-2 h-5 w-5'])
+                            <span>Courses</span>
+                        </a>
+                        <a :class="{ 'text-indigo-600 border-indigo-500': tab === 'account', 'text-gray-400 group-hover:text-gray-500' : tab != 'account' }"
+                            class="border-transparent hover:text-indigo-700 hover:border-indigo-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+                            x-on:click.prevent="tab = 'account'" href="#">
+                            @include('icons.user', ['style' => '-ml-0.5 mr-2 h-5 w-5'])
+                            <span>My Account</span>
+                        </a>
+
 
                         {{-- <a href="#"
                             class="border-indigo-500 text-indigo-600 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
@@ -112,15 +113,16 @@
                 </div>
             </div>
             <div>
-                <div x-show="tab === 'account'">
-                    @include('user.show.account')
+                <div x-show="tab === 'events'">
+                    @include('user.show.events')
                 </div>
                 <div x-show="tab === 'courses'">
                     @include('user.show.courses')
                 </div>
-                <div x-show="tab === 'events'">
-                    @include('user.show.events')
+                <div x-show="tab === 'account'">
+                    @include('user.show.account')
                 </div>
+
                 {{-- <div x-show="tab === 'roles'">
                     @include('user.show.roles')
                 </div> --}}

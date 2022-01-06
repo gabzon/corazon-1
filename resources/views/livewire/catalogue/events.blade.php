@@ -1,6 +1,6 @@
 <div class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     @forelse ($events as $event)
-    <a href="{{ route('event.view', $event) }}" class="group rounded-lg mb-4 mx-3">
+    <a href="{{ route('event.show', $event) }}" class="group rounded-lg mb-4 mx-3">
         <div>
             @if ($event->getMedia('events')->last() != null)
             {!! $event->getMedia('events')->last()->img('',['class'=>'overflow-hidden h-48 object-cover w-full
@@ -28,8 +28,18 @@
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 {{ $event->type }}
             </p>
-            {{--
-            <x-shared.price-display :model="$event" /> --}}
+            <div class="mt-1 flex justify-between">
+                <div>
+                    @if ($event->canRegister())
+                    <livewire:shared.registration-button :model="$event" size="xs" />
+                    @endif
+                </div>
+                <div>
+                    <livewire:shared.bookmark :model="$event" />
+                    <livewire:shared.like :model="$event" />
+                </div>
+
+            </div>
         </div>
     </a>
     @empty

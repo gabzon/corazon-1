@@ -1,10 +1,8 @@
-<x-guest-layout>
+<x-app-layout>
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
-                <h2 class="text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate">
-                    {{ $event->name }}
-                </h2>
+                <x-typo.page-heading title="{{ $event->name}}" />
             </div>
             @auth
             <div class="mt-4 flex md:mt-0 md:ml-4">
@@ -21,32 +19,19 @@
         </div>
     </x-slot>
 
-    <div class="bg-gray-50">
+    <div class="bg-gray-100">
         <div class="max-w-2xl mx-auto py-10 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
-
                 <div class="flex flex-col">
                     @include('event.show.left')
-
-                    @can('stats', $event)
-                    <div class="my-6">
-                        @include('event.show.stats')
-                    </div>
-                    @endcan
-
-                    @can('viewInscribed', $event)
-                    <div class="my-6">
-                        <livewire:shared.registered-table :model="$event" />
-                    </div>
-                    @endcan
-
                 </div>
 
                 <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
                     @include('event.show.right')
                 </div>
             </div>
+            <div class="my-8">&nbsp;</div>
         </div>
     </div>
 
-</x-guest-layout>
+</x-app-layout>

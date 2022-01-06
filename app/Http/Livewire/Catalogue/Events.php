@@ -37,11 +37,7 @@ class Events extends Component
     public function render()
     {
         return view('livewire.catalogue.events', [
-            'events' => Event::withoutGlobalScopes()
-                                ->IsActive()
-                                ->inCity($this->city)
-                                ->style($this->style)
-                                ->type($this->type)
+            'events' => Event::IsActive()->withFilters($this->city, $this->style, $this->type)                                
                                 ->orderBy('start_date','asc')                                
                                 ->paginate(20)
         ]);

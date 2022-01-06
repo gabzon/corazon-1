@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->text('avatar')->nullable();            
             $table->enum('gender',['male','female'])->nullable();            
             $table->string('profession')->nullable();
+            $table->string('nationality')->nullable();
             $table->text('biography')->nullable();
                         
             $table->string('work_status')->default('working');

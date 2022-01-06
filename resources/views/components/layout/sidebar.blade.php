@@ -8,23 +8,23 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.home')
                     </a>
-                    <a href="{{ route('courses.schedule') }}" id="schedule" data-tippy-placement="right"
-                        data-tippy-content="Courses Schedule"
-                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.catalogue')
-                    </a>
                     <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
                         data-tippy-content="Event Catalogue"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.event-list')
                     </a>
-                    <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
+                    <a href="{{ route('courses.schedule') }}" id="schedule" data-tippy-placement="right"
+                        data-tippy-content="Courses Schedule"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.catalogue')
+                    </a>
+                    <a href="{{ route('profile.bookmarks') }}" id="bookmarks" data-tippy-placement="right"
                         data-tippy-content="Bookmarks"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.bookmark-star')
                     </a>
-                    <a href="{{ route('events.catalogue') }}" id="catalogue" data-tippy-placement="right"
-                        data-tippy-content="Favorites"
+                    <a href="{{ route('profile.likes') }}" id="likes" data-tippy-placement="right"
+                        data-tippy-content="Likes"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.heart')
                     </a>
@@ -60,11 +60,15 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.courses')
                     </a>
+
+                    @can('manage', App\Models\Event::class)
                     <a href="{{ route('event.index') }}" id="events" data-tippy-placement="right"
                         data-tippy-content="Events"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.events')
                     </a>
+                    @endcan
+
 
 
                     <a href="{{ route('location.index') }}" id="locations" data-tippy-placement="right"
@@ -133,6 +137,8 @@
     tippy('#home');
     tippy('#schedule');
     tippy('#catalogue');
+    tippy('#bookmarks');
+    tippy('#likes');
     tippy('#courses');
     tippy('#events');
     tippy('#locations');

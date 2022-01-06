@@ -78,7 +78,7 @@
                                     {{ $course->id }}
                                 </td>
                                 <td class="px-6 py-3 whitespace-nowrap">
-                                    <a href="{{ route('course.view', $course) }}"
+                                    <a href="{{ route('course.show', $course) }}"
                                         class="text-sm font-medium text-gray-900 hover:text-indigo-600">
                                         {{ $course->name }}
                                     </a>

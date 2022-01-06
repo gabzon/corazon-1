@@ -53,12 +53,11 @@ class EventController extends Controller
      */
     public function show(Request $request, Event $event)
     {        
-        return view('event.show', compact('event'));
-    }
-
-    public function view(Request $request, Event $event)
-    {        
+        if (auth()->check()) {
+            return view('event.show', compact('event'));
+        }
         return view('event.view', compact('event'));
+        
     }
 
     /**
@@ -101,8 +100,8 @@ class EventController extends Controller
         return redirect()->route('event.index');
     }
 
-    public function catalogue()
-    {
+    public function catalogue(Request $request)
+    {        
         if (auth()->check()) {
             return view('event.catalogue');
         }else{

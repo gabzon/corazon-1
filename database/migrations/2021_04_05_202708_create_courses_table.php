@@ -67,7 +67,8 @@ class CreateCoursesTable extends Migration
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();
             $table->string('status', 40)->nullable();
-            $table->string('for', 20)->nullable();            
+            $table->string('for', 20)->nullable();
+            $table->string('registration_url')->nullable();   
             $table->foreignId('user_id')->constrained();
             $table->foreignId('space_id')->nullable()->constrained();
             $table->foreignId('city_id')->nullable()->constrained();

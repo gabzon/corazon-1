@@ -52,23 +52,31 @@
 
         <x-jet-section-border />
 
+        @if ($user->is_super))
         <div id="role" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.user-rights-form :user="$user" />
         </div>
 
         <x-jet-section-border />
+        @endif
 
+
+        @if ($user->is_super)
         <div id="manager" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.manager-form :user="$user" wire:key="manager" />
         </div>
 
         <x-jet-section-border />
+        @endif
 
+        @if ($user->is_super)
         <div id="instructor" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.instructor-form :user="$user" wire:key="instructor" />
         </div>
 
         <x-jet-section-border />
+        @endif
+
 
         <div id="preferences" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{--

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Contracts\Bookmarkable;
 use App\Contracts\Likeable;
 use App\Contracts\Registrable;
+use App\Traits\ImagesTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,7 @@ class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarka
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
+    use ImagesTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -322,6 +324,43 @@ class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarka
     public function registrations():BelongsToMany
     {        
         return $this->belongsToMany(User::class,'course_registrations','course_id','user_id')->withPivot(['status','role','option'])->withTimeStamps();                
+    }
+
+    public function hasActiveOrganization():bool
+    {
+        if (!$this->organization) {
+            return false;
+        }
+        return $this->organization->status == 'active';
+    }
+
+    public function canRegister():bool
+    {
+        if ( !$this->organization ) {
+            return false;
+        }
+        if ( !$this->hasActiveOrganization() ) {
+            return false;
+        }
+        return true;
+    }
+
+    public function getCoverImageAttribute()
+    {
+        if ($this->getMedia('courses')->last() != null) {
+            return $this->getMedia('courses')->last()->getUrl();
+        }
+
+        if ($this->thumbnail) {
+            return $this->thumbnail;
+        }
+
+        if ($this->organization) {
+            return $this->organization->photo;
+        }
+        
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
     }
 
 }

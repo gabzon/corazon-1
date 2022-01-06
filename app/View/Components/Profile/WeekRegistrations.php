@@ -8,8 +8,7 @@ use Illuminate\View\Component;
 
 class WeekRegistrations extends Component
 {
-    public $registrations;    
-    public $merged;
+    public $list;    
     /**
      * Create a new component instance.
      *
@@ -18,14 +17,23 @@ class WeekRegistrations extends Component
     public function __construct()
     {     
         $courses = auth()->user()->courseRegistrations;
-        $bookmarks = auth()->user()->bookmarkedEvents;
-        $this->merged = $courses->merge($bookmarks);
+        $bookmarkedCourses = auth()->user()->bookmarkedCourses;
+        $events = auth()->user()->eventRegistrations;  
+        $bookmarkedEvents = auth()->user()->bookmarkedEvents;
+        
+        $merged = $courses->concat($bookmarkedCourses)->concat($events)->concat($bookmarkedEvents);        
 
-        $this->registrations = $this->merged->filter(function($course){            
-            if ($course->end_date >= Carbon::today() && $course->start_date <= Carbon::today()->addDays(7)) {
-                return  $course;
+        $unique = $merged->unique();
+
+    
+        $this->list = $unique->filter(function($activity){            
+            if ($activity->end_date >= Carbon::today() && $activity->start_date <= Carbon::today()->addDays(7)) {
+                return $activity;
             }                
         });
+
+        
+        
     }
 
     /**
@@ -38,3 +46,23 @@ class WeekRegistrations extends Component
         return view('components.profile.week-registrations');
     }
 }
+
+
+
+// public function registrations()
+// {
+//     $events = auth()->user()->eventRegistrations;
+//     $courses = auth()->user()->courseRegistrations;
+//     $list = $events->merge($courses); 
+
+//     return view('profile.registrations', ['list' => $list]);
+// }
+
+// public function likes()
+// {
+//     $courses = auth()->user()->likedCourses;
+//     $events = auth()->user()->likedEvents;
+//     $list = $courses->merge($events)->sortBy('start_date');
+
+//     return view('profile.likes', ['list'=> $list]);
+// }

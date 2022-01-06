@@ -106,10 +106,6 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
     {
         return $this->belongsToMany(Organization::class);
     }
-    public function hasActiveOrganizations():bool
-    {
-        return in_array('active', $this->organizations()->pluck('status')->toArray());
-    }
     
     public function hasOrganization($id)
     {
@@ -200,6 +196,23 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
         }
         return null;        
     }
+
+    public function hasActiveOrganizations():bool
+    {
+        return in_array('active', $this->organizations()->pluck('status')->toArray());
+    }
+
+    public function canRegister():bool
+    {
+        if ($this->organizations()->count() < 1) {
+            return false;
+        }
+        if (! $this->hasActiveOrganizations()) {
+            return false;
+        }
+        return true;
+    }
+
     // public function getVimeoIDfromEmbedAttribute()
     // {
     //     if ($this->video) {
@@ -211,6 +224,31 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
     public function registrations(): BelongsToMany
     {
         return $this->belongsToMany(User::class,'event_registrations','event_id','user_id')->withPivot(['status','role','option'])->withTimestamps();
+    }
+
+    public function getCoverImageAttribute()
+    {
+        if ($this->getMedia('events')->last() != null){
+            return $this->getMedia('events')->last()->getUrl();
+        }
+        
+        if ($this->thumbnail) {
+            return $this->thumbnail;
+        }
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
+
+    public function scopeWithFilters($query, $city, $style, $type)
+    {
+        return $query->when($city, function($query) use ($city) {
+            $query->inCity($city);
+        })->when($style, function($query) use ($style){
+            $query->style($style);
+        })->when($type, function($query) use ($type){
+            $query->type($type);
+        });
     }
 
 }

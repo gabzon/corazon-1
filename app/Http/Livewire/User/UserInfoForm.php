@@ -20,7 +20,8 @@ class UserInfoForm extends Component
             'user.mobile'       => 'nullable|string',
             'user.profession'   => 'nullable|string',
             'user.gender'       => 'required|string',
-            'user.idn'          => 'nullable|string',        
+            'user.idn'          => 'nullable|string',   
+            'user.biography'    => 'nullable|string',     
         ];
     } 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -80,21 +81,38 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        //
+        
     }
 
-    public function likes()
+    public function bookmarks()    
     {
-        return view('profile.likes');
-    }
+        $courses = auth()->user()->bookmarkedCourses;        
+        $events = auth()->user()->bookmarkedEvents;     
+        $merge = $courses->merge($events);
+        $list = $merge->sortBy('start_date')->sortBy('status');
 
-    public function bookmarks()
-    {
-        return view('profile.bookmarks');
+        return view('profile.bookmarks', ['list' => $list]);
     }
 
     public function registrations()
     {
-        return view('profile.registrations');
+        $events = auth()->user()->eventRegistrations;
+        $courses = auth()->user()->courseRegistrations;
+        $list = $events->merge($courses); 
+
+        return view('profile.registrations', ['list' => $list]);
     }
+
+    public function likes()
+    {
+        $courses = auth()->user()->likedCourses;
+        $events = auth()->user()->likedEvents;
+        $list = $courses->merge($events)->sortBy('start_date');
+
+        return view('profile.likes', ['list'=> $list]);
+    }
+
+
+
+
 }

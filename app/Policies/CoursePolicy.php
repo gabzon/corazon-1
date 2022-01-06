@@ -165,7 +165,7 @@ class CoursePolicy
             return Response::deny("Cannot like the same course twice");   
         }
 
-        if (!$user->registrationIs($course, 'registered') || !$user->registrationIs($course, 'partial')) {
+        if (!$user->registrationIs($course, 'registered') and !$user->registrationIs($course, 'partial')) {
             return Response::deny("Cannot like if not registered");   
         }
 

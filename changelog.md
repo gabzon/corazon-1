@@ -1,3 +1,19 @@
+# v0.
+# v0.1.17: Wednesday 5th, 2022
+* Event show: display organisers 
+* Login and create account buttons fixed on event/course show
+* Profile likes: Redirect to registration if empty
+* Display like button only if person is registered or partial
+* Development alert message
+* Profile account: attachments removed
+* Profile account: address added
+* Users table: nationality added
+* Event/Course table: registration_url column added
+* Sidebar menu: bookmark and likes fixed
+* Edit profile: biography error
+* Course/Event show: inside app layout
+
+
 # v0.1.16: Tuesday 4th, 2022
 * Create event: when start date is added it automatically fills end date
 * Event show: label place/location changed for venue

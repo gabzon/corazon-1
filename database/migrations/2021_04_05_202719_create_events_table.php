@@ -50,6 +50,7 @@ class CreateEventsTable extends Migration
             // $table->string('facebook_id')->nullable()->unique();
             $table->string('facebook_id')->nullable();
             $table->boolean('is_private')->default(false);
+            $table->string('registration_url')->nullable();
             
             $table->foreignId('user_id')->constrained();
             $table->foreignId('location_id')->nullable()->constrained();

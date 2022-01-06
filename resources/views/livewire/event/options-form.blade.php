@@ -31,6 +31,9 @@
 
                         <x-form.text-input wire:model="event.tagline" name="event.tagline" label="Tagline" />
 
+                        <x-form.text-input wire:model="event.registration_url" name="event.registration_url"
+                            label="Registration URL" />
+
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <div class="inline-flex items-center">

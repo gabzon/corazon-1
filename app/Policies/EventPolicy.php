@@ -93,6 +93,11 @@ class EventPolicy
         return $user->role === 'admin' || $user->role === 'publisher';
     }
 
+    public function manage(User $user)
+    {
+        return $user->is_super == true;
+    }
+
     public function viewInscribed(User $user, Event $event)
     {
         if ($user->role == 'admin' || $event->user_id == $user->id) {
@@ -189,6 +194,10 @@ class EventPolicy
         
         if ($user->hasLiked($event)) {
             return Response::deny("Cannot like the same event twice");
+        }
+
+        if (!$user->registrationIs($event, 'registered') and !$user->registrationIs($event, 'partial')) {
+            return Response::deny("Cannot like if not registered");   
         }
 
         return Response::allow();
