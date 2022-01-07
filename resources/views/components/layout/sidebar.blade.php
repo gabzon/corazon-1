@@ -13,7 +13,7 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.event-list')
                     </a>
-                    <a href="{{ route('courses.schedule') }}" id="schedule" data-tippy-placement="right"
+                    <a href="{{ route('courses.catalogue') }}" id="schedule" data-tippy-placement="right"
                         data-tippy-content="Courses Schedule"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.catalogue')
@@ -49,17 +49,22 @@
             <div class="flex-shrink-0 flex flex-col">
                 <nav aria-label="Sidebar" class="py-6 flex flex-col items-center space-y-1">
 
+                    @can('manage', App\Models\User::class)
                     <a href="{{ route('user.index') }}" id="users" data-tippy-placement="right"
                         data-tippy-content="Users"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.users')
                     </a>
+                    @endcan
 
+                    @can('manage', App\Models\Course::class)
                     <a href="{{ route('course.index') }}" id="courses" data-tippy-placement="right"
                         data-tippy-content="Courses"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.courses')
                     </a>
+                    @endcan
+
 
                     @can('manage', App\Models\Event::class)
                     <a href="{{ route('event.index') }}" id="events" data-tippy-placement="right"
@@ -70,12 +75,14 @@
                     @endcan
 
 
-
+                    @can('manage', App\Models\Location::class)
                     <a href="{{ route('location.index') }}" id="locations" data-tippy-placement="right"
                         data-tippy-content="Locations"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.pinpoint')
                     </a>
+                    @endcan
+
                     {{-- <a href="{{ route('skill.index') }}" id="skills" data-tippy-placement="right"
                         data-tippy-content="Skills"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
@@ -96,27 +103,37 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.tags')
                     </a> --}}
+
+                    @can('manage', App\Models\Organization::class)
                     <a href="{{ route('organization.index') }}" id="organizations" data-tippy-placement="right"
                         data-tippy-content="Organizations"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.school')
                     </a>
+                    @endcan
+
                     {{-- <a href="{{ route('product.index') }}" id="products" data-tippy-placement="right"
                         data-tippy-content="Products"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.product')
                     </a> --}}
+
+                    @can('manage', App\Models\City::class)
                     <a href="{{ route('city.index') }}" id="cities" data-tippy-placement="right"
                         data-tippy-content="Cities"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.city')
                     </a>
+                    @endcan
 
+                    @can('manage', App\Models\Style::class)
                     <a href="{{ route('style.index') }}" id="styles" data-tippy-placement="right"
                         data-tippy-content="Styles"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.music-genre')
                     </a>
+                    @endcan
+
                     {{-- <a href="{{ route('setting.index') }}" id="settings" data-tippy-placement="right"
                         data-tippy-content="Settings"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">

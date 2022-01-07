@@ -1,8 +1,8 @@
 <div>
-    @if (! auth()->user()->isRegistered($model))
-
+    @if (auth()->check() && !auth()->user()->isRegistered($model))
     @can('register', $model)
-    <form action="{{ route('enroll') }}" method="POST" class="mr-3">
+
+    <form wire:submit.prevent="register" class="mr-3" {{-- action="{{ route('enroll') }}" method="POST" --}}>
         @csrf
         <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
@@ -22,7 +22,8 @@
         </div>
 
         @if (auth()->user()->registrationIs($model, 'pre-registered'))
-        <form action="{{ route('unenroll') }}" method="POST">
+
+        <form wire:submit.prevent="unregister" {{-- action="{{ route('unenroll') }}" method="POST" --}}>
             @csrf
             @method('DELETE')
             <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />

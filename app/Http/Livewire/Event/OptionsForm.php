@@ -21,6 +21,7 @@ class OptionsForm extends Component
         'event.tagline'         => 'nullable',
         'event.description'     => 'nullable',
         'event.video'           => 'nullable',
+        'event.is_private'      => 'nullable',
     ];
 
     public function save()

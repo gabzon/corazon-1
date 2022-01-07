@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\City;
 use App\Models\User;
-use App\Models\organization;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrganizationPolicy
+class CityPolicy
 {
     use HandlesAuthorization;
 
@@ -21,14 +21,19 @@ class OrganizationPolicy
         //
     }
 
+    public function manage(User $user)
+    {
+        return $user->is_super == true;
+    }
+
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, organization $organization)
+    public function view(User $user, City $city)
     {
         //
     }
@@ -48,10 +53,10 @@ class OrganizationPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, organization $organization)
+    public function update(User $user, City $city)
     {
         //
     }
@@ -60,10 +65,10 @@ class OrganizationPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, organization $organization)
+    public function delete(User $user, City $city)
     {
         //
     }
@@ -72,10 +77,10 @@ class OrganizationPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, organization $organization)
+    public function restore(User $user, City $city)
     {
         //
     }
@@ -84,16 +89,11 @@ class OrganizationPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, organization $organization)
+    public function forceDelete(User $user, City $city)
     {
         //
-    }
-
-    public function manage(User $user)
-    {
-        return $user->is_super == true;
     }
 }

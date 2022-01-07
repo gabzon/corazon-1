@@ -29,7 +29,7 @@ class SalsaFusion extends Seeder
             'level'          => 'beginner',            
             'level_code'     => 'a1',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -48,7 +48,7 @@ class SalsaFusion extends Seeder
             'level'          => 'intermediate',
             'level_code'     => 'b1',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -67,7 +67,7 @@ class SalsaFusion extends Seeder
             'level'          => 'intermediate',   
             'level_code'     => 'b3',         
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -83,7 +83,7 @@ class SalsaFusion extends Seeder
             'level'          => 'beginner',   
             'level_code'     => 'a2',         
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -99,7 +99,7 @@ class SalsaFusion extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a3',            
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -119,7 +119,7 @@ class SalsaFusion extends Seeder
             'level'          => 'intermediate',  
             'level_code'     => 'b1',          
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -135,7 +135,7 @@ class SalsaFusion extends Seeder
             'level'          => 'beginner',  
             'level_code'     => 'a3',          
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -150,7 +150,7 @@ class SalsaFusion extends Seeder
             'end_time_thu'   => '21:00',                                                      
             'level'          => 'elementary',            
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -165,7 +165,7 @@ class SalsaFusion extends Seeder
             'level'          => 'open level',   
             'level_code'     => 'op',         
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -180,7 +180,7 @@ class SalsaFusion extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a1', 
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);
@@ -196,7 +196,7 @@ class SalsaFusion extends Seeder
             'level'          => 'open level',
             'level_code'     => 'op',            
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'selfwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 3,
             'space_id'   => 8,
         ]);

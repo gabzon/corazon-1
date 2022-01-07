@@ -42,7 +42,7 @@ class EventPolicy
      */
     public function create(User $user)
     {
-        return $user->role === 'admin' || $user->role === 'publisher';
+        return $user->role === 'admin' || $user->role === 'publisher' || $user->is_super == true;
     }
 
     /**
@@ -54,7 +54,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event)
     {
-        return $user->role === 'admin' || $user->role === 'publisher';
+        return $user->role === 'admin' || $user->role === 'publisher' || $user->is_super == true;
     }
 
     /**
@@ -94,6 +94,11 @@ class EventPolicy
     }
 
     public function manage(User $user)
+    {
+        return $user->is_super == true;
+    }
+
+    public function export(User $user)
     {
         return $user->is_super == true;
     }

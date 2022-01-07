@@ -142,7 +142,7 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
 
     public function scopeInCity($query, $city)
     {
-        if (!empty($city)) {
+        if (!empty($city)) {            
             return $query->where('city_id', $city);
         }
         return $query;
@@ -221,6 +221,14 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
     //     <img srcset="https://vumbnail.com/12714406.jpg 640w, https://vumbnail.com/12714406_large.jpg 640w, https://vumbnail.com/12714406_medium.jpg 200w, https://vumbnail.com/12714406_small.jpg 100w" sizes="(max-width: 640px) 100vw, 640px" src="https://vumbnail.com/12714406.jpg" alt="Vimeo Thumbnail" />
     // }
 
+    public function getIsOneDayEventAttribute():bool
+    {
+        if ($this->start_date->diffInHours($this->end_date) < 24) {
+            return 1;    
+        }
+        return 0;
+    }
+
     public function registrations(): BelongsToMany
     {
         return $this->belongsToMany(User::class,'event_registrations','event_id','user_id')->withPivot(['status','role','option'])->withTimestamps();
@@ -241,10 +249,10 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
 
 
     public function scopeWithFilters($query, $city, $style, $type)
-    {
+    {                
         return $query->when($city, function($query) use ($city) {
-            $query->inCity($city);
-        })->when($style, function($query) use ($style){
+            $query->inCity($city);            
+        })->when($style > 0, function($query) use ($style){
             $query->style($style);
         })->when($type, function($query) use ($type){
             $query->type($type);

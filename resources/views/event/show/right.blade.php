@@ -39,7 +39,11 @@
                 <tr>
                     <td class="text-gray-500 py-2">Date</td>
                     <td class="text-gray-900">
-                        {{ $event->start_date->format('M j Y') }} - {{ $event->end_date->format('M j Y') }}
+                        {{ $event->start_date->format('M j Y') }}
+                        @if (!$event->isOneDayEvent)
+                        - {{ $event->end_date->format('M j Y') }}
+                        @endif
+
                         <div class="inline sm:ml-2">
                             @if ($event->status == 'active')
                             <span
@@ -59,7 +63,10 @@
                 <tr>
                     <td class="text-gray-500 py-2">Time</td>
                     <td class="text-gray-900">
-                        {{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }}
+                        {{ $event->start_date->format('H:i') }}
+                        @if ($event->isOneDayEvent)
+                        - {{ $event->end_date->format('H:i') }}
+                        @endif
                     </td>
                 </tr>
                 @if ($event->location)

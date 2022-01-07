@@ -31,7 +31,7 @@ class CenterOfDance extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a1',
             'focus'          => 'partnerwork',
-            'type'           => 'Class', 
+            'type'           => 'class', 
             'status'         => 'active',
             'start_date'     => Carbon::now(), 
             'end_date'       => Carbon::now()->add(10, 'month'),

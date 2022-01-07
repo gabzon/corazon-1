@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return 
+        
     }
 
     /**
@@ -53,6 +53,11 @@ class UserPolicy
     public function update(User $user, User $model)
     {
         //
+    }
+
+    public function updateWorkStatus(User $user)
+    {
+        return $user->is_super ==  true;
     }
 
     /**
@@ -89,5 +94,10 @@ class UserPolicy
     public function forceDelete(User $user, User $model)
     {
         //
+    }
+
+    public function manage(User $user)
+    {
+        return $user->is_super == true;
     }
 }

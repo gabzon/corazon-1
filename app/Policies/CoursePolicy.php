@@ -42,7 +42,7 @@ class CoursePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->is_super == true;
     }
 
     /**
@@ -53,8 +53,8 @@ class CoursePolicy
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Course $course)
-    {
-        //
+    {        
+        return $user->is_super == true;
     }
 
     /**
@@ -93,15 +93,22 @@ class CoursePolicy
         //
     }
 
+    public function manage(User $user)
+    {
+        return $user->is_super == true;
+    }
+
     public function dashboard(User $user, Course $course)
     {
-        if ($user->role == 'admin') {
+        if ($user->role == 'admin' || $user->is_super == true) {
             return Response::allow();
         }
 
-        if (!$user->registrationIs($course, 'registered') || !$user->registrationIs($course, 'partial')) {
-            return Response::deny("Cannot like if not registered");   
+        if (auth()->user()->registrationIs($course, 'registered') || auth()->user()->registrationIs($course, 'partial') || auth()->user()->registrationIs($course, 'partial')) {
+            return Response::allow();   
         }
+
+        return false;
     }
 
     public function register(User $user, Course $course)

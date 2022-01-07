@@ -90,10 +90,7 @@
                 </div>
                 <br>
                 <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
-                <livewire:schedule.filters />
-                <div class="py-10">
-                    <livewire:schedule.catalogue />
-                </div>
+                <livewire:catalogue.courses-catalogue />
             </div>
         </div>
     </main>

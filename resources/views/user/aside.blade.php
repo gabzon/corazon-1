@@ -56,6 +56,7 @@
                 </div>
             </a>
 
+            @can('updateWorkStatus', App\Models\User::class)
             <a href="#work-status" class="hover:bg-blue-50 hover:bg-opacity-50 flex p-6 border-b border-blue-gray-200">
                 @include('icons.work-status', ['style' => 'flex-shrink-0 -mt-0.5 w-5 h-5 text-gray-400'])
                 <div class="ml-3 text-sm">
@@ -64,6 +65,8 @@
                         adipiscing pellentesque.</p>
                 </div>
             </a>
+            @endcan
+
 
             <a href="#role" class="hover:bg-blue-50 hover:bg-opacity-50 flex p-6 border-b border-blue-gray-200">
                 @include('icons.keys', ['style' => 'flex-shrink-0 -mt-0.5 w-5 h-5 text-gray-400'])

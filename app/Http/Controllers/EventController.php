@@ -60,6 +60,11 @@ class EventController extends Controller
         
     }
 
+    public function dashboard(Request $request, Event $event)
+    {
+        return view('event.dashboard', compact('event'));
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Event $event

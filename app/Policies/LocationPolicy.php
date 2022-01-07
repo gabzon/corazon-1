@@ -2,13 +2,15 @@
 
 namespace App\Policies;
 
+use App\Models\Location;
 use App\Models\User;
-use App\Models\organization;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
-class OrganizationPolicy
+class LocationPolicy
 {
     use HandlesAuthorization;
+
 
     /**
      * Determine whether the user can view any models.
@@ -25,10 +27,10 @@ class OrganizationPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, organization $organization)
+    public function view(User $user, Location $location)
     {
         //
     }
@@ -48,10 +50,10 @@ class OrganizationPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, organization $organization)
+    public function update(User $user, Location $location)
     {
         //
     }
@@ -60,10 +62,10 @@ class OrganizationPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, organization $organization)
+    public function delete(User $user, Location $location)
     {
         //
     }
@@ -72,10 +74,10 @@ class OrganizationPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, organization $organization)
+    public function restore(User $user, Location $location)
     {
         //
     }
@@ -84,10 +86,10 @@ class OrganizationPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, organization $organization)
+    public function forceDelete(User $user, Location $location)
     {
         //
     }
@@ -95,5 +97,34 @@ class OrganizationPolicy
     public function manage(User $user)
     {
         return $user->is_super == true;
+    }
+
+    public function like(User $user, Location $location)
+    {
+        if ( !$location->exists ) {
+            return Response::deny("Cannot like a location that does not exists");
+        }
+        // if ($user->hasLiked($location)) {
+        //     return Response::deny("Cannot like the same course twice");   
+        // }
+
+        // if (!$user->registrationIs($location, 'registered') and !$user->registrationIs($course, 'partial')) {
+        //     return Response::deny("Cannot like if not registered");   
+        // }
+
+        return Response::allow();
+    }
+    
+    public function unlike(User $user, Location $location)
+    {
+        if (!$location->exists) {
+            return Response::deny("Cannot unlike a location that does not exists");
+        }
+
+        // if (!$user->hasLiked($course)) {
+        //     return Response::deny("Cannot like without liking it first");
+        // }
+
+        return Response::allow();
     }
 }

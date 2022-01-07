@@ -6,13 +6,13 @@ use Illuminate\View\Component;
 
 class PageHeading extends Component
 {
-    public string $title;
+    public $title;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title)
+    public function __construct($title)
     {
         $this->title = $title;
     }

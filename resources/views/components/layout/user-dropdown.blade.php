@@ -47,28 +47,38 @@
                 {{ __('API Tokens') }}
             </x-jet-dropdown-link>
             @endif --}}
-
+            @if (auth()->user()->hasManagementRights())
             <div class="border-t border-gray-100"></div>
             <!-- Account Management -->
             <div class="block px-4 py-2 text-xs text-gray-400">
                 {{ __('Administration') }}
             </div>
 
+            @can('manage', App\Models\Course::class)
             <x-jet-dropdown-link href="{{ route('course.index') }}">
                 {{ __('Courses') }}
             </x-jet-dropdown-link>
+            @endcan
 
+            @can('manage', App\Models\Event::class)
             <x-jet-dropdown-link href="{{ route('event.index') }}">
                 {{ __('Events') }}
             </x-jet-dropdown-link>
+            @endcan
 
+            @can('manage', App\Models\Model::class)
             <x-jet-dropdown-link href="{{ route('organization.index') }}">
                 {{ __('Organizations') }}
             </x-jet-dropdown-link>
+            @endcan
 
+            @can('manage', App\Models\Model::class)
             <x-jet-dropdown-link href="{{ route('location.index') }}">
                 {{ __('Locations') }}
             </x-jet-dropdown-link>
+            @endcan
+            @endif
+
 
             <div class="border-t border-gray-100"></div>
 

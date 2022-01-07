@@ -27,7 +27,7 @@ class UserRegistrationStatusBadge extends Component
             switch ($this->status) {
                 case 'pre-registered':
                     $this->color = 'bg-orange-100 text-orange-800';
-                    $this->info = 'Waiting for payment to complete your registration';
+                    $this->info = 'Pay the organizer to complete your registration.';
                     break;    
                 case 'registered':
                     $this->color = 'bg-green-700 text-green-100';
@@ -43,7 +43,7 @@ class UserRegistrationStatusBadge extends Component
                     break;    
                 case 'standby':
                     $this->color = 'bg-blue-100 text-blue-800';
-                    $this->info = 'Waiting for confirmation from organizer';
+                    $this->info = 'Waiting decision from organizer';
                     break; 
                 case 'waiting':
                     $this->color = 'bg-blue-800 text-blue-100';

@@ -53,7 +53,12 @@
         </ul> --}}
     </div>
 
-    <x-partials.social-links :model="$course->organization" />
+    <div class="my-2">
+        <x-partials.social-links :model="$course->organization" />
+    </div>
 
-    <x-shared.register-like-bookmark-buttons :model="$course" />
+    <div class="my-2">
+        <x-shared.register-like-bookmark-buttons :model="$course" size="medium" />
+    </div>
+
 </div>

@@ -24,6 +24,7 @@ class Options extends Component
         'course.keywords'   => 'nullable',
         'course.description'=> 'nullable',
         'course.standby'    => 'nullable',
+        'course.is_private' => 'nullable',
     ];
 
     public function updateStyles($styles)

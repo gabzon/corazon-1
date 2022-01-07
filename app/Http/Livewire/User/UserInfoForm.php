@@ -17,7 +17,7 @@ class UserInfoForm extends Component
             'user.email'        => 'required|string',
             'user.username'     => 'nullable|string|max:25|unique:users,username,'.$this->user->id,
             'user.birthday'     => 'required|string',
-            'user.mobile'       => 'nullable|string',
+            'user.mobile'       => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',
             'user.profession'   => 'nullable|string',
             'user.gender'       => 'required|string',
             'user.idn'          => 'nullable|string',   

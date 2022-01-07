@@ -100,7 +100,7 @@ class EventSeeder extends Seeder
         ]);
         $beast->styles()->attach([19]);
         
-        $beast = Event::create([
+        $magic = Event::create([
             'name'          => 'Magic Slovenian Salsa Festival 2022',
             'slug'          => Str::slug('Magic Slovenian Salsa Festival 2022','-'),
             'type'          => 'festival',
@@ -109,10 +109,10 @@ class EventSeeder extends Seeder
             'status'        => 'active',
             'website'       => 'https://mssf.si',
             'facebook'      => 'https://www.facebook.com/events/192596305269724',
-            'facebook_id'   => '3013160108953104',
+            'facebook_id'   => '192596305269724',
             'user_id'       => 1,
         ]);        
-        $beast->styles()->attach([19]);
+        $magic->styles()->attach([19]);
 
         $beast = Event::create([
             'name'          => 'Bachata Inspire WW with Zoran & Anđela',

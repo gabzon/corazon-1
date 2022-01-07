@@ -31,16 +31,6 @@ class UserSeeder extends Seeder
             'is_super'          => true,
         ]);
 
-        $daniel = User::firstOrCreate([
-            'name'              => 'Daniel Frančišković',
-            'email'             => 'daniel.franciskovic@gmail.com',
-            'email_verified_at' => now(),                   
-            'password'          => '$2y$10$nEdRKHWq7toV7llkApM1bO3LPXv/AN.oSqREaBLOoRI.LL4nyD4vK',                            
-            'remember_token'    => Str::random(10),
-            'role'              => 'publisher',
-            'gender'            => 'male',
-        ]);
-
         $gabriel = User::firstOrCreate([
             'name'              => 'Gabriel Zambrano',
             'email'             => 'gab.zambrano@gmail.com',
@@ -52,7 +42,19 @@ class UserSeeder extends Seeder
             'mobile'            => '+41 76 571 4931',
             'username'          => 'gabzam',
             'birthday'          => '1983-07-02',
+            'is_super'          => true,
         ]);
+        
+        $daniel = User::firstOrCreate([
+            'name'              => 'Daniel Frančišković',
+            'email'             => 'daniel.franciskovic@gmail.com',
+            'email_verified_at' => now(),                   
+            'password'          => '$2y$10$nEdRKHWq7toV7llkApM1bO3LPXv/AN.oSqREaBLOoRI.LL4nyD4vK',                            
+            'remember_token'    => Str::random(10),
+            'role'              => 'publisher',
+            'gender'            => 'male',
+        ]);
+
         
         User::factory(5)->create();        
         

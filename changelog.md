@@ -1,4 +1,21 @@
-# v0.
+# v0.1.19: Friday 7th, 2022
+* Back button
+* Registration/Bookmark/Like buttons livewire
+* Events catalogue
+* Courses cataloque
+
+# v0.1.18: Thursday 6th, 2022
+* Profile: This week fixed
+* App sidebar navigation: regular users cannot see to admin buttons
+* Events card: registration/like/bookmark buttons added
+* User-dropdown: hide admin likes from unauthorize users
+* Edit button hidden from unauthorized users in course/event show
+* login page: create account link added
+* Required user data: username fixed
+* User phone number validation added
+* is_private field added to course and events
+* Event show: if less than 24h do not display 2nd date if more than 24 do not display end time
+
 # v0.1.17: Wednesday 5th, 2022
 * Event show: display organisers 
 * Login and create account buttons fixed on event/course show
@@ -12,7 +29,7 @@
 * Sidebar menu: bookmark and likes fixed
 * Edit profile: biography error
 * Course/Event show: inside app layout
-
+* User profile uses photo
 
 # v0.1.16: Tuesday 4th, 2022
 * Create event: when start date is added it automatically fills end date

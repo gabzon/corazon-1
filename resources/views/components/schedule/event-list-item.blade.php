@@ -1,9 +1,8 @@
 <li
     class="relative flex bg-white py-3 px-3 hover:bg-gray-100 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 overflow-hidden">
-    @if ($item->getMedia('events')->last() != null)
-    <img class="h-16 w-16 bg-indigo-100 object-cover rounded"
-        src="{{ $item->getMedia('events')->last()->getUrl('thumb') }}" alt="{{ $item->name }}">
-    @endif
+
+    <img class="h-16 w-16 bg-indigo-100 object-cover rounded-md" src="{{ $item->coverImage }}" alt="{{ $item->name }}">
+
     <div class="ml-3 w-full">
         <div class="grid grid-cols-2">
             <div>

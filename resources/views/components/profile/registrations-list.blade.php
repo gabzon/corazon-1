@@ -54,7 +54,7 @@
                 </p>
                 <p class="text-sm text-gray-500">
                     Check out the
-                    <a href="{{ route('courses.schedule') }}" class="text-indigo-500 hover:text-indigo-800">
+                    <a href="{{ route('courses.catalogue') }}" class="text-indigo-500 hover:text-indigo-800">
                         courses schedule
                     </a> page or
                     <a href="{{ route('events.catalogue') }}" class="text-indigo-500 hover:text-indigo-800">

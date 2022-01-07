@@ -19,10 +19,12 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name', 200);
             $table->string('slug', 300);
+
             $table->text('excerpt')->nullable();
             $table->longText('description')->nullable();
             $table->string('tagline')->nullable();
             $table->string('keywords')->nullable();
+            
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('monday')->nullable();
@@ -46,14 +48,17 @@ class CreateCoursesTable extends Migration
             $table->boolean('sunday')->nullable();
             $table->time('start_time_sun')->nullable();
             $table->time('end_time_sun')->nullable();
+            $table->time('duration')->nullable();
+            
             $table->string('level')->nullable();            
             $table->string('level_code')->nullable();
             $table->string('level_number')->nullable();
             $table->string('level_label')->nullable();
-            $table->time('duration')->nullable();
+            
             $table->text('video1')->nullable();
             $table->text('video2')->nullable();
             $table->text('video3')->nullable();
+            
             $table->boolean('dropping')->nullable();
             $table->decimal('dropping_price')->nullable();
             $table->decimal('full_price')->nullable();
@@ -61,15 +66,20 @@ class CreateCoursesTable extends Migration
             $table->decimal('student_price')->nullable();
             $table->decimal('unemployed_price')->nullable();
             $table->decimal('senior_price')->nullable();
+            
             $table->boolean('standby')->nullable()->default(false);
             $table->boolean('is_private')->default(false);
             $table->string('thumbnail')->nullable();
+            
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();
             $table->string('status', 40)->nullable();
-            $table->string('for', 20)->nullable();
+            $table->string('public', 20)->nullable();
+            
             $table->string('registration_url')->nullable();   
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained();            
+            // $table->foreignId('created_by')->constrained('users');
+            // $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->foreignId('space_id')->nullable()->constrained();
             $table->foreignId('city_id')->nullable()->constrained();
             $table->foreignId('organization_id')->nullable()->constrained();

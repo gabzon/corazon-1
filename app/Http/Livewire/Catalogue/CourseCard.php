@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Schedule;
+namespace App\Http\Livewire\Catalogue;
 
 use Livewire\Component;
 
-class Card extends Component
+class CourseCard extends Component
 {
     public $class;
     public $time;
@@ -42,6 +42,6 @@ class Card extends Component
 
     public function render()
     {
-        return view('livewire.schedule.card');
+        return view('livewire.catalogue.course-card');
     }
 }

@@ -74,12 +74,13 @@
 
     <x-jet-section-border />
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <livewire:user.instructor-form :user="$user" />
-    </div>
+    </div> --}}
     @endif
 
-    <x-jet-section-border />
+    {{--
+    <x-jet-section-border /> --}}
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         {{--

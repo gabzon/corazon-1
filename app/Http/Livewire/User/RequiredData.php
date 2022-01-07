@@ -15,8 +15,8 @@ class RequiredData extends Component
 
     protected $rules = [
         'user.gender'   => 'required|string|max:8',
-        'user.username' => 'required|string|max:30|unique:users|alpha_dash',
-        'user.mobile'   => 'required',        
+        'user.username' => 'required|string|min:3|max:30|alpha_dash|unique:users,username',
+        'user.mobile'   => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',        
         'user.birthday' => 'required|date',
     ];
 

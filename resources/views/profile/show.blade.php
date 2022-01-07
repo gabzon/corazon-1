@@ -44,24 +44,25 @@
             <livewire:user.user-social-form :user="$user" />
         </div>
 
+        @can('updateWorkStatus', App\Models\User::class)
         <x-jet-section-border />
 
         <div id="work-status" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.user-status-form :user="$user" />
         </div>
+        @endcan
 
+        @if ($user->is_super)
         <x-jet-section-border />
 
-        @if ($user->is_super))
         <div id="role" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.user-rights-form :user="$user" />
         </div>
-
-        <x-jet-section-border />
         @endif
 
-
         @if ($user->is_super)
+        <x-jet-section-border />
+
         <div id="manager" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:user.manager-form :user="$user" wire:key="manager" />
         </div>

@@ -34,6 +34,22 @@
                         <x-form.text-input wire:model="event.registration_url" name="event.registration_url"
                             label="Registration URL" />
 
+                        <div class="w-full">
+                            <div class="mt-5 relative flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="is_private" wire:model="event.is_private" name="is_private"
+                                        type="checkbox"
+                                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="is_private" class="font-medium text-gray-700">Private</label>
+                                    <span id="is_private-description" class="text-gray-500">
+                                        Only invited users will be able to see this course.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <div class="inline-flex items-center">

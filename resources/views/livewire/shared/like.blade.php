@@ -1,6 +1,7 @@
 <div class="ml-4 inline-flex items-center">
     @can('like', $model)
-    <form action="{{ route('like') }}" method="POST">
+
+    <form wire:submit.prevent="like" {{-- action="{{ route('like') }}" method="POST" --}}>
         @csrf
         <input type="hidden" name="likeable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
@@ -14,7 +15,7 @@
     @endcan
 
     @can('unlike', $model)
-    <form action="{{ route('unlike') }}" method="POST">
+    <form wire:submit.prevent="unlike" {{-- action="{{ route('unlike') }}" method="POST" --}}>
         @csrf
         @method('DELETE')
         <input type="hidden" name="likeable_type" value="{{ get_class($model) }}" />

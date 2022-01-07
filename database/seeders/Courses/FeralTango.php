@@ -30,7 +30,7 @@ class FeralTango extends Seeder
             'level'          => 'open level',
             'level_code'     => 'op',
             'full_price'     => 300, 'reduced_price' => 250,            
-            'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'solo', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
             'space_id'   => 10,
         ]);
@@ -50,7 +50,7 @@ class FeralTango extends Seeder
             'level'          => 'intermediate',
             'level_code'     => 'b1',
             'full_price'     => 500, 'reduced_price' => 450,            
-            'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'solo', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
             'space_id'   => 10,
         ]);
@@ -70,7 +70,7 @@ class FeralTango extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a1',
             'full_price'     => 500, 'reduced_price' => 450,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
             'space_id'   => 10,
         ]);
@@ -89,7 +89,7 @@ class FeralTango extends Seeder
             'level'          => 'open level',
             'level_code'     => 'op',
             'full_price'     => 500, 'reduced_price' => 450,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
             'space_id'   => 10,
         ]);

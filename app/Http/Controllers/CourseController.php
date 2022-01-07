@@ -16,6 +16,8 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('manage', Course::class);
+        
         $courses = Course::all();
 
         return view('course.index', compact('courses'));
@@ -58,7 +60,15 @@ class CourseController extends Controller
 
     public function dashboard(Request $request, Course $course)
     {        
-        return view('course.dashboard', compact('course'));                   
+        
+        if (auth()->user()->cannot('dashboard', $course)) {            
+            return view('course.show', compact('course'));
+            // abort(403);
+        }
+
+        return view('course.dashboard', compact('course'));     
+        
+        
     }
 
     public function info(Request $request, Course $course)
@@ -92,8 +102,8 @@ class CourseController extends Controller
         return redirect()->route('course.index');
     }
 
-    public function schedule()
+    public function catalogue()
     {
-        return view('course.schedule');
+        return view('course.catalogue');
     }
 }

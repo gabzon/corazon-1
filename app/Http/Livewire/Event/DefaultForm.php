@@ -21,7 +21,7 @@ class DefaultForm extends Component
     protected $rules = [
         'event.name'            => 'required|string|max:100',
         'event.slug'            => 'required',
-        'event.start_date'      => 'required|date|after:today',        
+        'event.start_date'      => 'required|date',        
         'event.end_date'        => 'required|date|after_or_equal:event.start_date',        
         'event.type'            => 'required',
         'event.status'          => 'required',

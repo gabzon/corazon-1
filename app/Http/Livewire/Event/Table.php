@@ -9,8 +9,7 @@ use Livewire\WithPagination;
 class Table extends Component
 {    
     use WithPagination;
-    
-    public int $city = 0;
+        
     public $style = 0;
 
     public array $filterColumns = [
@@ -35,8 +34,7 @@ class Table extends Component
     {
         $events = Event::with(['city:id,name'])
                         ->select(['id','name','start_date','status', 'type', 'city_id'])
-                        ->style($this->style)
-                        ->inCity($this->city)
+                        ->style($this->style)                        
                         ->latest();
 
         foreach ($this->filterColumns as $column => $value) {

@@ -28,7 +28,7 @@ class Bandoleros extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a1',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
             'space_id'   => 6,
         ]);
@@ -48,7 +48,7 @@ class Bandoleros extends Seeder
             'level'          => 'advanced',
             'level_code'     => 'c1',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'solo', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
             'space_id'   => 6,
         ]);
@@ -68,7 +68,7 @@ class Bandoleros extends Seeder
             'level'          => 'open-level',
             'level_code'     => 'op',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
             'space_id'       => 6,
         ]);
@@ -88,7 +88,7 @@ class Bandoleros extends Seeder
             'level'          => 'beginner',
             'level_code'     => 'a1',
             'full_price'     => 250, 'reduced_price' => 200,            
-            'focus'          => 'solo', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'solo', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 2,
             'space_id'      => 7,
         ]);

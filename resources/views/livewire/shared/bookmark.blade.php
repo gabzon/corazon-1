@@ -1,7 +1,8 @@
 <div>
     @can('bookmark', $model)
     <div class="inline-flex items-center">
-        <form action="{{ route('bookmark') }}" method="POST">
+
+        <form wire:submit.prevent="bookmark" {{-- action="{{ route('bookmark') }}" method="POST" --}}>
             @csrf
             <input type="hidden" name="bookmarkable_type" value="{{ get_class($model) }}" />
             <input type="hidden" name="id" value="{{ $model->id }}" />
@@ -21,7 +22,7 @@
 
     @can('unbookmark', $model)
     <div class="inline-flex items-center">
-        <form action="{{ route('unbookmark') }}" method="POST">
+        <form wire:submit.prevent="unbookmark" {{-- action="{{ route('unbookmark') }}" method="POST" --}}>
             @csrf
             @method('DELETE')
             <input type="hidden" name="bookmarkable_type" value="{{ get_class($model) }}" />

@@ -114,7 +114,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
-    Route::get('/courses', [CourseController::class, 'schedule'])->name('courses.schedule');
+    Route::get('/courses', [CourseController::class, 'catalogue'])->name('courses.catalogue');
     
     
     Route::get('event/{event}/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard');
@@ -138,9 +138,9 @@ Route::middleware(['auth'])->group(function(){
     Route::post('user/register', [RegistrationController::class, 'register'])->name('enroll');
     Route::delete('user/unregister', [RegistrationController::class, 'unregister'])->name('unenroll');
 
-    Route::get('likes', [ProfileController::class, 'likes'])->name('profile.likes');
-    Route::get('bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
-    Route::get('registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
+    Route::get('profile/likes', [ProfileController::class, 'likes'])->name('profile.likes');
+    Route::get('profile/bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
+    Route::get('profile/registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
   
     Route::resource('admin/course', CourseController::class)->except(['show']);
     Route::resource('admin/location', LocationController::class);

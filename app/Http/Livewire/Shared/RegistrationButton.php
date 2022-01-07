@@ -11,11 +11,37 @@ class RegistrationButton extends Component
     public Registrable $model;
     public string $size;
     public string $css;
+    public bool $refreshPage = false;
+
+    public function register()
+    {        
+        // $this->authorise('bookmark', $this->model);
+        auth()->user()->register($this->model);
+        
+        if ($this->refreshPage) {            
+            return redirect(request()->header('Referer'));        
+        }               
+        
+    }
+
+    public function unregister()
+    {
+        // $this->authorise('unbookmark', $this->model);
+        auth()->user()->unregister($this->model);
+        if ($this->refreshPage) {            
+            return redirect(request()->header('Referer'));        
+        } 
+    }
     
     public function mount(Registrable $model, string $size = 'large')
     {
         $this->model = $model;
         $this->size = $size;
+        
+        if (request()->routeIs('dashboard')) {
+            $this->refreshPage = true;   
+        }
+
         switch ($this->size) {
             case 'xs':                                                      
                 $this->css = 'max-w-xs flex-1 flex justify-center sm:w-full items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500';

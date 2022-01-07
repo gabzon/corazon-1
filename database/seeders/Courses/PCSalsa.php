@@ -30,7 +30,7 @@ class PCSalsa extends Seeder
             'level'          => 'intermediate',
             'level_code'     => 'b1',
             'full_price'     => 250, 'reduced_price' => null,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 7,
             'space_id'   => 9,
         ]);
@@ -46,7 +46,7 @@ class PCSalsa extends Seeder
             'level'          => 'intermediate',
             'level_code'     => 'b1',
             'full_price'     => 150, 'reduced_price' => null,            
-            'focus'          => 'partnerwork', 'type' => 'Class', 'status' => 'Active',
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 7,
             'space_id'   => 9,
         ]);
