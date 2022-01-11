@@ -55,11 +55,7 @@
 
             <!-- Main area -->
             <main class="min-w-0 flex-1 border-t border-gray-200 lg:flex z-0 overflow-hidden">
-
-
-                <!-- Primary column -->
-                <section aria-labelledby="primary-heading"
-                    class="min-w-0 flex-1 h-screen flex flex-col overflow-hidden overflow-y-scroll lg:order-last">
+                <section class="min-w-0 flex-1 max-h-screen flex flex-col overflow-hidden lg:order-last">
 
                     <!-- Page Heading -->
                     @if (isset($header))
@@ -71,7 +67,6 @@
                     @endif
 
                     <x-impersonate />
-
 
                     <div class="sm:max-h-screen">
                         {{ $slot }}

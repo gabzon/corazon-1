@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CanManageEventsMiddleware;
+use App\Http\Middleware\CourseDashboard;
 use App\Http\Middleware\UserMandatoryData;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -60,10 +61,10 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,    
-        'userDataVerified' => UserMandatoryData::class    
+        'password.confirm'  => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed'            => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'          => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified'          => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,    
+        'userDataVerified'  => UserMandatoryData::class,         
     ];
 }

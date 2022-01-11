@@ -35,77 +35,79 @@
         </div>
     </header>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.default-form :event="$event" />
+    <div class="max-h-screen overflow-y-scroll">
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <livewire:event.default-form :event="$event" />
+            </div>
         </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <livewire:event.options-form :event="$event" />
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <livewire:event.contact-form :event="$event" />
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                {{--
+                <livewire:event.price-form :event="$event" /> --}}
+                Pricing comming soon
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <livewire:event.social-media-form :event="$event" />
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <livewire:event.delete-form :event="$event" />
+            </div>
+        </div>
+
+        <div class="my-20">&nbsp;</div>
     </div>
 
-    <div class="hidden sm:block" aria-hidden="true">
-        <div class="py-5">
-            <div class="border-t border-gray-200"></div>
-        </div>
-    </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.options-form :event="$event" />
-        </div>
-    </div>
-
-    <div class="hidden sm:block" aria-hidden="true">
-        <div class="py-5">
-            <div class="border-t border-gray-200"></div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.contact-form :event="$event" />
-        </div>
-    </div>
-
-    <div class="hidden sm:block" aria-hidden="true">
-        <div class="py-5">
-            <div class="border-t border-gray-200"></div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{--
-            <livewire:event.price-form :event="$event" /> --}}
-            Pricing comming soon
-        </div>
-    </div>
-
-    <div class="hidden sm:block" aria-hidden="true">
-        <div class="py-5">
-            <div class="border-t border-gray-200"></div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.social-media-form :event="$event" />
-        </div>
-    </div>
-
-    <div class="hidden sm:block" aria-hidden="true">
-        <div class="py-5">
-            <div class="border-t border-gray-200"></div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.delete-form :event="$event" />
-        </div>
-    </div>
-
-    <div class="my-20">
-        &nbsp;
-    </div>
 
     @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix-core.min.js"

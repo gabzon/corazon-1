@@ -10,7 +10,6 @@
                 class="p-2 rounded-full flex items-center justify-center text-indigo-400 hover:bg-indigo-100 hover:text-indigo-700">
                 {{-- @lang('Like') --}}
                 @include('icons.bookmark-star')
-                <span class="sr-only">Add to interest</span>
             </button>
         </form>
         @if ($withCount)
@@ -31,7 +30,6 @@
                 class="p-2 rounded-full flex items-center justify-center text-indigo-500 hover:bg-indigo-100 hover:text-indigo-700">
                 {{-- @lang('Unlike') --}}
                 @include('icons.bookmark-star-fill')
-                <span class="sr-only">Remove from uninterest</span>
             </button>
         </form>
         @if ($withCount)

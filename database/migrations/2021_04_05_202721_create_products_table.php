@@ -22,10 +22,8 @@ class CreateProductsTable extends Migration
             $table->longText('content')->nullable();
             $table->text('video')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->integer('qty')->nullable();
-            $table->decimal('price');
-            $table->string('currency', 20)->nullable();
-            $table->dateTime('dealine')->nullable();
+            $table->integer('qty')->nullable();            
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
 

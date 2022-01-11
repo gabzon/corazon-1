@@ -40,7 +40,7 @@
     <!-- Menu button area -->
     <div class="absolute inset-y-0 right-0 pr-4 flex items-center sm:pr-6 md:hidden">
         <!-- Mobile menu button -->
-        {{-- <button type="button" @click="mobileMenu=true"
+        <button type="button" @click="mobileMenu=true"
             class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
             <span class="sr-only">Open main menu</span>
             <!-- Heroicon name: outline/menu -->
@@ -48,7 +48,7 @@
                 stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-        </button> --}}
+        </button>
     </div>
 
     <!-- Desktop nav area -->
@@ -119,10 +119,7 @@
         <nav class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg"
             aria-label="Global">
             <div class="h-16 flex items-center justify-between px-4 sm:px-6">
-                <a href="#">
-                    <img class="block h-8 w-auto" lazy="loading"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500" alt="Workflow">
-                </a>
+                <x-jet-application-mark class="block h-6 w-auto text-indigo-700" />
                 <button type="button" @click="mobileMenu=false"
                     class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
                     <span class="sr-only">Close main menu</span>
@@ -134,7 +131,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="mt-2 max-w-8xl mx-auto px-4 sm:px-6">
+            {{-- <div class="mt-2 max-w-8xl mx-auto px-4 sm:px-6">
                 <div class="relative text-gray-400 focus-within:text-gray-500">
                     <label for="search" class="sr-only">Search all inboxes</label>
                     <input id="search" type="search" placeholder="Search all inboxes"
@@ -149,39 +146,72 @@
                         </svg>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4">
 
-                <a href="{{ route('schedule') }}"
+                <a href="{{ route('welcome') }}"
                     class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Home</a>
 
-                <a href="#"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Technical
-                    Support</a>
+                <a href="{{ route('events.catalogue') }}"
+                    class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Events</a>
 
-                <a href="#"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Sales</a>
+                <a href="{{ route('courses.catalogue') }}"
+                    class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Courses</a>
 
-                <a href="#"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">General</a>
+                {{-- <a href="#"
+                    class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Admin</a>
+                --}}
 
-                <a href="#"
-                    class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Reporting</a>
+                @auth
 
-                <a href="#"
-                    class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Settings</a>
+                @can('manage', App\Models\User::class)
+                <a href="{{ route('user.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">
+                    Users
+                </a>
+                @endcan
+
+                @can('manage', App\Models\Course::class)
+                <a href="{{ route('course.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Courses</a>
+                @endcan
+
+                @can('manage', App\Models\Event::class)
+                <a href="{{ route('event.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Events</a>
+                @endcan
+
+                @can('manage', App\Models\Organization::class)
+                <a href="{{ route('organization.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Organizations</a>
+                @endcan
+
+                @can('manage', App\Models\Location::class)
+                <a href="{{ route('location.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Locations</a>
+                @endcan
+
+                @can('manage', App\Models\Style::class)
+                <a href="{{ route('style.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Styles</a>
+                @endcan
+
+                @can('manage', App\Models\City::class)
+                <a href="{{ route('city.index') }}"
+                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Cities</a>
+                @endcan
+
+                @endauth
             </div>
             <div class="border-t border-gray-200 pt-4 pb-3">
+                @auth
                 <div class="max-w-8xl mx-auto px-4 flex items-center sm:px-6">
                     <div class="flex-shrink-0">
-                        {{-- <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="">
-                        --}}
+                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->photo }}" alt="">
                     </div>
                     <div class="ml-3 min-w-0 flex-1">
-                        {{-- <div class="text-base font-medium text-gray-800 truncate">{{ auth()->user()->name }}</div>
-                        --}}
-                        {{-- <div class="text-sm font-medium text-gray-500 truncate">{{ auth()->user()->email }}
-                        </div> --}}
+                        <div class="text-base font-medium text-gray-800 truncate">{{ auth()->user()->name }}</div>
+                        <div class="text-sm font-medium text-gray-500 truncate">{{ auth()->user()->email }}</div>
                     </div>
                     <a href="#" class="ml-auto flex-shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">View notifications</span>
@@ -193,14 +223,49 @@
                         </svg>
                     </a>
                 </div>
+                @endauth
                 <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
-                    <a href="{{ route('profile.show') }}"
-                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Your
-                        Profile</a>
+                    @auth
+                    <a href="{{ route('dashboard') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Dashboard
+                    </a>
 
-                    <a href="#"
-                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Sign
-                        out</a>
+                    <a href="{{ route('user.show', auth()->user()) }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Profile
+                    </a>
+
+                    <a href="{{ route('profile.show') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Edit Profile
+                    </a>
+
+                    <a href="{{ route('profile.bookmarks') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Bookmarks
+                    </a>
+
+                    <a href="{{ route('profile.favorites') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Favorites
+                    </a>
+
+                    <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Sign out
+                    </a>
+                    @endauth
+                    @guest
+                    <a href="{{ route('login') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Login
+                    </a>
+
+                    <a href="{{ route('register') }}"
+                        class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                        Register
+                    </a>
+                    @endguest
                 </div>
             </div>
         </nav>

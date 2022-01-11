@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <livewire:shared.bookmark :model="$event" />
-                    <livewire:shared.like :model="$event" />
+                    <livewire:shared.favorite-button :model="$event" />
                 </div>
 
             </div>

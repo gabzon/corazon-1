@@ -71,9 +71,15 @@
 
     <main id="main">
         <div class="bg-indigo-800">
-            <h2 class="text-3xl font-bold text-gray-100 text-center pt-10">Events</h2>
+            <h2 class="text-3xl font-bold text-gray-100 text-center pt-10">Latest Events</h2>
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <livewire:schedule.events />
+                <div class="flex justify-center mb-10">
+                    <a href="{{ route('events.catalogue') }}"
+                        class="inline-flex items-center px-6 py-3 border border-white shadow-sm text-base font-medium rounded-md text-white bg-transparent hover:bg-gray-50 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        View all events
+                    </a>
+                </div>
             </div>
             <br>
         </div>

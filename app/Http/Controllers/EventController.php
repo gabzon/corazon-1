@@ -56,8 +56,7 @@ class EventController extends Controller
         if (auth()->check()) {
             return view('event.show', compact('event'));
         }
-        return view('event.view', compact('event'));
-        
+        return view('event.view', compact('event'));        
     }
 
     public function dashboard(Request $request, Event $event)
@@ -111,7 +110,6 @@ class EventController extends Controller
             return view('event.catalogue');
         }else{
             return view('pages.events');
-        }
-        
+        }        
     }
 }

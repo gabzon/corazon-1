@@ -8,7 +8,7 @@ use App\Contracts\Registrable;
 use App\Models\Like;
 use App\Models\Event;
 use App\Traits\UserBookmarksTrait;
-use App\Traits\UserLikesTrait;
+use App\Traits\UserFavoritesTrait;
 use App\Traits\UserRegistrationsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,7 +30,7 @@ class User extends Authenticatable implements HasMedia
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use UserLikesTrait;
+    use UserFavoritesTrait;
     use UserBookmarksTrait;
     use UserRegistrationsTrait;
 

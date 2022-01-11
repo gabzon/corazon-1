@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Contracts\Bookmarkable;
-use App\Contracts\Likeable;
+use App\Contracts\Favoriteable;
 use App\Contracts\Registrable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +16,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
 
-class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkable
+class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookmarkable
 {
     use HasFactory, SoftDeletes;
     use InteractsWithMedia;    
@@ -179,9 +179,9 @@ class Event extends Model implements HasMedia, Registrable, Likeable, Bookmarkab
         return $this->belongsToMany(User::class,'bookmark_event','event_id','user_id')->withTimeStamps();        
     }
 
-    public function likes(): BelongsToMany
+    public function favorites(): BelongsToMany
     {        
-        return $this->belongsToMany(User::class,'event_like','event_id','user_id')->withTimeStamps();        
+        return $this->belongsToMany(User::class,'event_favorite','event_id','user_id')->withTimeStamps();        
     }
 
     public function prices()

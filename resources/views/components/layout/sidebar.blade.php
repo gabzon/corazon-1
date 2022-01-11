@@ -23,8 +23,8 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.bookmark-star')
                     </a>
-                    <a href="{{ route('profile.likes') }}" id="likes" data-tippy-placement="right"
-                        data-tippy-content="Likes"
+                    <a href="{{ route('profile.favorites') }}" id="favorites" data-tippy-placement="right"
+                        data-tippy-content="Favorites"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.heart')
                     </a>
@@ -155,7 +155,7 @@
     tippy('#schedule');
     tippy('#catalogue');
     tippy('#bookmarks');
-    tippy('#likes');
+    tippy('#favorites');
     tippy('#courses');
     tippy('#events');
     tippy('#locations');

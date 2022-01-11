@@ -27,12 +27,15 @@ class CreateEventsTable extends Migration
             $table->boolean('is_recurrent')->default(false)->nullable();
             $table->string('recurrent_days')->nullable();
             $table->boolean('is_online')->default(false)->nullable();
+            $table->boolean('standby')->default(false)->nullable();
+            $table->integer('limit_attendees')->nullable();
 
             $table->boolean('is_free')->nullable();
             $table->text('video')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('type')->nullable();
             $table->string('status')->nullable();
+            $table->string('public')->nullable();
             $table->date('publish_at')->nullable();
             
             $table->string('organiser', 100)->nullable();

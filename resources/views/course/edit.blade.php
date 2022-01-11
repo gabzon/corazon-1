@@ -6,7 +6,7 @@
             crossorigin="anonymous" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </x-slot>
-    <div class="py-12 min-h-screen">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:course.form.course-default :course="$course" />
 

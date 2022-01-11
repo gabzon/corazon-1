@@ -103,13 +103,13 @@ class ProfileController extends Controller
         return view('profile.registrations', ['list' => $list]);
     }
 
-    public function likes()
+    public function favorites()
     {
-        $courses = auth()->user()->likedCourses;
-        $events = auth()->user()->likedEvents;
+        $courses = auth()->user()->favoritedCourses;
+        $events = auth()->user()->favoritedEvents;
         $list = $courses->merge($events)->sortBy('start_date');
 
-        return view('profile.likes', ['list'=> $list]);
+        return view('profile.favorites', ['list'=> $list]);
     }
 
 

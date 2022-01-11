@@ -31,63 +31,67 @@
         @include('user.aside')
     </x-slot> --}}
 
-    <div class="max-w-7xl mx-auto pt-10 sm:px-6 lg:px-8">
-        <livewire:user.name-email-form :user="$user" />
-    </div>
+    <div class="h-screen overflow-y-scroll">
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto pt-10 sm:px-6 lg:px-8">
+            <livewire:user.name-email-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.user-info-form :user="$user" />
-    </div>
+        <x-jet-section-border />
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.user-info-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.user-address-form :user="$user" />
-    </div>
+        <x-jet-section-border />
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.user-address-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.user-social-form :user="$user" />
-    </div>
+        <x-jet-section-border />
 
-    @if (auth()->user()->isAdmin())
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.user-social-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.user-status-form :user="$user" />
-    </div>
+        @if (auth()->user()->isAdmin())
+        <x-jet-section-border />
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.user-status-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.user-rights-form :user="$user" />
-    </div>
+        <x-jet-section-border />
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.user-rights-form :user="$user" />
+        </div>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.manager-form :user="$user" />
-    </div>
+        <x-jet-section-border />
 
-    <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.manager-form :user="$user" />
+        </div>
 
-    {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <livewire:user.instructor-form :user="$user" />
-    </div> --}}
-    @endif
+        <x-jet-section-border />
 
-    {{--
-    <x-jet-section-border /> --}}
+        {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:user.instructor-form :user="$user" />
+        </div> --}}
+        @endif
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         {{--
-        <livewire:user.interested-styles-form :user="$user" /> --}}
+        <x-jet-section-border /> --}}
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {{--
+            <livewire:user.interested-styles-form :user="$user" /> --}}
+        </div>
+
+        <div class="my-20">&nbsp;</div>
     </div>
 
-    <div class="my-20">&nbsp;</div>
 
     @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"

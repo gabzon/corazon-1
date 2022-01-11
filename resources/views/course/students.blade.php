@@ -24,8 +24,9 @@
                 <div class="hidden lg:block lg:col-span-3 xl:col-span-2">
                     @include('course.dashboard.left')
                 </div>
-                <main class="lg:col-span-9 xl:col-span-6 overflow-y-scroll">
-                    <livewire:shared.registered-table :model="$course" />
+                <main class="lg:col-span-9 xl:col-span-6 h-screen overflow-y-scroll overflow-x-hidden">
+                    <livewire:shared.registered-table :model="$course" query="students" />
+                    <div class="my-28 md:my-24">&nbsp;</div>
                 </main>
                 <aside class="hidden xl:block xl:col-span-4">
                     @include('course.dashboard.right')

@@ -32,7 +32,8 @@ class CitySeeder extends Seeder
             'alpha3Code'    => 'HRV',
             'iataCode'      => 'ZAG',
             'population'    => 806341,
-            'world_region'  => 'Europe',            
+            'world_region'  => 'Europe',
+            'user_id'       => 1,            
         ]);        
 
         City::create([
@@ -50,6 +51,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'ZAD',
             'population'    => 75082,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);                
 
         City::create([
@@ -68,6 +70,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 34302,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
         
         City::create([
@@ -85,6 +88,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'SPU',
             'population'    => 178102,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
         
         City::create([
@@ -102,6 +106,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'OSI',
             'population'    => 108048,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);        
 
         City::create([
@@ -119,6 +124,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'LDVA',
             'population'    => 46946,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -136,6 +142,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'DBV',
             'population'    => 42615,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -153,6 +160,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'PUY',
             'population'    => 56540,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);        
 
         City::create([
@@ -171,6 +179,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 14294,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);                
         
         City::create([
@@ -188,6 +197,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'RJK',
             'population'    => 128624,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -205,6 +215,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'LDZJ',
             'population'    => 40276,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
         
         City::create([
@@ -222,6 +233,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 5569,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -239,6 +251,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 11122,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
 
@@ -257,6 +270,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 27683,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -274,6 +288,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 27820,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -291,6 +306,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 27745,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -308,6 +324,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 4251,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -325,6 +342,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 15407,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -342,6 +360,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 30854,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -359,6 +378,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 6281,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -376,6 +396,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 13834,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -393,6 +414,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 5113,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -410,6 +432,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 13915,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -427,6 +450,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 11659,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -444,6 +468,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 128899,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -461,6 +486,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 6817,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -478,6 +504,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 3846,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -495,6 +522,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 16696,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -512,6 +540,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 8065,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -529,6 +558,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 37633,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -546,6 +576,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 13192,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -563,6 +594,7 @@ class CitySeeder extends Seeder
             'iataCode'      => '',
             'population'    => 8875,
             'world_region'  => 'Europe',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -580,6 +612,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'TGD',
             // 'population'    => ,
             'world_region'  => 'europe',
+            'user_id'       => 1,
         ]);                   
         
         City::create([
@@ -597,6 +630,7 @@ class CitySeeder extends Seeder
             'iataCode'      => 'SJJ',
             // 'population'    => ,
             'world_region'  => 'europe',
+            'user_id'       => 1,
         ]);
 
 
@@ -616,6 +650,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -632,6 +667,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
         
         City::create([
@@ -648,6 +684,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -664,6 +701,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -680,6 +718,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
         
         City::create([
@@ -696,6 +735,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -712,6 +752,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -728,6 +769,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
 
         City::create([
@@ -744,6 +786,7 @@ class CitySeeder extends Seeder
             'alpha2Code' => '',
             'alpha3Code' => '',
             'iataCode' => '',
+            'user_id'       => 1,
         ]);
         
 

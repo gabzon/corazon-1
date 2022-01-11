@@ -54,7 +54,15 @@ class CoursePolicy
      */
     public function update(User $user, Course $course)
     {        
-        return $user->is_super == true;
+        if ($user->is_super == true){
+            return Response::allow();
+        }
+
+        if ($user->manageOrganization($course->organization_id)) {
+            return Response::allow();
+        }
+
+        return Response::deny('You are not allow to update this course');
     }
 
     /**
@@ -104,7 +112,11 @@ class CoursePolicy
             return Response::allow();
         }
 
-        if (auth()->user()->registrationIs($course, 'registered') || auth()->user()->registrationIs($course, 'partial') || auth()->user()->registrationIs($course, 'partial')) {
+        if ($user->manageOrganization($course->organization_id)) {
+            return Response::allow();
+        }
+
+        if ($user->registrationIs($course, 'registered') || $user->registrationIs($course, 'partial') || $user->registrationIs($course, 'partial')) {
             return Response::allow();   
         }
 
@@ -163,12 +175,12 @@ class CoursePolicy
         return Response::allow();
     }
 
-    public function like(User $user, Course $course)
+    public function favorite(User $user, Course $course)
     {
         if ( !$course->exists ) {
             return Response::deny("Cannot like a course that does not exists");
         }
-        if ($user->hasLiked($course)) {
+        if ($user->hasFavorited($course)) {
             return Response::deny("Cannot like the same course twice");   
         }
 
@@ -179,13 +191,13 @@ class CoursePolicy
         return Response::allow();
     }
     
-    public function unlike(User $user, Course $course)
+    public function unfavorite(User $user, Course $course)
     {
         if (!$course->exists) {
             return Response::deny("Cannot unlike a course that does not exists");
         }
 
-        if (!$user->hasLiked($course)) {
+        if (!$user->hasFavorited($course)) {
             return Response::deny("Cannot like without liking it first");
         }
 

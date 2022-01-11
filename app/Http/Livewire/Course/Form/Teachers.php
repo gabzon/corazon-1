@@ -21,12 +21,15 @@ class Teachers extends Component
 
         $user = User::findOrFail($this->instructor);
         
-        if ($user->isRegisteredInCourse($this->course)) {
+        if ($user->isRegistered($this->course)) {
             session()->flash('warning','This instructor is already in the list!'); 
             return;
-        }        
+        }
+
         $user->courseRegistrations()->attach($this->course->id,['role'=>'instructor','status'=> 'registered']);
+        
         session()->flash('success','Instructor added successfully!');
+        
         $this->loadList();
     }
 

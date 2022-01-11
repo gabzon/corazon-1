@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Http\Requests\CourseStoreRequest;
 use App\Http\Requests\CourseUpdateRequest;
+use App\Models\CourseRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,25 +61,41 @@ class CourseController extends Controller
 
     public function dashboard(Request $request, Course $course)
     {        
-        
-        if (auth()->user()->cannot('dashboard', $course)) {            
-            return view('course.show', compact('course'));
-            // abort(403);
+        if (auth()->user()->cannot('dashboard', $course)) {                        
+            return view('course.show', compact('course'));           
         }
-
-        return view('course.dashboard', compact('course'));     
-        
-        
+        // $course = Course::with('lessons')->where('id', $c->id);
+        return view('course.dashboard', compact('course'));             
     }
 
     public function info(Request $request, Course $course)
     {        
-        return view('course.info', compact('course'));                   
+        return view('course.dashboard.info', compact('course'));                   
     }
 
     public function students(Request $request, Course $course)
-    {        
+    {                        
         return view('course.students', compact('course'));                   
+    }
+
+    public function stats(Request $request, Course $course)
+    {        
+        return view('course.stats', compact('course'));                   
+    }
+    
+    public function bookmarks(Request $request, Course $course)
+    {        
+        return view('course.dashboard.bookmarks', compact('course'));                   
+    }
+
+    public function favorites(Request $request, Course $course)
+    {        
+        return view('course.dashboard.favorites', compact('course'));                   
+    }
+
+    public function registrations(Request $request, Course $course)
+    {        
+        return view('course.dashboard.registrations', compact('course'));                   
     }
 
     public function edit(Request $request, Course $course)
@@ -104,6 +121,12 @@ class CourseController extends Controller
 
     public function catalogue()
     {
-        return view('course.catalogue');
+        if (auth()->check()) {
+            return view('course.catalogue');
+        }else{
+            return view('pages.courses');
+        }           
     }
 }
+
+

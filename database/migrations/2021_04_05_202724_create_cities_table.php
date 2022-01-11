@@ -40,7 +40,7 @@ class CreateCitiesTable extends Migration
             $table->string('image')->nullable();
 
             $table->longText('description')->nullable();
-
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
 

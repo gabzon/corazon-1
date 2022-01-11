@@ -34,7 +34,7 @@
         <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
             @if ($course->video1)
             <main class="grid grid-cols-1 sm:grid-cols-5 gap-10 my-3 mx-3 md:mx-6 lg:mx-8">
-                <div class="col-span-5 sm:col-span-2 space-y-6">
+                <div class="col-span-5 sm:col-span-2 space-y-6 ">
                     <div>
                         @include('course.show.media')
                     </div>
@@ -45,9 +45,11 @@
                 </div>
             </main>
             @else
-            <div class="max-w-5xl mx-auto my-5 px-3 md:px-4 lg:px-6">
-                @include('course.show.details')
-                <div class="my-10">&nbsp;</div>
+            <div class="h-screen overflow-y-scroll">
+                <div class="max-w-5xl mx-auto my-5 px-3 md:px-4 lg:px-6">
+                    @include('course.show.details')
+                    <div class="my-20">&nbsp;</div>
+                </div>
             </div>
             @endif
         </div>

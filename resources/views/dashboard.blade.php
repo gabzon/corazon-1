@@ -117,12 +117,12 @@
                                     </div>
 
                                     <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <a href="{{ route('profile.likes') }}"
+                                        <a href="{{ route('profile.favorites') }}"
                                             class="inline-flex items-center text-gray-600 hover:text-indigo-700">
                                             <span class="mr-2">
                                                 @include('icons.heart')
                                             </span>
-                                            {{ auth()->user()->likesCount() }}
+                                            {{ auth()->user()->favoritesCount() }}
                                         </a>
                                     </div>
 

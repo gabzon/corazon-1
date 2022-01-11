@@ -191,13 +191,13 @@ class EventPolicy
         return Response::allow();
     }
 
-    public function like(User $user, Event $event)
+    public function favorite(User $user, Event $event)
     {
         if (! $event->exists) {
             return Response::deny("Cannot like an event that does not exists");
         }
         
-        if ($user->hasLiked($event)) {
+        if ($user->hasFavorited($event)) {
             return Response::deny("Cannot like the same event twice");
         }
 
@@ -208,13 +208,13 @@ class EventPolicy
         return Response::allow();
     }
 
-    public function unlike(User $user, Event $event)
+    public function unfavorite(User $user, Event $event)
     {
         if (! $event->exists) {
             return Response::deny("Cannot like an event that does not exists");
         }
         
-        if (! $user->hasLiked($event)) {
+        if (! $user->hasFavorited($event)) {
             return Response::deny("Cannot like without liking first");
         }
 

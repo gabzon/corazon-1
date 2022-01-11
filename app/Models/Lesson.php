@@ -22,6 +22,7 @@ class Lesson extends Model
         'comments',
         'user_id',
         'course_id',
+        'organization_id',
     ];
 
     /**
@@ -30,9 +31,11 @@ class Lesson extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'date' => 'date:Y-m-d',
-        'user_id' => 'integer',
+        'id'        => 'integer',
+        'date'      => 'date:Y-m-d',
+        'user_id'   => 'integer',
+        'course_id' => 'integer',
+        'organization_id'   => 'integer',
     ];
 
 

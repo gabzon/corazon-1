@@ -72,7 +72,7 @@ class OrganizationSeeder extends Seeder
             'slug'          => 'salsa-fusion-by-natasa',
             'shortname'     => 'Salsa Fusion',
             'contact'       => 'Nataša Pavičević',
-            'status'        => 'active',
+            'status'        => 'open',
             'type'          => 'school',
             'city_id'       => 1,
             'user_id'       => 1,
@@ -123,7 +123,7 @@ class OrganizationSeeder extends Seeder
             'shortname'     => 'La obsesion',
             'slug'          => 'gloria',                                    
             'contact'       => 'Gloria Lazić',                                    
-            'status'        => 'active',
+            'status'        => 'open',
             'type'          => 'school',
             'city_id'       => 1,
             'user_id'       => 1,
@@ -147,7 +147,7 @@ class OrganizationSeeder extends Seeder
             'name'          => 'Bachata inspired',
             'slug'          => 'bachata-inspired',                                    
             'contact'       => 'Roberto Mesir',                                    
-            'status'        => 'active',
+            'status'        => 'open',
             'type'          => 'school',
             'city_id'       => 1,
             'user_id'       => 1,
@@ -216,7 +216,7 @@ class OrganizationSeeder extends Seeder
             'shortname'     => 'Latina',
             'slug'          => 'latinadance-studio',                                    
             'contact'       => 'Kristina',                                    
-            'status'        => 'active',
+            'status'        => 'open',
             'type'          => 'school',
             'city_id'       => 1,
             'user_id'       => 1,
@@ -315,7 +315,7 @@ class OrganizationSeeder extends Seeder
             'shortname'     => 'Soss',
             'slug'          => 'soss', 
             'contact'       => 'Suzanna',
-            'status'        => 'active',
+            'status'        => 'open',
             'type'          => 'school',
             'city_id'       => 1,
             'user_id'       => 1,
@@ -810,10 +810,53 @@ class OrganizationSeeder extends Seeder
             'video'         => '',
         ]);
 
-        foreach (Organization::all() as $org) {
-            $org->students()->saveMany(User::factory(rand(10,20))->create());
-            $org->teachers()->saveMany(User::factory(rand(2,5))->create());
-            $org->managers()->saveMany(User::factory(rand(1,2))->create());            
-        }
+        $passion_zagreb = Organization::create([
+            'name'          => 'Zagreb Passion Festival',
+            'slug'          => 'zagreb-zagreb-passion-festival',
+            'shortname'     => 'Zagreb Passion',            
+            'status'        => 'open',
+            'type'          => 'organizer',
+            'contact'       => 'Kristina Ropuš',            
+            'email'         => 'zagreb.passion@gmail.com',
+            'city_id'       => 1,
+            'user_id'       => 3,
+            'website'       => 'https://zagrebpassion.net/',            
+            'facebook'      => 'https://www.facebook.com/zagrebpassionfestival/',
+            'instagram'     => 'https://www.instagram.com/zagrebpassionfestival/',
+        ]);
+
+
+        $bv = Organization::create([
+            'name'          => 'Buena Vista Club Zagreb',
+            'slug'          => 'zagreb-buena-vista-club-zagreb',
+            'shortname'     => 'Buena Vista',
+            'status'        => 'open',
+            'type'          => 'organizer',
+            'city_id'       => 1,
+            'user_id'       => 1,
+            'website'       => 'https://www.ples.hr/buena-vista',
+            'facebook'      => 'https://www.facebook.com/Buena-Vista-Club-Zagreb-173350036042861/',
+            'address'       => 'Savska cesta 120',
+            'zip'           => '10000',
+        ]); 
+        
+        $salsa_istriana =Organization::create([
+            'name'          => 'Salsa Latina Istriana Pula Croatia',
+            'slug'          => 'pula-salsa-latina-istriana-pula-croatia',
+            'shortname'     => 'Salsa Istriana',
+            'status'        => 'open',
+            'type'          => 'organizer',
+            'email'         => 'info@plesnistudio.hr',
+            'city_id'       => 8,
+            'user_id'       => 1,
+            'website'       => 'https://www.salsalatinaistriana.com/',
+            'facebook'      => 'https://www.facebook.com/salsalatinaistriana/',
+        ]); 
+            
+        // foreach (Organization::all() as $org) {
+        //     $org->students()->saveMany(User::factory(rand(10,20))->create());
+        //     $org->teachers()->saveMany(User::factory(rand(2,5))->create());
+        //     $org->managers()->saveMany(User::factory(rand(1,2))->create());            
+        // }
     }
 }

@@ -79,7 +79,7 @@
                             </div>
                             <div class="flex-shrink-0">
 
-                                <livewire:profile.user-registration-status-badge :model="$course" size="small"
+                                <livewire:profile.user-registration-status-badge :model="$course" size="xs"
                                     :user="$student" wire:key="{{ $student->id }}" />
                             </div>
                         </li>

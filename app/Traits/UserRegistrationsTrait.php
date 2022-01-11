@@ -32,8 +32,13 @@ trait UserRegistrationsTrait {
         if ($this->isRegistered($registrable)) {
             return $this;
         }
-
-        $registrable->registrations()->attach($this->id);
+        
+        if ($registrable->standby) {
+            $registrable->registrations()->attach($this->id, ['status'=>'standby']);
+        }else{
+            $registrable->registrations()->attach($this->id);
+        }
+        
 
         return $this;
     }

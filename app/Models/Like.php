@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Like extends Model
+class Favorite extends Model
 {
     use HasFactory;
 
@@ -16,14 +16,14 @@ class Like extends Model
         return $this->belongsTo(User::class)->withDefault();
     }
 
-    public function likeable()
+    public function favoritable()
     {
         return $this->morphTo();
     }
 
     public function getTypeAttribute()
     {        
-        return Str::afterLast($this->likeable_type, '\\');
+        return Str::afterLast($this->favoritable_type, '\\');
     }
     
 }

@@ -18,6 +18,7 @@ class DefaultForm extends Component
         'lesson.comments'      => 'nullable|string',
         'lesson.user_id'       => 'required',
         'lesson.course_id'     => 'required',
+        'lesson.organization_id' => 'required',
     ];
 
     public function save()
@@ -34,7 +35,7 @@ class DefaultForm extends Component
 
     }
 
-    public function mount(Lesson $lesson = null, $cid = null)
+    public function mount(Lesson $lesson = null, $cid = null, $oid = null)
     {                       
         if ($lesson->exists) {
             $this->lesson = $lesson;
@@ -42,7 +43,8 @@ class DefaultForm extends Component
         } else {            
             $this->lesson = new Lesson();
             $this->lesson->course_id = $cid;
-            $this->lesson->user_id = auth()->user()->id;                                                             
+            $this->lesson->user_id = auth()->user()->id;
+            $this->lesson->organization_id = $oid;
         }
     }
 

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Contracts\Bookmarkable;
-use App\Contracts\Likeable;
+use App\Contracts\Favoriteable;
 use App\Contracts\Registrable;
 use App\Traits\ImagesTrait;
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarkable
+class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookmarkable
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
@@ -117,6 +117,11 @@ class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarka
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
     }
 
     public function instructors()
@@ -316,9 +321,9 @@ class Course extends Model implements HasMedia, Registrable, Likeable, Bookmarka
         return $this->belongsToMany(User::class,'bookmark_course','course_id','user_id')->withTimeStamps();        
     }
 
-    public function likes(): BelongsToMany
+    public function favorites(): BelongsToMany
     {        
-        return $this->belongsToMany(User::class,'course_like','course_id','user_id')->withTimeStamps();        
+        return $this->belongsToMany(User::class,'course_favorite','course_id','user_id')->withTimeStamps();        
     }
 
     public function registrations():BelongsToMany

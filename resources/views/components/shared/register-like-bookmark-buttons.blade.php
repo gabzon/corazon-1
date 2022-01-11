@@ -36,7 +36,7 @@
         @endif
         @endif
         <livewire:shared.bookmark :model="$model" />
-        <livewire:shared.like :model="$model" />
+        <livewire:shared.favorite-button :model="$model" />
     </div>
     @endauth
 </div>

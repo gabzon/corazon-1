@@ -28,7 +28,11 @@
                     {{ $course->space->location->entry_code }}
                 </div>
             </div>
-
         </div>
     </article>
 </div>
+<br>
+<br>
+<br>
+<br>
+<div class="my-40">&nbsp;</div>

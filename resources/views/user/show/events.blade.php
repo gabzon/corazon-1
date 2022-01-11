@@ -35,8 +35,9 @@
             </div>
         </a>
         @empty
-        <p class="py-5 text-center text-sm font-medium text-gray-900 truncate">
-            No events found
+        <p class="py-5 text-sm font-medium text-gray-900">
+            You are not registered in any events. Please visit the <a href="{{ route('events.catalogue') }}"
+                class="text-indigo-500 hover:text-indigo-800">events catalogue</a>
         </p>
         @endforelse
     </div>

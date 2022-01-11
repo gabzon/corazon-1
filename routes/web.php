@@ -97,10 +97,11 @@ Route::get('mail', function(){
 });
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
-Route::get('/events', [EventController::class, 'catalogue'])->name('events.catalogue');
+Route::get('events', [EventController::class, 'catalogue'])->name('events.catalogue');
 Route::get('event/{event}', [EventController::class, 'show'])->name('event.show');
 // Route::get('event/{event}', [EventController::class, 'show'])->name('event.view');
 // Route::get('course/{course}', [CourseController::class, 'show'])->name('course.view');
+Route::get('courses', [CourseController::class, 'catalogue'])->name('courses.catalogue');
 Route::get('course/{course}', [CourseController::class, 'show'])->name('course.show');
 
 Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {
@@ -114,7 +115,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
-    Route::get('/courses', [CourseController::class, 'catalogue'])->name('courses.catalogue');
+    
     
     
     Route::get('event/{event}/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard');
@@ -126,11 +127,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('course/{course}/info', [CourseController::class, 'info'])->name('course.info');
     Route::get('course/{course}/students', [CourseController::class, 'students'])->name('course.students');
     Route::get('course/{course}/stats', [CourseController::class, 'stats'])->name('course.stats');
+    Route::get('course/{course}/bookmarks', [CourseController::class, 'bookmarks'])->name('course.bookmarks');
+    Route::get('course/{course}/favorites', [CourseController::class, 'favorites'])->name('course.favorites');
+    Route::get('course/{course}/registrations', [CourseController::class, 'registrations'])->name('course.registrations');
 
     Route::get('user-required-data', [UserController::class, 'requiredData'])->name('user-required-data');
     
-    Route::post('like', [LikeController::class,'like'])->name('like');
-    Route::delete('like', [LikeController::class,'unlike'])->name('unlike');
+    Route::post('favorite', [LikeController::class,'favorite'])->name('favorite');
+    Route::delete('favorite', [LikeController::class,'unfavorite'])->name('unfavorite');
     
     Route::post('bookmark', [BookmarkController::class, 'bookmark'])->name('bookmark');
     Route::delete('unbookmark', [BookmarkController::class, 'unbookmark'])->name('unbookmark');
@@ -138,7 +142,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('user/register', [RegistrationController::class, 'register'])->name('enroll');
     Route::delete('user/unregister', [RegistrationController::class, 'unregister'])->name('unenroll');
 
-    Route::get('profile/likes', [ProfileController::class, 'likes'])->name('profile.likes');
+    Route::get('profile/{$username}',[ProfileController::class, 'username'])->name('profile.username');
+    Route::get('profile/favorites', [ProfileController::class, 'favorites'])->name('profile.favorites');
     Route::get('profile/bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
     Route::get('profile/registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
   

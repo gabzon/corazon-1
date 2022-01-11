@@ -19,7 +19,8 @@ class CreateLessonsTable extends Migration
             $table->date('date')->nullable();
             $table->text('description')->nullable();
             $table->text('comments')->nullable();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->foreignId('course_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();

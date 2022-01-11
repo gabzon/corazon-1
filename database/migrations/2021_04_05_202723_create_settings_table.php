@@ -20,6 +20,8 @@ class CreateSettingsTable extends Migration
             $table->decimal('price')->nullable();
             $table->decimal('reduced_price')->nullable();
             $table->string('currency', 20)->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('organization_id')->nullable()->constrained();
             $table->timestamps();
         });
 

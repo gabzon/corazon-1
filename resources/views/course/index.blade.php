@@ -19,9 +19,10 @@
         </div>
     </x-slot>
 
-    <div class="py-12 min-h-screen">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <livewire:course.table />
+            <div class="my-20">&nbsp;</div>
         </div>
     </div>
 </x-admin-layout>

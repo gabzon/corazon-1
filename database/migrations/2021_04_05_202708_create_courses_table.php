@@ -83,6 +83,7 @@ class CreateCoursesTable extends Migration
             $table->foreignId('space_id')->nullable()->constrained();
             $table->foreignId('city_id')->nullable()->constrained();
             $table->foreignId('organization_id')->nullable()->constrained();
+            $table->foreignId('event_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();
         });

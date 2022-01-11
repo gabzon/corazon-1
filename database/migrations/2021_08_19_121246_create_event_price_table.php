@@ -36,6 +36,7 @@ class CreateEventPriceTable extends Migration
             $table->string('label5')->nullable();
             $table->dateTime('deadline5')->nullable();
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

@@ -53,10 +53,13 @@ class UserSeeder extends Seeder
             'remember_token'    => Str::random(10),
             'role'              => 'publisher',
             'gender'            => 'male',
+            'username'          => 'frenk',
+            'birthday'          => '2021-12-01',            
+            'mobile'            => '123',            
         ]);
 
         
-        User::factory(5)->create();        
+        // User::factory(5)->create();
         
     }
 }
