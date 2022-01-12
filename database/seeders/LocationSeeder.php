@@ -945,6 +945,51 @@ class LocationSeeder extends Seeder
             'user_id'               => 1,
         ]); 
 
+        Location::create([
+            'name'                  => 'Ritam grada',
+            'slug'                  => 'ritam-grada-1641919255',
+            'shortname'             => 'Ritam grada',
+            'phone'                 => '+385 1 4845 345',
+            'email'                 => 'info@ritamgrada.hr',
+            'website'               => 'https://www.ritamgrada.hr',
+            'type'                  => 'bar',
+            'city_id'               => 1,
+            'facebook_id'           => '446631202061577',
+            'address'               => 'Gajeva 2',
+            'address_info'          => '2nd floor',
+            'zip'                   => '10000',
+            'google_maps'           => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2780.9187402573853!2d15.974041816261266!3d45.812885779106516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6fdb96e753f%3A0x3237e6a6b697852!2sCity%20rhythm!5e0!3m2!1sen!2shr!4v1641993343814!5m2!1sen!2shr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
+            'google_maps_shortlink' => 'https://goo.gl/maps/Cbb8uzwG62NJRMu1A',
+            'lat'                   => 45.81296081064067,
+            'lng'                   => 15.976230397135602,
+            'facebook'              => 'https://www.facebook.com/Ritam.Grada.zg',
+            'twitter'               => 'www.twitter.com/ritamgrada',
+            'video'                 => '',
+            'user_id'               => 1,
+        ]); 
+        
+        Location::create([
+            'name'                  => '',
+            'slug'                  => '',
+            'shortname'             => '',
+            'phone'                 => '',
+            'email'                 => '',
+            'website'               => '',
+            'type'                  => '',
+            'city_id'               => 1,
+            'facebook_id'           => '',
+            'address'               => '',
+            'address_info'          => '',
+            'zip'                   => '',
+            'google_maps'           => '',
+            'google_maps_shortlink' => '',
+            'lat'                   => ,
+            'lng'                   => ,
+            'facebook'              => '',
+            'video'                 => '',
+            'user_id'               => ,
+        ]); 
+
     }
 }
 

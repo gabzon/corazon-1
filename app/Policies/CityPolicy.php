@@ -61,6 +61,11 @@ class CityPolicy
         //
     }
 
+    // public function manage(User $user)
+    // {
+    //     return $user->is_super == true || $user->role === 'publisher';
+    // }
+
     /**
      * Determine whether the user can delete the model.
      *

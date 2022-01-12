@@ -95,7 +95,7 @@ class EventPolicy
 
     public function manage(User $user)
     {
-        return $user->is_super == true;
+        return $user->is_super == true || $user->role === 'publisher';
     }
 
     public function export(User $user)

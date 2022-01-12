@@ -1,4 +1,4 @@
-<div x-data="{menu: false}" class="sm:hidden w-full px-4 pb-2">
+<div x-data="{menu: false}" class="sm:hidden w-full pb-2">
     <button @click="menu = !menu" @click.away="menu = false"
         class="w-full flex font-medium text-gray-900 justify-between items-center mb-2">
         <span

@@ -1,5 +1,5 @@
 <section id="courses-table">
-    <div class="grid grid-cols-8 gap-6 mb-4">
+    <div class="grid grid-cols-8 gap-1 sm:gap-6 mb-4 px-3 sm:px-0">
         <div class="col-span-8 sm:col-span-2">
             <x-form.search-input wire:model="filterColumns.name" name="Search name" />
         </div>
@@ -27,7 +27,7 @@
                 :options="\App\Models\City::has('courses')->get()" />
         </div>
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col px-3 sm:px-0">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

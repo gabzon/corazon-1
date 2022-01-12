@@ -37,7 +37,14 @@ class DefaultForm extends Component
         if (! $this->event->end_date) {
             $this->event->end_date = $this->event->start_date;
         }
-    }  
+    }
+
+    public function updatedEventLocationId($value)
+    {
+        if ($value == "") {
+            $this->event->location_id = null;
+        }
+    }
 
     public function updateStyles($styles)
     {

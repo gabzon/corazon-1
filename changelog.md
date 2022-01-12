@@ -1,3 +1,4 @@
+
 # v0.1.21: Wednesday 12th, 2022
 * Course table: private_group_url
 * Course Catalogue Card: Level code added
@@ -6,6 +7,9 @@
 * Course Show: fixed sidebar debbuged
 * Course Dashboard registrations link fixed
 * Course Dashboard: mobile menu added
+* Button Component created
+* Link Component created
+* Course index: responsive improvements (margin x and compact filters)
 
 # v0.1.20: Tuesday 11th, 2022
 * Responsive menu

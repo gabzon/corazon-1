@@ -23,7 +23,7 @@
     </div>
     <div class="mt-2 text-sm text-gray-700 space-y-4">
         {!! $lesson->description !!}
-        {{-- <ul>
+        <ul>
             @forelse ($lesson->videos as $video)
             <li class="my-2">
                 <div class="block w-full aspect-w-10 aspect-h-6 rounded-lg overflow-hidden">
@@ -33,7 +33,7 @@
             @empty
 
             @endforelse
-        </ul> --}}
+        </ul>
     </div>
     <div class="mt-6 flex justify-between space-x-8">
         <div class="flex space-x-6">

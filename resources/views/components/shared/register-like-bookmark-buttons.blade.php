@@ -24,7 +24,7 @@
     @endguest
 
     @auth
-    <div class="mt-1 pb-3 flex items-center space-x-1">
+    <div class="mt-1 pb-3 flex flex-col sm:flex-row items-center space-x-1">
         @if ($model->canRegister())
         <livewire:shared.registration-button :model="$model" size="{{ $size }}" />
         @else
@@ -35,8 +35,10 @@
         </a>
         @endif
         @endif
-        <livewire:shared.bookmark :model="$model" />
-        <livewire:shared.favorite-button :model="$model" />
+        <div class="inline-flex space-x-1">
+            <livewire:shared.bookmark :model="$model" />
+            <livewire:shared.favorite-button :model="$model" />
+        </div>
     </div>
     @endauth
 </div>

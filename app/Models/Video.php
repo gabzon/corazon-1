@@ -15,7 +15,8 @@ class Video extends Model
         'description',
         'embed',
         'url',
-        'organization_id',        
+        'organization_id',
+        'user_id',
     ];
 
     public function lessons()

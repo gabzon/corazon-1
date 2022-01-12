@@ -3,7 +3,7 @@
         <ul role="list" class="divide-y divide-gray-200">
             @forelse ($list as $item)
             <li class="flex items-center p-4 space-x-3">
-                <div class="flex-shrink-0">
+                <div class="hidden sm:block sm:flex-shrink-0">
                     <img src="{{ $item->coverImage }}" alt="{{ $item->name }}"
                         class="w-16 h-16 object-cover rounded-lg border">
                 </div>
@@ -37,7 +37,7 @@
                         {{ implode(', ', $item->styles->pluck('name')->toArray()) }}
                     </p>
                 </div>
-                <div class="flex-shrink-0 flex items-center space-x-2">
+                <div class="flex items-center space-x-2">
                     <x-shared.register-like-bookmark-buttons :model="$item" size="xs" />
                     {{-- @if (auth()->user()->isRegistered($item))
                     <livewire:profile.user-registration-status-badge :model="$item" size="small" />

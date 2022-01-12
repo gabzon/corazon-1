@@ -1,6 +1,8 @@
 <section>
+    <div class="w-full sm:w-1/2 mb-4">
+        <x-form.search-input wire:model="search" name="Search style" />
+    </div>
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -28,6 +30,14 @@
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Year
                                     </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Courses
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Events
+                                    </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Edit</span>
                                     </th>
@@ -53,12 +63,17 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $item->year }}
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $item->courses->count() }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $item->events->count() }}
+                                    </td>
                                     <td
                                         class="py-4 pr-4 whitespace-nowrap text-right text-sm font-medium flex justify-end">
-                                        <a href="{{ route('style.edit', $item) }}"
-                                            class="text-gray-500 hover:text-indigo-600">
-                                            @include('icons.edit')
-                                        </a>
+                                        <x-ui.link route="{{ route('style.edit', $item) }}">
+                                            @include('icons.pen')
+                                        </x-ui.link>
                                     </td>
                                 </tr>
                                 @endforeach

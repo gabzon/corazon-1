@@ -31,7 +31,8 @@ class VideosForm extends Component
     {
         $this->validate();
         
-        if ($this->action == 'store') {           
+        if ($this->action == 'store') {                       
+            $this->video->user_id = auth()->user()->id;
             $this->video->save();
             $this->lesson->videos()->attach($this->video, ['user_id' => auth()->user()->id]);
         } else if ($this->action == 'update') {            
@@ -53,7 +54,7 @@ class VideosForm extends Component
     {
         $lesson = Lesson::with('videos')->findOrFail($this->lesson->id);
         $this->videosList = $lesson->videos;
-        $this->video = new Video();           
+        $this->video = new Video();                   
         $this->action = 'store';  
     }
  
