@@ -78,10 +78,12 @@
                                     {{ $reg->created_at }}
                                 </td>
                                 <td class="pr-4 pl-2 py-4 text-sm">
+                                    @can('update', $model)
                                     <button wire:click="update({{$reg}})"
                                         class="text-indigo-500 hover:text-indigo-800 font-medium">
                                         @include('icons.pen')
                                     </button>
+                                    @endcan
                                 </td>
                             </tr>
                             @empty

@@ -67,7 +67,7 @@ class Obsession extends Seeder
         $c1 = Course::create([            
             'name'           => 'Bachata Početna',
             'slug'           => Str::slug('Bachata Početna','-'),
-            'level'          => 'beginer',
+            'level'          => 'beginner',
             'level_code'     => 'b1',            
             'focus'          => 'partnerwork',
             'type'           => 'class', 

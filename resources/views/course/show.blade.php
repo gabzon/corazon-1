@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="md:flex md:items-center md:justify-between">
+        <div class="flex items-center justify-between">
             <div class="flex-1 min-w-0">
                 <x-typo.page-heading title="{{ $course->name}}" />
             </div>
-            <div class="mt-4 flex md:mt-0 md:ml-4">
+            <div class="flex md:mt-0 md:ml-4">
                 @auth
                 <a href="{{ url()->previous() }}"
                     class="mr-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -30,7 +30,7 @@
         </div>
     </x-slot>
 
-    <div class="w-full flex flex-wrap">
+    <div class="w-full flex flex-wrap h-screen overflow-y-scroll">
         <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
             @if ($course->video1)
             <main class="grid grid-cols-1 sm:grid-cols-5 gap-10 my-3 mx-3 md:mx-6 lg:mx-8">

@@ -29,6 +29,7 @@
                     @include('course.dashboard.left')
                 </div>
                 <main class="lg:col-span-9 xl:col-span-6 overflow-y-scroll">
+                    @include('course.dashboard._mobile-menu')
                     @include('course.dashboard._card')
                     <div class="my-4">
                         <h3 class="text-base font-medium text-gray-900">

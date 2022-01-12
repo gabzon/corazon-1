@@ -116,8 +116,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/schedule', function () {
 Route::middleware(['auth'])->group(function(){
     Route::get('leave-impersonation', ImpersonateController::class)->name('leave-impersonation');
     
-    
-    
     Route::get('event/{event}/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard');
     Route::get('event/{event}/info', [EventController::class, 'info'])->name('event.info');
     Route::get('event/{event}/students', [EventController::class, 'students'])->name('event.students');

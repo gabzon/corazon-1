@@ -76,7 +76,8 @@ class CreateCoursesTable extends Migration
             $table->string('status', 40)->nullable();
             $table->string('public', 20)->nullable();
             
-            $table->string('registration_url')->nullable();   
+            $table->string('registration_url')->nullable();
+            $table->string('private_group_url')->nullable();
             $table->foreignId('user_id')->constrained();            
             // $table->foreignId('created_by')->constrained('users');
             // $table->foreignId('updated_by')->nullable()->constrained('users');

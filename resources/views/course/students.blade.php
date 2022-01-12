@@ -25,6 +25,7 @@
                     @include('course.dashboard.left')
                 </div>
                 <main class="lg:col-span-9 xl:col-span-6 h-screen overflow-y-scroll overflow-x-hidden">
+                    @include('course.dashboard._mobile-menu')
                     <livewire:shared.registered-table :model="$course" query="students" />
                     <div class="my-28 md:my-24">&nbsp;</div>
                 </main>

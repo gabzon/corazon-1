@@ -25,7 +25,8 @@
                     @include('course.dashboard.left')
                 </div>
                 <main class="lg:col-span-9 xl:col-span-6 overflow-y-scroll">
-                    stats
+                    @include('course.dashboard._mobile-menu')
+                    Coming soon
                 </main>
                 <aside class="hidden xl:block xl:col-span-4">
                     @include('course.dashboard.right')

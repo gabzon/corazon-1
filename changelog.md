@@ -1,3 +1,17 @@
+# v0.1.21: Wednesday 12th, 2022
+* Course table: private_group_url
+* Course Catalogue Card: Level code added
+* Registered-Table: edit button hidden from regular users
+* Type of course form component changed to lowercase letters
+* Course Show: fixed sidebar debbuged
+* Course Dashboard registrations link fixed
+* Course Dashboard: mobile menu added
+
+# v0.1.20: Tuesday 11th, 2022
+* Responsive menu
+* Registered table with datetime
+* rights to instructors
+
 # v0.1.19: Friday 7th, 2022
 * Back button
 * Registration/Bookmark/Like buttons livewire

@@ -49,9 +49,9 @@ class RegisteredTable extends Component
     public function render()
     {
         if ($this->query == 'students') {                        
-            $inscribed =  CourseRegistration::where('course_id', $this->model->id);                        
+            $inscribed =  CourseRegistration::where('course_id', $this->model->id)->where('role','student');                        
         }else{
-            $inscribed = $this->model->registrations;
+            $inscribed = CourseRegistration::where('course_id', $this->model->id);
         }  
         return view('livewire.shared.registered-table', [
             'inscribed' => $inscribed->paginate(10),

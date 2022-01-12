@@ -30,7 +30,10 @@
 
             <div class="flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Level</dt>
-                <dd class="text-gray-900">{{ $class->level }} {{ $class->level_number }}</dd>
+                <dd class="text-gray-900 capitalize">
+                    {{ $class->level }}
+                    <x-shared.level-tip level="{{ $class->level_code }}" />
+                </dd>
             </div>
 
             <div class="flex justify-between text-sm font-medium">

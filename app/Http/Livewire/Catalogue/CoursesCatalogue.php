@@ -34,7 +34,7 @@ class CoursesCatalogue extends Component
         Course::shouldExpire()->get()->each->expire();
         
         $fields = [
-            'id','name','level', 'focus', 
+            'id','name','level', 'level_code','focus', 
             'monday', 'start_time_mon', 'end_time_mon', 
             'tuesday', 'start_time_tue', 'end_time_tue', 
             'wednesday', 'start_time_wed', 'end_time_wed', 
