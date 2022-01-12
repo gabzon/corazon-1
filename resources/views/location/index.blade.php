@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div class="flex-1 min-w-0">
@@ -24,4 +24,4 @@
             <livewire:location.table />
         </div>
     </div>
-</x-admin-layout>
+</x-app-layout>

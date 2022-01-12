@@ -50,9 +50,8 @@
                         </select>
                     </div>
                 </div>
-
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-4 px-4 sm:px-2 md:px-0">
+            <div class="pt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-4 px-4 sm:px-2 md:px-0">
                 <div class="sm:col-span-1">
                     <label for="icon" class="block text-sm font-medium text-gray-700">
                         Icon
@@ -93,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6 px-4 sm:px-2 md:px-0">
+            <div class="pt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6 px-4 sm:px-2 md:px-0">
                 <div class="sm:col-span-6">
                     <label for="description" class="block text-sm font-medium text-gray-700">
                         Description

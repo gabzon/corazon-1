@@ -2,9 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div class="flex-1 min-w-0">
-                <h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate">
-                    {{ __('Styles') }}
-                </h2>
+                <x-typo.page-heading title="{{ __('Styles') }}" />
             </div>
             <div class="flex md:mt-0 md:ml-4">
                 <x-ui.button route="{{ url()->previous() }}" color="secondary">

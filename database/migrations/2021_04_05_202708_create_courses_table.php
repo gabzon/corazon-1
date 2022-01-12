@@ -59,14 +59,8 @@ class CreateCoursesTable extends Migration
             $table->text('video2')->nullable();
             $table->text('video3')->nullable();
             
-            $table->boolean('dropping')->nullable();
-            $table->decimal('dropping_price')->nullable();
-            $table->decimal('full_price')->nullable();
-            $table->decimal('reduced_price')->nullable();
-            $table->decimal('student_price')->nullable();
-            $table->decimal('unemployed_price')->nullable();
-            $table->decimal('senior_price')->nullable();
-            
+            $table->boolean('dropping')->nullable()->default(false);
+                        
             $table->boolean('standby')->nullable()->default(false);
             $table->boolean('is_private')->default(false);
             $table->string('thumbnail')->nullable();

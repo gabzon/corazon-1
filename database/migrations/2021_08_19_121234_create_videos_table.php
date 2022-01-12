@@ -20,7 +20,7 @@ class CreateVideosTable extends Migration
             $table->text('embed')->nullable();
             $table->text('url')->nullable();
             $table->string('level')->nullable();
-            $table->string('difficulty')->nullable();
+            $table->string('difficulty')->nullable();            
             $table->foreignId('organization_id')->nullable()->constrained();
             $table->foreignId('user_id')->constrained(); 
             $table->timestamps();

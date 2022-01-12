@@ -15,6 +15,9 @@ class CreateFavoriteLessonTable extends Migration
     {
         Schema::create('favorite_lesson', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('lesson_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');                        
+            $table->unique(['user_id','lesson_id']);
             $table->timestamps();
         });
     }
