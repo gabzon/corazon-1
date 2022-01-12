@@ -76,7 +76,7 @@ class FeralTango extends Seeder
             'user_id'           => 1,
         ]);
 
-        $lessonTehnik->videos()->attach($video->id);
+        $lessonTehnik->videos()->attach($video->id, ['user_id' => 1]);
 
         $t3 = Course::create([            
             'name'           => 'Tango',
@@ -135,7 +135,7 @@ class FeralTango extends Seeder
             'user_id'           => 1,
         ]);
 
-        $lessonLab2->videos()->attach($video2->id);
+        $lessonLab2->videos()->attach($video2->id, ['user_id' => 1]);
 
         $t1 = Course::create([            
             'name'           => 'Tango',
