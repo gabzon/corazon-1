@@ -36,7 +36,7 @@ class Button extends Component
                 $this->color = 'border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-indigo-500';
                 break;
             default:
-                
+                $this->color = 'border-transparent text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500';
                 break;
         }
     }
