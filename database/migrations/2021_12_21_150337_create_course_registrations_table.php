@@ -17,11 +17,11 @@ class CreateCourseRegistrationsTable extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('order_id')->nullable()->constrained();
-            
+            $table->foreignId('order_id')->nullable()->constrained();            
             $table->string('role')->default('student'); // ["instructor","assistant","student","guest","staff","dj","volonteer","artist","vip",""]
             $table->enum('status', ["waiting","pre-registered","registered","canceled","standby","open","partial","invitee"])->default('pre-registered');
             $table->string('option')->nullable();
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }

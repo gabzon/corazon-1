@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Shared;
 
 use App\Models\CourseRegistration;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,6 +11,7 @@ class RegisteredTable extends Component
 {    
     use WithPagination;    
     public $model;
+    public User $user;
     public string $status;
     public string $role;
     public bool $showForm = false;
@@ -36,6 +38,7 @@ class RegisteredTable extends Component
     public function update(CourseRegistration $cr)
     {        
         $this->cr = $cr;
+        $this->user = $this->cr->user;
         $this->status = $cr->status;
         $this->role = $cr->role; 
         $this->showForm = true;        

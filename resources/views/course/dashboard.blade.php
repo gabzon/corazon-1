@@ -20,21 +20,18 @@
     </x-slot>
 
     <div class="max-h-screen">
-        <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-            <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="hidden lg:block lg:col-span-3 xl:col-span-2">
-                    @include('course.dashboard.left')
-                </div>
-                <main class="lg:col-span-9 xl:col-span-6">
-                    @can('update', $course)
-                    @include('course.dashboard._mobile-menu')
-                    @endcan
-                    @include('course.dashboard.main')
-                </main>
-                <aside class="hidden xl:block xl:col-span-4">
-                    @include('course.dashboard.right')
-                </aside>
+        <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
+                @include('course.dashboard.left')
             </div>
+            <main class="lg:col-span-9 xl:col-span-6">
+                <div class="py-4 sm:py-6 md:py-8 lg:py-10">
+                    @include('course.dashboard.main')
+                </div>
+            </main>
+            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10">
+                @include('course.dashboard.right')
+            </aside>
         </div>
     </div>
 

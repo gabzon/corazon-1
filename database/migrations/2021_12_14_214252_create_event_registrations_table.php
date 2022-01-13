@@ -22,7 +22,7 @@ class CreateEventRegistrationsTable extends Migration
             $table->string('role')->default('student'); // ["instructor","assistant","student","guest","staff","dj","volonteer","artist","vip",""]
             $table->enum('status', ["waiting","pre-registered","registered","canceled","standby","open","partial","invitee"])->default('pre-registered');
             $table->string('option')->nullable();
-
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }

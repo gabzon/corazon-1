@@ -1,4 +1,7 @@
 
+# v0.1.22: Thursday 13th, 2022
+* User Registration Panel component created
+
 # v0.1.21: Wednesday 12th, 2022
 * Course table: private_group_url
 * Course Catalogue Card: Level code added

@@ -33,7 +33,7 @@ class CourseRegistration extends Pivot
 
     public function user()
     {
-        return $this->belongsTo(User::class)->withDefault();
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
 
     public function order()

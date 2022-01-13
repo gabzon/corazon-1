@@ -1,4 +1,5 @@
-<div x-data="{menu: false}" class="sm:hidden w-full px-3 pb-2">
+@can('update', $course)
+<div x-data="{menu: false}" class="sm:hidden w-full">
     <button @click="menu = !menu" @click.away="menu = false"
         class="w-full inline-flex items-center px-2.5 py-1.5 border border-gray-300 font-medium shadow-sm text-xs rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-2 justify-between">
         Menu
@@ -9,8 +10,4 @@
         @include('course.dashboard._nav')
     </div>
 </div>
-
-
-<span x-show="menu" x-cloak class="ml-2">
-    @include('icons.x')
-</span>
+@endcan

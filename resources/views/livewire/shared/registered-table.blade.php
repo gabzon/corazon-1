@@ -1,25 +1,7 @@
 <div x-data="{ open: @entangle('showForm') }">
+
     @can('update', $model)
-    <form x-cloak x-show="open" wire:submit.prevent="save" class="mb-4">
-        <div class="grid grid-cols-5 gap-4">
-            <div class="col-span-3 sm:col-span-2">
-                <x-form.update-registration-status wire:model="status" />
-            </div>
-            <div class="col-span-3 sm:col-span-2">
-                <x-form.update-course-registration-role wire:model="role" />
-            </div>
-            <div class="col-span-3 sm:col-span-1 flex">
-                <button @click="open = false" type="button"
-                    class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    @include('icons.x')
-                </button>
-                <button type="submit"
-                    class="ml-2 text-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    @include('icons.save', ['style' => 'h-4 w-4'])
-                </button>
-            </div>
-        </div>
-    </form>
+    @include('shared.user-registration-panel')
     @endcan
 
     <div class="flex flex-col">
@@ -67,7 +49,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-2 py-4 text-sm text-gray-500">
+                                <td class="px-2 py-4 text-sm whitespace-nowrap text-gray-500">
                                     <livewire:profile.user-registration-status-badge :model="$model" size="xs"
                                         :user="$reg->user" wire:key="{{ $reg->id }}" />
                                 </td>

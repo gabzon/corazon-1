@@ -15,10 +15,11 @@
         </div>
         <div class="col-span-1">
             <x-form.select wire:model="filterColumns.organization" name="organization"
-                :options="App\Models\Organization::all()" />
+                :options="App\Models\Organization::orderBy('name','asc')->get()" />
         </div>
         <div class="col-span-1">
-            <x-form.select wire:model="filterColumns.city" name="city" :options="App\Models\city::all()" />
+            <x-form.select wire:model="filterColumns.city" name="city"
+                :options="App\Models\City::orderBy('name','asc')->get()" />
         </div>
     </div>
     <div class="flex flex-col">
