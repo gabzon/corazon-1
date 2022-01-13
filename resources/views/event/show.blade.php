@@ -11,7 +11,7 @@
                 </x-ui.button>
 
                 @can('update', $event)
-                <x-ui.button route="{{ route('event.edit', $event) }}" css="ml-3">
+                <x-ui.button route="{{ route('event.edit', $event) }}" size="md" shape="rounded-md" css="ml-3">
                     Edit
                 </x-ui.button>
                 @endcan
