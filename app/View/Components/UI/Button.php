@@ -7,10 +7,10 @@ use Illuminate\View\Component;
 class Button extends Component
 {
     public $route;
-    public $color;
-    public $size;
-    public $shape;
-    public $css;
+    public $color = 'primary';
+    public $size = 'md';
+    public $shape = 'rounded-md';
+    public $css = '';
     /**
      * Create a new component instance.
      *

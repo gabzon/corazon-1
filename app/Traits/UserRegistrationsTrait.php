@@ -33,6 +33,17 @@ trait UserRegistrationsTrait {
             return $this;
         }
         
+        if (class_basename($registrable) == 'Course') {
+            if ( !$registrable->organization->hasStudent(auth()->user()->id) ) {
+                $registrable->organization->students()->attach(auth()->user()->id); 
+            }
+        } else if (class_basename($registrable) == 'Event') {
+            foreach ($registrable->organizations as $org) {
+                if ( !$org->hasStudent(auth()->user()->id) ) {
+                    $org->students()->attach(auth()->user()->id);                    
+                }                
+            }
+        }
         
         if ($registrable->standby) {
             $registrable->registrations()->attach($this->id, ['status'=>'standby']);
