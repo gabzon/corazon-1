@@ -68,4 +68,9 @@ class Style extends Model implements HasMedia
     {
         return $this->belongsTo(Style::class, 'parent_id');        
     }
+
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class);
+    }
 }

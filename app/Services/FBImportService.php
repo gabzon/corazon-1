@@ -64,12 +64,12 @@ class FBImportService
             $this->isOnline = $this->graphNode['is_online'];
             $this->facebook_id = $this->graphNode['id'];
             $this->is_online = $this->graphNode['is_online'];
-            $this->cover = $this->graphNode['cover']['source'];
+            $this->cover = $this->graphNode['cover']['source'] ?? null;
             $this->place = $this->graphNode['place'] ?? null;
             
-            $this->hasPlace = in_array('place',$this->graphNode->getFieldNames());
-            $this->hasCover = in_array('cover',$this->graphNode->getFieldNames());
-            
+            $this->hasPlace = in_array('place',$this->graphNode->getFieldNames());        
+            $this->hasCover = in_array('cover',$this->graphNode->getFieldNames());            
+
             if ($this->hasPlace) {
                 $this->place = new FBLocationService($this->graphNode['place']);  
             }

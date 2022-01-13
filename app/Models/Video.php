@@ -31,4 +31,9 @@ class Video extends Model
         }
         return null;        
     }
+    
+    public function styles()
+    {
+        return $this->belongsToMany(Style::class);
+    }
 }
