@@ -132,7 +132,7 @@
                 },
                 
                 fetchOptions() {
-                    fetch('https://corazon.test/api/select-users')                    
+                    fetch('https://corazon.dance/api/select-users')                    
                     .then(response => response.json())
                     .then(data => this.options = data);    
                     console.log(this.options);
