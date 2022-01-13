@@ -38,8 +38,44 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
-        'facebook_id',
-        'role',        
+        'facebook_id',        
+        'facebook_token',
+        'instagram_id',
+        'google_id',
+        'idn',
+        'username',
+        'birthday',
+        'gender',
+        'avatar',
+        'profession',
+        'nationality',
+        'biography',
+        'work_status',
+        'unemployement_proof',
+        'unemployement_expiry_date',
+        'work_status_verified',
+        'mobile',
+        'phone',
+        'mobile_verified_at',
+        'phone_verified_at',
+        'price_hour',
+        'address',
+        'address_info',
+        'zip',
+        'city',
+        'state',
+        'country',
+        'lat',
+        'lng',
+        'facebook',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'twitter',
+        'role',
+        'is_super',
+        'preferences_verified',
+        'in_newsletter',
     ];
 
     protected $hidden = [
@@ -105,6 +141,11 @@ class User extends Authenticatable implements HasMedia
     public function getPhotoAttribute()
     {                
         $background = $this->gender == 'male' ? '0D8ABC': 'FF69B4';
+        
+        if ($this->profile_photo_path) {
+            return $this->profile_photo_url;
+        }
+
         return $this->avatar ?? 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background='. $background .'&color=ffffff';
     }
 
