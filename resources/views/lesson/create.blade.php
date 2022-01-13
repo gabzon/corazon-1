@@ -15,11 +15,11 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </x-slot>
     <x-slot name="header">
-        <div class="md:flex md:items-center md:justify-between">
+        <div class="flex items-center justify-between">
             <div class="flex-1 min-w-0">
                 <x-typo.page-heading title="{{ __('Add Lesson') }}" />
             </div>
-            <div class="mt-4 flex md:mt-0 md:ml-4">
+            <div class="flex md:mt-0 md:ml-4">
                 <a href="{{ url()->previous() }}"
                     class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Back
@@ -29,9 +29,10 @@
     </x-slot>
 
 
-    <div class="py-12 min-h-screen">
+    <div class="py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:lesson.form.default-form :cid="$cid" :oid="$oid" />
+            <div class="my-20">&nbsp;</div>
         </div>
     </div>
 
