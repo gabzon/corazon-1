@@ -42,7 +42,7 @@ class CoursesCatalogue extends Component
             'friday', 'start_time_fri', 'end_time_fri', 
             'saturday', 'start_time_sat', 'end_time_sat', 
             'sunday', 'start_time_sun', 'end_time_sun', 
-            'full_price','organization_id', 'space_id'
+            'organization_id', 'space_id'
         ];
 
         $courses = Course::select($fields)

@@ -76,8 +76,7 @@ class FeralTango extends Seeder
         $lessonTehnik->videos()->attach($video->id, ['user_id' => 1]);
 
         $t3 = Course::create([            
-            'name'           => 'Tango',
-            'tagline'        => 'Laboratory II',
+            'name'           => 'Tango Laboratory II',            
             'slug'           => 'feraltango-lab-II',  
             'description'   => 'Tango Laboratory za PAROVE
             Ova mala grupa namjenjena je parovima koji zele raditi intenzivno i progresivno na usvajanju tehnika za poboljsavanje kretanja, komfora, muzikalnosti i izrazaja u tango zagrljaju. Informacije su organizirane na bazi semestra, pa preporucujemo predan rad para kroz skolsku godinu. Svaka radna jedinica sastoji se od 4 grupna sastanka, i jedan privatan sat za par sa videoanalizom.
@@ -95,10 +94,9 @@ class FeralTango extends Seeder
         $t3->styles()->attach(19);
 
         $t4 = Course::create([            
-            'name'           => 'Tango',
-            'tagline'        => 'Laboratory II',
+            'name'           => 'Tango Laboratory',            
             'slug'           => 'feraltango-lab-II',  
-            'description'   => 'Tango Laboratory za PAROVE
+            'description'    => 'Tango Laboratory za PAROVE
             Ova mala grupa namjenjena je parovima koji zele raditi intenzivno i progresivno na usvajanju tehnika za poboljsavanje kretanja, komfora, muzikalnosti i izrazaja u tango zagrljaju. Informacije su organizirane na bazi semestra, pa preporucujemo predan rad para kroz skolsku godinu. Svaka radna jedinica sastoji se od 4 grupna sastanka, i jedan privatan sat za par sa videoanalizom.
             Cijena: 500kn/osobi',          
             'start_date'     => Carbon::now(), 'end_date' => Carbon::now()->add(10, 'month'),
@@ -109,7 +107,7 @@ class FeralTango extends Seeder
             'level_code'     => 'b2',            
             'focus'          => 'selfwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'space_id'   => 10,
+            'space_id'       => 10,
         ]);
         $t4->styles()->attach(19);
 
@@ -133,7 +131,7 @@ class FeralTango extends Seeder
         $lessonLab2->videos()->attach($video2->id, ['user_id' => 1]);
 
         $t1 = Course::create([            
-            'name'           => 'Tango',
+            'name'           => 'Tango Laboratory I',
             'tagline'        => 'Laboratory I',
             'slug'           => 'feraltango-lab-I',   
             'description'   => 'Tango Laboratory za PAROVE
@@ -151,9 +149,27 @@ class FeralTango extends Seeder
         ]);
         $t1->styles()->attach(19);
 
-        $t4 = Course::create([            
+        $men1 = Course::create([            
             'name'           => 'Mancave praktika',
-            'tagline'        => '',
+            'tagline'        => 'Fall 2021',
+            'description'    => 'Inspirirana muskim praktikama iz zlatnog doba tanga, Ivan vodi ovu praktiku za leadere zeljne eksperimentacije, razmjene informacija, i vjezbe na individualnim elementima specificnima za leadere.
+            Cijena: 300kn/osobi 4 sastanka',
+            'slug'           => 'feraltango-mancave',            
+            'start_date'     => '2021-09-15', 'end_date' => '2021-12-17',
+            'wednesday'      => true,
+            'start_time_wed' => '20:00',
+            'end_time_wed'   => '21:15',                                                                                          
+            'level'          => 'open level',
+            'level_code'     => 'op',            
+            'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'finished',
+            'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
+            'space_id'       => 10,
+        ]);
+        $men1->styles()->attach(19);
+
+        $men2 = Course::create([            
+            'name'           => 'Mancave praktika',
+            'tagline'        => 'Fall 2021',
             'description'   => 'Inspirirana muskim praktikama iz zlatnog doba tanga, Ivan vodi ovu praktiku za leadere zeljne eksperimentacije, razmjene informacija, i vjezbe na individualnim elementima specificnima za leadere.
             Cijena: 300kn/osobi 4 sastanka',
             'slug'           => 'feraltango-mancave',            
@@ -165,8 +181,45 @@ class FeralTango extends Seeder
             'level_code'     => 'op',            
             'focus'          => 'partnerwork', 'type' => 'class', 'status' => 'active',
             'user_id'        => 1, 'city_id' => 1, 'organization_id'   => 11,
-            'space_id'   => 10,
+            'space_id'      => 10,
         ]);
-        $t4->styles()->attach(19);
+        $men2->styles()->attach(19);
+
+        $lessonMen = Lesson::create([            
+            'title'         => 'Everything we have done so far will change today',
+            'date'          => '2022-01-11',
+            'description'   => 'We discussed about articulation and introduction to energy on curves',  
+            'user_id'       => 1,
+            'course_id'     => $men2->id,
+            'organization_id'=> 11,            
+        ]);
+        
+        $men_v1 = Video::create([
+            'title'             => '1st Video From Wednesday January 12th, 2022',
+            'embed'             => '<iframe width="560" height="315" src="https://www.youtube.com/embed/ln62wjcmV9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'url'               => 'https://youtu.be/ln62wjcmV9I',
+            'organization_id'   => 11,
+            'user_id'           => 1,
+        ]);
+
+        $men_v2 = Video::create([
+            'title'             => '2nd Video From Wednesday January 12th, 2022',
+            'embed'             => '<iframe width="560" height="315" src="https://www.youtube.com/embed/dUxbmSuqkl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'url'               => 'https://youtu.be/dUxbmSuqkl4',
+            'organization_id'   => 11,
+            'user_id'           => 1,
+        ]);
+
+        $men_v3 = Video::create([
+            'title'             => '3rd Video From Wednesday January 12th, 2022',
+            'embed'             => '<iframe width="560" height="289" src="https://www.youtube.com/embed/cvBgTPbZgys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'url'               => 'https://youtu.be/cvBgTPbZgys',
+            'organization_id'   => 11,
+            'user_id'           => 1,
+        ]);
+        $lessonMen->videos()->attach($men_v1->id, ['user_id' => 1]);
+        $lessonMen->videos()->attach($men_v2->id, ['user_id' => 1]);
+        $lessonMen->videos()->attach($men_v3->id, ['user_id' => 1]);
     }
 }
+

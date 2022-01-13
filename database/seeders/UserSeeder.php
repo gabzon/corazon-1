@@ -55,7 +55,8 @@ class UserSeeder extends Seeder
             'gender'            => 'male',
             'username'          => 'frenk',
             'birthday'          => '2021-12-01',            
-            'mobile'            => '123',            
+            'mobile'            => '123',
+            'is_super'          => true,
         ]);
 
         

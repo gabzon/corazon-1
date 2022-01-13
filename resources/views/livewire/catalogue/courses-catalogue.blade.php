@@ -65,8 +65,6 @@
             <div class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 @forelse ($courses as $class)
                 <livewire:catalogue.course-card :class="$class" :key="$class->id" />
-                {{--
-                <livewire:catalogue.event-card :event="$event" wire:key="{{ $event->id }}" /> --}}
                 @empty
                 <p class="py-5 text-center text-sm font-medium text-gray-900 truncate">
                     No courses found
