@@ -39,7 +39,7 @@ class StylesForm extends Component
     public function mount($model)
     {        
         $this->loadList($model);
-        $this->styles = $model->organization->styles;
+        $this->styles = Style::all();
     }
 
     public function loadList($model)
