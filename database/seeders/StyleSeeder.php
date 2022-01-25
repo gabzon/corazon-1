@@ -21,7 +21,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Salsa',
             'slug'          => 'salsa', 
             'music'         => 'Timba,Salsa salsa cubana,Rumba, Afrocuban, Mambo, Pachanga, Boogaloo, Son, Danzon',
-            'family'        => 'Salsa',            
+            'family'        => 'Latin',            
             'description'   => $faker->text,
             'color'         => 'red-800', 
             'thumbnail'     => $faker->imageUrl(640,640),
@@ -110,7 +110,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Rumba',
             'slug'          => 'rumba',
             'music'         => 'Rumba, timba, cuban salsa',
-            'family'        => 'Cuban salsa',
+            'family'        => 'Cuban Salsa',
             'description'   => 'Rumba is a secular genre of Cuban music involving dance, percussion, and song. It originated in the northern regions of Cuba, mainly in urban Havana and Matanzas, during the late 19th century. It is based on African music and dance traditions, namely Abakuá and yuka, as well as the Spanish-based coros de clave. (source: wikipedia)',
             'color'         => 'red-500', 
             'thumbnail'     => $faker->imageUrl(640,640),
@@ -148,7 +148,7 @@ class StyleSeeder extends Seeder
         Style::create([
             'name'          => 'Salsa fusion', 
             'slug'          => 'salsa-fusion', 
-            'family'        => 'Fusion', 
+            'family'        => 'Latin', 
             'description'   => 'Salsa Fusion blends together the steps and rhythms of salsa styles from as far afield as Colombia, Cuba, Puerto Rico and New York, breaking down the movements into individual steps. (source: wikipedia)',
             'color'         => 'blue-900', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -161,7 +161,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Dancehall', 
             'slug'          => 'dancehall',
             'music'         => 'Reggae, R&B, ska, rocksteady, dub, toasting, dancehall',
-            'family'        => 'Urban', 
+            'family'        => 'Street Urban', 
             'description'   => 'Dancehall is a genre of Jamaican popular music that originated in the late 1970s.[4] Initially, dancehall was a more sparse version of reggae than the roots style, which had dominated much of the 1970s.[5][6] In the mid-1980s, digital instrumentation became more prevalent, changing the sound considerably, with digital dancehall (or "ragga") becoming increasingly characterized by faster rhythms. Key elements of dancehall music include its extensive use of Jamaican Patois rather than Jamaican standard English and a focus on the track instrumentals (or "riddims"). (source: wikipedia)',
             'color'         => 'green-700',
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -174,7 +174,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Afro-beats', 
             'slug'          => 'afro-beats', 
             'music'         => 'Coupé Decalé, afrohouse, afrogroove',
-            'family'        => 'Urban', 
+            'family'        => 'Street Urban', 
             'description'   => 'Afrobeat is a music genre which involves the combination of elements of West African musical styles such as fuji music, yoruba, and highlife with American funk and jazz influences, with a focus on chanted vocals, complex intersecting rhythms, and percussion. The term was coined in the 1960s by Nigerian multi-instrumentalist and bandleader Fela Kuti, who is responsible for pioneering and popularizing the style both within and outside Nigeria. Distinct from Afrobeat is Afrobeats – a sound originating in West Africa in the 21st century, one which takes in diverse influences and is an eclectic combination of genres such as British house music, hiplife, hip hop, dancehall, soca, Jùjú music, highlife, R&B, Ndombolo, Naija beats, Azonto, and Palm-wine music. The two genres, though often conflated, are not the same. (source: wikipedia)',
             'color'         => 'green-600',
             'thumbnail'     => $faker->imageUrl(640,640),         
@@ -186,7 +186,7 @@ class StyleSeeder extends Seeder
         Style::create([
             'name'          => 'Hip-hop', 
             'slug'          => 'hip-hop',
-            'family'        => 'Urban',
+            'family'        => 'Street Urban',
             'description'   => 'Hip-hop dance refers to street dance styles primarily performed to hip-hop music or that have evolved as part of hip-hop culture. It includes a wide range of styles primarily breaking which was created in the 1970s and made popular by dance crews in the United States. The television show Soul Train and the 1980s films Breakin, Beat Street, and Wild Style showcased these crews and dance styles in their early stages; therefore, giving hip-hop mainstream exposure. The dance industry responded with a commercial, studio-based version of hip-hop—sometimes called "new style"—and a hip-hop influenced style of jazz dance called "jazz-funk". Classically trained dancers developed these studio styles in order to create choreography from the hip-hop dances that were performed on the street. Because of this development, hip-hop dance is practiced in both dance studios and outdoor spaces. (source: wikipedia)',
             'color'         => 'teal-600',
             'thumbnail'     => $faker->imageUrl(640,640),            
@@ -199,7 +199,7 @@ class StyleSeeder extends Seeder
             'name'          => 'House',
             'slug'          => 'house',
             'music'         => 'House',
-            'family'        => 'Urban', 
+            'family'        => 'Street Urban', 
             'description'   => 'House dance is a freestyle street dance and social dance that has roots in the underground house music scene of Chicago and New York.[1][2] It is typically danced to loud and bass-heavy electronic dance music provided by DJs in nightclubs or at raves.The main elements of House dance include "jacking", "footwork", and "lofting".[3] The element of "jacking", or the "jack", – an ecstatic, sex-driven rippling movement of the torso – is the most famous dance move associated with early house music.[4][5] It has found its way onto numerous record titles like the Jack Trax EP by Chip E. (1985), "Jack\'n the House" (1985) by Farley "Jackmaster" Funk (1985), "Jack Your Body" by Steve "Silk" Hurley (1986), or "Jack to the Sound of the Underground" by Fast Eddie (1988). (source: wikipedia)',
             'color'         => 'teal-700', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -318,7 +318,7 @@ class StyleSeeder extends Seeder
         Style::create([
             'name'          => 'Cuban bolero', 
             'slug'          => 'cuban-bolero', 
-            'family'        => 'Bolero, Timba', 
+            'family'        => 'Latin', 
             'music'         => 'Trova',
             'description'   => 'Although Cuban bolero was born as a form of trova, traditional singer/songwriter tradition from eastern Cuba, with no associated dance, it soon became a ballroom favorite in Cuba and all of Latin America. The dance most commonly represents the couple falling in love. Modern bolero is seen as a combination of many dances: like a slow salsa with contra-body movement of tango, patterns of rhumba, and rise and fall technique and personality of waltz and foxtrot. (source: wikipedia)',
             'color'         => '', 
@@ -332,7 +332,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Samba', 
             'slug'          => 'samba', 
             'music'         => 'Samba, Maxixe',
-            'family'        => 'Samba', 
+            'family'        => 'Brazilian dances', 
             'description'   => 'Samba is the national dance of Brazil. The rhythm of samba and its name originated from the language and culture of West African slaves. In 1905, samba became known to other countries during an exhibition in Paris. In the 1940s, samba was introduced in America through Carmen Miranda. The international version of Ballroom Samba has been based on an early version of Brazilian Samba called Maxixe, but has since developed away and differs strongly from Brazilian Ballroom Samba, which is called Samba de Gafieira (source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -357,7 +357,7 @@ class StyleSeeder extends Seeder
         Style::create([
             'name'          => 'Cha cha cha', 
             'slug'          => 'cha-cha-cha', 
-            'family'        => 'Salsa', 
+            'family'        => 'Latin', 
             'description'   => 'The cha-cha-cha (also called cha-cha), is a dance of Cuban origin. It is danced to the music of the same name introduced by Cuban composer and violinist Enrique Jorrin in the early 1950s. This rhythm was developed from the danzón-mambo. The name of the dance is an onomatopoeia derived from the shuffling sound of the dancers\' feet when they dance two consecutive quick steps (correctly, on the fourth count of each measure) that characterize the dance. (source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -434,7 +434,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Cumbia', 
             'slug'          => 'cumbia', 
             'music'         => 'Cumbia, Folk dance',
-            'family'        => '', 
+            'family'        => 'Latin', 
             'description'   => 'Cumbia refers to a number of musical rhythm and folk dance traditions of Latin America, generally involving musical and cultural elements from Amerindians, Africans enslaved during colonial times and Europeans. (source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -529,7 +529,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Reggaeton', 
             'slug'          => 'reggaeton', 
             'music'         => 'Reggaeton, Reggae, Dancehall ',
-            'family'        => 'Reggaeton', 
+            'family'        => 'Latin', 
             'description'   => 'Reggaeton (špa. reguetón i reggaetón) je vrsta dance glazbe, koja je postala vrlo popularna u Latinskoj Americi početkom 90-ih godina 20. stoljeća. Početkom 21. stoljeća, reggaeton se širi i na prostore Sjeverne Amerike, Europe, Azije i Australije. To je kombinacija glazbe s Jamajke (reggae i dance hall glazbe), kao i bomba i plena ritmova Latinske Amerike i hip-hopa Sjeverne Amerike. Rap, sastavni dio reggaetona je uglavnom na španjolskom.  (source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -556,7 +556,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Urban kiz', 
             'slug'          => 'urban-kiz', 
             'music'         => 'kizomba, urban kiz',
-            'family'        => 'kizomba', 
+            'family'        => 'Kizomba', 
             'description'   => '(source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -582,7 +582,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Funk', 
             'slug'          => 'funk', 
             'music'         => 'funk',
-            'family'        => 'funk', 
+            'family'        => 'Street Urban', 
             'description'   => '(source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -595,7 +595,7 @@ class StyleSeeder extends Seeder
             'name'          => 'Waacking', 
             'slug'          => 'waacking', 
             'music'         => 'funk',
-            'family'        => 'urban', 
+            'family'        => 'Street Urban', 
             'description'   => '(source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
@@ -608,8 +608,216 @@ class StyleSeeder extends Seeder
             'name'          => 'Locking', 
             'slug'          => 'locking', 
             'music'         => 'funk',
-            'family'        => 'urban', 
+            'family'        => 'Street Urban', 
             'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Kizomba Fusion', 
+            'slug'          => 'kizomba-fusion', 
+            'music'         => '',
+            'family'        => 'Kizomba', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Tarraxa', 
+            'slug'          => 'tarraxa', 
+            'music'         => '',
+            'family'        => 'Kizomba', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Tarraxo', 
+            'slug'          => 'tarraxo', 
+            'music'         => '',
+            'family'        => 'Kizomba', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Tarraxinha', 
+            'slug'          => 'tarraxinha', 
+            'music'         => '',
+            'family'        => 'Kizomba', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Milonga', 
+            'slug'          => 'milonga', 
+            'music'         => '',
+            'family'        => 'Tango', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Vals', 
+            'slug'          => 'vals', 
+            'music'         => '',
+            'family'        => 'Tango', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Candombe', 
+            'slug'          => 'candombe', 
+            'music'         => '',
+            'family'        => 'Tango', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Tango Nuevo', 
+            'slug'          => 'tango-nuevo', 
+            'music'         => '',
+            'family'        => 'Tango', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Neo tango', 
+            'slug'          => 'neotango', 
+            'music'         => '',
+            'family'        => 'Tango', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Jazz', 
+            'slug'          => 'jazz', 
+            'music'         => '',
+            'family'        => 'Performance dance', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Popping', 
+            'slug'          => 'popping', 
+            'music'         => '',
+            'family'        => 'Street Urban', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Jerkin', 
+            'slug'          => 'jerkin', 
+            'music'         => '',
+            'family'        => 'Street Urban', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Brazilian Zouk', 
+            'slug'          => 'brazilian-zouk', 
+            'music'         => '',
+            'family'        => 'Brazilian dances', 
+            'description'   => 'https://en.wikipedia.org/wiki/Brazilian_Zouk (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Lamba Zouk', 
+            'slug'          => 'lamba-zouk', 
+            'music'         => '',
+            'family'        => 'Brazilian dances', 
+            'description'   => '(source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Forró', 
+            'slug'          => 'forro', 
+            'music'         => '',
+            'family'        => 'Brazilian dances', 
+            'description'   => 'https://en.wikipedia.org/wiki/Forró (source: wikipedia)',
+            'color'         => '', 
+            'thumbnail'     => $faker->imageUrl(640,640), 
+            'origin'        => '',
+            'year'          => '',
+            'user_id'       => 1,
+        ]);
+
+        Style::create([
+            'name'          => 'Maxixe', 
+            'slug'          => 'maxixe', 
+            'music'         => '',
+            'family'        => 'Brazilian dances', 
+            'description'   => 'https://en.wikipedia.org/wiki/Maxixe_(dance) (source: wikipedia)',
             'color'         => '', 
             'thumbnail'     => $faker->imageUrl(640,640), 
             'origin'        => '',
@@ -620,21 +828,13 @@ class StyleSeeder extends Seeder
 
 
 // Tap
-// Jazz
 // Modern
-// Contemporary
 // Break Dance
-// Swing
 // Disco
 // Waltz
-// 
-// Jerking
-// 
-// Popping
 // Flamenco
 // Viennese Waltz
 // Quickstep
-// Jive
 // Boogie-woogie
 // Lambada
 

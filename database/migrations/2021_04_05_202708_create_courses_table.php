@@ -61,9 +61,10 @@ class CreateCoursesTable extends Migration
             
             $table->boolean('dropping')->nullable()->default(false);
                         
-            $table->boolean('standby')->nullable()->default(false);
+            $table->string('default_registration_status')->nullable()->default('pre-registered');
             $table->boolean('is_private')->default(false);
             $table->string('thumbnail')->nullable();
+            $table->integer('limit_attendees')->nullable();
             
             $table->string('focus', 40)->nullable();
             $table->string('type', 40)->nullable();

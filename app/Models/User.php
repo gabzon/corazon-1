@@ -10,11 +10,13 @@ use App\Models\Event;
 use App\Traits\UserBookmarksTrait;
 use App\Traits\UserFavoritesTrait;
 use App\Traits\UserRegistrationsTrait;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -76,6 +78,8 @@ class User extends Authenticatable implements HasMedia
         'is_super',
         'preferences_verified',
         'in_newsletter',
+        'last_login_at',
+        'last_login_ip',
     ];
 
     protected $hidden = [
@@ -122,6 +126,18 @@ class User extends Authenticatable implements HasMedia
                     ->wherePivot('role', 'student')
                     ->withTimestamps();
     }
+    public function team()
+    {
+        return $this->belongsToMany(Organization::class, 'organization_user', 'user_id', 'organization_id')
+                    ->withPivot('role')
+        // ->wherePivot('role', 'student')
+                    ->withTimestamps();   
+    }
+
+    public function rolesInOrganization($id)
+    {
+        return DB::table('organization_user')->where('organization_id',$id)->where('user_id', $this->id)->get();
+    }
 
     public function manageOrganization($id)
     {
@@ -157,7 +173,34 @@ class User extends Authenticatable implements HasMedia
 
         return $this->manages()->count() > 0;
     }
+
+    /**
+     * Accessor for Age.
+     */
+    public function getAgeAttribute()
+    {        
+        return Carbon::parse($this->birthday)->age;        
+    }
     
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function assignRole($role)
+    {
+        $this->roles()->sync($role);
+    }
+
+    public function hasRole($id)
+    {
+        return in_array($id, $this->roles()->pluck('id')->toArray());
+    }
+
+    public function styles()
+    {
+        return $this->belongsToMany(Style::class);
+    }
 
     // public function videoLessons()
     // {

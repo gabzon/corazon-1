@@ -75,8 +75,8 @@ class Form extends Component
     }
 
     public function updatedOrganizationName($value)
-    {        
-        $this->organization->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
+    {                
+        $this->organization->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp , '-'); 
     }
 
     public function mount(Organization $organization = null)

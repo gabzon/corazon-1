@@ -6,12 +6,12 @@
         <select id="focus" name="focus" autocomplete="focus" {{ $attributes }}
             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error($name) border-red-600 @enderror">
             <option value="" selected disabled>Choose focus</option>
-            <option>Partnerwork</option>
-            <option>Selfwork</option>
-            <option>Choreography</option>
-            <option>Theory</option>
-            <option>Mixed</option>
-            <option>Other</option>
+            <option value="partnerwork">Partnerwork</option>
+            <option value="selfwork">Selfwork</option>
+            <option value="choreography">Choreography</option>
+            <option value="theory">Theory</option>
+            <option value="mixed">Mixed</option>
+            <option value="other">Other</option>
         </select>
     </div>
     @error($name)

@@ -23,8 +23,10 @@ class Options extends Component
         'course.excerpt'    => 'nullable',
         'course.keywords'   => 'nullable',
         'course.description'=> 'nullable',
-        'course.standby'    => 'nullable',
         'course.is_private' => 'nullable',
+        'course.limit_attendees' => 'nullable|integer|min:1',
+        'course.default_registration_status' => 'nullable',
+        
     ];
 
     public function updateStyles($styles)

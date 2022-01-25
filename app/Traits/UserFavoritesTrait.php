@@ -5,17 +5,29 @@ namespace App\Traits;
 use App\Contracts\Favoriteable;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\Lesson;
+use App\Models\Organization;
 
 trait UserFavoritesTrait {
 
-    public function favoritedCourses()
+    public function favoritesCourses()
     {        
         return $this->belongsToMany(Course::class,'course_favorite','user_id','course_id')->withTimeStamps();
     }
 
-    public function favoritedEvents()
+    public function favoritesEvents()
     {        
         return $this->belongsToMany(Event::class,'event_favorite','user_id','event_id')->withTimeStamps();
+    }
+
+    public function favoritesLessons()
+    {        
+        return $this->belongsToMany(Lesson::class,'favorite_lesson','user_id','lesson_id')->withTimeStamps();        
+    }
+
+    public function favoritesOrganizations()
+    {
+        return $this->belongsToMany(Organization::class,'favorite_organization','user_id','organization_id')->withTimeStamps();
     }
     
     public function favorite(Favoriteable $favoriteable): self
@@ -46,7 +58,7 @@ trait UserFavoritesTrait {
     
     public function numberOfFavorites():int
     {
-        return count($this->favoritedCourses) + count($this->favoritedEvents);
+        return count($this->favoritesCourses) + count($this->favoritesEvents) + count($this->favoritesLessons) + count($this->favoritesOrganizations);
     }
 
     public function favoritesCount():string

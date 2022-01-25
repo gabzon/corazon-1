@@ -4,6 +4,20 @@
     @include('shared.user-registration-panel')
     @endcan
 
+    <div x-data="{ dropdown: false }">
+        <div class="mb-3 flex justify-between items-center">
+            <x-form.search-input wire:model="search" name="Search user" />
+            <div>
+                <x-ui.button @click="dropdown = !dropdown" route="#" css="mt-2">
+                    Add invitee
+                </x-ui.button>
+            </div>
+        </div>
+        <div class="-mr-1 w-full mb-2" x-show="dropdown">
+            <livewire:shared.user-select wire:key="instructor" />
+        </div>
+    </div>
+
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

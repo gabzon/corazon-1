@@ -44,6 +44,11 @@ class VideosForm extends Component
             ]);
         }
         
+        if ($this->lesson->course->styles) {
+            // dd($this->lesson->course->styles);
+            $this->video->styles()->sync($this->lesson->course->styles);
+        }
+        
         session()->flash('success','Video saved successfully!');
         
         $this->loadVideosList();

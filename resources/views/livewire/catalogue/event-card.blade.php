@@ -11,7 +11,9 @@
 
         </div>
         <div class="p-3">
-            <h2 class="font-semibold text-gray-700 group-hover:text-gray-900">{{ $event->name }}</h2>
+            <h2 class="font-semibold text-gray-700 group-hover:text-gray-900">
+                {{ $event->name }}
+            </h2>
             <p class="text-sm text-gray-500 group-hover:text-gray-900">
                 {{ $event->tagline }}
             </p>
@@ -26,17 +28,17 @@
                 {{ $event->city->name ?? '' }}
                 @endisset
             </p>
-            <p class="text-sm text-gray-500 group-hover:text-gray-900 capitalize">
+            <p class="text-sm text-gray-500 group-hover:text-gray-900 capitalize ">
                 {{ $event->type }}
                 {{ implode(', ',$event->styles()->pluck('name')->toArray()) }}
             </p>
-            <div class="mt-1 flex justify-between">
+            <div class="mt-1 flex justify-between items-center">
                 <div>
                     @if ($event->canRegister())
                     <livewire:shared.registration-button :model="$event" size="xs" />
                     @endif
                 </div>
-                <div>
+                <div class="inline-flex">
                     <livewire:shared.bookmark :model="$event" />
                     <livewire:shared.favorite-button :model="$event" />
                 </div>

@@ -87,15 +87,6 @@
                 </div>
             </a>
 
-            <a href="#manager" class="hover:bg-blue-50 hover:bg-opacity-50 flex p-6 border-b border-blue-gray-200">
-                @include('icons.academic', ['style' => 'flex-shrink-0 -mt-0.5 w-5 h-5 text-gray-400'])
-                <div class="ml-3 text-sm">
-                    <p class="font-medium text-blue-gray-900">Instructor</p>
-                    <p class="mt-1 text-blue-gray-500">Nisi, elit volutpat odio urna quis arcu faucibus dui. Mauris
-                        adipiscing pellentesque.</p>
-                </div>
-            </a>
-
             <a href="#preferences" class="hover:bg-blue-50 hover:bg-opacity-50 flex p-6 border-b border-blue-gray-200">
                 @include('icons.preferences', ['style' => 'flex-shrink-0 -mt-0.5 w-5 h-5 text-gray-400'])
                 <div class="ml-3 text-sm">

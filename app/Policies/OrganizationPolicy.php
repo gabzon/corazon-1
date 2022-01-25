@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\organization;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class OrganizationPolicy
 {
@@ -95,5 +96,31 @@ class OrganizationPolicy
     public function manage(User $user)
     {
         return $user->is_super == true;
+    }
+
+    public function favorite(User $user, organization $organization)
+    {
+        if (! $organization->exists) {
+            return Response::deny("Cannot like an event that does not exists");
+        }
+        
+        if ($user->hasFavorited($organization)) {
+            return Response::deny("Cannot like the same organization twice");
+        }
+
+        return Response::allow();
+    }
+
+    public function unfavorite(User $user, organization $organization)
+    {
+        if (! $organization->exists) {
+            return Response::deny("Cannot like an organization that does not exists");
+        }
+        
+        if (! $user->hasFavorited($organization)) {
+            return Response::deny("Cannot like without liking first");
+        }
+
+        return Response::allow();
     }
 }

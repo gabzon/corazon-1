@@ -1,6 +1,45 @@
+# v0.1.30
+* Landing page: Typo Croatia
+* Landing page: Typo latests
+
+# v0.1.29: Sunday 29th, 2022
+* Welcome page: buttons to lastest events and find courses added
+
+# v0.1.28: Friday 21th, 2022
+* User prefered styles form added
+
+# v0.1.27: Thursday 20th, 2022
+* Events table: private_group_url field added
+* Courses table: private_group_url field added
+* Registration Service: check if exists, if already registered, if registereed in organization, register according status, room capacity, check parity
+* Add styles to videos
+* Remove file-uploads from trix
+
+# v0.1.26: Wednesday 19th, 2022
+* Last login + Last Ip address when users login
+* A user can like an organization
+* Roles CRUD 
+* Roles Seeder
+* User Profile favorites page redesigned
+
+# v0.1.25: Tuesday 18th, 2022
+* bookmark & favorite button redesigned without bg-color
+* Event show: if not location then no show
+* User can favorite a lesson
+* User profile page
+* User required data when register birthday field fixed
+
+# v0.1.24: Monday 17th, 2022
+* Users can have multiple roles for an organization
+* User roles for an organization can be edited
+
+# v0.1.23: Friday 14th, 2022
+* Styles Form component added to Courses and Organization
 
 # v0.1.22: Thursday 13th, 2022
 * User Registration Panel component created
+* Add user to org during registration
+* Various css fixes
 
 # v0.1.21: Wednesday 12th, 2022
 * Course table: private_group_url

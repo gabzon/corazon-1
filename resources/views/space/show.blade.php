@@ -5,7 +5,7 @@
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate">
-                    {{ $classroom->name }}
+                    {{ $space->name }}
                 </h2>
             </div>
             <div class="mt-4 flex md:mt-0 md:ml-4">
@@ -13,7 +13,7 @@
                     class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Back
                 </a>
-                <a href="{{ route('classroom.edit', $classroom) }}" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm
+                <a href="{{ route('space.edit', $space) }}" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm
                 font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2
                 focus:ring-offset-2 focus:ring-indigo-500">
                     Edit
@@ -30,10 +30,10 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                    {{ $classroom->name }}
+                                    {{ $space->name }}
                                 </h3>
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                    {{ $classroom->location->name }}
+                                    {{ $space->location->name }}
                                 </p>
                             </div>
                             <div>
@@ -48,7 +48,7 @@
                                     Slug
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->slug }}
+                                    {{ $space->slug }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -56,7 +56,7 @@
                                     Square Meters
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->m2 }}
+                                    {{ $space->m2 }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -64,7 +64,7 @@
                                     Capacity
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->capacity }}
+                                    {{ $space->capacity }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -72,7 +72,7 @@
                                     Limit of couples
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->limit_couples }}
+                                    {{ $space->limit_couples }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -80,7 +80,7 @@
                                     Price per hour
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->price_hour }} {{ $classroom->currency }}
+                                    {{ $space->price_hour }} {{ $space->currency }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -88,7 +88,7 @@
                                     Price per month
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->price_month }} {{ $classroom->currency }}
+                                    {{ $space->price_month }} {{ $space->currency }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -96,7 +96,7 @@
                                     Dance shoes?
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->dance_shoes == '1' ? 'Required' : 'Not required' }}
+                                    {{ $space->dance_shoes == '1' ? 'Required' : 'Not required' }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -104,7 +104,7 @@
                                     Has bar?
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->has_bar == '1' ? 'Yes' : 'No' }}
+                                    {{ $space->has_bar == '1' ? 'Yes' : 'No' }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -112,7 +112,7 @@
                                     Floor type
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->floor_type }}
+                                    {{ $space->floor_type }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -120,7 +120,7 @@
                                     Mirror type
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->mirror_type }}
+                                    {{ $space->mirror_type }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -128,7 +128,7 @@
                                     Color
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->color }}
+                                    {{ $space->color }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-1">
@@ -136,7 +136,7 @@
                                     Created by
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->user->name }}
+                                    {{ $space->user->name }}
                                 </dd>
                             </div>
                             <div class="sm:col-span-2">
@@ -144,7 +144,7 @@
                                     Description
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $classroom->description }}
+                                    {{ $space->description }}
                                 </dd>
                             </div>
                         </dl>

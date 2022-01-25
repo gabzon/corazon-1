@@ -24,7 +24,7 @@
     </x-slot>
 
 
-    <div class="py-12 h-screen overflow-y-scroll">
+    <div class="py-0 sm:py-6 md:py-8 lg:py-10 xl:py-12 px-3 sm:px-0 h-screen overflow-y-scroll ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:course.form.course-default :course="$course" />
 
@@ -34,29 +34,35 @@
 
         <x-jet-section-border />
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.options :course="$course" />
         </div>
 
         <x-jet-section-border />
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+            <livewire:shared.styles-form :model="$course" />
+        </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.schedule :course="$course" />
         </div>
 
         <x-jet-section-border />
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.videos :course="$course" />
         </div>
 
         <x-jet-section-border />
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.teachers :course="$course" />
         </div>
 
-        <div class="my-10">&nbsp;</div>
+        <div class="my-16">&nbsp;</div>
     </div>
     @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"

@@ -50,9 +50,19 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-2">
-                                <x-form.date-input wire:model="user.birthday" name="user.birthday" label="Birthday" />
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Birthday</label>
+                                    <div class="mt-1">
+                                        <input type="date" name="user.birthday" id="user.birthday"
+                                            wire:model="user.birthday"
+                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md py-1"
+                                            aria-describedby="birthday">
+                                    </div>
+                                    @error('user.birthday')
+                                    <span>{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

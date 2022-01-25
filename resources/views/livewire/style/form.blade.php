@@ -41,16 +41,23 @@
                         <select id="family" name="family" wire:model="family"
                             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <option value="" default selected disabled>Select family</option>
-                            <option>Street / Urban</option>
+                            <option>Street Urban</option>
                             <option>Cuban Salsa</option>
                             <option>Line Salsa</option>
                             <option>Bachata</option>
                             <option>Kizomba</option>
                             <option>Ballroom</option>
+                            <option>Tango</option>
+                            <option>Latin</option>
+                            <option>Sport</option>
+                            <option>Performance dance</option>
+                            <option>Swing</option>
+                            <option>Brazilian dances</option>
                         </select>
                     </div>
                 </div>
             </div>
+
             <div class="pt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-4 px-4 sm:px-2 md:px-0">
                 <div class="sm:col-span-1">
                     <label for="icon" class="block text-sm font-medium text-gray-700">

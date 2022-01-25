@@ -8,3 +8,6 @@
 /* @import 'vendor/spatie/laravel-medialibrary-pro/resources/js/media-library-pro-styles'; */
 
 [x-cloak] { display: none !important; }
+.trix-button-group.trix-button-group--file-tools {
+    display:none;
+}

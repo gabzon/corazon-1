@@ -10,7 +10,7 @@
     </x-slot>
 
     <div class="py-12 h-screen overflow-y-scroll mb-50">
-        <div id="name-email" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        {{-- <div id="name-email" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
             @livewire('profile.update-profile-information-form')
             @endif
@@ -24,8 +24,9 @@
                 @livewire('profile.update-password-form')
             </div>
             @endif
-        </div>
+        </div> --}}
 
+        {{--
         <x-jet-section-border />
 
         <div id="info" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -68,20 +69,11 @@
         </div>
 
         <x-jet-section-border />
-        @endif
-
-        @if ($user->is_super)
-        <div id="instructor" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:user.instructor-form :user="$user" wire:key="instructor" />
-        </div>
-
-        <x-jet-section-border />
-        @endif
+        @endif --}}
 
 
         <div id="preferences" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{--
-            <livewire:user.interested-styles-form :user="$user" /> --}}
+            <livewire:user.interested-styles-form :user="$user" />
         </div>
 
         <x-jet-section-border />

@@ -16,88 +16,28 @@
                         <fieldset>
                             <legend class="text-base font-medium text-gray-900">Style family</legend>
                             <div class="mt-4 space-y-4">
+                                @foreach ($families as $family => $styles)
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
-                                        <input wire:model="styles.cuban" type="checkbox"
+                                        <input wire:model="preferedStyles" type="checkbox" value="{{ $family }}"
                                             class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                     </div>
                                     <div class="ml-3 text-sm">
-                                        <label for="cuban" class="font-medium text-gray-700">Cuban Salsa</label>
+                                        <label for="cuban" class="font-medium text-gray-700">
+                                            {{ $family }}
+                                        </label>
                                         <p class="text-gray-500">
-                                            {{ implode(', ', $cuban->pluck('name')->toArray()) }}
+                                            {{ implode(', ', $styles->pluck('name')->toArray()) }}
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input wire:model="styles.line" type="checkbox"
-                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="line" class="font-medium text-gray-700">Line Salsa</label>
-                                        <p class="text-gray-500">
-                                            {{ implode(', ', $line->pluck('name')->toArray()) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input wire:model="styles.bachata" type="checkbox"
-                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="bachata" class="font-medium text-gray-700">Bachata</label>
-                                        <p class="text-gray-500">
-                                            {{ implode(', ', $bachata->pluck('name')->toArray()) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input wire:model="styles.urban" type="checkbox"
-                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="urban" class="font-medium text-gray-700">Urban</label>
-                                        <p class="text-gray-500">
-                                            {{ implode(', ', $urban->pluck('name')->toArray()) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input wire:model="styles.kizomba" type="checkbox"
-                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="offers" class="font-medium text-gray-700">Kizomba</label>
-                                        <p class="text-gray-500">
-                                            {{ implode(', ', $kizomba->pluck('name')->toArray()) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input wire:model="styles.tango" type="checkbox"
-                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="offers" class="font-medium text-gray-700">Tango</label>
-                                        <p class="text-gray-500">
-                                            {{ implode(', ', $tango->pluck('name')->toArray()) }}
-                                        </p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </fieldset>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <div class="inline-flex items-center">
-                            <x-partials.saved-confirmation />
-                            <button type="submit"
-                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
-                            </button>
+                            <x-form.submit />
                         </div>
                     </div>
                 </div>

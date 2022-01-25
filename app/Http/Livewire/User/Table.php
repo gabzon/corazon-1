@@ -22,7 +22,8 @@ class Table extends Component
         
         session()->put('impersonate', $originalId);
         
-        Auth::loginUsingId($uid);
+        Auth::loginUsingId($uid);   
+        
         return redirect('dashboard');
     }
 

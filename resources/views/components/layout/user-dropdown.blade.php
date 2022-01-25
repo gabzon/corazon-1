@@ -34,7 +34,7 @@
                 {{ __('Dashboard') }}
             </x-jet-dropdown-link>
 
-            <x-jet-dropdown-link href="{{ route('user.show', auth()->user()) }}">
+            <x-jet-dropdown-link href="{{ route('profile.index', auth()->user()) }}">
                 {{ __('Profile') }}
             </x-jet-dropdown-link>
 

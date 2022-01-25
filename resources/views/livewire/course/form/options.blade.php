@@ -27,18 +27,15 @@
 
                         <x-form.rich-text name="course.description" />
 
-                        <div class="w-full">
-                            <div class="mt-5 relative flex items-start">
-                                <div class="flex items-center h-5">
-                                    <input id="standby" wire:model="course.standby" name="standby" type="checkbox"
-                                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                </div>
-                                <div class="ml-3 text-sm">
-                                    <label for="standby" class="font-medium text-gray-700">Standby</label>
-                                    <span id="standby-description" class="text-gray-500">
-                                        sets students to standby upon registration.
-                                    </span>
-                                </div>
+                        <div class="grid grid-cols-4 gap-6">
+                            <div class="col-span-4 sm:col-span-2">
+                                <x-form.select :options="['pre-registered','standby','waiting', 'registered']"
+                                    wire:model="course.default_registration_status" name="default_registration_status"
+                                    label="Default Registration Status" />
+                            </div>
+                            <div class="col-span-4 sm:col-span-1">
+                                <x-form.text-input wire:model="course.limit_attendees" name="course.limit_attendees"
+                                    label="Limit of people" />
                             </div>
                         </div>
 
@@ -57,8 +54,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <livewire:component.select2.styles :model="$course" />
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <x-form.submit />

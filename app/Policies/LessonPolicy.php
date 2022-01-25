@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\lesson;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class LessonPolicy
 {
@@ -106,5 +107,32 @@ class LessonPolicy
     public function forceDelete(User $user, lesson $lesson)
     {
         //
+    }
+
+    public function favorite(User $user, lesson $lesson)
+    {
+        if (! $lesson->exists) {
+            return Response::deny("Cannot like an event that does not exists");
+        }
+        
+        
+        if ($user->hasFavorited($lesson)) {
+            return Response::deny("Cannot like the same event twice");
+        }
+
+        return Response::allow();
+    }
+
+    public function unfavorite(User $user, lesson $event)
+    {
+        if (! $event->exists) {
+            return Response::deny("Cannot like an event that does not exists");
+        }
+        
+        if (! $user->hasFavorited($event)) {
+            return Response::deny("Cannot like without liking first");
+        }
+
+        return Response::allow();
     }
 }

@@ -13,9 +13,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(User $user)
+    {        
+        return view('profile.index', compact('user'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ProfileController extends Controller
     }
 
     public function bookmarks()    
-    {
+    {        
         $courses = auth()->user()->bookmarkedCourses;        
         $events = auth()->user()->bookmarkedEvents;     
         $merge = $courses->merge($events);
@@ -95,7 +95,7 @@ class ProfileController extends Controller
     }
 
     public function registrations()
-    {
+    {        
         $events = auth()->user()->eventRegistrations;
         $courses = auth()->user()->courseRegistrations;
         $list = $events->merge($courses); 
@@ -103,13 +103,26 @@ class ProfileController extends Controller
         return view('profile.registrations', ['list' => $list]);
     }
 
-    public function favorites()
-    {
-        $courses = auth()->user()->favoritedCourses;
-        $events = auth()->user()->favoritedEvents;
-        $list = $courses->merge($events)->sortBy('start_date');
-
-        return view('profile.favorites', ['list'=> $list]);
+    public function favorites(Request $request)
+    {                
+        if ($request->is('profile/favorites/events')) {                        
+            $favorites = auth()->user()->favoritesEvents;
+            $type = 'registrable';
+        } else if ($request->is('profile/favorites/courses')) {
+            $favorites = auth()->user()->favoritesCourses;
+            $type = 'registrable';
+        } else if ($request->is('profile/favorites/organizations')){
+            $favorites = auth()->user()->favoritesOrganizations;
+            $type = 'organization';
+        } else if ($request->is('profile/favorites/lessons')){
+            $favorites = auth()->user()->favoritesLessons;
+            $type = 'lesson';
+        }
+       
+        return view('profile.favorites',[
+            'favorites' => $favorites,
+            'type'      => $type,
+        ]);
     }
 
 

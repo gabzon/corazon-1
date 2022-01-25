@@ -2,7 +2,7 @@
     <ul class="border divide-y divide-gray-200 sm:rounded-md overflow-hidden">
         @forelse ($location->spaces as $item)
         <li class="bg-white">
-            <a href="{{ route('classroom.show', $item) }}" class="block hover:bg-gray-50">
+            <a href="{{ route('space.show', $item) }}" class="block hover:bg-gray-50">
                 <div class="px-4 py-4 flex items-center sm:px-6">
                     <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
                         <div class="truncate">
@@ -43,14 +43,14 @@
         </li>
 
         @empty
-        <a href="{{ route('classroom.create', ['location' => $location]) }}"
+        <a href="{{ route('space.create', ['location' => $location]) }}"
             class="block border-2 border-dashed text-center py-4 border-gray-300 mt-3 hover:bg-indigo-600 hover:text-white">
             Add Classroom
         </a>
         @endforelse
     </ul>
     <div class="mt-2 flex justify-end">
-        <a href="{{ route('classroom.create', ['location' => $location]) }}"
+        <a href="{{ route('space.create', ['location' => $location]) }}"
             class="text-right text-sm underline text-indigo-700 hover:text-indigo-500">Add
             Classroom</a>
     </div>

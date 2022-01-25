@@ -48,16 +48,27 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {                
-        return view('organization.show')->with([
-            'organization'  => $organization,
-            'mondays'       => $organization->courses()->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
-            'tuesdays'      => $organization->courses()->where('status','active')->where('tuesday', 1)->orderBy('start_time_tue')->get(),
-            'wednesdays'    => $organization->courses()->where('status','active')->where('wednesday',1)->orderBy('start_time_wed')->get(),
-            'thursdays'     => $organization->courses()->where('status','active')->where('thursday',1)->orderBy('start_time_thu')->get(),
-            'fridays'       => $organization->courses()->where('status','active')->where('friday', 1)->orderBy('start_time_fri')->get(),
-            'saturdays'     => $organization->courses()->where('status','active')->where('saturday', 1)->orderBy('start_time_sat')->get(),
-            'sundays'       => $organization->courses()->where('status','active')->where('sunday', 1)->orderBy('start_time_sat')->get(),
-        ]);
+        return view('organization.show')->with('organization', $organization);        
+    }
+
+    public function view(Organization $organization)
+    {        
+        $org = Organization::with(['events','courses','teachers'])->whereId($organization->id)->first();
+        $schedule = [
+            'organization'  => $org,
+            'mondays'       => $org->courses()->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
+            'tuesdays'      => $org->courses()->where('status','active')->where('tuesday', 1)->orderBy('start_time_tue')->get(),
+            'wednesdays'    => $org->courses()->where('status','active')->where('wednesday',1)->orderBy('start_time_wed')->get(),
+            'thursdays'     => $org->courses()->where('status','active')->where('thursday',1)->orderBy('start_time_thu')->get(),
+            'fridays'       => $org->courses()->where('status','active')->where('friday', 1)->orderBy('start_time_fri')->get(),
+            'saturdays'     => $org->courses()->where('status','active')->where('saturday', 1)->orderBy('start_time_sat')->get(),
+            'sundays'       => $org->courses()->where('status','active')->where('sunday', 1)->orderBy('start_time_sat')->get(),
+        ];
+        
+        if (auth()->check()) {
+            return view('organization.view')->with($schedule);        
+        }       
+        return view('organization.guest')->with($schedule); 
     }
 
     /**

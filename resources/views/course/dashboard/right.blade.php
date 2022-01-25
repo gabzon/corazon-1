@@ -64,21 +64,9 @@
 
                         @if ($student->getRegistrationStatus($course) == 'registered' ||
                         $student->getRegistrationStatus($course) == 'partial')
-                        <li class="flex items-center py-4 space-x-3">
+                        <li class="flex justify-between items-center py-4 space-x-3">
+                            <x-user.avatar-username :user="$student" />
                             <div class="flex-shrink-0">
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ $student->photo }}"
-                                    alt="{{ $student->name }}">
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-sm font-medium text-gray-900">
-                                    <a href="#">{{ $student->name }}</a>
-                                </p>
-                                <p class="text-sm text-gray-500">
-                                    <a href="#">{{ '@' . $student->username }}</a>
-                                </p>
-                            </div>
-                            <div class="flex-shrink-0">
-
                                 <livewire:profile.user-registration-status-badge :model="$course" size="xs"
                                     :user="$student" wire:key="{{ $student->id }}" />
                             </div>

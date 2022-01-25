@@ -127,7 +127,7 @@
         </div>
         @endif --}}
 
-        <div x-data="{ open : false }">
+        <div x-data="{ open : true }">
             <button type="button"
                 class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
@@ -137,15 +137,23 @@
                     Description
                 </span>
 
-                <div class="ml-6 flex items-center">
-                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
-                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                <div class="ml-6 flex items-center text-sm text-indigo-600">
+                    <span x-show="open">hide</span>
+                    <span x-show="!open">show</span>
                 </div>
 
             </button>
             <div x-show="open">
                 <div class="pb-6 prose prose-sm">
-                    <div class="mb-5">{!! $event->description !!}</div>
+                    <div class="mb-5" x-data="{ full: false }">
+
+                        <p x-show="!full">{!! Str::limit($event->description, 150) !!}</p>
+                        <p x-show="full" x-cloak>{!! $event->description !!}</p>
+                        <button @click="full = !full" class="hover:text-indigo-600">
+                            <span x-show="!full">show more</span>
+                            <span x-show="full">show less</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,9 +169,9 @@
                     Organisers
                 </span>
 
-                <div class="ml-6 flex items-center">
-                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
-                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                <div class="ml-6 flex items-center text-sm text-indigo-600">
+                    <span x-show="open">hide</span>
+                    <span x-show="!open">show</span>
                 </div>
 
             </button>
@@ -172,7 +180,7 @@
                 @foreach ($event->organizations as $org)
                 <ul role="list" class="divide-y divide-gray-200">
                     <li class="py-4 flex justify-between items-center">
-                        <a href="{{ route('organization.show', $org) }}" class="flex">
+                        <a href="{{ route('organization.view', $org) }}" class="flex">
                             <img class="h-10 w-10 rounded-full" src="{{ $org->photo }}" alt="">
                             <div class="ml-3">
                                 <p class="text-sm font-medium text-gray-900">{{ $org->shortname ?? $org->name }}</p>
@@ -204,7 +212,7 @@
         </div>
         @endif
 
-
+        @if ($event->location)
         <div id="location" x-data="{ open : true }">
             <button type="button"
                 class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
@@ -215,18 +223,19 @@
                     Venue
                 </span>
 
-                <div class="ml-6 flex items-center">
-                    <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
-                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span>
+                <div class="ml-6 flex items-center text-sm text-indigo-600">
+                    <span x-show="open">hide</span>
+                    <span x-show="!open">show</span>
+                    {{-- <span class="text-2xl text-indigo-600" x-show="open">&minus;</span>
+                    <span class="text-2xl text-gray-600" x-show="!open">&plus;</span> --}}
                 </div>
 
             </button>
             <div x-show="open">
-                @if ($event->location)
                 <x-location.details :location="$event->location" />
-                @endif
             </div>
         </div>
+        @endif
 
     </div>
 

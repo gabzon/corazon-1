@@ -14,13 +14,13 @@ class ImpersonateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
-    {
+    {        
         if (! session()->has('impersonate')) {
             abort(403);
         }
-
+        
         Auth::loginUsingId(session('impersonate'));
-
+        
         session()->forget('impersonate');
         
         return redirect()->back();

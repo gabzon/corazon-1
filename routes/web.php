@@ -3,11 +3,9 @@
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\SpaceController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CourseRegistrationController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\ImpersonateController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LikeController;
@@ -19,6 +17,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\TagController;
@@ -129,6 +128,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('course/{course}/favorites', [CourseController::class, 'favorites'])->name('course.favorites');
     Route::get('course/{course}/registrations', [CourseController::class, 'registrations'])->name('course.registrations');
 
+    Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
+
     Route::get('user-required-data', [UserController::class, 'requiredData'])->name('user-required-data');
     
     Route::post('favorite', [LikeController::class,'favorite'])->name('favorite');
@@ -140,17 +141,21 @@ Route::middleware(['auth'])->group(function(){
     Route::post('user/register', [RegistrationController::class, 'register'])->name('enroll');
     Route::delete('user/unregister', [RegistrationController::class, 'unregister'])->name('unenroll');
 
-    Route::get('profile/{$username}',[ProfileController::class, 'username'])->name('profile.username');
-    Route::get('profile/favorites', [ProfileController::class, 'favorites'])->name('profile.favorites');
+    
+    Route::get('profile/favorites/events', [ProfileController::class, 'favorites'])->name('profile.favorites.events');
+    Route::get('profile/favorites/courses', [ProfileController::class, 'favorites'])->name('profile.favorites.courses');
+    Route::get('profile/favorites/organizations', [ProfileController::class, 'favorites'])->name('profile.favorites.organizations');
+    Route::get('profile/favorites/lessons', [ProfileController::class, 'favorites'])->name('profile.favorites.lessons');
     Route::get('profile/bookmarks', [ProfileController::class, 'bookmarks'])->name('profile.bookmarks');
     Route::get('profile/registrations', [ProfileController::class, 'registrations'])->name('profile.registrations');
-  
+    Route::get('profile/{user:username}',[ProfileController::class, 'index'])->name('profile.index');
+
     Route::resource('admin/course', CourseController::class)->except(['show']);
     Route::resource('admin/location', LocationController::class);
     Route::resource('admin/skill', SkillController::class);
     Route::resource('admin/transaction', TransactionController::class);
     Route::resource('admin/style', StyleController::class);
-    Route::resource('admin/classroom', ClassroomController::class);
+    Route::resource('admin/space', SpaceController::class);
     Route::resource('admin/order', OrderController::class);
     Route::resource('admin/figure', FigureController::class);    
     Route::resource('admin/tag', TagController::class);
@@ -163,6 +168,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('admin/challenge', ChallengeController::class);
     Route::resource('admin/organization', OrganizationController::class);
     Route::resource('admin/user', UserController::class);        
+    Route::resource('admin/role', RoleController::class);            
 });
 
 

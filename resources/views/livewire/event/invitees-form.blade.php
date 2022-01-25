@@ -2,22 +2,22 @@
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
             <div class="px-4 sm:px-0">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">Instructors</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Invitees</h3>
                 <p class="mt-1 text-sm text-gray-600">
-                    Add a list of instructors to this organization
+                    Add invitees to your event
                 </p>
             </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form wire:submit.prevent="save" method="POST">
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
                         <div>
-                            <livewire:shared.user-select wire:key="instructor" />
+                            <livewire:shared.user-select wire:key="student" />
                         </div>
 
-                        <div class="flex flex-col">
+                        <div class="flex flex-col mt-3">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -28,38 +28,32 @@
                                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                         Name
                                                     </th>
-                                                    <th scope="col" class="relative px-6 py-3">
-                                                        <span class="sr-only">Edit</span>
+                                                    <th scope="col"
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Role
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody class="bg-white divide-y divide-gray-200">
-                                                @forelse ($instructors as $instructor)
+                                                {{-- @forelse ($team as $member)
                                                 <tr>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="flex items-center">
-                                                            <div class="flex-shrink-0 h-10 w-10">
-                                                                <img class="h-10 w-10 rounded-full"
-                                                                    src="{{ $instructor->photo }}""
-                                                                    alt="">
-                                                            </div>
-                                                            <div class=" ml-4">
-                                                                <div class="text-sm font-medium text-gray-900">
-                                                                    {{ $instructor->name }}
-                                                                </div>
-                                                                <div class="text-sm text-gray-500">
-                                                                    {{ $instructor->email }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <x-user.avatar-username :user="$member" />
                                                     </td>
                                                     <td
-                                                        class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <button type="button"
-                                                            class="text-indigo-600 hover:text-indigo-900"
-                                                            wire:click="remove({{$instructor->id}})">
-                                                            remove
-                                                        </button>
+                                                        class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-500">
+                                                        <ul>
+                                                            @foreach ($member->rolesInOrganization($org->id) as $item)
+                                                            <li class="flex justify-between">
+                                                                {{ $item->role }}
+                                                                <button type="button"
+                                                                    class="text-indigo-600 hover:text-indigo-900"
+                                                                    wire:click="remove({{$member->id}}, '{{ $item->role }}')">
+                                                                    remove
+                                                                </button>
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
                                                     </td>
                                                 </tr>
                                                 @empty
@@ -69,7 +63,7 @@
                                                         Add instructor to this organization
                                                     </td>
                                                 </tr>
-                                                @endforelse
+                                                @endforelse --}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -80,7 +74,7 @@
 
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <x-partials.saved-confirmation />
+                        <x-form.submit />
                     </div>
                 </div>
             </form>

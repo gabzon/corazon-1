@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Contracts\Registrable;
 use App\Models\Course;
 use App\Models\Event;
+use App\Services\RegistrationService;
 
 trait UserRegistrationsTrait {    
 
@@ -29,29 +30,20 @@ trait UserRegistrationsTrait {
 
     public function register(Registrable $registrable): self
     {        
+        if ( !$registrable->exists) {
+            return $this;        
+        }
+        
+        if ($registrable->status != 'active') {
+            return $this;
+        }
+
         if ($this->isRegistered($registrable)) {
             return $this;
         }
-        
-        if (class_basename($registrable) == 'Course') {
-            if ( !$registrable->organization->hasStudent(auth()->user()->id) ) {
-                $registrable->organization->students()->attach(auth()->user()->id); 
-            }
-        } else if (class_basename($registrable) == 'Event') {
-            foreach ($registrable->organizations as $org) {
-                if ( !$org->hasStudent(auth()->user()->id) ) {
-                    $org->students()->attach(auth()->user()->id);                    
-                }                
-            }
-        }
-        
-        if ($registrable->standby) {
-            $registrable->registrations()->attach($this->id, ['status'=>'standby']);
-        }else{
-            $registrable->registrations()->attach($this->id);
-        }
-        
 
+        (new RegistrationService($this, $registrable))->register();
+        
         return $this;
     }
 

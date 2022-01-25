@@ -246,7 +246,7 @@
                         Bookmarks
                     </a>
 
-                    <a href="{{ route('profile.favorites') }}"
+                    <a href="{{ route('profile.favorites.events') }}"
                         class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
                         Favorites
                     </a>

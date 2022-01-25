@@ -38,7 +38,11 @@
 
             <div class="flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">School</dt>
-                <dd class="text-gray-900">{{ $class->organization->shortname ?? $class->organization->name }}</dd>
+                <dd class="text-gray-900">
+                    <a href="{{ route('organization.view', $class->organization->slug ) }}">
+                        {{ $class->organization->shortname ?? $class->organization->name }}
+                    </a>
+                </dd>
             </div>
 
             <div class="flex justify-between text-sm font-medium">

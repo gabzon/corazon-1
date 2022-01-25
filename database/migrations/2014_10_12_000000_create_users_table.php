@@ -29,9 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('instagram_id')->nullable();
             $table->string('google_id')->nullable();
             $table->string('idn')->nullable();
-            $table->timestamps();
-
-            $table->string('username')->nullable()->index();
+            
+            $table->string('username')->nullable()->unique();
             $table->date('birthday')->nullable();
             $table->text('avatar')->nullable();            
             $table->enum('gender',['male','female'])->nullable();            
@@ -46,9 +45,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->nullable();            
             $table->string('phone')->nullable();            
             $table->timestamp('mobile_verified_at')->nullable();     //asdlkfjalsdfkja      
-            $table->timestamp('phone_verified_at')->nullable();  
-            
-            $table->decimal('price_hour')->nullable();            
+            $table->timestamp('phone_verified_at')->nullable();              
                              
             $table->string('address')->nullable();
             $table->string('address_info')->nullable();
@@ -67,8 +64,12 @@ class CreateUsersTable extends Migration
 
             $table->string('role')->default('user');
             $table->boolean('is_super')->default(false);
-            $table->boolean('preferences_verified')->default(false);
-            $table->boolean('in_newsletter')->default(false);
+
+            $table->timestamp('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
+
+            $table->timestamps();
+
         });
     }
 

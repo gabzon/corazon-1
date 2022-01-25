@@ -17,7 +17,13 @@ class CoursesCatalogue extends Component
     public $level;
     public $focus;       
     public $day;    
-    public $school;    
+    public $school;
+    public $readyToLoad = false;
+
+    public function loadCourses()
+    {
+        $this->readyToLoad = true;
+    }
 
     public function updating($name, $value)
     {
@@ -30,7 +36,7 @@ class CoursesCatalogue extends Component
     }
 
     public function render()
-    {
+    {        
         Course::shouldExpire()->get()->each->expire();
         
         $fields = [
@@ -42,9 +48,9 @@ class CoursesCatalogue extends Component
             'friday', 'start_time_fri', 'end_time_fri', 
             'saturday', 'start_time_sat', 'end_time_sat', 
             'sunday', 'start_time_sun', 'end_time_sun', 
-            'organization_id', 'space_id'
+            'organization_id', 'space_id', 'is_private',
         ];
-
+        
         $courses = Course::select($fields)
                             ->isActive()
                             ->inCity($this->city)
@@ -53,11 +59,11 @@ class CoursesCatalogue extends Component
                             ->level($this->level)
                             ->dayOfWeek($this->day) 
                             ->inRandomOrder();
-
-
         
+        $emptyCourses = Course::whereLevel('xxxx');
+                                    
         return view('livewire.catalogue.courses-catalogue',[
-            'courses' => $courses->paginate(20)
+            'courses' => $this->readyToLoad ? $courses->paginate(20) : $emptyCourses->paginate(10)
         ]);
     }
 }

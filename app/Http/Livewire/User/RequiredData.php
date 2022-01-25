@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Style;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class RequiredData extends Component
@@ -45,7 +47,6 @@ class RequiredData extends Component
         if ($user->idn != null) {
             $this->hasIdn = true;
         }
-        
     }
 
     public function render()

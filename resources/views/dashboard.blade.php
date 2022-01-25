@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-5 flex justify-center sm:mt-0">
-                                            <a href="{{ route('user.show', auth()->user()) }}"
+                                            <a href="{{ route('profile.index', auth()->user()) }}"
                                                 class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                                 View profile
                                             </a>
@@ -80,7 +80,7 @@
                                     </div>
 
                                     <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <a href="{{ route('profile.favorites') }}"
+                                        <a href="{{ route('profile.favorites.events') }}"
                                             class="inline-flex items-center text-gray-600 hover:text-indigo-700">
                                             <span class="mr-2">
                                                 @include('icons.heart')

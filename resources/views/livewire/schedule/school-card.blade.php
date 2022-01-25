@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg p-2 mb-4 hover:shadow-md border">
-    <a href="{{ route('course.view', $class) }}">
+    <a href="{{ route('course.show', $class) }}">
         <div class="text-sm flex justify-between text-gray-500 items-center space-x-1">
             <div>
                 {{ $time }}
@@ -19,4 +19,7 @@
             </div>
         </div>
     </a>
+    @auth
+    <x-shared.register-like-bookmark-buttons :model="$class" size="sm" />
+    @endauth
 </div>

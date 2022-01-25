@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
+use App\Contracts\Favoriteable;
 use App\Contracts\Lessonable;
-use App\Contracts\Likeable;
-use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Organization extends Model implements HasMedia
+class Organization extends Model implements HasMedia, Favoriteable
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
@@ -68,6 +68,19 @@ class Organization extends Model implements HasMedia
         return $this->belongsTo(\App\Models\User::class,'user_id');
     }
 
+    public function team()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivotIn('role', ['manager','instructor','organizer','dj','bouncer','publisher','assistant'])
+                    ->withTimestamps();
+    }
+
+    public function isTeamMember($id)
+    {
+        return in_array($id, $this->team()->pluck('user_id')->toArray());
+    }
+
     public function managers()
     {
         return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
@@ -76,7 +89,7 @@ class Organization extends Model implements HasMedia
                     ->withTimestamps();
     }
 
-    public function hasManagers($id)
+    public function hasManager($id)
     {
         return in_array($id, $this->managers()->pluck('user_id')->toArray());
     }
@@ -88,15 +101,75 @@ class Organization extends Model implements HasMedia
                     ->wherePivot('role', 'instructor')
                     ->withTimestamps();
     }
-
-    public function events()
-    {
-        return $this->belongsToMany(Event::class);
-    }
     
     public function hasTeacher($id)
     {
         return in_array($id, $this->teachers()->pluck('user_id')->toArray());
+    }
+
+    public function organizers()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'organizer')
+                    ->withTimestamps();
+    }
+
+    public function hasOrganizer($id)
+    {
+        return in_array($id, $this->organizers()->pluck('user_id')->toArray());
+    }
+
+    public function djs()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'dj')
+                    ->withTimestamps();
+    }
+
+    public function hasDj($id)
+    {
+        return in_array($id, $this->djs()->pluck('user_id')->toArray());
+    }
+
+    public function bouncers()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'bouncer')
+                    ->withTimestamps();
+    }
+
+    public function hasBouncer($id)
+    {
+        return in_array($id, $this->bouncers()->pluck('user_id')->toArray());
+    }
+
+    public function publishers()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'publisher')
+                    ->withTimestamps();
+    }
+
+    public function hasPublisher($id)
+    {
+        return in_array($id, $this->publishers()->pluck('user_id')->toArray());
+    }
+
+    public function assistants()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')
+                    ->wherePivot('role', 'asssitant')
+                    ->withTimestamps();
+    }
+
+    public function hasAssistant($id)
+    {
+        return in_array($id, $this->assistants()->pluck('user_id')->toArray());
     }
 
     public function students()
@@ -110,6 +183,21 @@ class Organization extends Model implements HasMedia
     public function hasStudent($id)
     {
         return in_array($id, $this->students()->pluck('user_id')->toArray());
+    }
+
+    public function styles()
+    {
+        return $this->belongsToMany(Style::class)->withTimestamps();
+    }
+
+    public function hasStyle($id)
+    {
+        return in_array($id, $this->styles()->pluck('style_id')->toArray());
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
     }
     
     public function city()
@@ -154,10 +242,10 @@ class Organization extends Model implements HasMedia
         return $this;
     }
 
-    public function removeLesson(Lessonable $lessonable):self
-    {
-        
-    }
+    public function favorites(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'favorite_organization','organization_id','user_id')->withTimeStamps();        
+    }    
 
     public function getPhotoAttribute()
     {

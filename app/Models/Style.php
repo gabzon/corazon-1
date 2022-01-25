@@ -59,6 +59,11 @@ class Style extends Model implements HasMedia
         return $this->belongsToMany(Course::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function childs()
     {
         return $this->hasMany(Style::class, 'parent_id');
@@ -72,5 +77,15 @@ class Style extends Model implements HasMedia
     public function videos()
     {
         return $this->belongsToMany(Video::class);
+    }
+
+    public function organizations()
+    {
+        return $this->belongsToMany(Organization::class);
+    }
+
+    public function hasOrganization($id)
+    {
+        return in_array($id, $this->organizations()->pluck('organization_id')->toArray());
     }
 }

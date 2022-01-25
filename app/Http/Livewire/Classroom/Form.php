@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Classroom;
 
-use App\Models\Classroom;
+use App\Models\Space;
 use App\Models\Location;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ class Form extends Component
     use WithMedia;
 
     public $action = 'store';
-    public Classroom $classroom;
+    public Space $classroom;
 
     public $mediaComponentNames = ['photos'];
 
@@ -59,10 +59,10 @@ class Form extends Component
 
         session()->flash('success','Classroom saved successfully.');
 
-        return redirect()->route('classroom.show', $this->classroom);
+        return redirect()->route('space.show', $this->classroom);
     }
 
-    public function mount(Classroom $classroom = null, $location = null)
+    public function mount(Space $classroom = null, $location = null)
     {
         if($classroom->exists) {
             $this->action = 'update';

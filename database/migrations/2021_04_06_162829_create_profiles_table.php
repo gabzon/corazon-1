@@ -15,8 +15,11 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-
-
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained();
+            $table->decimal('price_hour')->nullable();       
+            $table->boolean('preferences_verified')->default(false);            
+            $table->boolean('in_newsletter')->default(false);
             $table->timestamps();
         });
     }

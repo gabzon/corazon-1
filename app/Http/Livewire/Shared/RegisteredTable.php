@@ -16,7 +16,21 @@ class RegisteredTable extends Component
     public string $role;
     public bool $showForm = false;
     public CourseRegistration $cr;
-    
+    public $search = '';
+
+    protected $listeners = ['instructorToOrganization' => 'addInvitee'];
+
+    public function addInvitee($user)
+    {               
+        if ( !$this->model->isRegistered($user['id'], 'invitee') ) {            
+            $this->model->registrations()->attach($user['id'], ['status'=>'invitee']);
+            session()->flash('success','User invited successfully!');
+        }else{
+            session()->flash('warning','User was already invited!');
+        }
+    }  
+
+
     public function mount($model, $query = null)
     {
         $this->model = $model;

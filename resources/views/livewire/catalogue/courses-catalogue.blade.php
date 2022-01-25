@@ -62,17 +62,25 @@
 
     <div class="py-10">
         <div class="max-w-full mx-auto">
-            <div class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div wire:loading.flex class="flex justify-center font-medium text-lg">
+                Loading...
+            </div>
+            <div wire:init="loadCourses" wire:loading.remove
+                class="px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 @forelse ($courses as $class)
+                @if (! $class->is_private || (auth()->check() && $class->isRegistered(auth()->user()->id)))
                 <livewire:catalogue.course-card :class="$class" :key="$class->id" />
+                @endif
+
                 @empty
-                <p class="py-5 text-center text-sm font-medium text-gray-900 truncate">
+                <p x-data="{show: false}" x-show="show" x-cloak x-init="setTimeout( () => show = true, 1000)"
+                    class="py-5 text-center text-sm font-medium text-gray-900 truncate transation delay-1000">
                     No courses found
                 </p>
                 @endforelse
             </div>
-            <div class="px-8">
-                {{ $courses->links()}}
+            <div wire:loading.remove class="px-8">
+                {{ $courses->links() }}
             </div>
         </div>
     </div>

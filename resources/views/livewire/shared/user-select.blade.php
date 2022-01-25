@@ -15,7 +15,7 @@
         </style>
     </x-slot>
 
-    <div class="grid grid-cols-12 gap-6 items-center">
+    <div class="grid grid-cols-12 gap-3 items-center">
         <div class="col-span-10">
             <div class="flex flex-col items-center">
                 <div class="w-full flex flex-col items-center">
@@ -78,8 +78,8 @@
         </div>
         <div class="col-span-2">
             <button type="button" wire:click="add"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Add
+                class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 uppercase">
+                Select
             </button>
         </div>
     </div>
@@ -87,6 +87,7 @@
 
 
     @push('scripts')
+
     <script>
         function selectConfigs() {
             return {
@@ -132,7 +133,8 @@
                 },
                 
                 fetchOptions() {
-                    fetch('https://corazon.dance/api/select-users')                    
+                    // var appUrl = @json(env('APP_URL'));
+                    fetch('/api/select-users')                    
                     .then(response => response.json())
                     .then(data => this.options = data);    
                     console.log(this.options);

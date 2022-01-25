@@ -15,7 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('label')->nullable();      
             $table->timestamps();
@@ -23,7 +23,7 @@ class CreateRolesTable extends Migration
 
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('label')->nullable();
             $table->timestamps();
@@ -37,10 +37,11 @@ class CreateRolesTable extends Migration
         });
 
         Schema::create('role_user', function (Blueprint $table) {
-            $table->primary(['user_id', 'role_id', 'organization_id']);
+            $table->unique(['user_id', 'role_id', 'organization_id', 'city_id']);
             $table->foreignId('role_id')->constrained()->onDelete('cascade');                                    
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('organization_id')->constrained()->onDelete('cascade');
+            $table->foreignId('organization_id')->nullable()->constrained();
+            $table->foreignId('city_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

@@ -27,6 +27,8 @@ class Form extends Component
     public $description;
     public $user_id;
 
+    public $familyList = [];
+
     public function store()
     {
         $this->validate([
@@ -112,6 +114,7 @@ class Form extends Component
 
     public function mount($style = null)    
     {
+        
         if ($style != null) {
             $this->action       = 'update';   
             $this->style        = $style;       

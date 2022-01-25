@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Contracts\Favoriteable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lesson extends Model
+class Lesson extends Model implements Favoriteable
 {
     use HasFactory, SoftDeletes;
 
@@ -52,6 +54,11 @@ class Lesson extends Model
     public function videos()
     {
         return $this->belongsToMany(Video::class)->withTimestamps();
+    }
+
+    public function favorites(): BelongsToMany
+    {        
+        return $this->belongsToMany(User::class,'favorite_lesson','lesson_id','user_id')->withTimeStamps();        
     }
  
 }

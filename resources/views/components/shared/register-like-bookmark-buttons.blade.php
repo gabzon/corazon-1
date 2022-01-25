@@ -24,18 +24,20 @@
     @endguest
 
     @auth
-    <div class="mt-1 pb-3 flex flex-col sm:flex-row items-center space-x-1">
-        @if ($model->canRegister())
-        <livewire:shared.registration-button :model="$model" size="{{ $size }}" />
-        @else
-        @if ($model->registration_url)
-        <a href="{{ $model->registration_url }}" target="_blank"
-            class=" flex justify-center items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Registration
-        </a>
-        @endif
-        @endif
-        <div class="inline-flex space-x-1">
+    <div class="mt-1 pb-3 flex justify-between items-center">
+        <div>
+            @if ($model->canRegister())
+            <livewire:shared.registration-button :model="$model" size="{{ $size }}" />
+            @else
+            @if ($model->registration_url)
+            <a href="{{ $model->registration_url }}" target="_blank"
+                class=" flex justify-center items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Registration
+            </a>
+            @endif
+            @endif
+        </div>
+        <div class="inline-flex mt-1">
             <livewire:shared.bookmark :model="$model" />
             <livewire:shared.favorite-button :model="$model" />
         </div>

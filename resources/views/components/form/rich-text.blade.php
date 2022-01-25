@@ -11,4 +11,11 @@
             </trix-editor>
         </div>
     </div>
+    @push('scripts')
+    <script>
+        document.addEventListener("trix-file-accept", function(event) {
+            event.preventDefault();
+        });
+    </script>
+    @endpush
 </div>

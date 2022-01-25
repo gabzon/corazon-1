@@ -68,6 +68,7 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         'dropping',                
         'thumbnail',
         'focus',
+        'limit_attendees',
         'type',
         'status',
         'user_id',
@@ -99,7 +100,8 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         'space_id'          => 'integer',
         'city_id'           => 'integer',
         'organization_id'   => 'integer',     
-        'level'             => 'string',   
+        'level'             => 'string',
+        'is_private'        => 'boolean',   
     ];
 
     public function user()
@@ -336,6 +338,19 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
             return false;
         }
         return true;
+    }
+
+    public function invitees()
+    {        
+        return $this->belongsToMany(User::class, 'course_registration', 'course_id', 'user_id')
+                    ->withPivot('status')
+                    ->wherePivot('status', 'invitee')
+                    ->withTimestamps();    
+    }
+
+    public function isRegistered($id)
+    {        
+        return $this->registrations()->where('user_id',$id)->exists();
     }
 
     public function getCoverImageAttribute()

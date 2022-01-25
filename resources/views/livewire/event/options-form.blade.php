@@ -34,6 +34,15 @@
                         <x-form.text-input wire:model="event.registration_url" name="event.registration_url"
                             label="Registration URL" />
 
+
+                        <div class="w-full">
+                            <div class="mt-5 relative flex items-start">
+                                <x-form.select :options="['pre-registered','standby','waiting', 'registered']"
+                                    wire:model="event.default_registration_status"
+                                    name="event.default_registration_status" label="Default Registration Status" />
+                            </div>
+                        </div>
+
                         <div class="w-full">
                             <div class="mt-5 relative flex items-start">
                                 <div class="flex items-center h-5">
@@ -49,6 +58,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

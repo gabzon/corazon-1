@@ -105,11 +105,24 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
     public function organizations()
     {
         return $this->belongsToMany(Organization::class);
-    }
+    }    
     
     public function hasOrganization($id)
     {
         return in_array($id, $this->organizations()->pluck('organization_id')->toArray());
+    }
+
+    public function invitees()
+    {        
+        return $this->belongsToMany(User::class, 'event_registration', 'event_id', 'user_id')
+                    ->withPivot('status')
+                    ->wherePivot('status', 'invitee')
+                    ->withTimestamps();    
+    }
+
+    public function isInvited($id)
+    {
+        return in_array($id, $this->invitees()->pluck('organization_id')->toArray());
     }
 
     public function getTime($time)

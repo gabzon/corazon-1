@@ -23,7 +23,7 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.bookmark-star')
                     </a>
-                    <a href="{{ route('profile.favorites') }}" id="favorites" data-tippy-placement="right"
+                    <a href="{{ route('profile.favorites.events') }}" id="favorites" data-tippy-placement="right"
                         data-tippy-content="Favorites"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.heart')
@@ -134,6 +134,14 @@
                     </a>
                     @endcan
 
+                    @can('manage', App\Models\Role::class)
+                    <a href="{{ route('role.index') }}" id="roles" data-tippy-placement="right"
+                        data-tippy-content="Roles"
+                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
+                        @include('icons.keys')
+                    </a>
+                    @endcan
+
                     {{-- <a href="{{ route('setting.index') }}" id="settings" data-tippy-placement="right"
                         data-tippy-content="Settings"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
@@ -173,6 +181,7 @@
     tippy('#organizations');
     tippy('#products');
     tippy('#cities');
+    tippy('#roles');
     tippy('#settings');
     tippy('#logout');
 </script>

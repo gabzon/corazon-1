@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classroom;
+use App\Models\Space;
 use App\Http\Requests\ClassroomStoreRequest;
 use App\Http\Requests\ClassroomUpdateRequest;
 use Illuminate\Http\Request;
 
-class ClassroomController extends Controller
+class SpaceController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -15,7 +15,7 @@ class ClassroomController extends Controller
      */
     public function index(Request $request)
     {
-        $classrooms = Classroom::all();
+        $classrooms = Space::all();
 
         return view('classroom.index', compact('classrooms'));
     }
@@ -26,7 +26,7 @@ class ClassroomController extends Controller
      */
     public function create(Request $request)    
     {
-        return view('classroom.create')->with('location', $request->location);
+        return view('space.create')->with('location', $request->location);
     }
 
     /**
@@ -35,11 +35,11 @@ class ClassroomController extends Controller
      */
     public function store(ClassroomStoreRequest $request)
     {
-        $classroom = Classroom::create($request->validated());
+        $classroom = Space::create($request->validated());
 
-        $request->session()->flash('classroom.id', $classroom->id);
+        $request->session()->flash('space.id', $classroom->id);
 
-        return redirect()->route('classroom.index');
+        return redirect()->route('space.index');
     }
 
     /**
@@ -47,9 +47,9 @@ class ClassroomController extends Controller
      * @param \App\Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Classroom $classroom)
+    public function show(Request $request, Space $space)
     {        
-        return view('classroom.show', compact('classroom'))->with('photos', $classroom->getMedia('classrooms'));
+        return view('space.show', compact('space'))->with('photos', $space->getMedia('spaces'));
     }
 
     /**
@@ -57,9 +57,9 @@ class ClassroomController extends Controller
      * @param \App\Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Classroom $classroom)
+    public function edit(Request $request, Space $space)
     {
-        return view('classroom.edit', compact('classroom'));
+        return view('space.edit', compact('space'));
     }
 
     /**
@@ -67,13 +67,13 @@ class ClassroomController extends Controller
      * @param \App\Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(ClassroomUpdateRequest $request, Classroom $classroom)
+    public function update(ClassroomUpdateRequest $request, Space $space)
     {
-        $classroom->update($request->validated());
+        $space->update($request->validated());
 
-        $request->session()->flash('classroom.id', $classroom->id);
+        $request->session()->flash('space.id', $space->id);
 
-        return redirect()->route('classroom.index');
+        return redirect()->route('space.index');
     }
 
     /**
@@ -81,10 +81,10 @@ class ClassroomController extends Controller
      * @param \App\Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Classroom $classroom)
+    public function destroy(Request $request, Space $space)
     {
-        $classroom->delete();
+        $space->delete();
 
-        return redirect()->route('classroom.index');
+        return redirect()->route('space.index');
     }
 }

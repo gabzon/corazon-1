@@ -48,7 +48,11 @@ class UserRegistrationStatusBadge extends Component
                 case 'waiting':
                     $this->color = 'bg-blue-800 text-blue-100';
                     $this->info = 'Registrations are full, you are in the waiting list';
-                    break;        
+                    break;  
+                case 'invitee':
+                    $this->color = 'bg-yellow-100 text-yellow-800';
+                    $this->info = 'You have been invited';
+                    break;                            
                 default:
                     $this->color = 'bg-gray-100 text-gray-800';
                     break;
