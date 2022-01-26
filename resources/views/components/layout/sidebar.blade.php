@@ -147,10 +147,16 @@
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.settings')
                     </a> --}}
-                    <a href="#" id="logout" data-tippy-placement="right" data-tippy-content="Logout"
-                        class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
-                        @include('icons.logout')
-                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" id="logout" data-tippy-placement="right"
+                            data-tippy-content="Logout"
+                            class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            @include('icons.logout')
+                        </a>
+                    </form>
                 </nav>
             </div>
         </div>

@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4">
+            <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4 ">
 
                 <a href="{{ route('welcome') }}"
                     class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Home</a>
@@ -164,45 +164,62 @@
 
                 @auth
 
-                @can('manage', App\Models\User::class)
-                <a href="{{ route('user.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">
-                    Users
-                </a>
-                @endcan
+                @if (auth()->user()->hasManagementRights())
+                <!-- Account Management -->
+                <div x-data="{ admin: false }">
+                    <div @click="admin= !admin"
+                        class="flex justify-between items-center rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">
+                        <span class="">{{ __('Administration') }}</span>
+                        <div>
+                            <span class="group-hover:text-indigo-600"
+                                x-show="!admin">@include('icons.arrow-down')</span>
+                            <span class="group-hover:text-indigo-600" x-show="admin">@include('icons.x')</span>
+                        </div>
+                    </div>
 
-                @can('manage', App\Models\Course::class)
-                <a href="{{ route('course.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Courses</a>
-                @endcan
+                    <div x-show="admin">
+                        @can('manage', App\Models\User::class)
+                        <a href="{{ route('user.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">
+                            Users
+                        </a>
+                        @endcan
 
-                @can('manage', App\Models\Event::class)
-                <a href="{{ route('event.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Events</a>
-                @endcan
+                        @can('manage', App\Models\Course::class)
+                        <a href="{{ route('course.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Courses</a>
+                        @endcan
 
-                @can('manage', App\Models\Organization::class)
-                <a href="{{ route('organization.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Organizations</a>
-                @endcan
+                        @can('manage', App\Models\Event::class)
+                        <a href="{{ route('event.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Events</a>
+                        @endcan
 
-                @can('manage', App\Models\Location::class)
-                <a href="{{ route('location.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Locations</a>
-                @endcan
+                        @can('manage', App\Models\Organization::class)
+                        <a href="{{ route('organization.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Organizations</a>
+                        @endcan
 
-                @can('manage', App\Models\Style::class)
-                <a href="{{ route('style.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Styles</a>
-                @endcan
+                        @can('manage', App\Models\Location::class)
+                        <a href="{{ route('location.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Locations</a>
+                        @endcan
 
-                @can('manage', App\Models\City::class)
-                <a href="{{ route('city.index') }}"
-                    class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Cities</a>
-                @endcan
+                        @can('manage', App\Models\Style::class)
+                        <a href="{{ route('style.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Styles</a>
+                        @endcan
 
+                        @can('manage', App\Models\City::class)
+                        <a href="{{ route('city.index') }}"
+                            class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Cities</a>
+                        @endcan
+                    </div>
+                </div>
                 @endauth
             </div>
+            @endif
+
             <div class="border-t border-gray-200 pt-4 pb-3">
                 @auth
                 <div class="max-w-8xl mx-auto px-4 flex items-center sm:px-6">
@@ -224,6 +241,7 @@
                     </a>
                 </div>
                 @endauth
+
                 <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
                     @auth
                     <a href="{{ route('dashboard') }}"
@@ -251,12 +269,18 @@
                         Favorites
                     </a>
 
-                    <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
-                        Sign out
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                            class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
+                            {{ __('Log Out') }}
+                        </x-jet-dropdown-link>
+                    </form>
                     @endauth
                     @guest
-                    <a href="{{ route('login') }}"
+                    <a href=" {{ route('login') }}"
                         class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">
                         Login
                     </a>

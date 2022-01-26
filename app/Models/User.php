@@ -2,17 +2,11 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Likeable;
-use App\Contracts\Registrable;
-use App\Models\Like;
-use App\Models\Event;
 use App\Traits\UserBookmarksTrait;
 use App\Traits\UserFavoritesTrait;
 use App\Traits\UserRegistrationsTrait;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,11 +14,10 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Laravel\Socialite\Facades\Socialite;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
     use InteractsWithMedia;
     use HasApiTokens;
@@ -40,6 +33,7 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
+        'email_verified_at',
         'facebook_id',        
         'facebook_token',
         'instagram_id',
@@ -76,8 +70,6 @@ class User extends Authenticatable implements HasMedia
         'twitter',
         'role',
         'is_super',
-        'preferences_verified',
-        'in_newsletter',
         'last_login_at',
         'last_login_ip',
     ];

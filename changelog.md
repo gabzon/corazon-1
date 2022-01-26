@@ -1,3 +1,10 @@
+# v0.2.0
+* Logout button fixed on mobile navbar
+* Logout button fixed on sidebar app
+* Fixed responsive menu
+* Verify email
+
+
 # v0.1.30
 * Landing page: Typo Croatia
 * Landing page: Typo latests
