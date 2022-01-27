@@ -25,7 +25,9 @@
                     <div class="mt-2 text-sm text-yellow-700">
                         <p>
                             This application is still under development, expect to find some bugs. if you find any
-                            bug or you have any comment please take a picture and send it to me.
+                            bug or you have any comment please take a picture and send it to
+                            <a href="mailto:gab.zambrano@gmail.com" class="font-bold">gab.zambrano@gmail.com</a> or
+                            whatsapp <a href="tel:+41 76 571 4931" class="font-bold">+41 76 571 4931</a>.
                         </p>
                     </div>
                 </div>
