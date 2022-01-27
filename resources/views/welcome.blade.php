@@ -70,7 +70,7 @@
     @endguest
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="bg-gray-50">
+    <div class="bg-gray-100">
         <div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 <span class="block">Ready to start dancing?</span>

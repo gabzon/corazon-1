@@ -39,6 +39,9 @@ trait UserRegistrationsTrait {
         }
 
         if ($this->isRegistered($registrable)) {
+            if ($this->getRegistrationStatus($registrable) == 'invitee') {
+                $registrable->registrations()->synch($this->id, ['status'=> 'pre-registered' ]);
+            }
             return $this;
         }
 

@@ -38,10 +38,13 @@
                                     label="Shortname" />
                             </div>
 
+                            @if (auth()->user()->is_super)
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <x-form.select wire:model="organization.status" name="organization.status"
-                                    :options="['active', 'inactive', 'standby', 'open', 'closed']" label="Status" />
+                                    :options="['active', 'inactive', 'standby', 'open', 'working', 'closed']"
+                                    label="Status" />
                             </div>
+                            @endif
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <x-form.select wire:model="organization.type" name="organization.type"

@@ -123,6 +123,24 @@ class CoursePolicy
         return false;
     }
 
+    public function invite(User $user, Course $course)
+    {
+        if ($user->is_super) {
+            return true;
+        }
+
+        
+        if ($user->manageOrganization($course->organization_id) ) {
+            return true;
+        } 
+
+        if ($user->teachInOrganization($course->organization_id) ) {
+            return true;
+        }             
+                
+        return false;
+    }
+
     public function register(User $user, Course $course)
     {
         if (!$course->exists) {

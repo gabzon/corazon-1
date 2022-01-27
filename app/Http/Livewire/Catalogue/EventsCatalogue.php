@@ -2,33 +2,53 @@
 
 namespace App\Http\Livewire\Catalogue;
 
+use App\Models\City;
 use App\Models\Event;
+use App\Models\Style;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class EventsCatalogue extends Component
 {
     use WithPagination;
-    
-    // public $style = 0;
-    public $styleId ;
+        
     public $city;
+    public $styleId ;
     public $type;
 
+    public $cities;
+    public $styles;
+    public $readyToLoad = false;
+
+    public function loadEvents()
+    {
+        $this->readyToLoad = true;
+    }
 
     public function updating($name, $value)
     {
         $this->resetPage();
     }
 
-    public function mount($city = null)
+    public function resetCatalog()
+    {
+        $this->city = null;
+        $this->styleId = null;
+        $this->level = null;        
+    }
+
+    public function mount($city = null, $type = null)
     {
         $this->city = $city;
+        $this->type = $type;
     }
 
     public function render()
     {      
-        $events = Event::with(['city:id,name'])
+        $this->cities = City::has('events')->orderBy('name','asc')->get();
+        $this->styles = Style::has('events')->orderBy('name','asc')->get();
+        
+        $events = Event::with(['city:id,name','location'])
                         ->isActive()
                         ->inCity($this->city)
                         ->style($this->styleId)
@@ -36,8 +56,10 @@ class EventsCatalogue extends Component
                         ->orderBy('start_date', 'asc')
                         ->latest();
         
+        $emptyEvents = Event::whereType('xxxx');
+
         return view('livewire.catalogue.events-catalogue', [
-            'events' => $events->paginate(20) 
+            'events' => $this->readyToLoad ? $events->paginate(20) : $emptyEvents->paginate(2)
         ]);
     }
 }

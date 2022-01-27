@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\lesson;
+use App\Models\Organization;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -40,13 +41,13 @@ class LessonPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user, int $oid)
     {
         if ($user->is_super == true) {
             return true;
         }
         
-        if ($user->hasManagementRights()) {
+        if ($user->hasManagementRights() && $user->manageOrganization($oid)) {
             return true;
         }
 

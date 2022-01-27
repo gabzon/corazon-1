@@ -2,48 +2,56 @@
     <section class="bg-white rounded-lg overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0">
         <ul role="list" class="divide-y divide-gray-200">
             @forelse ($list as $item)
-            <li class="flex items-center p-4 space-x-3">
-                <div class="hidden sm:block sm:flex-shrink-0">
-                    <img src="{{ $item->coverImage }}" alt="{{ $item->name }}"
-                        class="w-16 h-16 object-cover rounded-lg border">
-                </div>
-                <div class="min-w-0 flex-1">
-                    <p class="font-medium text-gray-900 items-center">
-                        <a href="{{ route(strtolower(class_basename($item)) . '.dashboard', $item) }}"
-                            class="hover:text-indigo-700">
-                            {{ $item->name }}
-                            @if ($item->location)
-                            @ {{ $item->location->name }}
+            <li class="p-4">
+                <div class="grid grid-cols-3">
+                    <div class="col-span-3 sm:col-span-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="block flex-shrink-0">
+                                <img src="{{ $item->coverImage }}" alt="{{ $item->name }}"
+                                    class="w-16 h-16 object-cover rounded-lg border">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-medium text-gray-900 items-center">
+                                    <a href="{{ route(strtolower(class_basename($item)) . '.dashboard', $item) }}"
+                                        class="hover:text-indigo-700">
+                                        {{ $item->name }}
+                                        @if ($item->location)
+                                        @ {{ $item->location->shortname ?? $item->location->name }}
+                                        @endif
+                                    </a>
+                                    <span class="ml-2">
+                                        <x-shared.status-dot status="{{ $item->status }}" />
+                                    </span>
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                    {{ $item->start_date->format('d M Y') }} -
+                                    {{ $item->end_date->format('d M Y') }}
+                                    @if (class_basename($item) == 'Event')
+                                    @ {{ $item->start_date->format('H:i') }}
+                                    @endif
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                    <span class="capitalize text-gray-700 font-medium">
+                                        {{ $item->type }}
+                                        @if ($item->level)
+                                        <x-shared.level-tip level="{{ $item->level_code }}" />
+                                        @endif
+                                    </span>
+                                    {{ implode(', ', $item->styles->pluck('name')->toArray()) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 sm:col-span-1">
+                        <div class="flex items-center space-x-2 justify-start sm:justify-end">
+                            <x-shared.register-like-bookmark-buttons :model="$item" size="xs" />
+                            {{-- @if (auth()->user()->isRegistered($item))
+                            <livewire:profile.user-registration-status-badge :model="$item" size="small" />
                             @endif
-                        </a>
-                        <span class="ml-2">
-                            <x-shared.status-dot status="{{ $item->status }}" />
-                        </span>
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        {{ $item->start_date->format('d M Y') }} -
-                        {{ $item->end_date->format('d M Y') }}
-                        @if (class_basename($item) == 'Event')
-                        @ {{ $item->start_date->format('H:i') }}
-                        @endif
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        <span class="capitalize text-gray-700 font-medium">
-                            {{ $item->type }}
-                            @if ($item->level)
-                            <x-shared.level-tip level="{{ $item->level_code }}" />
-                            @endif
-                        </span>
-                        {{ implode(', ', $item->styles->pluck('name')->toArray()) }}
-                    </p>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <x-shared.register-like-bookmark-buttons :model="$item" size="xs" />
-                    {{-- @if (auth()->user()->isRegistered($item))
-                    <livewire:profile.user-registration-status-badge :model="$item" size="small" />
-                    @endif
-                    <livewire:shared.bookmark :model="$item" />
-                    <livewire:shared.like :model="$item" /> --}}
+                            <livewire:shared.bookmark :model="$item" />
+                            <livewire:shared.like :model="$item" /> --}}
+                        </div>
+                    </div>
                 </div>
             </li>
             @empty

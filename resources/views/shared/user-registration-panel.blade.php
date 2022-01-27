@@ -66,15 +66,15 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div>
-                                            <label for="description" class="block text-sm font-medium text-gray-900">
+                                        <div>
+                                            <label for="coments" class="block text-sm font-medium text-gray-900">
                                                 Coments
                                             </label>
                                             <div class="mt-1">
-                                                <textarea id="description" name="description" rows="4"
+                                                <textarea wire:model="comments" id="coments" name="coments" rows="4"
                                                     class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"></textarea>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

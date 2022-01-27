@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -20,8 +21,8 @@ class UserController extends Controller
     }
 
     public function select()
-    {                
-        return UserResource::collection(User::all());              
+    {       
+        return UserResource::collection(User::all());                
     }
 
     /**

@@ -34,6 +34,25 @@ class EventPolicy
         return true;
     }
 
+    public function dashboard(User $user, Event $event)
+    {
+        if ($user->role == 'admin' || $user->is_super == true) {
+            return Response::allow();
+        }
+
+        foreach ($event->organizations as $org) {
+            if ($user->manageOrganization($org->id)) {
+                return Response::allow();
+            }            
+        }
+
+        if ($user->registrationIs($event, 'registered') || $user->registrationIs($event, 'partial')) {
+            return Response::allow();   
+        }
+
+        return false;
+    }
+
     /**
      * Determine whether the user can create models.
      *
@@ -55,6 +74,25 @@ class EventPolicy
     public function update(User $user, Event $event)
     {
         return $user->role === 'admin' || $user->role === 'publisher' || $user->is_super == true;
+    }
+
+
+    public function invite(User $user, Event $event)
+    {
+        if ($user->is_super) {
+            return true;
+        }
+
+        foreach ($event->organizations as $org) {
+            if ($user->manageOrganization($org->id) ) {
+                return true;
+            }  
+            if ($user->teachInOrganization($org->id) ) {
+                return true;
+            }             
+        }
+        
+        return false;
     }
 
     /**

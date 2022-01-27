@@ -21,18 +21,17 @@ class WeekRegistrations extends Component
         $events = auth()->user()->eventRegistrations;  
         $bookmarkedEvents = auth()->user()->bookmarkedEvents;
         
-        $merged = $courses->concat($bookmarkedCourses)->concat($events)->concat($bookmarkedEvents);        
+        $mergedCourses = $courses->concat($bookmarkedCourses)->unique();
+        $mergedEvents = $events->concat($bookmarkedEvents)->unique();        
 
-        $unique = $merged->unique();
+        $unique = $mergedCourses->concat($mergedEvents);
 
     
         $this->list = $unique->filter(function($activity){            
             if ($activity->end_date >= Carbon::today() && $activity->start_date <= Carbon::today()->addDays(7)) {
                 return $activity;
             }                
-        });
-
-        
+        });        
         
     }
 

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Support\Str;
 
 class EventRegistration extends Pivot
 {
@@ -16,6 +16,7 @@ class EventRegistration extends Pivot
         'status',
         'role',
         'option',
+        'comments',
         'event_id',
         'user_id',
         'order_id',
@@ -31,16 +32,18 @@ class EventRegistration extends Pivot
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
 
     public function event()
     {
-        $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class)->withDefault();
     }
 
     public function order()
     {
-        $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class)->withDefault();
     }
 }
+
+

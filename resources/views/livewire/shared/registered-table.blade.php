@@ -8,12 +8,15 @@
         <div class="mb-3 flex justify-between items-center">
             <x-form.search-input wire:model="search" name="Search user" />
             <div>
+                @can('invite', $model)
                 <x-ui.button @click="dropdown = !dropdown" route="#" css="mt-2">
-                    Add invitee
+                    <span x-show="!dropdown">Add invitee</span>
+                    <span x-show="dropdown" x-cloak>Close</span>
                 </x-ui.button>
+                @endcan
             </div>
         </div>
-        <div class="-mr-1 w-full mb-2" x-show="dropdown">
+        <div class="-mr-1 w-full mb-2" x-show="dropdown" x-cloak>
             <livewire:shared.user-select wire:key="instructor" />
         </div>
     </div>
@@ -41,7 +44,10 @@
                                     class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Datetime
                                 </th>
+                                @can('update', $model)
                                 <th></th>
+                                <th></th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -49,23 +55,12 @@
                             <tr>
                                 <td class="pl-4 pr-2 py-4">
                                     <div class="flex items-center">
-                                        <div class="flex-shrink-0 h-10 w-10">
-                                            <img class="h-10 w-10 rounded-full object-cover"
-                                                src="{{ $reg->user->photo }}" alt="{{ $reg->user->name }}">
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{ $reg->user->name }}
-                                            </div>
-                                            <div class="text-sm text-gray-500">
-                                                {{ '@' . $reg->user->username }}
-                                            </div>
-                                        </div>
+                                        <x-user.avatar-username :user="$reg->user" />
                                     </div>
                                 </td>
                                 <td class="px-2 py-4 text-sm whitespace-nowrap text-gray-500">
                                     <livewire:profile.user-registration-status-badge :model="$model" size="xs"
-                                        :user="$reg->user" wire:key="{{ $reg->id }}" />
+                                        :user="$reg->user" wire:key="{{ $reg->id }}" status="{{ $reg->status }}" />
                                 </td>
                                 <td class="px-2 py-4 text-sm text-gray-500">
                                     {{ $reg->role }}
@@ -73,14 +68,19 @@
                                 <td class="px-2 py-4 text-sm text-gray-500">
                                     {{ $reg->created_at }}
                                 </td>
-                                <td class="pr-4 pl-2 py-4 text-sm">
-                                    @can('update', $model)
+                                @can('update', $model)
+                                <td class="py-4 text-sm">
+                                    @if ($reg->comments)
+                                    <span class="text-indigo-500">@include('icons.chat-fill')</span>
+                                    @endif
+                                </td>
+                                <td class="pr-4 py-4 text-sm text-right">
                                     <button wire:click="update({{$reg}})"
                                         class="text-indigo-500 hover:text-indigo-800 font-medium">
                                         @include('icons.pen')
                                     </button>
-                                    @endcan
                                 </td>
+                                @endcan
                             </tr>
                             @empty
                             <tr>
@@ -94,5 +94,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mx-4 my-3">
+        {{ $inscribed->links() }}
     </div>
 </div>

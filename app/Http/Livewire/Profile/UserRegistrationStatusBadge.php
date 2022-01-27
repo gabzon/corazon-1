@@ -10,22 +10,38 @@ class UserRegistrationStatusBadge extends Component
     public string $size;
     public string $color;
     public string $info;
+    public $user;
+    public $model;
     public $status;
-
     
-    public function mount($model, $user = null,  $size = null, $style = 'rounded-full')
+    public function accept()
+    {
+        $this->model->registrations()->syncWithPivotValues($this->user->id, ['status'=> $this->model->default_registration_status ], false);      
+        return redirect(request()->header('Referer'));  
+    }
+
+    public function cancel()
+    {
+        $this->model->registrations()->detach($this->user->id);
+        return redirect(request()->header('Referer'));
+    }
+    
+    public function mount($model, $user = null,  $size = null, $style = 'rounded-full', $status = null)
     {        
         $this->style = $style;
+        $this->model = $model;
 
         if ($user == null) {
-            $user = auth()->user();
+            $this->user = auth()->user();
+        }else {
+            $this->user = $user;
         }
         
-        $this->status = $user->getRegistrationStatus($model);         
-
+        $this->status = $status ?? $this->user->getRegistrationStatus($model);    
+       
         if ($this->status != null) {
             switch ($this->status) {
-                case 'pre-registered':
+                case 'pre-registered':                                
                     $this->color = 'bg-orange-100 text-orange-800';
                     $this->info = 'Pay the organizer to complete your registration.';
                     break;    

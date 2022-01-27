@@ -10,6 +10,7 @@ class DefaultForm extends Component
 {
     public Lesson $lesson;    
     public string $method = 'store';
+    public bool $fullAccess = false;
 
     protected $rules = [
         'lesson.title'         => 'required|string',
@@ -37,6 +38,13 @@ class DefaultForm extends Component
 
     public function mount(Lesson $lesson = null, $cid = null, $oid = null)
     {                       
+        if (auth()->user()->getRegistrationRole(Course::find($lesson->course_id)) == 'student') {
+            $this->fullAccess = false;  
+        }else {
+            $this->fullAccess = true;
+        }
+        
+        
         if ($lesson->exists) {
             $this->lesson = $lesson;
             $this->method = 'update';

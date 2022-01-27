@@ -61,7 +61,17 @@ class EventController extends Controller
 
     public function dashboard(Request $request, Event $event)
     {
-        return view('event.dashboard', compact('event'));
+        return view('event.dashboard.index', compact('event'));
+    }
+
+    public function info(Request $request, Event $event)
+    {
+        return view('event.dashboard.info', compact('event'));
+    }
+
+    public function registrations(Request $request, Event $event)
+    {        
+        return view('event.dashboard.registrations', compact('event'));
     }
 
     /**

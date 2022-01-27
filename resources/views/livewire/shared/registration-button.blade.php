@@ -1,7 +1,6 @@
 <div>
     @if (auth()->check() && !auth()->user()->isRegistered($model))
     @can('register', $model)
-
     <form wire:submit.prevent="register" class="mr-3" {{-- action="{{ route('enroll') }}" method="POST" --}}>
         @csrf
         <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />

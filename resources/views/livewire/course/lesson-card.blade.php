@@ -23,6 +23,11 @@
     </div>
     <div class="mt-2 text-sm text-gray-700 space-y-4">
         {!! $lesson->description !!}
+        @if ($lesson->comments)
+        <div class="mt-2">
+            {{ $lesson->comments }}
+        </div>
+        @endif
         <ul>
             @forelse ($lesson->videos as $video)
             <li class="my-2">

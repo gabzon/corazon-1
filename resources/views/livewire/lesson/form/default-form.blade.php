@@ -14,23 +14,36 @@
                     <div class="px-4 py-5 bg-white sm:p-6">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-4">
+                                @if($fullAccess)
                                 <x-form.text-input wire:model="lesson.title" name="lesson.title" label="Title" />
+                                @else
+                                <h3 class="text-lg leading-6 font-medium text-gray-900 capitalize">{{ $lesson->title }}
+                                </h3>
+                                @endif
                             </div>
 
                             <div class="col-span-6 sm:col-span-2">
+                                @if ($fullAccess)
                                 <x-form.date-input wire:model="lesson.date" name="lesson.date" label="Date" />
+                                @else
+                                <h2 class="text-right">{{ $lesson->date->format('M d, Y') }}</h2>
+                                @endif
                             </div>
 
+                            @if ($fullAccess)
                             <div class="col-span-6">
                                 <x-form.rich-text name="lesson.description"
                                     description="Detailed description of the event." />
                             </div>
+                            @endif
+
 
                             <div class="col-span-6">
-                                <x-form.textarea wire:model="lesson.comments" label="Comments" name="comments" rows="2"
+                                <x-form.textarea wire:model="lesson.comments" label="Comments" name="comments" rows="3"
                                     description="Please write any comments regarding this lesson" />
                             </div>
 
+                            @if ($fullAccess)
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                                 <div>
                                     <label for="course" class="block text-sm font-medium text-gray-700">Course</label>
@@ -49,6 +62,7 @@
                                 </div>
 
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 sm:px-6 flex justify-between items-center ">

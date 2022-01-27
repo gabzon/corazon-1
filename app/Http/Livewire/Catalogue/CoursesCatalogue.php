@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Catalogue;
 
 use App\Models\Course;
+use App\Models\Organization;
 use App\Models\Style;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,7 +19,12 @@ class CoursesCatalogue extends Component
     public $focus;       
     public $day;    
     public $school;
+
+    public $cities;
+    public $styles;
+    public $schools;
     public $readyToLoad = false;
+    
 
     public function loadCourses()
     {
@@ -29,14 +35,25 @@ class CoursesCatalogue extends Component
     {
         $this->resetPage();
     }
+
+    public function resetCatalog()
+    {
+        $this->city = null;
+        $this->styleId = null;
+        $this->level = null;
+        $this->school = null;
+    }
     
     public function mount($city = null)
     {
-        $this->city = $city;
+        $this->city = $city;        
     }
 
     public function render()
     {        
+        $this->cities = \App\Models\City::has('courses')->orderBy('name','asc')->get();
+        $this->styles = Style::has('courses')->orderBy('name','asc')->get();
+        $this->schools = Organization::has('courses')->inCity($this->city)->orderBy('name','asc')->get();        
         Course::shouldExpire()->get()->each->expire();
         
         $fields = [
@@ -51,7 +68,7 @@ class CoursesCatalogue extends Component
             'organization_id', 'space_id', 'is_private',
         ];
         
-        $courses = Course::select($fields)
+        $courses = Course::with(['organization','space'])->select($fields)
                             ->isActive()
                             ->inCity($this->city)
                             ->organization($this->school)

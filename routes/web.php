@@ -117,8 +117,10 @@ Route::middleware(['auth','verified'])->group(function(){
     
     Route::get('event/{event}/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard');
     Route::get('event/{event}/info', [EventController::class, 'info'])->name('event.info');
-    Route::get('event/{event}/students', [EventController::class, 'students'])->name('event.students');
+    Route::get('event/{event}/registrations', [EventController::class, 'registrations'])->name('event.registrations');
     Route::get('event/{event}/stats', [EventController::class, 'stats'])->name('event.stats');
+    Route::get('event/{event}/bookmarks', [EventController::class, 'bookmarks'])->name('event.bookmarks');
+    Route::get('event/{event}/favorites', [EventController::class, 'favorites'])->name('event.favorites');
 
     Route::get('course/{course}/dashboard', [CourseController::class, 'dashboard'])->name('course.dashboard');
     Route::get('course/{course}/info', [CourseController::class, 'info'])->name('course.info');
@@ -128,7 +130,10 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('course/{course}/favorites', [CourseController::class, 'favorites'])->name('course.favorites');
     Route::get('course/{course}/registrations', [CourseController::class, 'registrations'])->name('course.registrations');
 
+
+
     Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
+    Route::get('organization/{organization}/dashboard',[OrganizationController::class, 'dashboard'])->name('organization.dashboard');
 
     Route::get('user-required-data', [UserController::class, 'requiredData'])->name('user-required-data');
     

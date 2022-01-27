@@ -255,4 +255,12 @@ class Organization extends Model implements HasMedia, Favoriteable
         }
         return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
     }
+
+    public function scopeInCity($query, $city)
+    {
+        if (!empty($city)) {
+            return $query->where('city_id', $city);
+        }
+        return $query;
+    }
 }

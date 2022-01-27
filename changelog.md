@@ -1,15 +1,22 @@
-# v0.2.0
+# v0.2.0: Thursday 26th, 2022
 * Logout button fixed on mobile navbar
 * Logout button fixed on sidebar app
 * Fixed responsive menu
 * Verify email
+* Login/Reset password/forgot password/confirm password layouts changed to auth layout
+* Course Dashboard: add lesson button can only be seen if user = super or manager
+* If status is invited display register button
+* Events catalog: reset button added
+* Events catalog: async with loading message added
+* Weekly-Registrations: debug unique query
+* invitee button fixed
+* Registered-table fixed
 
-
-# v0.1.30
+# v0.1.30: Monday 24th, 2022
 * Landing page: Typo Croatia
 * Landing page: Typo latests
 
-# v0.1.29: Sunday 29th, 2022
+# v0.1.29: Sunday 23th, 2022
 * Welcome page: buttons to lastest events and find courses added
 
 # v0.1.28: Friday 21th, 2022

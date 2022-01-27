@@ -131,7 +131,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return DB::table('organization_user')->where('organization_id',$id)->where('user_id', $this->id)->get();
     }
 
-    public function manageOrganization($id)
+    public function manageOrganization($id):bool
     {
         return in_array($id, $this->manages()->pluck('organization_id')->toArray());
     }

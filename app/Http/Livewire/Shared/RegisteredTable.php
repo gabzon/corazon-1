@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Shared;
 
 use App\Models\CourseRegistration;
+use App\Models\EventRegistration;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,10 +13,12 @@ class RegisteredTable extends Component
     use WithPagination;    
     public $model;
     public User $user;
+    public string $basename;
     public string $status;
     public string $role;
+    public string $comments;
     public bool $showForm = false;
-    public CourseRegistration $cr;
+    public $reg;
     public $search = '';
 
     protected $listeners = ['instructorToOrganization' => 'addInvitee'];
@@ -35,6 +38,7 @@ class RegisteredTable extends Component
     {
         $this->model = $model;
         $this->query = $query;
+        $this->basename = class_basename($this->model);
     }
 
     public function save()
@@ -42,20 +46,27 @@ class RegisteredTable extends Component
         //dd([ 'status' => $this->status, 'role' => $this->status, 'username' => $this->user->username] );
         // $this->user->courseRegistrations()
         // $this->model->registrations()->updateExistingPivot($this->user->id, ['status'=> $this->status, 'role'=> $this->role]);
-        $this->cr->status = $this->status;
-        $this->cr->role = $this->role;
-        $this->cr->save();
+        $this->reg->status = $this->status;
+        $this->reg->role = $this->role;
+        $this->reg->comments = $this->comments;
+        $this->reg->save();
         $this->showForm = false;
-        return redirect()->route('course.students', $this->model);
+        return redirect(request()->header('Referer'));
     }
 
-    public function update(CourseRegistration $cr)
-    {        
-        $this->cr = $cr;
-        $this->user = $this->cr->user;
-        $this->status = $cr->status;
-        $this->role = $cr->role; 
-        $this->showForm = true;        
+    public function update($reg)
+    {                
+        if ($this->basename == 'Event') {            
+            $this->reg = EventRegistration::findOrFail($reg['id']);
+        }else{
+            $this->reg = CourseRegistration::findOrFail($reg['id']);
+        }
+                
+        $this->user = User::findOrFail($reg['user_id']);
+        $this->status = $this->reg->status;
+        $this->role = $this->reg->role; 
+        $this->comments = $this->reg->comments ?? '';
+        $this->showForm = true;
     }
 
     public function cancel()
@@ -65,13 +76,14 @@ class RegisteredTable extends Component
 
     public function render()
     {
-        if ($this->query == 'students') {                        
-            $inscribed =  CourseRegistration::where('course_id', $this->model->id)->where('role','student');                        
-        }else{
-            $inscribed = CourseRegistration::where('course_id', $this->model->id);
-        }  
+        if ($this->basename == 'Event') {
+            $inscribed = EventRegistration::with('user')->where('event_id', $this->model->id);
+        } else {
+            $inscribed = CourseRegistration::with('user')->where('course_id', $this->model->id);    
+        }                
+                
         return view('livewire.shared.registered-table', [
-            'inscribed' => $inscribed->paginate(10),
+            'inscribed' => $inscribed->paginate(15),
         ]);
     }
 }

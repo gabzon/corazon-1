@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
-use Illuminate\Support\Str;
 
 class CourseRegistration extends Pivot
 {
@@ -16,6 +15,7 @@ class CourseRegistration extends Pivot
         'status',
         'role',
         'option',
+        'comments',
         'user_id',
         'order_id',
         'course_id',            

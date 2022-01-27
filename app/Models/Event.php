@@ -247,6 +247,11 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
         return $this->belongsToMany(User::class,'event_registrations','event_id','user_id')->withPivot(['status','role','option'])->withTimestamps();
     }
 
+    public function isRegistered($id)
+    {        
+        return $this->registrations()->where('user_id',$id)->exists();
+    }
+
     public function getCoverImageAttribute()
     {
         if ($this->getMedia('events')->last() != null){

@@ -16,7 +16,8 @@ class OrganizationController extends Controller
     {
         $organization = Organization::all();
 
-        return view('organization.index', compact('organization'));
+        return view('organization.index', compact('organization'));    
+        
     }
 
     /**
@@ -103,5 +104,10 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         //
+    }
+
+    public function dashboard(Organization $organization)
+    {
+        return view('organization.dashboard', compact('organization'));   
     }
 }
