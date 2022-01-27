@@ -21,7 +21,7 @@
 
     <main class="py-5 h-screen overflow-y-scroll">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
-            <livewire:catalogue.events-catalogue />
+            <livewire:catalogue.events-catalogue :type="$type" />
             <div class="my-14">&nbsp;</div>
         </div>
     </main>

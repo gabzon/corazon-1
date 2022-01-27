@@ -4,7 +4,7 @@
             <h3 class="text-lg font-bold text-indigo-100">Parties</h3>
             <div
                 class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
-                <ul class="divide-y divide-gray-200">
+                <ul class="divide-y divide-gray-200" wire:init="loadParties">
                     @forelse ($parties as $party)
                     <x-schedule.event-list-item :event="$party" />
                     @empty
@@ -14,7 +14,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="{{ route('events.catalogue') }}"
+                    <a href="{{ route('events.catalogue', ['type' => 'party']) }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>
@@ -25,7 +25,7 @@
             <h3 class="text-lg font-bold text-indigo-100">Workshops</h3>
             <div
                 class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
-                <ul class="divide-y divide-gray-200">
+                <ul class="divide-y divide-gray-200" wire:init="loadWorkshops">
                     @forelse ($workshops as $workshop)
                     <x-schedule.event-list-item :event="$workshop" />
                     @empty
@@ -35,7 +35,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="{{ route('events.catalogue') }}"
+                    <a href="{{ route('events.catalogue', ['type' => 'workshop']) }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>
@@ -46,7 +46,7 @@
             <h3 class="text-lg font-bold text-indigo-100">Festivals</h3>
             <div
                 class="mt-1 h-96 overflow-y-auto shadow bg-white border-2 border-indigo-500 rounded-md overflow-hidden">
-                <ul class="divide-y divide-gray-200">
+                <ul class="divide-y divide-gray-200" wire:init="loadFestivals">
                     @forelse ($festivals as $festival)
                     <x-schedule.event-list-item :event="$festival" />
                     @empty
@@ -56,7 +56,7 @@
                     @endforelse
                 </ul>
                 <div class="my-2 mx-2">
-                    <a href="{{ route('events.catalogue') }}"
+                    <a href="{{ route('events.catalogue', ['type' => 'festival']) }}"
                         class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         View all
                     </a>

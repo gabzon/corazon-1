@@ -7,6 +7,25 @@ use Livewire\Component;
 
 class Events extends Component
 {
+
+    public $readyToLoadParties = false;
+    public $readyToLoadWorkshops = false;
+    public $readyToLoadFestivals = false;
+     
+    public function loadParties()
+    {
+        $this->readyToLoadParties = true;
+    }
+    public function loadWorkshops()
+    {
+        $this->readyToLoadWorkshops = true;
+    }
+
+    public function loadFestivals()
+    {
+        $this->readyToLoadFestivals = true;
+    }
+
     // public $parties;
     // public $workshops;
     // public $festivals;
@@ -28,9 +47,9 @@ class Events extends Component
         Event::shouldExpire()->get()->each->expire();
 
         return view('livewire.schedule.events', [
-            'parties'   => Event::isActive()->where('type','party')->orderBy('start_date','asc')->latest()->get(),
-            'workshops' => Event::isActive()->where('type',"workshop")->orderBy('start_date','asc')->latest()->get(),
-            'festivals' => Event::isActive()->where('type',"festival")->orderBy('start_date','asc')->latest()->get(),
+            'parties'   => $this->readyToLoadParties ? Event::isActive()->where('type','party')->orderBy('start_date','asc')->latest()->get() : [],
+            'workshops' => $this->readyToLoadWorkshops ? Event::isActive()->where('type',"workshop")->orderBy('start_date','asc')->latest()->get() : [],
+            'festivals' => $this->readyToLoadFestivals ? Event::isActive()->where('type',"festival")->orderBy('start_date','asc')->latest()->get() : [],
         ]);
     }
 }

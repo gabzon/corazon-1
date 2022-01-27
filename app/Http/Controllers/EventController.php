@@ -115,11 +115,11 @@ class EventController extends Controller
     }
 
     public function catalogue(Request $request)
-    {        
+    {           
         if (auth()->check()) {
-            return view('event.catalogue');
+            return view('event.catalogue', ['type'=> $request->type]);
         }else{
-            return view('pages.events');
+            return view('pages.events', ['type'=> $request->type]);
         }        
     }
 }

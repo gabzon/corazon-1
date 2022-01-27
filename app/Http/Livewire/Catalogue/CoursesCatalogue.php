@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Catalogue;
 
+use App\Models\City;
 use App\Models\Course;
 use App\Models\Organization;
 use App\Models\Style;
@@ -37,21 +38,22 @@ class CoursesCatalogue extends Component
     }
 
     public function resetCatalog()
-    {
+    {        
         $this->city = null;
         $this->styleId = null;
         $this->level = null;
         $this->school = null;
     }
-    
+
+
     public function mount($city = null)
     {
-        $this->city = $city;        
-    }
+        $this->city = $city;
+    }    
 
     public function render()
     {        
-        $this->cities = \App\Models\City::has('courses')->orderBy('name','asc')->get();
+        $this->cities = City::has('courses')->orderBy('name','asc')->get();        
         $this->styles = Style::has('courses')->orderBy('name','asc')->get();
         $this->schools = Organization::has('courses')->inCity($this->city)->orderBy('name','asc')->get();        
         Course::shouldExpire()->get()->each->expire();
@@ -68,19 +70,19 @@ class CoursesCatalogue extends Component
             'organization_id', 'space_id', 'is_private',
         ];
         
-        $courses = Course::with(['organization','space'])->select($fields)
+        $coursesList = Course::with(['organization','space'])->select($fields)
                             ->isActive()
                             ->inCity($this->city)
                             ->organization($this->school)
                             ->style($this->styleId)
                             ->level($this->level)
                             ->dayOfWeek($this->day) 
-                            ->inRandomOrder();
-        
+                            ->inRandomOrder(); 
+
         $emptyCourses = Course::whereLevel('xxxx');
                                     
         return view('livewire.catalogue.courses-catalogue',[
-            'courses' => $this->readyToLoad ? $courses->paginate(20) : $emptyCourses->paginate(10)
+            'courses' => $this->readyToLoad ? $coursesList->paginate(20) : $emptyCourses->paginate(10)
         ]);
     }
 }
