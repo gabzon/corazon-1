@@ -12,7 +12,7 @@
                     <span class="text-sm text-gray-500 truncate block">
                         {{ implode(', ',$item->styles->pluck('name')->toArray()) }}
                     </span>
-                    <time class="text-sm text-gray-500 inline-flex items-center">
+                    <time class="text-sm text-gray-500 inline-flex items-center whitespace-nowrap">
                         {{ $item->start_date->format('M j, Y') }} @ {{ $item->start_date->format('H:i') }}
                     </time>
                 </a>

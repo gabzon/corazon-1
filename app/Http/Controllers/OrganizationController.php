@@ -108,6 +108,6 @@ class OrganizationController extends Controller
 
     public function dashboard(Organization $organization)
     {
-        return view('organization.dashboard', compact('organization'));   
+        return view('organization.dashboard.index', compact('organization'));   
     }
 }

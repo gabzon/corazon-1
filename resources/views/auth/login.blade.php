@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="mt-8">
-                    <div>
+                    {{-- <div>
                         <div>
                             <p class="text-sm font-medium text-gray-700">
                                 Sign in with
@@ -54,7 +54,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="mt-6">
 

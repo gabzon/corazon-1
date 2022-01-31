@@ -1,6 +1,8 @@
 # v0.2.1: Thursday 16th, 2022
 * Defer loading welcome page events
 * Latests Events view all button filters according to the type
+* Add with media in welcome events queries
+* Facebook login button hiddent
 
 # v0.2.0: Thursday 26th, 2022
 * Logout button fixed on mobile navbar

@@ -70,7 +70,7 @@ class CoursesCatalogue extends Component
             'organization_id', 'space_id', 'is_private',
         ];
         
-        $coursesList = Course::with(['organization','space'])->select($fields)
+        $coursesList = Course::with(['organization.media','space'])->select($fields)
                             ->isActive()
                             ->inCity($this->city)
                             ->organization($this->school)

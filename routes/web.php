@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+Route::get('/facebook-login', [WelcomeController::class, 'fbLogin'])->name('facebook.login');
 
 Route::get('/auth/redirect', [LoginController::class,'redirectToFacebook']);
 Route::get('/auth/callback', [LoginController::class, 'handleFacebookCallback']);

@@ -22,4 +22,9 @@ class WelcomeController extends Controller
         return view('policy');
     }
 
+    public function fbLogin()
+    {
+        return view('auth.fb-login');
+    }
+
 }

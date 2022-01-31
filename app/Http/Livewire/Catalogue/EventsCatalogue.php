@@ -48,7 +48,7 @@ class EventsCatalogue extends Component
         $this->cities = City::has('events')->orderBy('name','asc')->get();
         $this->styles = Style::has('events')->orderBy('name','asc')->get();
         
-        $events = Event::with(['city:id,name','location'])
+        $events = Event::with(['city:id,name','location', 'media'])
                         ->isActive()
                         ->inCity($this->city)
                         ->style($this->styleId)
