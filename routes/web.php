@@ -131,10 +131,12 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('course/{course}/favorites', [CourseController::class, 'favorites'])->name('course.favorites');
     Route::get('course/{course}/registrations', [CourseController::class, 'registrations'])->name('course.registrations');
 
-
-
     Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
     Route::get('organization/{organization}/dashboard',[OrganizationController::class, 'dashboard'])->name('organization.dashboard');
+    Route::get('organization/{organization}/members',[OrganizationController::class, 'members'])->name('organization.members');
+    Route::get('organization/{organization}/courses',[OrganizationController::class, 'courses'])->name('organization.courses');
+    Route::get('organization/{organization}/events',[OrganizationController::class, 'events'])->name('organization.events');
+    Route::get('organization/{organization}/settings',[OrganizationController::class, 'settings'])->name('organization.settings');
 
     Route::get('user-required-data', [UserController::class, 'requiredData'])->name('user-required-data');
     

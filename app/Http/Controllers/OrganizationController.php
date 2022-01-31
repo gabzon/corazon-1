@@ -110,4 +110,24 @@ class OrganizationController extends Controller
     {
         return view('organization.dashboard.index', compact('organization'));   
     }
+    
+    public function members(Organization $organization)
+    {
+        return view('organization.dashboard.members', compact('organization'));
+    }
+
+    public function courses(Organization $organization)
+    {
+        return view('organization.dashboard.courses', compact('organization'));
+    }
+
+    public function events(Organization $organization)
+    {
+        return view('organization.dashboard.events', compact('organization'));
+    }
+
+    public function settings(Organization $organization)
+    {
+        return view('organization.dashboard.settings', compact('organization'));
+    }
 }

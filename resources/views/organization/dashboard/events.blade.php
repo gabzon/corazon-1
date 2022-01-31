@@ -9,12 +9,12 @@
                     class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Back
                 </a>
-                {{-- @can('update', $course) --}}
-                {{-- <a href="{{ route('organization.edit', $organization) }}"
+                {{-- @can('update', $organization)
+                <a href="{{ route('organization.edit', $organization) }}"
                     class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Edit
-                </a> --}}
-                {{-- @endcan --}}
+                </a>
+                @endcan --}}
             </div>
         </div>
     </x-slot>
@@ -26,8 +26,9 @@
             </div>
             <main class="lg:col-span-9 xl:col-span-6">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    <x-partials.development-card description="Collection of important information at a glance"
-                        duration="2 month + testing + feedback improvements" start="Mid September" link="" />
+                    <x-partials.development-card description="List of events given by a school"
+                        duration="1 month + testing + feedback improvements" start="Mid june"
+                        link="https://trello.com/c/RqaH8oqV" />
                 </div>
             </main>
             <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">

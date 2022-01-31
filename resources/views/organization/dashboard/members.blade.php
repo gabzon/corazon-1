@@ -10,10 +10,10 @@
                     Back
                 </a>
                 {{-- @can('update', $course) --}}
-                {{-- <a href="{{ route('organization.edit', $organization) }}"
+                <a href="{{ route('organization.edit', $organization) }}"
                     class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Edit
-                </a> --}}
+                </a>
                 {{-- @endcan --}}
             </div>
         </div>
@@ -24,15 +24,11 @@
             <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('organization.dashboard.nav')
             </div>
-            <main class="lg:col-span-9 xl:col-span-6">
+            <main class="lg:col-span-12 xl:col-span-9">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    <x-partials.development-card description="Collection of important information at a glance"
-                        duration="2 month + testing + feedback improvements" start="Mid September" link="" />
+                    <livewire:organization.members-table />
                 </div>
             </main>
-            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">
-                Area to be defined
-            </aside>
         </div>
     </div>
 
