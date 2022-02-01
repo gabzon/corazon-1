@@ -1,4 +1,18 @@
-# v0.2.1: Thursday 16th, 2022
+# v0.2.2: Tuesday 1st Feb, 2022
+* Add space debugged: Classroom naming
+* Course show: push down promo video 
+* Course show: fix scroll to the bottom
+* Course show: classroom changed from Studio/Room
+* Course show: focus school reordered
+* Courses form level fixed
+* Courses form: Focus level default value fixed
+* Courses form: Selfwork to Solo
+* Organization profile page: only authorized can see status and type
+* Organization profile page: styles added
+* Event card max-w-xs
+
+
+# v0.2.1: Sunday 30th, 2022
 * Defer loading welcome page events
 * Latests Events view all button filters according to the type
 * Add with media in welcome events queries

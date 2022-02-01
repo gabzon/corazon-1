@@ -31,7 +31,7 @@
             @endif
 
             <tr class="text-sm font-medium border-b">
-                <td class="text-gray-500 py-2">Classroom</td>
+                <td class="text-gray-500 py-2">Studio/Room</td>
                 <td class="text-gray-900 py-2 text-right">{{ $course->space->name }}</td>
             </tr>
         </table>

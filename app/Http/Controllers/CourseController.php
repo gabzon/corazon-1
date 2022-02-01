@@ -63,9 +63,8 @@ class CourseController extends Controller
     {        
         if (auth()->user()->cannot('dashboard', $course)) {                        
             return view('course.show', compact('course'));           
-        }
-        // $course = Course::with('lessons')->where('id', $c->id);
-        return view('course.dashboard', compact('course'));             
+        }        
+        return view('course.dashboard.index', compact('course'));             
     }
 
     public function info(Request $request, Course $course)
@@ -75,7 +74,7 @@ class CourseController extends Controller
 
     public function students(Request $request, Course $course)
     {                        
-        return view('course.students', compact('course'));                   
+        return view('course.dashboard.students', compact('course'));                   
     }
 
     public function stats(Request $request, Course $course)

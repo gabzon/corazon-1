@@ -38,7 +38,7 @@ class CourseDefault extends Component
             $this->course->level = 'beginner';
         }
         if ($value == 'b1' || $value == 'b2' || $value == 'b3') {
-            $this->course->level = 'beginner';
+            $this->course->level = 'intermediate';
         }
         if ($value == 'c1' || $value == 'c2' || $value == 'c3') {
             $this->course->level = 'advanced';
@@ -74,6 +74,8 @@ class CourseDefault extends Component
             $this->action = 'update';
         } else {
             $this->course = new Course();
+            $this->course->level_code = '';
+            $this->course->focus = '';
         }
     }
 

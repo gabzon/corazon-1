@@ -1,4 +1,4 @@
-<article class="group rounded-lg mb-4 mx-3">
+<article class="group rounded-lg mb-4 mx-3 max-w-xs">
     <a href="{{ route('event.show', $event) }}">
         <div>
             @if ($event->getMedia('events')->last() != null)

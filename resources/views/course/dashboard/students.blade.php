@@ -23,14 +23,11 @@
                 @include('course.dashboard.left')
             </div>
             <main
-                class="lg:col-span-9 xl:col-span-6 h-screen overflow-y-scroll overflow-x-hidden py-4 sm:py-6 md:py-8 lg:py-10">
+                class="lg:col-span-9 xl:col-span-9 h-screen overflow-y-scroll overflow-x-hidden py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('course.dashboard._mobile-menu')
                 <livewire:shared.registered-table :model="$course" query="students" />
                 <div class="my-28 md:my-24">&nbsp;</div>
             </main>
-            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10">
-                @include('course.dashboard.right')
-            </aside>
         </div>
     </div>
 

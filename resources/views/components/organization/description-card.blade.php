@@ -41,6 +41,8 @@
             </div>
             @endif
 
+
+            @can('update', $organization)
             @if ($organization->type)
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Type</dt>
@@ -61,6 +63,21 @@
                 <dd class="text-gray-900">{{ $organization->status }}</dd>
             </div>
             @endif
+            @endcan
+
+            <div class="py-3 flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">Styles</dt>
+                <dd class="text-gray-900">
+                    <ul>
+                        @foreach ($organization->styles as $s)
+                        <li>{{ $s->name }}</li>
+                        @endforeach
+
+                    </ul>
+                </dd>
+            </div>
+
+
         </dl>
     </div>
 </div>

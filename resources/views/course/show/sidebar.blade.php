@@ -25,21 +25,28 @@
 
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Level</dt>
-                <dd class="text-gray-900">{{ $course->level }} {{ $course->level_number }}</dd>
-            </div>
-
-            <div class="py-3 flex justify-between text-sm font-medium">
-                <dt class="text-gray-500">School</dt>
                 <dd class="text-gray-900">
-                    <a href="{{ route('organization.view', $course->organization) }}">
-                        {{ $course->organization->name }}
-                    </a>
+                    {{ $course->level }}
+                    <x-shared.level-tip level="{{ $course->level_code }}" /> {{ $course->level_number }}
+                    @if ($course->level_label)
+                    <span class="block text-gray-500 text-right">{{ $course->level_label }}</span>
+                    @endif
                 </dd>
             </div>
 
             <div class="py-3 flex justify-between text-sm font-medium">
                 <dt class="text-gray-500">Focus</dt>
                 <dd class="text-gray-900">{{ $course->focus }}</dd>
+            </div>
+
+            <div class="py-3 flex justify-between text-sm font-medium">
+                <dt class="text-gray-500">School</dt>
+                <dd class="text-gray-900">
+                    <a href="{{ route('organization.view', $course->organization) }}"
+                        class="text-indigo-500 hover:text-indigo-800">
+                        {{ $course->organization->name }}
+                    </a>
+                </dd>
             </div>
         </dl>
     </div>
@@ -61,7 +68,7 @@
         <x-partials.social-links :model="$course->organization" />
     </div>
 
-    <div class="my-2">
+    <div class="my-3">
         <x-shared.register-like-bookmark-buttons :model="$course" size="medium" />
     </div>
 
