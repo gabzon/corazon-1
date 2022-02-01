@@ -81,6 +81,13 @@ class Organization extends Model implements HasMedia, Favoriteable
         return in_array($id, $this->team()->pluck('user_id')->toArray());
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')
+                    ->withPivot('role')        
+                    ->withTimestamps();
+    }
+
     public function managers()
     {
         return $this->belongsToMany(User::class, 'organization_user', 'organization_id', 'user_id')

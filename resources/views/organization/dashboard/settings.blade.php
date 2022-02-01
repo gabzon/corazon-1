@@ -27,7 +27,7 @@
             <main class="lg:col-span-9 xl:col-span-6">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
                     <x-partials.development-card description="School settings"
-                        duration="1 month + testing + feedback improvements" start="November" link="" />
+                        duration="1 month + testing + feedback improvements" start="November p" link="" />
                 </div>
             </main>
             <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">

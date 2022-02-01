@@ -194,6 +194,12 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return $this->belongsToMany(Style::class);
     }
 
+    public function getDaysBeforeBirthdayAttribute()
+    {
+        $birthday = $this->birthday->year(date('Y'));
+        return Carbon::now()->diffInDays($birthday, false);
+    }
+
     // public function videoLessons()
     // {
     //     return $this->belongsToMany();

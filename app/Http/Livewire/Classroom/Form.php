@@ -68,7 +68,7 @@ class Form extends Component
             $this->action = 'update';
             $this->classroom = $classroom;
         } else {
-            $this->classroom = new Classroom;
+            $this->classroom = new Space;
             $this->classroom->color = '';
             $this->classroom->currency = '';
             $this->classroom->floor_type = '';
