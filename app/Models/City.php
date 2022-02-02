@@ -41,6 +41,7 @@ class City extends Model implements HasMedia
         'image',
         
         'description',
+        'user_id',
     ];
 
 

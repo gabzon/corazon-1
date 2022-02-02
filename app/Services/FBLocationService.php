@@ -117,11 +117,12 @@ class FBLocationService
 		
 		if ($city != null) {
 			return $city->id;
-		} else {	
+		} else {				
 			$city = City::Create([
 				'name'    => $this->fbCity,
 				'slug'    => Str::slug($this->fbCity . '-' . $this->country),
 				'country' => $this->country,
+				'user_id' => auth()->user()->id,
 			]);
 			return $city->id;
 		}
