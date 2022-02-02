@@ -21,12 +21,16 @@ class RegisteredTable extends Component
     public $reg;
     public $search = '';
 
-    protected $listeners = ['instructorToOrganization' => 'addInvitee'];
+    protected $listeners = ['instructorToOrganization' => 'addInvitee', 'userSelected' => 'addInvitee'];
 
-    public function addInvitee($user)
-    {               
-        if ( !$this->model->isRegistered($user['id'], 'invitee') ) {            
-            $this->model->registrations()->attach($user['id'], ['status'=>'invitee']);
+    public function addInvitee(User $user)
+    {        
+        if (! $user->exists) {
+            return;
+        }
+
+        if ( !$this->model->isRegistered($user->id, 'invitee') ) {            
+            $this->model->registrations()->attach($user->id, ['status'=>'invitee']);
             session()->flash('success','User invited successfully!');
         }else{
             session()->flash('warning','User was already invited!');

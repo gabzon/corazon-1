@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen overflow-y-auto">
+<div class="flex flex-col min-h-screen overflow-y-auto">
     <div class="flex-none px-3 sm:px-0">
         @can('update', $course)
         @include('course.dashboard._mobile-menu')

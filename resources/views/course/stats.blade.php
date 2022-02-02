@@ -26,7 +26,7 @@
                 </div>
                 <main class="lg:col-span-9 xl:col-span-6 overflow-y-scroll">
                     @include('course.dashboard._mobile-menu')
-                    Coming soon
+                    Comming soon!
                 </main>
                 <aside class="hidden xl:block xl:col-span-4">
                     @include('course.dashboard.right')

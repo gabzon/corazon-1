@@ -42,11 +42,11 @@ class DefaultForm extends Component
             $this->lesson = $lesson;
             $this->method = 'update';
             $course = Course::findOrFail($lesson->course_id);    
-            if (auth()->user()->getRegistrationRole($course) == 'student') {
-                $this->fullAccess = false;  
-            }else {
-                $this->fullAccess = true;
+            
+            if (auth()->user()->cannot('update', $lesson)) {
+                $this->fullAccess = false;
             }
+
         } else {            
             $this->lesson = new Lesson();
             $this->lesson->course_id = $cid;

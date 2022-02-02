@@ -32,12 +32,12 @@ trait UserRegistrationsTrait {
     {        
         if ( !$registrable->exists) {
             return $this;        
-        }
+        }        
         
         if ($registrable->status != 'active') {
             return $this;
         }
-
+        
         if ($this->isRegistered($registrable)) {
             if ($this->getRegistrationStatus($registrable) == 'invitee') {
                 $registrable->registrations()->synch($this->id, ['status'=> 'pre-registered' ]);

@@ -61,7 +61,7 @@
                             @foreach ($collection as $item)
                             <tr>
                                 <td class="px-6 py-4 break-normal text-sm font-medium text-gray-900">
-                                    <a href="{{ route('organization.show', $item) }}" class="hover:text-indigo-600">
+                                    <a href="{{ route('organization.view', $item) }}" class="hover:text-indigo-600">
                                         {{ $item->name }}
                                     </a>
                                 </td>
@@ -80,7 +80,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $item->status }}
                                 </td>
-                                <td class="px-3 py-4 flex justify-end">
+                                <td class="px-3 py-4 flex justify-end space-x-2">
+                                    <a href="{{ route('organization.show', $item) }}"
+                                        class="text-gray-400 hover:text-indigo-600">
+                                        @include('icons.view')
+                                    </a>
+                                    <a href="{{ route('organization.dashboard', $item) }}"
+                                        class="text-gray-400 hover:text-indigo-600">
+                                        @include('icons.dashboard')
+                                    </a>
                                     <a href="{{ route('organization.edit', $item) }}"
                                         class="text-gray-400 hover:text-indigo-600">
                                         @include('icons.pen')

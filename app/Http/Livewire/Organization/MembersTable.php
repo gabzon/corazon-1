@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Organization;
 
 use App\Models\Organization;
 use App\Models\OrganizationMembers;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,10 +12,18 @@ class MembersTable extends Component
 {   
     use WithPagination;
     public Organization $org;
+    public $showUser = false;
+    public User $user;
     
     public function mount(Organization $organization)
     {
         $this->org = $organization; 
+    }
+
+    public function view(User $user)
+    {        
+        $this->user = $user;        
+        $this->showUser = true;
     }
 
     public function render()

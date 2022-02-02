@@ -1,6 +1,8 @@
 # v0.2.3: Wednesday 2th Feb, 2022
 * getRegistrationRole bug when adding a lesson
 * Importing a facebook event bug when creating a city fixed 
+* Select User livewire component
+* remove link to user profile from avatar component
 
 # v0.2.2: Tuesday 1st Feb, 2022
 * Add space debugged: Classroom naming

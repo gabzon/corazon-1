@@ -14,7 +14,7 @@ class RegistrationButton extends Component
     public bool $refreshPage = false;
 
     public function register()
-    {        
+    {                
         // $this->authorise('bookmark', $this->model);
         auth()->user()->register($this->model);
         

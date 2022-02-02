@@ -9,15 +9,19 @@
             <x-form.search-input wire:model="search" name="Search user" />
             <div>
                 @can('invite', $model)
-                <x-ui.button @click="dropdown = !dropdown" route="#" css="mt-2">
+                <button type="button" @click="dropdown = !dropdown"
+                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span x-show="!dropdown">Add invitee</span>
                     <span x-show="dropdown" x-cloak>Close</span>
-                </x-ui.button>
+                </button>
                 @endcan
             </div>
         </div>
         <div class="-mr-1 w-full mb-2" x-show="dropdown" x-cloak>
-            <livewire:shared.user-select wire:key="instructor" />
+            {{--
+            <livewire:shared.user-select wire:key="instructor" /> --}}
+
+            <livewire:shared.select-user :oids="$model->organization()->pluck('id')->toArray()" />
         </div>
     </div>
 
@@ -84,7 +88,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4" class="px-6 py-4  text-sm text-gray-500">
+                                <td colspan="6" class="px-6 py-4  text-sm text-gray-500">
                                     No people found
                                 </td>
                             </tr>

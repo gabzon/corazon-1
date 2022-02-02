@@ -8,6 +8,7 @@ use App\Traits\UserRegistrationsTrait;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
@@ -102,12 +103,17 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
                     ->wherePivot('role', 'manager')
                     ->withTimestamps();
     }
+
+    public function manageOrganization($id):bool
+    {
+        return in_array($id, $this->manages()->pluck('organization_id')->toArray());
+    }
     
     public function teaches()
     {
         return $this->belongsToMany(Organization::class, 'organization_user', 'user_id', 'organization_id')
                     ->withPivot('role')
-                    ->wherePivot('role', 'instructor')
+                    ->wherePivotIn('role', ['instructor', 'team'])
                     ->withTimestamps();
     }
 
@@ -118,11 +124,19 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
                     ->wherePivot('role', 'student')
                     ->withTimestamps();
     }
+
     public function team()
     {
         return $this->belongsToMany(Organization::class, 'organization_user', 'user_id', 'organization_id')
                     ->withPivot('role')
-        // ->wherePivot('role', 'student')
+                    ->wherePivotIn('role', ['instructor','team','manager'])
+                    ->withTimestamps();   
+    }
+    
+    public function organizations()
+    {
+        return $this->belongsToMany(Organization::class, 'organization_user', 'user_id', 'organization_id')
+                    ->withPivot('role')        
                     ->withTimestamps();   
     }
 
@@ -131,11 +145,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return DB::table('organization_user')->where('organization_id',$id)->where('user_id', $this->id)->get();
     }
 
-    public function manageOrganization($id):bool
-    {
-        return in_array($id, $this->manages()->pluck('organization_id')->toArray());
-    }
-    
     public function teachInOrganization($id)
     {
         return in_array($id, $this->teaches()->pluck('organization_id')->toArray());
@@ -198,6 +207,16 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         $birthday = $this->birthday->year(date('Y'));
         return Carbon::now()->diffInDays($birthday, false);
+    }
+
+    public function scopeInOrganization($query, $oids)
+    {
+        if (!empty($oids)) {
+            return $query->whereHas('organizations', function(Builder $q) use ($oids) {
+                $q->whereIn('organization_id', $oids);
+            });
+        }
+        return $query;
     }
 
     // public function videoLessons()

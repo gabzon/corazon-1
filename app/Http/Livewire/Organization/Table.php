@@ -25,7 +25,7 @@ class Table extends Component
 
     public function render()
     {
-        $organizations = Organization::with(['city:id,name,country'])->select(['id', 'name', 'contact', 'type', 'email', 'status', 'city_id'])->latest();
+        $organizations = Organization::with(['city:id,name,country'])->select(['id', 'name', 'slug','contact', 'type', 'email', 'status', 'city_id'])->latest();
 
         foreach ($this->filterColumns as $column => $value) {
             if (!empty($value)) {

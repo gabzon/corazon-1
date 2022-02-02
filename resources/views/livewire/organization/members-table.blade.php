@@ -1,5 +1,15 @@
-<div>
-    <!-- This example requires Tailwind CSS v2.0+ -->
+<div x-data="{ open: @entangle('showUser') }">
+    <div x-show="oaaapen">
+        @if ($user)
+        {{ $user->name}}
+        {{--
+        <livewire:user.slideover :user="$user" /> --}}
+        @endif
+    </div>
+    @if ($user)
+    asdf
+    {{ $user->name}}
+    @endif
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -44,16 +54,19 @@
                             @forelse ($members as $member)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
+                                    <button type="button" class="flex items-center text-left"
+                                        wire:click="view({{ $member->user->id }})">
                                         <x-user.avatar-username :user="$member->user" />
-                                    </div>
+                                    </button>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
+                                    @if ($member->user->birthday)
                                     <div class="text-sm text-gray-900">
                                         {{ $member->user->birthday->format('F d, Y') }}
                                     </div>
                                     <div class="text-sm text-gray-500">{{ $member->user->DaysBeforeBirthday }} days
                                         for birthday</div>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $member->user->mobile }}
