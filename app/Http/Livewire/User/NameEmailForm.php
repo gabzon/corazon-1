@@ -14,7 +14,7 @@ class NameEmailForm extends Component
     {
         return [
             'user.name'         => 'required|string',
-            'user.email'        => 'required|string|max:25|unique:users,email,'.$this->user->id,                    
+            'user.email'        => 'required|string|max:100|unique:users,email,'.$this->user->id,                    
         ];
     } 
 

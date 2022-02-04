@@ -206,7 +206,14 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function getDaysBeforeBirthdayAttribute()
     {
         $birthday = $this->birthday->year(date('Y'));
-        return Carbon::now()->diffInDays($birthday, false);
+         
+        $diff = Carbon::now()->diffInDays($birthday, false);
+        
+        if ( $diff < 0) {                        
+            return $birthday->addYear();            
+        } else {
+            return $birthday;    
+        }
     }
 
     public function scopeInOrganization($query, $oids)

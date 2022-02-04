@@ -55,17 +55,14 @@
                                             <p class="text-sm text-gray-500">{{ '@'.$user->username }}</p>
                                         </div>
                                         <div class="mt-5 flex flex-wrap space-y-3 sm:space-y-0 sm:space-x-3">
-                                            <button type="button"
-                                                class="flex-shrink-0 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:flex-1">
-                                                Message
-                                            </button>
-                                            <button type="button"
-                                                class="flex-1 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                Call
-                                            </button>
+                                            <a href="mailto:{{ $user->email}}"
+                                                class="flex-shrink-0 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:flex-1">Message</a>
+                                            <a href="tel:{{ $user->mobile }}"
+                                                class="flex-1 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Call</a>
                                             <span class="ml-3 inline-flex sm:ml-0">
-                                                <div class="relative inline-block text-left">
-                                                    <button type="button"
+                                                <div class="relative inline-block text-left"
+                                                    x-data="{ options: false }">
+                                                    <button type="button" @click="options = !options"
                                                         class="inline-flex items-center p-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-400 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                         id="options-menu-button" aria-expanded="false"
                                                         aria-haspopup="true">
@@ -77,19 +74,14 @@
                                                                 d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                                                         </svg>
                                                     </button>
-
-                                                    <!--
-                              Dropdown panel, show/hide based on dropdown state.
-  
-                              Entering: "transition ease-out duration-100"
-                                From: "transform opacity-0 scale-95"
-                                To: "transform opacity-100 scale-100"
-                              Leaving: "transition ease-in duration-75"
-                                From: "transform opacity-100 scale-100"
-                                To: "transform opacity-0 scale-95"
-                            -->
-                                                    <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                                        role="menu" aria-orientation="vertical"
+                                                    <div x-transition:enter="transition ease-out duration-100"
+                                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                                        x-transition:enter-end="transform opacity-100 scale-100"
+                                                        x-transition:leave="transition ease-in duration-75"
+                                                        x-transition:leave-start="transform opacity-100 scale-100"
+                                                        x-transition:leave-end="transform opacity-0 scale-95"
+                                                        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                                        role="menu" aria-orientation="vertical" x-show="options"
                                                         aria-labelledby="options-menu-button" tabindex="-1">
                                                         <div class="py-1" role="none">
                                                             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
@@ -121,33 +113,45 @@
                                         </dd>
                                     </div>
                                     @endif
+                                    @if ($user->address)
                                     <div class="sm:flex sm:px-6 sm:py-5">
                                         <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
-                                            Location
+                                            Address
                                         </dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
-                                            New York, NY, USA
+                                            {{ $user->address }}
+                                            {{ $user->address_info }}
+                                            {{ $user->zip }}
+                                            {{ $user->city }}
+                                            {{ $user->country }}
                                         </dd>
                                     </div>
+                                    @endif
+
                                     <div class="sm:flex sm:px-6 sm:py-5">
                                         <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
-                                            Website
+                                            Email
                                         </dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
-                                            ashleyporter.com
+                                            {{ $user->email }}
                                         </dd>
                                     </div>
+                                    @if ($user->birthday)
                                     <div class="sm:flex sm:px-6 sm:py-5">
                                         <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
                                             Birthday
                                         </dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
                                             <time datetime="1982-06-23">
-                                                June 23, 1982
+                                                {{ $user->birthday->format('F d, y') }} ({{ $user->age }} years old)
                                             </time>
                                         </dd>
                                     </div>
+                                    @endif
                                 </dl>
+                            </div>
+                            <div class="py-4">
+                                <livewire:profile.registered-courses :user="$user" :org="$org" />
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Organization;
 use App\Models\Organization;
 use App\Models\OrganizationMembers;
 use App\Models\User;
+
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -14,6 +15,8 @@ class MembersTable extends Component
     public Organization $org;
     public $showUser = false;
     public User $user;
+    public $search;
+    public $gender;
     
     public function mount(Organization $organization)
     {
@@ -29,7 +32,13 @@ class MembersTable extends Component
     public function render()
     {        
         return view('livewire.organization.members-table', [
-            'members' => OrganizationMembers::with('user')->where('organization_id', $this->org->id)->paginate(10)        
+            'members' => OrganizationMembers::with('user')
+                        ->where('organization_id', $this->org->id)
+                        ->byUser($this->search)
+                        ->byGender($this->gender)
+                        ->paginate(10)        
         ]);
     }
 }
+
+

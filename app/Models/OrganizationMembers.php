@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrganizationMembers extends Pivot
 {
@@ -19,5 +20,27 @@ class OrganizationMembers extends Pivot
     public function organization()
     {
         return $this->belongsTo(Organization::class, 'organization_id')->withDefault();
+    }
+    
+    public function scopeByUser($query, $user)
+    {
+        if (!empty($user)) {
+            return $query->whereHas('user', function (Builder $q) use ($user) {
+                $q->where('name', 'like', '%'. $user . '%')
+                ->orWhere('email', 'like', '%'. $user . '%')
+                ->orWhere('username', 'like', '%'. $user . '%');
+            });
+        }
+        return $query;
+    }
+    
+    public function scopeByGender($query, $gender)
+    {
+        if (!empty($gender)) {
+            return $query->whereHas('user', function (Builder $q) use ($gender) {
+                $q->where('gender', $gender); 
+            });
+        }
+        return $query;
     }
 }
