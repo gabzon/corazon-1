@@ -79,7 +79,7 @@ class CourseController extends Controller
 
     public function stats(Request $request, Course $course)
     {        
-        return view('course.stats', compact('course'));                   
+        return view('course.dashboard.stats', compact('course'));                   
     }
     
     public function bookmarks(Request $request, Course $course)

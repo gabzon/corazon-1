@@ -5,9 +5,12 @@
     @endcan
 
     <div x-data="{ dropdown: false }">
-        <div class="mb-3 flex justify-between items-center">
-            <x-form.search-input wire:model="search" name="Search user" />
-            <div>
+        <div class="mb-3 grid grid-cols-4 gap-0 sm:gap-6 items-center">
+            <div class="ml-1 col-span-4 sm:col-span-3">
+                <x-form.search-input wire:model="search" name="Search user" />
+            </div>
+
+            <div class="col-span-4 sm:col-span-1 sm:flex sm:justify-end mt-1">
                 @can('invite', $model)
                 <button type="button" @click="dropdown = !dropdown"
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
