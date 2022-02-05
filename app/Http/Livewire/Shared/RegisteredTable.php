@@ -87,7 +87,7 @@ class RegisteredTable extends Component
         }                
                 
         return view('livewire.shared.registered-table', [
-            'inscribed' => $inscribed->paginate(15),
+            'inscribed' => $inscribed->paginate(20),
         ]);
     }
 }
