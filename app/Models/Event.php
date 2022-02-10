@@ -77,6 +77,11 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
               ->height(200);              
     }
 
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
@@ -275,6 +280,11 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
         })->when($type, function($query) use ($type){
             $query->type($type);
         });
+    }
+
+    public function getOrgIdAttribute()
+    {
+        return $this->organizations()->pluck('id')->toArray();
     }
 
 }

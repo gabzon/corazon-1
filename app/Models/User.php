@@ -226,6 +226,26 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return $query;
     }
 
+    public function scopeByNameEmailUsername($query, $search)
+    {
+        if (!empty($search)) {
+            return  $query->where(function($q) use ($search){
+                $q->where('name','like','%'. $search .'%')
+                    ->orWhere('email', 'like','%'. $search .'%')
+                    ->orWhere('username', 'like','%'. $search .'%');
+            });
+        }
+        return $query;
+    }
+
+    public function scopeByGender($query, $gender)
+    {
+        if (! empty($gender)) {
+            return $query->where('gender', $gender);
+        }
+        return $query;
+    }
+
     // public function videoLessons()
     // {
     //     return $this->belongsToMany();

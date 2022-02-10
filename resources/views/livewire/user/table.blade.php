@@ -1,26 +1,28 @@
 <div>
-    <div class="mb-3 grid grid-cols-7 gap-6">
-        <div class="col-span-1">
-            <x-form.select wire:model="paginate" name="paginate" :options="[10,15,20,25,50,100]" />
+    <div class="mb-3 grid grid-cols-8 gap-6">
+        <div class="col-span-7 sm:col-span-1">
+            <x-form.select wire:model="paginate" name="Per Page" :options="[10,15,20,25,50,100]" />
         </div>
-        <div class="col-span-2">
-            <x-form.search-input wire:model="filterColumns.name" name="Search name" />
+        <div class="col-span-7 sm:col-span-3">
+            <x-form.search-input wire:model="search" name="Search by name, email, username" />
         </div>
-        <div class="col-span-1">
+        <div class="col-span-7 sm:col-span-1">
             <x-form.select wire:model="filterColumns.role" name="role"
                 :options="['all','admin','publisher','user','manager','instructor']" />
         </div>
-        <div class="col-span-1">
-            <x-form.select wire:model="filterColumns.gender" name="gender" :options="['male','female']" />
+        <div class="col-span-7 sm:col-span-1">
+            <x-form.select wire:model="gender" name="gender" :options="['male','female']" />
         </div>
-        <div class="col-span-1">
+        {{-- <div class="col-span-7 sm:col-span-1">
+
             <x-form.select wire:model="filterColumns.organization" name="organization"
                 :options="App\Models\Organization::orderBy('name','asc')->get()" />
         </div>
         <div class="col-span-1">
+
             <x-form.select wire:model="filterColumns.city" name="city"
                 :options="App\Models\City::orderBy('name','asc')->get()" />
-        </div>
+        </div> --}}
     </div>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -95,12 +97,15 @@
                                                     class="text-xs text-indigo-600 hover:text-indigo-800 ml-1">Impersonate</a>
                                                 @endif
                                             </div>
-                                            <div class="text-sm leading-5 text-gray-500">{{$user->email}}</div>
+                                            <div class="text-sm leading-5 text-gray-500">{{ '@' . $user->username}}
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{ $user->birthday }}</div>
+                                    @if ($user->birthday)
+                                    <div class="text-sm text-gray-900">{{ $user->birthday->format('M d, Y') }}</div>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{ $user->gender }}</div>

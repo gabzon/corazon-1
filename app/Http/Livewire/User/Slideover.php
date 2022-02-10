@@ -9,12 +9,12 @@ use Livewire\Component;
 class Slideover extends Component
 {
     public User $user;
-    public Organization $org;
+    public array $orgId;
     
-    public function mount(User $user, Organization $org)
+    public function mount(User $user,  $orgId)
     {
         $this->user = $user;
-        $this->org = $org;
+        $this->orgId = $orgId;
     }
 
     public function render()

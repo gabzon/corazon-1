@@ -59,6 +59,22 @@
                             </div>
                         </div>
 
+                        <div class="w-full">
+                            <div class="mt-5 relative flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="is_recurrent" wire:model="event.is_recurrent" name="is_recurrent"
+                                        type="checkbox"
+                                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="is_recurrent" class="font-medium text-gray-700">Is recurrent</label>
+                                    <span id="is_recurrent-description" class="text-gray-500">
+                                        Check if this event repeats monthly or weekly
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

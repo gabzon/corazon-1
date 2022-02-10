@@ -43,4 +43,12 @@ class OrganizationMembers extends Pivot
         }
         return $query;
     }
+
+    public function scopeByRole($query, $role)
+    {
+        if (!empty($role)) {
+            return $query->where('role', $role);
+        }
+        return $query;
+    }
 }

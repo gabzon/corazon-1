@@ -16,6 +16,7 @@ class MembersTable extends Component
     public $showUser = false;
     public User $user;
     public $search;
+    public $role;
     public $gender;
     
     public function mount(Organization $organization)
@@ -36,6 +37,7 @@ class MembersTable extends Component
                         ->where('organization_id', $this->org->id)
                         ->byUser($this->search)
                         ->byGender($this->gender)
+                        ->byRole($this->role)
                         ->paginate(10)        
         ]);
     }

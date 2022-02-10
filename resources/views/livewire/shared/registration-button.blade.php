@@ -16,7 +16,7 @@
         @can('unregister', $model)
 
         {{-- {{ auth()->user()->getEventRegistrationStatus($event) }} --}}
-        <div class="mr-2">
+        <div class="mr-1">
             <livewire:profile.user-registration-status-badge :model="$model" size="{{ $size }}" />
         </div>
 
@@ -28,8 +28,8 @@
             <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />
             <input type="hidden" name="id" value="{{ $model->id }}" />
             <button id="unregister" data-tippy-placement="top" data-tippy-content="Cancel registration"
-                class="max-w-xs flex-1 rounded-full p-2 flex items-center justify-center text-base font-medium text-gray-500 hover:bg-red-600 hover:text-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-red-500 sm:w-full">
-                @include('icons.garbage')
+                class="max-w-xs flex-1 rounded-full p-2 flex items-center justify-center text-base font-medium text-red-600 hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-red-500 sm:w-full">
+                @include('icons.x')
             </button>
         </form>
         @endif

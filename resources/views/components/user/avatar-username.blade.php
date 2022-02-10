@@ -7,7 +7,7 @@
             {{ $user->name }}
         </div>
         <div class="text-sm text-gray-500">
-            {{ $user->email }}
+            {{ '@' . $user->username }}
         </div>
     </div>
 </div>

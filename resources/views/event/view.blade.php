@@ -10,7 +10,6 @@
     <div class="bg-gray-50">
         <div class="max-w-2xl mx-auto py-10 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
-
                 <div class="flex flex-col">
                     @include('event.show.left')
                 </div>

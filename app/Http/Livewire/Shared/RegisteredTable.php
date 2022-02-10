@@ -14,12 +14,14 @@ class RegisteredTable extends Component
     public $model;
     public User $user;
     public string $basename;
-    public string $status;
-    public string $role;
+    public $status;
+    public $role;
+    public $gender;
     public string $comments;
     public bool $showForm = false;
+    public bool $showUser = false;
     public $reg;
-    public $search = '';
+    public $search;
 
     protected $listeners = ['instructorToOrganization' => 'addInvitee', 'userSelected' => 'addInvitee'];
 
@@ -36,6 +38,12 @@ class RegisteredTable extends Component
             session()->flash('warning','User was already invited!');
         }
     }  
+
+    public function view(User $user)
+    {        
+        $this->user = $user;        
+        $this->showUser = true;
+    }
 
 
     public function mount($model, $query = null)
@@ -71,6 +79,7 @@ class RegisteredTable extends Component
         $this->role = $this->reg->role; 
         $this->comments = $this->reg->comments ?? '';
         $this->showForm = true;
+        $this->showUser = false;
     }
 
     public function cancel()
@@ -81,9 +90,19 @@ class RegisteredTable extends Component
     public function render()
     {
         if ($this->basename == 'Event') {
-            $inscribed = EventRegistration::with('user')->where('event_id', $this->model->id);
+            $inscribed = EventRegistration::with('user')
+                                            ->where('event_id', $this->model->id)
+                                            ->byUser($this->search)
+                                            ->byStatus($this->status)
+                                            ->byRole($this->role)
+                                            ->byGender($this->gender);
         } else {
-            $inscribed = CourseRegistration::with('user')->where('course_id', $this->model->id);    
+            $inscribed = CourseRegistration::with('user')
+                                            ->where('course_id', $this->model->id)
+                                            ->byUser($this->search)
+                                            ->byStatus($this->status)
+                                            ->byRole($this->role)
+                                            ->byGender($this->gender);    
         }                
                 
         return view('livewire.shared.registered-table', [

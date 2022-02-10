@@ -1,3 +1,22 @@
+# v0.2.4: Thursday 10th Feb, 2022
+* Course Dashboard > Registered Table: Admin can search by name, email, username
+* Course Dashboard > Registered Table: Admin can filter by gender
+* Course Dashboard > Registered Table: Admin can filter by status
+* Course Dashboard > Registered Table: Admin can filter by role
+* Course Dashboard > Registered Table: When admin clicks on user avatar it opens up slideover with user info
+* Avatar username component: Changed email for username
+* Show Event page debugged
+* Admin Event Index: filters outside table
+* Admin Event Index: is recurrent filer added
+* Event edit: is recurrent added to events
+* Bookmark button: new design
+* Favorite button: new design
+* Course Dashboard info: organization redirection
+* Admin users index: fixed search filter
+* Admin users index: gender filter added
+* Members table: search by user, by gender, by role filters added 
+
+
 # v0.2.3: Wednesday 2th Feb, 2022
 * getRegistrationRole bug when adding a lesson
 * Importing a facebook event bug when creating a city fixed 

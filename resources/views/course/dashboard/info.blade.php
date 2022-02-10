@@ -79,7 +79,7 @@
                                     <div class="py-3 flex justify-between text-sm font-medium">
                                         <dt class="text-gray-500">School</dt>
                                         <dd class="text-gray-900">
-                                            <a href="{{ route('organization.show', $course->organization) }}"
+                                            <a href="{{ route('organization.view', $course->organization) }}"
                                                 class="text-indigo-500 hover:text-indigo-800">
                                                 {{ $course->organization->name }}
                                             </a>

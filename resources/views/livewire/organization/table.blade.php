@@ -85,7 +85,7 @@
                                         class="text-gray-400 hover:text-indigo-600">
                                         @include('icons.view')
                                     </a>
-                                    <a href="{{ route('organization.dashboard', $item) }}"
+                                    <a href="{{ route('organization.members', $item) }}"
                                         class="text-gray-400 hover:text-indigo-600">
                                         @include('icons.dashboard')
                                     </a>

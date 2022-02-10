@@ -20,7 +20,7 @@ class RegisteredCourses extends Component
 
     public function render()
     {
-        $courses = CourseRegistration::where('user_id', $this->user->id)->get();
+        $courses = CourseRegistration::with('user', 'course')->where('user_id', $this->user->id)->get();
         return view('livewire.profile.registered-courses',[
             'courses' => $courses
         ]);

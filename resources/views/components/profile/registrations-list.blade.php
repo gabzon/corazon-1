@@ -3,7 +3,7 @@
         <ul role="list" class="divide-y divide-gray-200">
             @forelse ($list as $item)
             <li class="p-4">
-                <div class="grid grid-cols-3">
+                <div class="grid grid-cols-3 items-center">
                     <div class="col-span-3 sm:col-span-2">
                         <div class="flex items-center space-x-3">
                             <div class="block flex-shrink-0">
@@ -44,7 +44,12 @@
                     </div>
                     <div class="col-span-3 sm:col-span-1">
                         <div class="flex items-center space-x-2 justify-start sm:justify-end">
+
                             <x-shared.register-like-bookmark-buttons :model="$item" size="xs" />
+                            <livewire:shared.bookmark :model="$item" />
+                            <livewire:shared.favorite-button :model="$item" />
+
+
                             {{-- @if (auth()->user()->isRegistered($item))
                             <livewire:profile.user-registration-status-badge :model="$item" size="small" />
                             @endif

@@ -20,6 +20,8 @@
         </div>
     </a>
     @auth
-    <x-shared.register-like-bookmark-buttons :model="$class" size="sm" />
+    <div class="my-1">
+        <x-shared.register-like-bookmark-buttons :model="$class" size="sm" />
+    </div>
     @endauth
 </div>

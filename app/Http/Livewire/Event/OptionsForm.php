@@ -22,6 +22,7 @@ class OptionsForm extends Component
         'event.description'     => 'nullable',
         'event.video'           => 'nullable',
         'event.is_private'      => 'nullable',
+        'event.is_recurrent'    => 'nullable',
         'event.default_registration_status' => 'nullable',
     ];
 
@@ -43,6 +44,8 @@ class OptionsForm extends Component
     {
         if ($event->exists) {
             $this->event = $event;
+            $this->event->is_private = $event->is_private ?? false;
+            $this->event->is_recurrent = $event->is_recurrent ?? false;
         }
     }
 

@@ -1,11 +1,11 @@
-<div class="ml-3 inline-flex items-center">
+<div class="inline-flex items-center">
     @can('favorite', $model)
     <form wire:submit.prevent="favorite" {{-- action="{{ route('like') }}" method="POST" --}}>
         @csrf
         <input type="hidden" name="favoritable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
         <button id="favorite" data-tippy-placement="top" data-tippy-content="Favorite"
-            class="py-2 flex items-center justify-center text-gray-400 hover:text-indigo-600">
+            class="p-2 flex items-center justify-center text-gray-500 bg-gray-100 hover:bg-indigo-100 hover:text-indigo-600 rounded-full">
             {{-- @lang('Like') --}}
             @include('icons.heart')
         </button>
@@ -19,7 +19,7 @@
         <input type="hidden" name="favoritable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
         <button id="unfavorite" data-tippy-placement="top" data-tippy-content="Unfavorite"
-            class="py-2 flex items-center justify-center text-indigo-500 hover:text-indigo-700">
+            class="p-2 flex items-center justify-center text-indigo-500 bg-indigo-100 hover:bg-gray-100 hover:text-gray-500 rounded-full">
             {{-- @lang('Unlike') --}}
             @include('icons.heart-fill')
         </button>

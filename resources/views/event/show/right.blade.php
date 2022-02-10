@@ -29,8 +29,6 @@
 
 
 <div class="mt-2">
-    <h3 class="sr-only">Description</h3>
-
     <div>
         {{-- <h3 class="font-medium text-gray-900 pb-1">Information</h3> --}}
 
@@ -90,17 +88,21 @@
     </div>
 </div>
 
-<x-shared.register-like-bookmark-buttons :model="$event" />
-
-<form class=" mt-3">
-    <div>
-        <x-partials.social-links :model="$event" />
+<div class="mt-4 flex justify-between items-center">
+    @auth
+    <div class="inline-flex items-center space-x-3">
+        <livewire:shared.bookmark :model="$event" />
+        <livewire:shared.favorite-button :model="$event" />
     </div>
+    @endauth
+    <x-partials.social-links :model="$event" />
+</div>
 
-</form>
+<div class="mt-6">
+    <x-shared.register-like-bookmark-buttons :model="$event" />
+</div>
 
-<section aria-labelledby="details-heading" class="mt-12">
-    <h2 id="details-heading" class="sr-only">Additional details</h2>
+<section aria-labelledby="details-heading" class="mt-10">
 
     <div class="border-t divide-y divide-gray-200">
 
@@ -127,7 +129,7 @@
         </div>
         @endif --}}
 
-        <div x-data="{ open : true }">
+        <div x-data="{ open : false }">
             <button type="button"
                 class="group relative w-full py-6 flex justify-between items-center text-left focus:outline-none"
                 @click="open = !open">
@@ -145,14 +147,8 @@
             </button>
             <div x-show="open">
                 <div class="pb-6 prose prose-sm">
-                    <div class="mb-5" x-data="{ full: false }">
-
-                        <p x-show="!full">{!! Str::limit($event->description, 150) !!}</p>
-                        <p x-show="full" x-cloak>{!! $event->description !!}</p>
-                        <button @click="full = !full" class="hover:text-indigo-600">
-                            <span x-show="!full">show more</span>
-                            <span x-show="full">show less</span>
-                        </button>
+                    <div class="mb-5">
+                        {!! $event->description !!}
                     </div>
                 </div>
             </div>
@@ -233,6 +229,10 @@
             </button>
             <div x-show="open">
                 <x-location.details :location="$event->location" />
+                <br>
+            </div>
+            <div class="my-16">
+                <br><br>
             </div>
         </div>
         @endif

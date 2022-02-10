@@ -139,6 +139,7 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         return $this->belongsTo(\App\Models\Organization::class);
     }
 
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
@@ -369,6 +370,11 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         
         
         return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
+    public function getOrgIdAttribute()
+    {
+        return $this->organization()->pluck('id')->toArray();
     }
 
 }

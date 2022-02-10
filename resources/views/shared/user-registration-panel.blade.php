@@ -1,4 +1,4 @@
-<div class="fixed inset-0 overflow-hidden z-50" role="dialog" aria-modal="true" x-cloak x-show="open">
+<div class="fixed inset-0 overflow-hidden z-50" role="dialog" aria-modal="true" x-cloak x-show="openForm">
     <div class="absolute inset-0 overflow-hidden">
         <!-- Background overlay, show/hide based on slide-over state. -->
         <div class="absolute inset-0" aria-hidden="true">
@@ -13,7 +13,7 @@
               From: "translate-x-0"
               To: "translate-x-full"
           -->
-                <div class="w-screen max-w-md" @click.away="open = false">
+                <div class="w-screen max-w-md" @click.away="openForm = false">
                     <form wire:submit.prevent="save"
                         class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                         <div class="flex-1 h-0 overflow-y-auto">
@@ -23,7 +23,7 @@
                                         Edit User Registration
                                     </h2>
                                     <div class="ml-3 h-7 flex items-center">
-                                        <button type="button" @click="open = false"
+                                        <button type="button" @click="openForm = false"
                                             class="bg-indigo-700 rounded-md text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                                             <span class="sr-only">Close panel</span>
                                             <!-- Heroicon name: outline/x -->

@@ -8,20 +8,23 @@
                 @auth
                 <a href="{{ url()->previous() }}"
                     class="mr-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Back
+                    @include('icons.chevron-left', ['style'=>'w-3 h-3'])
+                    <span class="hidden sm:inline sm:ml-2">Back</span>
                 </a>
 
                 @can('dashboard', $course)
                 <a href="{{ route('course.dashboard', $course) }}"
                     class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Dashboard
+                    @include('icons.dashboard')
+                    <span class="hidden sm:inline sm:ml-2">Dashboard</span>
                 </a>
                 @endcan
 
                 @can('update', $course)
                 <a href="{{ route('course.edit', $course) }}"
                     class="ml-2 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Edit
+                    @include('icons.pen')
+                    <span class="hidden sm:inline sm:ml-2">Edit</span>
                 </a>
                 @endcan
 

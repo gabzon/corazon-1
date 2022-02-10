@@ -11,6 +11,14 @@ class Table extends Component
 {
     use WithPagination;
     public $paginate = 10;
+    public $search;
+    public $gender;
+    public $role;
+
+    public function updating($name, $value)
+    {
+        $this->resetPage();
+    } 
 
     public function impersonate($uid)
     {
@@ -29,8 +37,11 @@ class Table extends Component
 
     public function render()
     {
+        $users = User::byNameEmailUsername($this->search)
+                        ->byGender($this->gender)
+                        ->orderBy('name', 'asc');
         return view('livewire.user.table', [
-            'users' => User::paginate($this->paginate)
+            'users' => $users->paginate($this->paginate)
         ]);
     }
 }

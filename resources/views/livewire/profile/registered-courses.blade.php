@@ -33,13 +33,14 @@
                                     {{ $c->course->name }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    {{ $c->role }}
+                                    <x-partials.days-of-week :class="$c->course" />
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    {{ $c->status }}
+                                    {{ $c->role }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <livewire:profile.user-registration-status-badge :model="$c->course" size="xs"
+                                        :user="$c->user" wire:key="{{ $c->id }}" status="{{ $c->status }}" />
                                 </td>
                             </tr>
                             @empty

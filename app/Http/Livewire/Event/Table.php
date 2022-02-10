@@ -18,6 +18,7 @@ class Table extends Component
         'date'      => '',
         'city'      => 0,
         'status'    => '',
+        'is_recurrent' => false
     ];
 
     public function updating($name, $value)
@@ -33,7 +34,7 @@ class Table extends Component
     public function render()
     {
         $events = Event::with(['city:id,name'])
-                        ->select(['id','name','start_date','status', 'type', 'city_id'])
+                        ->select(['id','name','start_date','status', 'type', 'city_id', 'is_recurrent'])
                         ->style($this->style)                        
                         ->latest();
 
@@ -47,9 +48,11 @@ class Table extends Component
                     $events->whereMonth('start_date', '=' , date("m", strtotime($value)));
                 } else if ($column == 'city'){
                     $events->where('city_id',$value);
-                } else {
+                } else if ($column == 'status') {
                     $events->where('status', $value);
-                }                              
+                } else{
+                    $events->where('is_recurrent', $value);
+                }                            
             }
         }
 

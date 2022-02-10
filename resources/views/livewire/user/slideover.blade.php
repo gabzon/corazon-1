@@ -113,6 +113,37 @@
                                         </dd>
                                     </div>
                                     @endif
+
+                                    <div class="sm:flex sm:px-6 sm:py-5">
+                                        <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
+                                            Email
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
+                                            {{ $user->email }}
+                                        </dd>
+                                    </div>
+                                    <div class="sm:flex sm:px-6 sm:py-5">
+                                        <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
+                                            Mobile
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
+                                            {{ $user->mobile }}
+                                        </dd>
+                                    </div>
+
+                                    @if ($user->birthday)
+                                    <div class="sm:flex sm:px-6 sm:py-5">
+                                        <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
+                                            Birthday
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
+                                            <time datetime="1982-06-23">
+                                                {{ $user->birthday->format('F d, y') }} ({{ $user->age }} years old)
+                                            </time>
+                                        </dd>
+                                    </div>
+                                    @endif
+
                                     @if ($user->address)
                                     <div class="sm:flex sm:px-6 sm:py-5">
                                         <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
@@ -127,31 +158,11 @@
                                         </dd>
                                     </div>
                                     @endif
-
-                                    <div class="sm:flex sm:px-6 sm:py-5">
-                                        <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
-                                            Email
-                                        </dt>
-                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
-                                            {{ $user->email }}
-                                        </dd>
-                                    </div>
-                                    @if ($user->birthday)
-                                    <div class="sm:flex sm:px-6 sm:py-5">
-                                        <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0 lg:w-48">
-                                            Birthday
-                                        </dt>
-                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:ml-6 sm:col-span-2">
-                                            <time datetime="1982-06-23">
-                                                {{ $user->birthday->format('F d, y') }} ({{ $user->age }} years old)
-                                            </time>
-                                        </dd>
-                                    </div>
-                                    @endif
                                 </dl>
                             </div>
                             <div class="py-4">
-                                <livewire:profile.registered-courses :user="$user" :org="$org" />
+                                {{--
+                                <livewire:profile.registered-courses :user="$user" :org="$org" /> --}}
                             </div>
                         </div>
                     </div>

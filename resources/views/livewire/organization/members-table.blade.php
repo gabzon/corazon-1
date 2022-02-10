@@ -1,7 +1,7 @@
 <div x-data="{ open: @entangle('showUser') }" class="mx-3 sm:mx-0">
     <div x-show="open">
         @if ($user)
-        <livewire:user.slideover :user="$user" key="{{ now() }}" :org="$org" />
+        <livewire:user.slideover :user="$user" key="{{ now() }}" :orgId="$org->pluck('id')->toArray()" />
         @endif
     </div>
 
@@ -11,9 +11,8 @@
                 <x-form.search-input wire:model="search" name="Search by name, email, username" />
             </div>
         </div>
-        <div>
-            {{--
-            <x-form.select wire:model="filterColumns.status" name="Status" :options="['female','male']" /> --}}
+        <div class="col-span-5 sm:col-span-1">
+            <x-form.select wire:model="role" name="Role" :options="['manager','student']" />
         </div>
         <div class="col-span-5 sm:col-span-1">
             <x-form.select wire:model="gender" name="Gender" :options="['female','male']" />
@@ -33,7 +32,7 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Username
+                                    Email
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -70,7 +69,7 @@
                                     </button>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ '@' . $member->user->username }}
+                                    {{ $member->user->email }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     @if ($member->user->birthday)
@@ -100,7 +99,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     No members found!
                                 </td>
                             </tr>
