@@ -13,6 +13,7 @@
         <div class="text-sm items-center text-gray-500 capitalize">
             <div>
                 {{ $class->level }}
+                <x-shared.level-tip level="{{ $class->level_code }}" />
             </div>
             <div>
                 {{ $class->focus }}
