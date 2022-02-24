@@ -82,6 +82,11 @@ class EventRegistration extends Pivot
         }
         return $query;   
     }
+
+    public function getNameAttribute()
+    {
+        return $this->event->name;
+    }
 }
 
 

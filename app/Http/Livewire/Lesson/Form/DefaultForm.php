@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Lesson\Form;
 
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Lesson;
 use Livewire\Component;
 
@@ -11,6 +12,10 @@ class DefaultForm extends Component
     public Lesson $lesson;    
     public string $method = 'store';
     public bool $fullAccess = true;
+    public Event|null $event;
+    public string $type = 'course';
+    public string|int $organization = '';
+    public string|int $workshop = '';
 
     protected $rules = [
         'lesson.title'         => 'required|string',
@@ -18,9 +23,21 @@ class DefaultForm extends Component
         'lesson.description'   => 'nullable|string',
         'lesson.comments'      => 'nullable|string',
         'lesson.user_id'       => 'required',
+        'organization'         => 'required|integer|min:1',
+        'workshop'             => 'required|integer|min:1',
         'lesson.course_id'     => 'required',
         'lesson.organization_id' => 'required',
     ];
+
+    public function updatedOrganization($value)
+    {
+        $this->lesson->organization_id = $value;
+    }
+
+    public function updatedWorkshop($value)
+    {
+        $this->lesson->course_id = $value;
+    }
 
     public function save()
     {        
@@ -36,8 +53,8 @@ class DefaultForm extends Component
 
     }
 
-    public function mount(Lesson $lesson = null, $cid = null, $oid = null)
-    {                       
+    public function mount(Lesson $lesson = null, $cid = null, $oid = null, Event $event = null)
+    {                               
         if ($lesson->exists) {
             $this->lesson = $lesson;
             $this->method = 'update';
@@ -49,9 +66,21 @@ class DefaultForm extends Component
 
         } else {            
             $this->lesson = new Lesson();
-            $this->lesson->course_id = $cid;
             $this->lesson->user_id = auth()->user()->id;
-            $this->lesson->organization_id = $oid;
+
+            if ($event->exists) {
+                $this->event = $event;
+                $this->organizations = $event->organizations;                
+                $this->courses = $event->courses;
+                $this->type = 'event';
+                $this->lesson->course_id = '';
+                $this->lesson->organization_id = '';                
+            }else{
+                $this->lesson->course_id = $cid;
+                $this->lesson->organization_id = $oid;
+            }
+            
+
         }
     }
 

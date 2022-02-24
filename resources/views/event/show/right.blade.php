@@ -71,9 +71,8 @@
                 <tr>
                     <td class="text-gray-500 capitalize pr-5 py-2">Venue</td>
                     <td class="text-gray-900">
-                        <a href="#location" class="text-indigo-500 hover:text-indigo-700">
-                            {{ $event->location->name }}, {{ $event->location->city->name }}
-                        </a>
+                        {{ $event->location->name }}, {{
+                        $event->location->city->name }}
                     </td>
                 </tr>
                 @endif
@@ -101,6 +100,14 @@
 <div class="mt-6">
     <x-shared.register-like-bookmark-buttons :model="$event" />
 </div>
+
+@if ($event->courses)
+@if (auth()->user()->isRegistered($event))
+<div class="mt-4">
+    @include('event.show.workshops')
+</div>
+@endif
+@endif
 
 <section aria-labelledby="details-heading" class="mt-10">
 

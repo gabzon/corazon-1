@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LessonStoreRequest;
 use App\Http\Requests\LessonUpdateRequest;
+use App\Models\Event;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 
@@ -25,11 +26,24 @@ class LessonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {                        
-        return view('lesson.create',[
-            'cid'   => $request->cid, 
-            'oid'   => $request->oid,
-        ]);
+    {        
+        
+        $args = [];
+        
+        if ($request->has('cid')) {
+            $args['cid'] = $request->cid; 
+        }   
+
+        if ($request->has('oid')) {            
+            $args['oid'] = $request->oid; 
+        }
+
+        if ($request->has('event')) {
+            $event = Event::with(['courses','organizations'])->findOrFail($request->event);
+            $args['event'] = $event;            
+        }
+
+        return view('lesson.create', $args);
     }
 
     /**

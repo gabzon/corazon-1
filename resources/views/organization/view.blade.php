@@ -14,12 +14,14 @@
                 <x-ui.button route="{{ url()->previous() }}" color="secondary">
                     Back
                 </x-ui.button>
+                @can('update', $organization)
                 <x-ui.button route="#" css="ml-3" color="secondary">
                     Manage
                 </x-ui.button>
                 <x-ui.button route="{{ route('organization.edit', $organization) }}" css="ml-3">
                     Edit
                 </x-ui.button>
+                @endcan
             </div>
 
         </div>

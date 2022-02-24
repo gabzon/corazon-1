@@ -20,13 +20,12 @@
         </div>
     </x-slot>
 
-    <div class="min-h-full">
+    <div class="h-screen overflow-y-scroll">
         <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('course.dashboard.left')
             </div>
-            <main
-                class="lg:col-span-9 xl:col-span-9 h-screen overflow-y-scroll overflow-x-hidden py-4 sm:py-6 md:py-8 lg:py-10">
+            <main class="lg:col-span-9 xl:col-span-9 py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('course.dashboard._mobile-menu')
                 <livewire:shared.registered-table :model="$course" />
                 <div class="my-28 md:my-24">&nbsp;</div>
@@ -35,3 +34,21 @@
     </div>
 
 </x-app-layout>
+
+
+
+
+
+
+{{-- <div class="h-screen overflow-y-scroll">
+    <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
+            @include('course.dashboard.left')
+        </div>
+        <main class="lg:col-span-9 xl:col-span-6">
+            <div class="py-4 sm:py-6 md:py-8 lg:py-10">
+                @include('course.dashboard.main')
+            </div>
+        </main>
+    </div>
+</div> --}}

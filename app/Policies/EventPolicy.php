@@ -200,6 +200,14 @@ class EventPolicy
             return Response::deny("Cannot unregister without registering first");
         }
 
+        if ($event->type == 'workshop' ){
+            foreach ($event->courses as $class) {
+                if ($user->isRegistered($class)) {
+                    return Response::deny("Cannot unregister if registered in workshops");
+                }
+            }
+        }
+
         return Response::allow();
     }
 

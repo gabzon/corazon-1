@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Requests\EventStoreRequest;
 use App\Http\Requests\EventUpdateRequest;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -61,7 +62,11 @@ class EventController extends Controller
 
     public function dashboard(Request $request, Event $event)
     {
-        return view('event.dashboard.index', compact('event'));
+        $courses = Course::with('lessons')->where('event_id', $event->id)->get();
+        return view('event.dashboard.index',[
+            'event' => $event,
+            'courses' => $courses,
+        ]);
     }
 
     public function info(Request $request, Event $event)

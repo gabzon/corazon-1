@@ -56,6 +56,14 @@
             <livewire:course.form.videos :course="$course" />
         </div>
 
+        @if ($course->type == 'workshop')
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+            <livewire:course.form.course-event :course="$course" />
+        </div>
+        @endif
+
         <x-jet-section-border />
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">

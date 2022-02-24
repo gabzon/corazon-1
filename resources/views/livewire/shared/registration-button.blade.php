@@ -33,7 +33,10 @@
             </button>
         </form>
         @endif
-
+        @else
+        <div class="mr-1">
+            <livewire:profile.user-registration-status-badge :model="$model" size="{{ $size }}" />
+        </div>
         @endcan
     </div>
     @endif

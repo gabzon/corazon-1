@@ -7,7 +7,7 @@
             <input type="hidden" name="bookmarkable_type" value="{{ get_class($model) }}" />
             <input type="hidden" name="id" value="{{ $model->id }}" />
             <button id="bookmark" data-tippy-placement="top" data-tippy-content="Bookmark"
-                class="p-2 flex items-center justify-center text-gray-500 bg-gray-100 hover:bg-indigo-100 hover:text-indigo-700 rounded-full">
+                class="p-2 flex items-center justify-center text-gray-500 bg-gray-200 hover:bg-indigo-100 hover:text-indigo-700 rounded-full">
                 {{-- @lang('Like') --}}
                 @include('icons.bookmark-star')
             </button>
@@ -27,7 +27,7 @@
             <input type="hidden" name="bookmarkable_type" value="{{ get_class($model) }}" />
             <input type="hidden" name="id" value="{{ $model->id }}" />
             <button id="unbookmark" data-tippy-placement="top" data-tippy-content="Unbookmark"
-                class="p-2 flex items-center justify-center text-indigo-600 bg-indigo-100 hover:bg-gray-100 hover:text-gray-500 rounded-full">
+                class="p-2 flex items-center justify-center text-indigo-600 bg-indigo-100 hover:bg-gray-200 hover:text-gray-500 rounded-full">
                 {{-- @lang('Unlike') --}}
                 @include('icons.bookmark-star-fill')
             </button>

@@ -31,7 +31,11 @@
 
     <div class="py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if ($event->exists)
+            <livewire:lesson.form.default-form :event="$event" />
+            @else
             <livewire:lesson.form.default-form :cid="$cid" :oid="$oid" />
+            @endif
             <div class="my-20">&nbsp;</div>
         </div>
     </div>

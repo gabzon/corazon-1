@@ -139,7 +139,6 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         return $this->belongsTo(\App\Models\Organization::class);
     }
 
-
     public function lessons()
     {
         return $this->hasMany(Lesson::class);

@@ -43,6 +43,39 @@
                                     description="Please write any comments regarding this lesson" />
                             </div>
                         </div>
+                        @if ($type == 'event')
+                        <div class="mt-5 grid grid-cols-2 gap-6">
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="organization"
+                                    class="block text-sm font-medium text-gray-700">Organization</label>
+                                <select name="organization" id="organization" wire:model="organization"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('organization') border-red-500 @enderror">
+                                    <option value="" default selected disabled>Select Organization</option>
+                                    @foreach ($event->organizations as $org)
+                                    <option value="{{ $org->id }}">
+                                        {{ $org->shortname ?? $org->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @error('organization')
+                                <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="workshop" class="block text-sm font-medium text-gray-700">Workshop</label>
+                                <select id="workshop" name="workshop" wire:model="workshop"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md @error('workshop') border-red-500 @enderror">
+                                    <option value="" default selected disabled>Select Workshop</option>
+                                    @foreach ($event->courses as $workshop)
+                                    <option value="{{ $workshop->id }}">{{ $workshop->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('workshop')
+                                <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="px-4 py-3 bg-gray-50 sm:px-6 flex justify-between items-center ">
                         <x-partials.saved-confirmation />

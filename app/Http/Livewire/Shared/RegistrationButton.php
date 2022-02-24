@@ -38,7 +38,7 @@ class RegistrationButton extends Component
         $this->model = $model;
         $this->size = $size;
         
-        if (request()->routeIs('dashboard')) {
+        if (request()->routeIs('dashboard') || request()->routeIs('event.show')) {
             $this->refreshPage = true;   
         }
 

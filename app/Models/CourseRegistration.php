@@ -89,6 +89,11 @@ class CourseRegistration extends Pivot
         }
         return $query;   
     }
+
+    public function getNameAttribute()
+    {
+        return $this->course->name;
+    }
 }
 
 

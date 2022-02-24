@@ -19,18 +19,33 @@
         </div>
     </x-slot>
 
-    <div class="max-h-screen">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+    <div class="h-screen overflow-y-scroll">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('event.dashboard.nav')
             </div>
             <main class="lg:col-span-9 xl:col-span-6">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    {{-- @include('event.dashboard.main') --}}
+                    @include('event.dashboard.header')
+
+                    <div class="flex flex-col min-h-screen overflow-y-auto">
+                        <div class="mt-4 px-4 sm:px-0">
+                            <ul role="list" class="space-y-4">
+                                @forelse ($event->lessons->sortDesc() as $lesson)
+                                <li class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+                                    <livewire:course.lesson-card :lesson="$lesson" wire:key="{{ $item->id }}" />
+                                </li>
+                                @empty
+                                <div></div>
+                                @endforelse
+                            </ul>
+                            <div class="my-24">&nbsp;</div>
+                        </div>
+                    </div>
                 </div>
             </main>
             <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10">
-                {{-- @include('event.dashboard.right') --}}
+                @include('event.dashboard.aside')
             </aside>
         </div>
     </div>

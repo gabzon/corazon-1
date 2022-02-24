@@ -23,11 +23,12 @@
             class="{{ Request::is('event/*/registrations') ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
             @include('icons.users')
             <span class="ml-3 truncate">
-                Registered
+                Registrations
             </span>
         </a>
 
-        <a href="{{ route('event.stats', $event) }}"
+
+        {{-- <a href="{{ route('event.stats', $event) }}"
             class="{{ Request::is('event/*/stats') ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
             <!-- Heroicon name: outline/trending-up -->
             <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
@@ -39,6 +40,6 @@
             <span class="truncate">
                 Stats
             </span>
-        </a>
+        </a> --}}
     </div>
 </nav>

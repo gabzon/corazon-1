@@ -124,7 +124,7 @@
         </button>
         @endcan
         <div class="-mr-1 w-full mb-2" x-show="dropdown" x-cloak>
-            <livewire:shared.select-user :oids="$model->organization()->pluck('id')->toArray()" />
+            <livewire:shared.select-user :oids="$model->orgId" />
             <div class="my-10">&nbsp;</div>
         </div>
     </div>

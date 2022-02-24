@@ -82,6 +82,21 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
         return $this->hasMany(Course::class);
     }
 
+    public function hasCourse($id)
+    {        
+        return $this->courses()->where('id', $id)->exists();        
+    }
+
+    // public function isRegistered($id)
+    // {        
+    //     return $this->registrations()->where('user_id',$id)->exists();
+    // }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough(Lesson::class, Course::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
@@ -123,6 +138,16 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
                     ->withPivot('status')
                     ->wherePivot('status', 'invitee')
                     ->withTimestamps();    
+    }
+
+    public function instructors()
+    {
+        return $this->belongsToMany(User::class, 'event_registrations', 'event_id', 'user_id')->using(EventRegistration::class)->wherePivot('role', 'instructor');        
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'event_registrations', 'event_id', 'user_id')->using(EventRegistration::class)->wherePivot('role', 'student');        
     }
 
     public function isInvited($id)
@@ -175,6 +200,17 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
         }
         return $query;
     }
+
+    public function scopeByOrganization($query, $org)
+    {
+        if (!empty($org)) {
+            return $query->whereHas('organizations', function(Builder $q) use ($org){
+                $q->where('organization_id', $org);
+            });
+        }
+        return $query;
+    }
+
 
     public function scopeType($query, $type)
     {
@@ -284,7 +320,7 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
 
     public function getOrgIdAttribute()
     {
-        return $this->organizations()->pluck('id')->toArray();
+        return $this->organizations()->pluck('organization_id')->toArray();
     }
 
 }

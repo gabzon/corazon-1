@@ -57,13 +57,13 @@ class OrganizationController extends Controller
         $org = Organization::with(['events','courses','teachers', 'media'])->whereId($organization->id)->first();
         $schedule = [
             'organization'  => $org,
-            'mondays'       => $org->courses()->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
-            'tuesdays'      => $org->courses()->where('status','active')->where('tuesday', 1)->orderBy('start_time_tue')->get(),
-            'wednesdays'    => $org->courses()->where('status','active')->where('wednesday',1)->orderBy('start_time_wed')->get(),
-            'thursdays'     => $org->courses()->where('status','active')->where('thursday',1)->orderBy('start_time_thu')->get(),
-            'fridays'       => $org->courses()->where('status','active')->where('friday', 1)->orderBy('start_time_fri')->get(),
-            'saturdays'     => $org->courses()->where('status','active')->where('saturday', 1)->orderBy('start_time_sat')->get(),
-            'sundays'       => $org->courses()->where('status','active')->where('sunday', 1)->orderBy('start_time_sat')->get(),
+            'mondays'       => $org->courses()->where('type','class')->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
+            'tuesdays'      => $org->courses()->where('type','class')->where('status','active')->where('tuesday', 1)->orderBy('start_time_tue')->get(),
+            'wednesdays'    => $org->courses()->where('type','class')->where('status','active')->where('wednesday',1)->orderBy('start_time_wed')->get(),
+            'thursdays'     => $org->courses()->where('type','class')->where('status','active')->where('thursday',1)->orderBy('start_time_thu')->get(),
+            'fridays'       => $org->courses()->where('type','class')->where('status','active')->where('friday', 1)->orderBy('start_time_fri')->get(),
+            'saturdays'     => $org->courses()->where('type','class')->where('status','active')->where('saturday', 1)->orderBy('start_time_sat')->get(),
+            'sundays'       => $org->courses()->where('type','class')->where('status','active')->where('sunday', 1)->orderBy('start_time_sat')->get(),
         ];
         
         if (auth()->check()) {

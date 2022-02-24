@@ -1,3 +1,9 @@
+# v0.2.5: Friday 11th, Feb 2022
+* Organization Profile: Course Query only class
+* Organization Profile: Events Query status active and sortby start_date
+* Event edit form: admin can add/edit/delete one or many workshops
+* Course edit form: admin can add/edit/delete an event
+
 # v0.2.4: Thursday 10th Feb, 2022
 * Course Dashboard > Registered Table: Admin can search by name, email, username
 * Course Dashboard > Registered Table: Admin can filter by gender
