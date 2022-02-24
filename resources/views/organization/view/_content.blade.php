@@ -1,7 +1,7 @@
 <div class="w-full flex flex-wrap">
     <div class="bg-gray-50 w-full md:w-3/4 order-last md:order-first">
 
-        @if ($organization->events->count() > 0 && $organization->events->where('status', 'active'))
+        @if ($organization->events->count() > 0)
         <section class="bg-white">
             <div class="max-w-full mx-auto py-5 px-3 md:px-6 lg:px-8">
                 <div class="md:flex md:items-center md:justify-between">

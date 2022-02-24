@@ -55,6 +55,13 @@ class OrganizationController extends Controller
     public function view(Organization $organization)
     {        
         $org = Organization::with(['events','courses','teachers', 'media'])->whereId($organization->id)->first();
+        
+        if ($org->events->count() > 0) {
+            $org->load(['events' => function($query){
+                $query->where('status','active');
+            }]);
+        }
+
         $schedule = [
             'organization'  => $org,
             'mondays'       => $org->courses()->where('type','class')->where('status','active')->where('monday', 1)->orderBy('start_time_mon')->get(),
