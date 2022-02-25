@@ -101,6 +101,7 @@
     <x-shared.register-like-bookmark-buttons :model="$event" />
 </div>
 
+@auth
 @if ($event->courses)
 @if (auth()->user()->isRegistered($event))
 <div class="mt-4">
@@ -108,6 +109,7 @@
 </div>
 @endif
 @endif
+@endauth
 
 <section aria-labelledby="details-heading" class="mt-10">
 
