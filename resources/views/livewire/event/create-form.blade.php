@@ -68,7 +68,7 @@
                             <div class="col-span-6 sm:col-span-2">
                                 <x-form.location-select wire:model="event.location_id" name="event.location_id"
                                     city="{{ $event->city_id }}" />
-                                <a href="{{ route('city.create') }}"
+                                <a href="{{ route('location.create') }}"
                                     class="text-indigo-500 text-xs mt-1 hover:text-indigo-800 ml-2">
                                     Add Location <span aria-hidden="true">&rarr;</span>
                                 </a>
