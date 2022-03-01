@@ -11,11 +11,11 @@
         </div>
         <div class="col-span-10 sm:col-span-1">
             <x-form.select wire:model="filterColumns.status" name="Status"
-                :options="['school','business','organizer','partner','association']" />
+                :options="['active','inactive','standby','closed','open']" />
         </div>
         <div class="col-span-10 sm:col-span-1">
             <x-form.select wire:model="filterColumns.type" name="Type"
-                :options="['active','inactive','standby','closed','open']" />
+                :options="['school','business','organizer','partner','association']" />
         </div>
         <div class="col-span-8 sm:col-span-1">
             <x-form.city-select wire:model="filterColumns.city" name="filterColumns.city" :withLabel="false" />

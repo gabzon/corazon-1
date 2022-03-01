@@ -68,13 +68,13 @@
             </x-jet-dropdown-link>
             @endcan
 
-            @can('manage', App\Models\Model::class)
+            @can('manage', App\Models\Organization::class)
             <x-jet-dropdown-link href="{{ route('organization.index') }}">
                 {{ __('Organizations') }}
             </x-jet-dropdown-link>
             @endcan
 
-            @can('manage', App\Models\Model::class)
+            @can('manage', App\Models\Location::class)
             <x-jet-dropdown-link href="{{ route('location.index') }}">
                 {{ __('Locations') }}
             </x-jet-dropdown-link>

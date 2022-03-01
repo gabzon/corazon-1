@@ -10,7 +10,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-label for="name" value="{{ __('Full Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                     autofocus autocomplete="name" />
             </div>
@@ -59,9 +59,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-3" href="#">
+                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-3" href="#">
                     Facebook
-                </a>
+                </a> --}}
 
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
