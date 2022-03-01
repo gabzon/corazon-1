@@ -15,6 +15,7 @@ class Table extends Component
         'contact'   => '',
         'email'     => '',
         'type'      => '',
+        'status'    => '',
         'city'      => 0,
     ];
 
@@ -35,7 +36,11 @@ class Table extends Component
                     $organizations->where('contact', 'LIKE', '%' . $value . '%');                                    
                 } else if ($column == 'email'){
                     $organizations->where('email','LIKE', '%' . $value . '%');
-                } else if ($column == 'city') {
+                } else if ($column == 'status'){
+                    $organizations->where('status', $value);
+                } else if ($column == 'type'){
+                    $organizations->where('type', $value); 
+                } if ($column == 'city') {
                     $organizations->where('city_id',$value);
                 }
             }

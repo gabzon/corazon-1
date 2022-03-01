@@ -11,7 +11,7 @@
         </div>
         <div class="col-span-10 sm:col-span-1">
             <x-form.select wire:model="filterColumns.status" name="Status"
-                :options="['active','inactive','standby','closed','open']" />
+                :options="['active','inactive','standby','closed','open', 'working']" />
         </div>
         <div class="col-span-10 sm:col-span-1">
             <x-form.select wire:model="filterColumns.type" name="Type"
