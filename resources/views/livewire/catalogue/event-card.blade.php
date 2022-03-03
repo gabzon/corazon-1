@@ -32,7 +32,9 @@
                 {{ $event->type }}
                 {{ implode(', ',$event->styles()->pluck('name')->toArray()) }}
             </p>
+            @auth
             <div class="mt-1 flex justify-between items-center">
+
                 <div>
                     @if ($event->canRegister())
                     <livewire:shared.registration-button :model="$event" size="xs" />
@@ -42,8 +44,8 @@
                     <livewire:shared.bookmark :model="$event" />
                     <livewire:shared.favorite-button :model="$event" />
                 </div>
-
             </div>
+            @endauth
         </div>
     </a>
 </article>
