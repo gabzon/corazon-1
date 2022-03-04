@@ -37,6 +37,7 @@ class Form extends Component
         'city.emblem'       =>  'nullable',
         'city.image'        =>  'nullable',        
         'city.description'  =>  'nullable',
+        'city.user_id'      =>  'required',        
     ];
 
     public function updatedCityName($value)
@@ -47,6 +48,7 @@ class Form extends Component
     public function save()
     {
         $this->validate();
+        $this->city->user_id = auth()->user()->id;   
         $this->city->save();
 
         $this->city->addFromMediaLibraryRequest($this->image)->toMediaCollection('city-image');
@@ -69,7 +71,8 @@ class Form extends Component
             $this->city = $city;        
         } else {
             $this->city = new City;      
-            $this->city->country = '';      
+            $this->city->user_id = auth()->user()->id;               
+            $this->city->country = '';
         }
     }
 

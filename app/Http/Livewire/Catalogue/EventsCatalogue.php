@@ -45,8 +45,12 @@ class EventsCatalogue extends Component
 
     public function render()
     {      
-        $this->cities = City::has('events')->orderBy('name','asc')->get();
-        $this->styles = Style::has('events')->orderBy('name','asc')->get();
+        $this->cities = City::has('events')->whereHas('events', function($q){
+            $q->where('status', 'active');
+        })->orderBy('name','asc')->get();
+        $this->styles = Style::has('events')->whereHas('events', function($q){
+            $q->where('status', 'active');
+        })->orderBy('name','asc')->get();
         
         $events = Event::with(['city:id,name','location', 'media'])
                         ->isActive()

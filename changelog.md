@@ -1,3 +1,10 @@
+# v0.2.6: Friday 04, Feb 2022
+* City user_id required fixed
+* Fixed bug with lesson creation, conflict btw events and courses
+* Reset courses catalogue day fixed
+* Dropdow only displays actives courses or events
+* Catalogue Filters order asc by shortname
+
 # v0.2.5: Friday 11th, Feb 2022
 * Organization Profile: Course Query only class
 * Organization Profile: Events Query status active and sortby start_date

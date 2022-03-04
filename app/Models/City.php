@@ -20,26 +20,20 @@ class City extends Model implements HasMedia
     protected $fillable = [
         'name',
         'slug',
-
         'state',
         'region',
         'zip',
-
         'code',
         'iataCode',
         'population',
-
         'country',
         'alpha2Code',
         'alpha3Code',
-        'world_region',
-        
+        'world_region',    
         'lng',
         'lat',
-
         'emblem',
-        'image',
-        
+        'image',        
         'description',
         'user_id',
     ];
@@ -54,6 +48,7 @@ class City extends Model implements HasMedia
         'id'    => 'integer',
         'lng'   => 'decimal:8',
         'lat'   => 'decimal:8',
+        'user_id'   => 'integer',
     ];
 
     public function courses()

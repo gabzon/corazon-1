@@ -18,16 +18,15 @@ class DefaultForm extends Component
     public string|int $workshop = '';
 
     protected $rules = [
-        'lesson.title'         => 'required|string',
-        'lesson.date'          => 'required|date',
-        'lesson.description'   => 'nullable|string',
-        'lesson.comments'      => 'nullable|string',
-        'lesson.user_id'       => 'required',
-        'organization'         => 'required|integer|min:1',
-        'workshop'             => 'required|integer|min:1',
-        'lesson.course_id'     => 'required',
-        'lesson.organization_id' => 'required',
+        'lesson.title'          => 'required|string',
+        'lesson.date'           => 'required|date',
+        'lesson.description'    => 'nullable|string',
+        'lesson.comments'       => 'nullable|string',
+        'lesson.user_id'        => 'required', 
+        'lesson.organization_id'=> 'required',       
+        'lesson.course_id'      => 'required',       
     ];
+    
 
     public function updatedOrganization($value)
     {
@@ -40,9 +39,17 @@ class DefaultForm extends Component
     }
 
     public function save()
-    {        
-        $this->validate();        
-
+    {                
+        if ($this->type == 'course') {
+            $this->validate();
+        } else {
+            $this->validate();
+            $this->validate([
+                'organization'          => 'required|integer|min:1',
+                'workshop'              => 'required|integer|min:1',                
+            ]);        
+        }
+        
         $this->lesson->save();
         
         session()->flash('success','Lesson saved successfully!');
@@ -66,7 +73,14 @@ class DefaultForm extends Component
 
         } else {            
             $this->lesson = new Lesson();
-            $this->lesson->user_id = auth()->user()->id;
+            $this->lesson->user_id = auth()->user()->id;    
+            
+            if ($oid != null) {            
+                $this->lesson->organization_id = $oid;
+            }  
+            if ($cid != null) {
+                $this->lesson->course_id = $cid;
+            }      
 
             if ($event->exists) {
                 $this->event = $event;
@@ -75,12 +89,7 @@ class DefaultForm extends Component
                 $this->type = 'event';
                 $this->lesson->course_id = '';
                 $this->lesson->organization_id = '';                
-            }else{
-                $this->lesson->course_id = $cid;
-                $this->lesson->organization_id = $oid;
-            }
-            
-
+            }                   
         }
     }
 

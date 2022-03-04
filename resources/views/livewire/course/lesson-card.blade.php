@@ -11,8 +11,8 @@
                 </p>
                 <p class="text-sm text-gray-500">
                     <time datetime="2020-12-09T11:43:00">
-                        {{ $lesson->created_at->format('F d') }} at {{
-                        $lesson->created_at->format('H:i') }}
+                        {{ $lesson->date->format('l F jS, Y') }}
+                        {{-- at {{ $lesson->date->format('H:i') }} --}}
                     </time>
                 </p>
             </div>

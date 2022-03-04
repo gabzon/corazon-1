@@ -43,6 +43,7 @@ class CoursesCatalogue extends Component
         $this->styleId = null;
         $this->level = null;
         $this->school = null;
+        $this->day = null;
     }
 
 
@@ -53,9 +54,18 @@ class CoursesCatalogue extends Component
 
     public function render()
     {        
-        $this->cities = City::has('courses')->orderBy('name','asc')->get();        
-        $this->styles = Style::has('courses')->orderBy('name','asc')->get();
-        $this->schools = Organization::has('courses')->inCity($this->city)->orderBy('name','asc')->get();        
+        $this->cities = City::has('courses')->whereHas('courses', function ($q) {
+            $q->where('status', 'active');
+        })->orderBy('name','asc')->get();
+
+        $this->styles = Style::has('courses')->whereHas('courses', function ($q) {
+            $q->where('status', 'active');
+        })->orderBy('name','asc')->get();
+
+        $this->schools = Organization::has('courses')->whereHas('courses', function ($q) {
+            $q->where('status', 'active');
+        })->inCity($this->city)->orderBy('shortname','asc')->get();        
+        
         Course::shouldExpire()->get()->each->expire();
         
         $fields = [

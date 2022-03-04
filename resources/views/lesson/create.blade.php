@@ -31,11 +31,13 @@
 
     <div class="py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @isset($event)
             @if ($event->exists)
             <livewire:lesson.form.default-form :event="$event" />
+            @endif
             @else
             <livewire:lesson.form.default-form :cid="$cid" :oid="$oid" />
-            @endif
+            @endisset
             <div class="my-20">&nbsp;</div>
         </div>
     </div>

@@ -43,6 +43,7 @@
                                     description="Please write any comments regarding this lesson" />
                             </div>
                         </div>
+
                         @if ($type == 'event')
                         <div class="mt-5 grid grid-cols-2 gap-6">
                             <div class="col-span-2 sm:col-span-1">
@@ -61,6 +62,7 @@
                                 <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
+
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="workshop" class="block text-sm font-medium text-gray-700">Workshop</label>
                                 <select id="workshop" name="workshop" wire:model="workshop"
@@ -76,6 +78,12 @@
                             </div>
                         </div>
                         @endif
+
+                        <div class="mt-6 text-red-500 text-sm">
+                            @if($errors->any())
+                            {!! implode('', $errors->all('<div>:message</div>')) !!}
+                            @endif
+                        </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 sm:px-6 flex justify-between items-center ">
                         <x-partials.saved-confirmation />
