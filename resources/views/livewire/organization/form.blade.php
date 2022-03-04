@@ -70,7 +70,7 @@
 
                     <div class="sm:col-span-2">
                         <x-form.select wire:model="organization.type" name="organization.type"
-                            :options="['School', 'Business', 'Organizer', 'Partner', 'Association']" label="Type" />
+                            :options="['school', 'business', 'organizer', 'partner', 'association']" label="Type" />
                     </div>
                 </div>
             </div>
