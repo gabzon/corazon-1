@@ -48,7 +48,7 @@
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <x-form.select wire:model="organization.type" name="organization.type"
-                                    :options="['School', 'Business', 'Organizer', 'Partner', 'Association']"
+                                    :options="['school', 'business', 'organizer', 'partner', 'association']"
                                     label="Type" />
                             </div>
                         </div>
