@@ -4,6 +4,7 @@
 * Reset courses catalogue day fixed
 * Dropdow only displays actives courses or events
 * Catalogue Filters order asc by shortname
+* Edit organization: redirect view button fixed
 
 # v0.2.5: Friday 11th, Feb 2022
 * Organization Profile: Course Query only class

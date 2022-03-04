@@ -54,7 +54,7 @@ class OrganizationPolicy
      */
     public function update(User $user, organization $organization)
     {
-        //
+        return $user->isAdmin = true;
     }
 
     /**
