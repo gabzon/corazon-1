@@ -23,7 +23,7 @@
         "socialiteproviders/facebook": "^4.1",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-medialibrary-pro": "^1.0.0",
-        "tailflow/laravel-orion": "^2.1"
+        "tailflow/laravel-orion": "^2.11"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

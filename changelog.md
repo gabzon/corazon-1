@@ -1,3 +1,8 @@
+# v0.2.7: Thursday 07, April 2022
+* Start time api debugged
+* Events disappear from catalogue with datimetime comparason
+* Orion Installed
+
 # v0.2.6: Friday 04, Feb 2022
 * City user_id required fixed
 * Fixed bug with lesson creation, conflict btw events and courses

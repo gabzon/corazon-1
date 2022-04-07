@@ -161,11 +161,9 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
     }
 
     public function scopeShouldExpire($query)
-    {      
-        $today = Carbon::now()->format('Y-m-d');          
-        
+    {                    
         return $query->where('status', 'active')                    
-                     ->whereDate('end_date','<', Carbon::now());                     
+                     ->whereDate('end_date','<', Carbon::now()->format('Y-m-d H:i:s'));                     
     }
 
     public function expire()

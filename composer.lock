@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b28fbd489a859876aae9b16338a3a30",
+    "content-hash": "5c0f2f63100244fb3884973bb605f661",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8079,16 +8079,16 @@
         },
         {
             "name": "tailflow/laravel-orion",
-            "version": "2.1.5",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tailflow/laravel-orion.git",
-                "reference": "47165566d90bd217c3fb7ac684619f50f2904c1f"
+                "reference": "0dff8853ab4ec559fb57ef9bc7cf333745ec971a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tailflow/laravel-orion/zipball/47165566d90bd217c3fb7ac684619f50f2904c1f",
-                "reference": "47165566d90bd217c3fb7ac684619f50f2904c1f",
+                "url": "https://api.github.com/repos/tailflow/laravel-orion/zipball/0dff8853ab4ec559fb57ef9bc7cf333745ec971a",
+                "reference": "0dff8853ab4ec559fb57ef9bc7cf333745ec971a",
                 "shasum": ""
             },
             "require": {
@@ -8101,11 +8101,11 @@
                 "illuminate/pagination": ">=5.7",
                 "illuminate/support": ">=5.7",
                 "php": ">=7.3",
-                "symfony/yaml": "^5.3"
+                "symfony/yaml": "^5.3|^6.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^3.7|^4.0|^5.0|^6.0",
+                "orchestra/testbench": "^3.7|^4.0|^5.0|^6.0|^7.0",
                 "phpunit/phpunit": "^6.0|^7.0|^8.0|^9.0"
             },
             "type": "library",
@@ -8146,7 +8146,7 @@
                 "issues": "https://github.com/tailflow/laravel-orion/issues",
                 "source": "https://github.com/tailflow/laravel-orion"
             },
-            "time": "2021-10-04T13:58:52+00:00"
+            "time": "2022-02-17T16:19:29+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

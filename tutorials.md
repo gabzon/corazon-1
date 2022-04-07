@@ -13,7 +13,7 @@
 * github credentials: https://gist.github.com/jonjack/bf295d4170edeb00e96fb158f9b1ba3c
 * naming conventions: https://laracasts.com/discuss/channels/laravel/what-is-the-proper-folder-name-for-traits-concerns-or-traits
 * vimeo thumbnails: https://vumbnail.com
-
+* Laravel Orion (Policies): https://github.com/tailflow/laravel-orion/issues/20
 
 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
 
