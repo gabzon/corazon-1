@@ -22,7 +22,7 @@ class EventResource extends JsonResource
             'end_date'      => $this->end_date->format('Y-m-d'), 
             'start_time'    => $this->start_date->format('Y-m-d H:i'),
             'end_time'      => $this->end_date->format('Y-m-d H:i'),
-            'thumbnail'     => $this->thumbnail,
+            'thumbnail'     => $this->coverImage,
             'type'          => $this->type, 
             'location_id'   => $this->location_id, 
             'city_id'       => $this->city_id,

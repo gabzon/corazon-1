@@ -6,7 +6,8 @@
 
             @if ($event->getMedia('events')->last() != null)
             <div class="w-full object-center object-cover rounded-lg overflow-hidden">
-                {{ $event->getFirstMedia('events') }}
+                {{-- {{ $event->getFirstMedia('events') }} --}}
+                <img src="{{ $event->coverImage }}" alt="">
             </div>
             @else
             <img src="{{ asset('images/defaults/event.jpg') }}"
