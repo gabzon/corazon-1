@@ -75,7 +75,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $item->type }}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
+                                <td class="px-6 py-4 text-sm text-gray-500 break-normal">
                                     {{ implode(', ', $item->styles->pluck('name')->toArray()) }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

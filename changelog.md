@@ -1,5 +1,5 @@
 # v0.2.9: Tuesday 19, April 2022
-* Organization admin table: removed email, styles added
+* Organization admin table: removed email, styles added, break-normal
 * Organization admin table: type added
 
 # v0.2.8: Thursday 14, April 2022
