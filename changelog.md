@@ -1,3 +1,9 @@
+# v0.2.9: Tuesday 19, April 2022
+* Organization admin table: removed email, styles added
+# v0.2.8: Thursday 14, April 2022
+* Api Resource image = event->coverImage
+* Event show: change getfirstmedia by coverimage
+
 # v0.2.7: Thursday 07, April 2022
 * Start time api debugged
 * Events disappear from catalogue with datimetime comparason
