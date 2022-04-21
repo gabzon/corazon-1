@@ -103,6 +103,7 @@ Route::get('event/{event}', [EventController::class, 'show'])->name('event.show'
 // Route::get('course/{course}', [CourseController::class, 'show'])->name('course.view');
 Route::get('courses', [CourseController::class, 'catalogue'])->name('courses.catalogue');
 Route::get('course/{course}', [CourseController::class, 'show'])->name('course.show');
+Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
 
 Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -131,7 +132,7 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('course/{course}/favorites', [CourseController::class, 'favorites'])->name('course.favorites');
     Route::get('course/{course}/registrations', [CourseController::class, 'registrations'])->name('course.registrations');
 
-    Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
+    
     Route::get('organization/{organization}/dashboard',[OrganizationController::class, 'dashboard'])->name('organization.dashboard');
     Route::get('organization/{organization}/members',[OrganizationController::class, 'members'])->name('organization.members');
     Route::get('organization/{organization}/courses',[OrganizationController::class, 'courses'])->name('organization.courses');
