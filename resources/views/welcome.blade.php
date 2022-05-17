@@ -84,7 +84,8 @@
             <br>
         </div>
 
-        <x-city.popular />
+        {{--
+        <x-city.popular /> --}}
 
         {{-- @include('partials.cities') --}}
         {{-- @include('partials.styles') --}}
