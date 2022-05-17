@@ -71,10 +71,10 @@
         </div>
         <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
             <nav aria-label="Global" class="flex space-x-4">
-                <a href="{{ route('schedule') }}"
+                {{-- <a href="{{ route('schedule') }}"
                     class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Schools</a>
                 <a href="{{ route('cities.grid') }}"
-                    class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Cities</a>
+                    class="text-sm font-medium text-gray-900 p-2 hover:bg-gray-100 rounded-lg">Cities</a> --}}
 
                 @guest
                 <a href="{{ route('register') }}"

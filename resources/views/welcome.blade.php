@@ -86,8 +86,8 @@
 
         <x-city.popular />
 
-        @include('partials.cities')
-        @include('partials.styles')
+        {{-- @include('partials.cities') --}}
+        {{-- @include('partials.styles') --}}
         @include('partials.contact-us')
         @include('partials.mobile-app')
 
