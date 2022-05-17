@@ -204,7 +204,8 @@
         </div> --}}
         <div class="mt-8 border-t border-indigo-200 pt-8 md:flex md:items-center md:justify-between">
             <div class="flex space-x-6 md:order-2">
-                {{-- <a href="#" class="text-indigo-200 hover:text-indigo-400">
+                <a href="https://www.facebook.com/corazon.dance.croatia" target="_blank"
+                    class="text-indigo-200 hover:text-white">
                     <span class="sr-only">Facebook</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -213,7 +214,8 @@
                     </svg>
                 </a>
 
-                <a href="#" class="text-indigo-200 hover:text-indigo-400">
+                <a href="https://www.instagram.com/corazon.danse/" target="_blank"
+                    class="text-indigo-200 hover:text-white">
                     <span class="sr-only">Instagram</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -222,7 +224,7 @@
                     </svg>
                 </a>
 
-                <a href="#" class="text-indigo-200 hover:text-indigo-400">
+                {{-- <a href="#" class="text-indigo-200 hover:text-indigo-400">
                     <span class="sr-only">Twitter</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path

@@ -5,7 +5,6 @@ namespace App\Http\Livewire\City;
 use App\Models\City;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use PragmaRX\Countries\Package\Countries;
 use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Form extends Component
@@ -63,9 +62,9 @@ class Form extends Component
 
     public function mount(City $city = null)
     {
-        $paises = new Countries();
         
-        $this->countries = $paises->all()->pluck('name.common')->toArray();
+        
+        $this->countries = config('countries');
                 
         if ($city->exists) {
             $this->city = $city;        

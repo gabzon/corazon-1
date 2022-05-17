@@ -97,4 +97,15 @@ class CityController extends Controller
             return back();
         }
     }
+
+    public function grid()
+    {
+        return view('city.grid');
+    }
+
+    public function agenda(Request $request, City $city)
+    {
+        return view('city.agenda')->with('city', $city);
+    }
+
 }

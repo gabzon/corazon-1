@@ -1,3 +1,9 @@
+# v0.2.10: Tuesday 17, May 2022
+* Page Cities
+* Fixed error Event Show Organizers information overlap in responsive
+* Show city: Add Carousel with future events in this city
+* Agenda component
+
 # v0.2.9: Tuesday 19, April 2022
 * Organization admin table: removed email, styles added, break-normal
 * Organization admin table: type added

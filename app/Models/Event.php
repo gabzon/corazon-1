@@ -216,7 +216,8 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
             return $query->where('type', $type);
         }
         return $query;
-    }
+    }    
+
 
     public function getThumbAttribute()
     {        

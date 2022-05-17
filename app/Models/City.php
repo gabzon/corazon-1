@@ -60,5 +60,18 @@ class City extends Model implements HasMedia
     {
         return $this->hasMany(Event::class);
     }
+
+    public function getCoverImageAttribute()
+    {
+        if ($this->getMedia('city-image')->last() != null){
+            return $this->getMedia('city-image')->last()->getUrl();
+        }
+        
+        if ($this->thumbnail) {
+            return $this->thumbnail;
+        }
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
 }
 

@@ -103,6 +103,12 @@ Route::get('event/{event}', [EventController::class, 'show'])->name('event.show'
 // Route::get('course/{course}', [CourseController::class, 'show'])->name('course.view');
 Route::get('courses', [CourseController::class, 'catalogue'])->name('courses.catalogue');
 Route::get('course/{course}', [CourseController::class, 'show'])->name('course.show');
+
+Route::get('cities',[CityController::class, 'grid'])->name('cities.grid');
+Route::get('city/{city:slug}',[CityController::class, 'agenda'])->name('city.agenda');
+
+Route::get('schools',[OrganizationController::class, 'view'])->name('schools.view');
+
 Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
 
 Route::middleware(['auth:sanctum', 'verified', 'userDataVerified'])->get('/dashboard', function () {

@@ -25,7 +25,7 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto">
             <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -35,6 +35,10 @@
 
                                 <x-shared.display-media-library-image :model="$city" collection="city-emblem"
                                     alt="{{ $city->name }}" />
+                                <div class="w-20 rounded-lg overflow-hidden">
+                                    <x-shared.display-media-library-image :model="$city" collection="city-image"
+                                        alt="{{ $city->name }}" />
+                                </div>
 
                             </div>
                             <div class="">
@@ -155,15 +159,14 @@
                             </div>
                         </dl>
                     </div>
-                    <x-shared.display-media-library-image :model="$city" collection="city-image"
-                        alt="{{ $city->name }}" />
+
                 </div>
             </div>
         </div>
 
         <hr class="my-14">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:justify-between mb-1">
                 <div class="flex-1 min-w-0">
                     <h2
@@ -177,7 +180,9 @@
                 <livewire:event.table city="{{ $city->id }}" />
             </div>
         </div>
-        <div class="my-20"></div>
+        <div class="my-20">
+            <br>
+        </div>
     </div>
 
 </x-app-layout>

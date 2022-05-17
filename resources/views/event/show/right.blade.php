@@ -184,7 +184,7 @@
             <div x-show="open">
                 @foreach ($event->organizations as $org)
                 <ul role="list" class="divide-y divide-gray-200">
-                    <li class="py-4 flex justify-between items-center">
+                    <li class="py-4 flex flex-wrap justify-between items-center">
                         <a href="{{ route('organization.view', $org) }}" class="flex">
                             <img class="h-10 w-10 rounded-full" src="{{ $org->photo }}" alt="">
                             <div class="ml-3">
@@ -192,7 +192,7 @@
                                 <p class="text-sm text-gray-500">{{ $org->email }}</p>
                             </div>
                         </a>
-                        <div>
+                        <div class="mt-3 sm:mt-0">
                             <x-partials.social-links :model="$org" />
                         </div>
                     </li>

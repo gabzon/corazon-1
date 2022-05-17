@@ -17,7 +17,7 @@ class CountrySelect extends Component
     public function __construct($name)
     {                
         $this->name = $name;
-        $this->countries = (new Countries())->all()->sortBy('name')->pluck('name.common')->toArray();        
+        $this->countries = config('countries');        
     }
 
     /**

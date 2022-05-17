@@ -44,7 +44,7 @@
     </div>
     @endguest
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
+
     <div class="bg-indigo-50">
         <div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -59,7 +59,7 @@
                     </a>
                 </div>
                 <div class="ml-3 inline-flex">
-                    <a href="#courses-catalogue"
+                    <a href="{{ route('courses.catalogue') }}"
                         class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
                         Find courses
                     </a>
@@ -84,21 +84,13 @@
             <br>
         </div>
 
-        <div id="courses-catalogue" class="border-t bg-gray-50">
-            <div class="container mx-auto mt-10">
-                <div class="my-3 max-w-sm mx-auto text-base text-gray-500 sm:text-lg md:my-5 md:text-xl md:max-w-3xl">
-                    <p class="mx-3 sm:mx-4 md:mx-6 lg:mx-8">
-                        If you would like to share your events, classes, ideas or comments please contact us by email to
-                        <a href="mailto:info@corazon.dance" class="text-indigo-500">info@corazon.dance</a> or on
-                        <a href="https://www.facebook.com/corazon.dance21" target="_blank"
-                            class="text-indigo-500">Facebook</a>
-                    </p>
-                </div>
-                <br>
-                <h2 class="text-3xl font-bold text-gray-900 text-center my-10">Courses</h2>
-                <livewire:catalogue.courses-catalogue />
-            </div>
-        </div>
+        <x-city.popular />
+
+        @include('partials.cities')
+        @include('partials.styles')
+        @include('partials.contact-us')
+        @include('partials.mobile-app')
+
     </main>
 
 </x-guest-layout>
