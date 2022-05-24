@@ -18,7 +18,7 @@ class Listing extends Component
     
     public function render()
     {
-        $schools = Organization::where('type', $this->type)->paginate(15);
+        $schools = Organization::where('type', $this->type)->inRandomOrder()->paginate(15);
         return view('livewire.organization.listing', [
             'schools' => $schools
         ]);
