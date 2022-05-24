@@ -12,7 +12,9 @@ class Grid extends Component
     {
         $cities = City::whereHas('events', function (Builder $query) {
             $query->where('status', 'active');
-        })->withCount('events')
+        })->withCount(['events', 'events as events_count' => function($query){
+            return $query->where('status', 'active');
+        }])
         ->orderBy('events_count', 'desc')->get();
         
         return view('livewire.city.grid', [
@@ -20,4 +22,3 @@ class Grid extends Component
         ]);        
     }
 }
-

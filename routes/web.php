@@ -107,7 +107,10 @@ Route::get('course/{course}', [CourseController::class, 'show'])->name('course.s
 Route::get('cities',[CityController::class, 'grid'])->name('cities.grid');
 Route::get('city/{city:slug}',[CityController::class, 'agenda'])->name('city.agenda');
 
-Route::get('schools',[OrganizationController::class, 'view'])->name('schools.view');
+Route::get('styles',[StyleController::class, 'list'])->name('styles.list');
+Route::get('style/{style:slug}',[StyleController::class, 'view'])->name('style.view');
+
+Route::get('schools',[OrganizationController::class, 'list'])->name('schools.list');
 
 Route::get('organization/{organization:slug}',[OrganizationController::class, 'view'])->name('organization.view');
 

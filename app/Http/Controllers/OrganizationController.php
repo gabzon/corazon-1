@@ -137,4 +137,12 @@ class OrganizationController extends Controller
     {
         return view('organization.dashboard.settings', compact('organization'));
     }
+
+    public function list(Request $request)
+    {
+        $organization = Organization::where('type','school');
+
+        return view('organization.list', compact('organization'));    
+    }
+    
 }

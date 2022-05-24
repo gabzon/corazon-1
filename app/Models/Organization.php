@@ -194,7 +194,7 @@ class Organization extends Model implements HasMedia, Favoriteable
         return $this->belongsToMany(User::class,'favorite_organization','organization_id','user_id')->withTimeStamps();        
     }    
 
-    public function getPhotoAttribute()
+    public function getIconAttribute()
     {
         if ($this->getMedia('organization-icons')->last() != null) 
         {

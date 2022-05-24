@@ -88,4 +88,18 @@ class Style extends Model implements HasMedia
     {
         return in_array($id, $this->organizations()->pluck('organization_id')->toArray());
     }
+
+    public function getCoverImageAttribute()
+    {
+        if ($this->getMedia('styles')->last() != null){
+            return $this->getMedia('styles')->last()->getUrl();
+        }
+        
+        if ($this->thumbnail) {
+            return $this->thumbnail;
+        }
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
 }

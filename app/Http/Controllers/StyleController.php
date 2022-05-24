@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StyleStoreRequest;
 use App\Http\Requests\StyleUpdateRequest;
+use App\Models\Event;
 use App\Models\Style;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StyleController extends Controller
 {
@@ -86,5 +88,18 @@ class StyleController extends Controller
         $style->delete();
 
         return redirect()->route('style.index');
+    }
+
+    public function list(Request $request)
+    {
+        return view('style.list');
+    }
+
+    public function view(Request $request, Style $style)    
+    {
+        return Event::isActive()->select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"),  DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+        ->groupby('year','month')        
+        ->get();;
+        return view('style.view', compact('style'));
     }
 }

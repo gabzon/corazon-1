@@ -20,7 +20,7 @@ class Weekly extends Component
     public function render()
     {
         $week = CarbonImmutable::now();
-        $events = Event::inCity($this->city->id)->whereBetween('start_date',[$week->startOfWeek(), $week->endOfWeek()])->get();
+        $events = Event::inCity($this->city->id)->whereBetween('start_date',[$week->startOfWeek(), $week->endOfWeek()])->orderBy('start_date','asc')->get();
         
         return view('livewire.agenda.weekly', [
             'mondays' => $events->where(function($query) use ($week){
