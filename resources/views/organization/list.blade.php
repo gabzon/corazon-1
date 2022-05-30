@@ -2,10 +2,12 @@
 <x-app-layout>
     <section class="bg-gray-50 py-12 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4">Schools</h2>
-            <livewire:organization.listing />
-            <br>
-            <br>
+            <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4">Schools</h2>
+                <livewire:organization.listing />
+                <br>
+                <br>
+            </div>
         </div>
     </section>
 </x-app-layout>

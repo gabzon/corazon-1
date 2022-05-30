@@ -23,17 +23,15 @@
                     id="options" role="listbox">
                     @forelse ($cities as $c)
                     <li wire:key="{{ $loop->index }}" id="option-0" role="option" tabindex="-1"
-                        class="relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white">
-                        <button wire:click="selectCity({{ $c->id }})" class="flex justify-between">
-                            <span class="block truncate">{{ $c->name }}</span>
-
-                            @if ($city == $c)
-                            <span :class="{'active':'text-white', 'inactive':'text-indigo-600'}"
-                                class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                                @include('icons.check')
-                            </span>
-                            @endif
-                        </button>
+                        wire:click="selectCity({{ $c->id }})"
+                        class="relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white flex justify-between">
+                        <span class="block truncate">{{ $c->shortname ?? $c->name }}</span>
+                        @if ($city == $c)
+                        <span :class="{'active':'text-white', 'inactive':'text-indigo-600'}"
+                            class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
+                            @include('icons.check')
+                        </span>
+                        @endif
                     </li>
                     @empty
                     <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900">
