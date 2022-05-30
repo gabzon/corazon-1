@@ -20,7 +20,7 @@ class Carousel extends Component
         if ($collection != null) {
             $this->collection = $collection;    
         } else {            
-            $this->collection = Event::isActive()->inCity($city->id ?? null)->get();                       
+            $this->collection = Event::isActive()->inCity($city->id ?? null)->orderBy('start_date','asc')->limit(15)->get();                       
         }
         
     }

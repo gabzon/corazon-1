@@ -364,7 +364,7 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         }
 
         if ($this->organization) {
-            return $this->organization->photo;
+            return $this->organization->icon;
         }
         
         

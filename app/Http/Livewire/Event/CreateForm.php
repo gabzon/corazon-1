@@ -22,7 +22,7 @@ class CreateForm extends Component
         'event.name'            => 'required|string|max:100',
         'event.slug'            => 'required',
         'event.start_date'      => 'required|date|after:today',        
-        'event.end_date'        => 'required|date|after_or_equal:event.start_date',
+        'event.end_date'        => 'required|date|after:event.start_date',
         'event.type'            => 'required',
         'event.status'          => 'required',
         'event.description'     => 'nullable',

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -187,6 +187,16 @@ class Organization extends Model implements HasMedia, Favoriteable
                 ->lessonable()->associate($lessonable)
                 ->save();
         return $this;
+    }
+
+    public function scopeStyle($query, $style)
+    {        
+        if (!empty($style)) {
+            return $query->whereHas('styles', function (Builder $query_style) use ($style) {
+                $query_style->where('style_id', $style);
+            });            
+        }
+        return $query;
     }
 
     public function favorites(): BelongsToMany

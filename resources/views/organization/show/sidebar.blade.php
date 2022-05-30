@@ -5,12 +5,7 @@
         </div>
 
         <x-partials.social-links :model="$organization" />
-        <div>
-            <h3 class="font-medium text-gray-900">About</h3>
-            <p class="text-gray-600 text-sm">
-                {{ $organization->about }}
-            </p>
-        </div>
+
     </div>
 </aside>
 

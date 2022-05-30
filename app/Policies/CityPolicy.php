@@ -23,7 +23,7 @@ class CityPolicy
 
     public function manage(User $user)
     {
-        return $user->is_super == true;
+        return true;
     }
 
     /**

@@ -1,4 +1,5 @@
 <div class="flex h-full flex-col">
+    @if ($events->count() > 0)
     <header class="relative z-40 flex flex-none items-center justify-between py-4">
         <h1 class="text-lg font-semibold text-gray-900">
             <time datetime="2022-01">{{ $week->startOfWeek()->format('M jS') }} - {{ $week->endOfWeek()->format('M jS')
@@ -235,6 +236,7 @@
 
 
     </div>
+    @endif
 
 
 </div>

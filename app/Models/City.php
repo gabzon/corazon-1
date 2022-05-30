@@ -61,6 +61,11 @@ class City extends Model implements HasMedia
         return $this->hasMany(Event::class);
     }
 
+    public function organizations()
+    {
+        return $this->hasMany(Organization::class);        
+    }
+
     public function getCoverImageAttribute()
     {
         if ($this->getMedia('city-image')->last() != null){

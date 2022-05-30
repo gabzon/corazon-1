@@ -1,3 +1,7 @@
+# v0.2.11: Tuesday 24th, May 2022
+* Add cities to the admin menu top navbar
+* Filter in schools page
+
 # v0.2.10: Tuesday 17, May 2022
 * Page Cities
 * Fixed error Event Show Organizers information overlap in responsive

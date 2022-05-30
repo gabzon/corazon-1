@@ -2,12 +2,20 @@
 
 namespace App\Http\Livewire\Style;
 
+use App\Models\City;
 use App\Models\Style;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Listing extends Component
-{
+{   
+    public $city;
+    
+    public function selectCity()
+    {
+        dd('hola');
+    }
+
     public function render()    
     {
         $styles = Style::whereHas('events', function($query){

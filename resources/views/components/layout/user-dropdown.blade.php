@@ -79,6 +79,19 @@
                 {{ __('Locations') }}
             </x-jet-dropdown-link>
             @endcan
+
+            @can('manage', App\Models\City::class)
+            <x-jet-dropdown-link href="{{ route('city.index') }}">
+                {{ __('Cities') }}
+            </x-jet-dropdown-link>
+            @endcan
+
+            @can('manage', App\Models\Style::class)
+            <x-jet-dropdown-link href="{{ route('style.index') }}">
+                {{ __('Styles') }}
+            </x-jet-dropdown-link>
+            @endcan
+
             @endif
 
 

@@ -7,7 +7,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center min-w-0">
                 <img class="inline-block h-10 w-10 rounded-full mr-2 bg-gray-100" lazy="loading"
-                    src="{{ $organization->photo }}" alt="{{ $organization->name }}">
+                    src="{{ $organization->icon }}" alt="{{ $organization->name }}">
                 <x-typo.page-heading title="{{ $organization->name }}" />
             </div>
             <div class="flex md:mt-0 md:ml-4">

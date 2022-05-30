@@ -45,6 +45,7 @@ class Weekly extends Component
                 return $this->checkDay($query, Carbon::SUNDAY, $week);
             }),
             'week' => $week,
+            'events' => $events,
         ]);
     }
 
