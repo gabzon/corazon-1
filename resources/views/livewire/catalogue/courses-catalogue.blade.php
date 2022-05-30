@@ -8,6 +8,7 @@
                 </h3>
             </div>
             <div class="col-span-8 sm:col-span-1">
+                @if ($showCity)
                 <select id="city" wire:model="city"
                     class="mt-1 w-full pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                     <option value="" selected>All cities</option>
@@ -15,6 +16,7 @@
                     <option value="{{ $c->id }}">{{ $c->name }}</option>
                     @endforeach
                 </select>
+                @endif
             </div>
             <div class="col-span-8 sm:col-span-1">
                 <select wire:model="styleId"

@@ -20,6 +20,7 @@ class CoursesCatalogue extends Component
     public $focus;       
     public $day;    
     public $school;
+    public Bool $showCity;
 
     public $cities;
     public $styles;
@@ -47,9 +48,10 @@ class CoursesCatalogue extends Component
     }
 
 
-    public function mount($city = null)
+    public function mount($city = null, $showCity = true)
     {
         $this->city = $city;
+        $this->showCity = $showCity;
     }    
 
     public function render()
