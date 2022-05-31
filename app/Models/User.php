@@ -24,7 +24,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use Notifiable;
+    use Notifiable;    
     use TwoFactorAuthenticatable;
     use UserFavoritesTrait;
     use UserBookmarksTrait;

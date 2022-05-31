@@ -94,6 +94,11 @@ class Location extends Model implements HasMedia
         return $this->hasMany(\App\Models\Space::class);
     }
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     public function scopeByCity($query, $city)
     {
         if ($city) {

@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Shared;
 
 use App\Contracts\Registrable;
 use App\Models\Event;
+use App\Notifications\Registrations\UserRegistration;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class RegistrationButton extends Component
@@ -18,6 +20,8 @@ class RegistrationButton extends Component
         // $this->authorise('bookmark', $this->model);
         auth()->user()->register($this->model);
         
+        request()->user()->notify(new UserRegistration($this->model));
+
         if ($this->refreshPage) {            
             return redirect(request()->header('Referer'));        
         }               

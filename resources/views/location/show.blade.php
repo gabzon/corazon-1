@@ -31,12 +31,13 @@
                 <x-location.map :location="$location" :photos="$photos" />
 
                 <div class="my-8">
-                    <header>
-                        <h2 class="flex-1 text-lg font-bold text-gray-900">Spaces</h2>
-                    </header>
-
-                    <div class="my-3">
+                    <div class="my-4">
+                        <h2 class="flex-1 text-lg font-bold text-gray-900 mb-4">Spaces</h2>
                         @include('location._classrooms')
+                    </div>
+
+                    <div class="my-4">
+                        <livewire:location.events-list :location="$location" />
                     </div>
                 </div>
             </div>

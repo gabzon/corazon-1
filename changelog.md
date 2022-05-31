@@ -1,3 +1,7 @@
+# v0.2.12: Tuesday 31th, May 2022
+* List of events in location
+* User registration Notifications  
+
 # v0.2.11: Tuesday 24th, May 2022
 * Add cities to the admin menu top navbar
 * Filter in schools page

@@ -1,7 +1,8 @@
 <div>
     @if (auth()->check() && !auth()->user()->isRegistered($model))
     @can('register', $model)
-    <form wire:submit.prevent="register" class="mr-3" {{-- action="{{ route('enroll') }}" method="POST" --}}>
+    <form wire:submit.prevent="register" class="mr-3"
+        onsubmit="confirm('Do you confirm registration? We will notify the organizer.') || event.stopImmediatePropagation()">
         @csrf
         <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />
         <input type="hidden" name="id" value="{{ $model->id }}" />
@@ -10,6 +11,7 @@
         </button>
     </form>
     @endcan
+
 
     @else
     <div class="inline-flex items-center">
@@ -22,7 +24,8 @@
 
         @if (auth()->user()->registrationIs($model, 'pre-registered'))
 
-        <form wire:submit.prevent="unregister" {{-- action="{{ route('unenroll') }}" method="POST" --}}>
+        <form wire:submit.prevent="unregister"
+            onsubmit="confirm('Are you sure you want to cancel the registration? We will notify the organizer.') || event.stopImmediatePropagation()">
             @csrf
             @method('DELETE')
             <input type="hidden" name="registrable_type" value="{{ get_class($model) }}" />

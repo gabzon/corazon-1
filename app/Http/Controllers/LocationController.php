@@ -49,7 +49,8 @@ class LocationController extends Controller
      */
     public function show(Request $request, Location $location)
     {
-        return view('location.show', compact('location'))->with('photos', $location->getMedia('location-photos'));
+        $events = Location::with('events')->paginate(15);
+        return view('location.show', compact('location'))->with('photos', $location->getMedia('location-photos'))->with('events', $events);
     }
 
 
