@@ -38,7 +38,7 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Contact
+                                    Events
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -71,7 +71,7 @@
                                     {{ $item->spaces()->count() }}
                                 </td>
                                 <td class="px-6 py-4 break-normal text-sm text-gray-500">
-                                    {{ $item->contact }}
+                                    {{ $item->events()->count() }}
                                 </td>
                                 <td class="px-6 py-4 break-normal text-sm text-gray-500">
                                     {{ $item->email }}

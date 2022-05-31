@@ -38,13 +38,17 @@
                     <x-form.text-input wire:model="location.website" name="location.website" label="Website" />
                 </div>
                 <div class="sm:col-span-2">
-                    <x-form.select wire:model="location.type" name="location.type" :options="[ 'dance-studio'  => __('Dance studio'), 
+                    <x-form.select wire:model="location.type" name="location.type" :options="[ 
+                                    'dance studio'  => __('Dance studio'),
+                                    'theater'       => __('Theater'), 
                                     'hotel'         => __('Hotel'), 
-                                    'bar-restaurant'=> __('Bar/Restaurant'), 
-                                    'Fitness'       => __('Fitness'), 
-                                    'Kindergarden'  => __('Kindergarden'), 
-                                    'Sport center'  => __('Sport center'),
-                                    'Other'         => __('Other'),
+                                    'nightclub'     => __('Nightclub'), 
+                                    'bar'           => __('Bar'),
+                                    'restaurant'    => __('Restaurant'), 
+                                    'fitness'       => __('Fitness'), 
+                                    'school'        => __('School'), 
+                                    'sport center'  => __('Sport center'),
+                                    'other'         => __('Other'),
                                     'event-hall'    => __('Event Hall')]" label="Type" />
                 </div>
 

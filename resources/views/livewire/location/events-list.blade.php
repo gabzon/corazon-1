@@ -20,7 +20,7 @@
                 </li>
                 @empty
                 <li class="py-4">
-                    <p class="text-sm font-medium text-gray-900 truncate">No events found!</p>
+                    <p class="text-sm font-medium text-gray-500 truncate px-4">No events found!</p>
                 </li>
                 @endforelse
             </ul>
