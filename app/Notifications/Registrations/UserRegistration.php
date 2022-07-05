@@ -41,12 +41,14 @@ class UserRegistration extends Notification
      */
     public function toMail($notifiable)
     {
+        $route = strtolower(class_basename($this->model)) . '.show';
+        
         return (new MailMessage)
                     ->subject("You have registered for " . $this->model->name)
                     ->greeting('Hi ' . $notifiable->name . '!')
                     ->line('We have notified the organizer your interest for ' . $this->model->name . ' ' . $this->model->type . ' on ' . $this->model->start_date->format('D d F Y'))
                     ->line('Soon they will contact to complet the registration process')
-                    ->action('View registration', url('/'))
+                    ->action('View registration', route($route, $this->model))
                     ->line('Thank you for using corazon!');
     }
 

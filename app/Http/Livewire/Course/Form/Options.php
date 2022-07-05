@@ -4,21 +4,18 @@ namespace App\Http\Livewire\Course\Form;
 
 use App\Models\Course;
 use Livewire\Component;
-use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class Options extends Component
 {
-    use WithMedia;
-
     public Course $course;
-    public $mediaComponentNames = ['thumbnail'];
-    public $styles;
-    public $thumbnail;
+    
+    public $styles;    
 
     protected $listeners = ['selectedStyles' => 'updateStyles'];
 
     protected $rules = [
         'course.thumbnail'  => 'nullable',
+        'course.public'     => 'required',
         'course.tagline'    => 'nullable',
         'course.excerpt'    => 'nullable',
         'course.keywords'   => 'nullable',
@@ -38,9 +35,7 @@ class Options extends Component
     {
         $this->validate();
 
-        $this->course->save();
-
-        $this->course->addFromMediaLibraryRequest($this->thumbnail)->toMediaCollection('courses');
+        $this->course->save();        
 
         if ($this->styles) {                        
             $this->course->styles()->sync($this->styles);            

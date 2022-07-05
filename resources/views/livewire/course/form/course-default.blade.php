@@ -24,7 +24,8 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <x-form.space-select wire:model="course.space_id" name="course.space_id" />
+                                    <x-form.space-select wire:model="course.space_id" name="course.space_id"
+                                        cityId="{{ $course->city_id }}" />
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">

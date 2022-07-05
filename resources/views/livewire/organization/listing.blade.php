@@ -1,95 +1,21 @@
 <section>
-    <div class="grid grid-cols-3 gap-6 my-4">
-        <div x-data="{showList:@entangle('showList')}">
-            <label for="comboboxCity" class="block text-sm font-medium text-gray-700">City</label>
-            <div class="relative mt-1">
-                <input id="combobox" type="text" wire:model="cityName" @click="showList =! showList"
-                    wire:keydown.enter="searchCityByName"
-                    class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                    role="combobox" aria-controls="options" aria-expanded="false">
-                <button type="button" @click="showList =! showList"
-                    class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-                    <!-- Heroicon name: solid/selector -->
-                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-
-                <ul x-show="showList" x-cloak @click.outside="showList = false"
-                    class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-                    id="options" role="listbox">
-                    @forelse ($cities as $c)
-                    <li wire:key="{{ $loop->index }}" id="option-0" role="option" tabindex="-1"
-                        wire:click="selectCity({{ $c->id }})"
-                        class="relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white flex justify-between">
-                        <span class="block truncate">{{ $c->shortname ?? $c->name }}</span>
-                        @if ($city == $c)
-                        <span :class="{'active':'text-white', 'inactive':'text-indigo-600'}"
-                            class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                            @include('icons.check')
-                        </span>
-                        @endif
-                    </li>
-                    @empty
-                    <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900">
-                        No city found!
-                    </li>
-                    @endforelse
-                </ul>
-            </div>
+    <div class="grid grid-cols-4 gap-2 sm:gap-6 mt-3 mb-5">
+        <div class="col-span-4 sm:col-span-1">
+            <x-form.search-input name="Search" wire:model="search" label="Search by name" />
         </div>
-
-        <div x-data="{showStyleList:@entangle('showStyleList')}">
-            <label for="comboboxStyle" class="block text-sm font-medium text-gray-700">Style</label>
-            <div class="relative mt-1">
-                <input id="combobox" type="text" wire:model="styleName" @click="showStyleList =! showStyleList"
-                    wire:keydown.enter="searchCityByName"
-                    class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                    role="combobox" aria-controls="options" aria-expanded="false">
-                <button type="button" @click="showStyleList =! showStyleList"
-                    class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-                    <!-- Heroicon name: solid/selector -->
-                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-
-                <ul x-show="showStyleList" x-cloak @click.outside="showStyleList = false"
-                    class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-                    id="options" role="listbox">
-                    @forelse ($styles as $s)
-                    <li wire:key="{{ $loop->index }}" id="option-0" role="option" tabindex="-1"
-                        class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white">
-                        <button wire:click="selectStyle({{ $s->id }})">
-                            <span class="block truncate">{{ $s->name }}</span>
-
-                            @if ($s == $style)
-                            <span :class="{'active':'text-white', 'inactive':'text-indigo-600'}"
-                                class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                                @include('icons.check')
-                            </span>
-                            @endif
-                        </button>
-                    </li>
-                    @empty
-                    <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900">
-                        No city found!
-                    </li>
-                    @endforelse
-                </ul>
-            </div>
+        <div class="col-span-4 sm:col-span-1">
+            <livewire:shared.combobox.cities label="City" />
         </div>
-        <div class="flex justify-end">
-            <button type="button" wire:click="resetSchoolList"
-                class="mt-6 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Reset
-            </button>
+        <div class="col-span-4 sm:col-span-1">
+            <livewire:shared.combobox.styles label="Style" />
+        </div>
+        <div class="col-span-4 sm:col-span-1">
+            <div class="flex justify-end">
+                <button type="button" wire:click="resetSchoolList"
+                    class="mt-0 sm:mt-6 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Reset
+                </button>
+            </div>
         </div>
     </div>
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -133,7 +59,7 @@
                     </div>
                     <div class="-ml-px w-0 flex-1 flex">
                         @if ($school->phone)
-                        <a href="tel:+1-202-555-0170"
+                        <a href="tel:{{ $school->phone }}"
                             class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
                             <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                 fill="currentColor" aria-hidden="true">
@@ -150,7 +76,7 @@
                             <span class="ml-3">Website</span>
                         </a>
                         @else
-                        <a href="{{ $school->email }}"
+                        <a href="mailto:{{ $school->email }}"
                             class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
                             @include('icons.email', ['style'=>'w-4 h-4 text-gray-400'])
                             <span class="ml-3">Email</span>

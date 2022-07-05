@@ -4,7 +4,7 @@
     <livewire:event.form /> --}}
     <div class="py-12 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:event.create-form />
+            <livewire:event.create-form orgId="{{ $orgId }}" />
         </div>
     </div>
 </x-app-layout>

@@ -8,7 +8,7 @@
     </x-slot>
     <div class="py-12 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:course.form.course-default />
+            <livewire:course.form.course-default orgId="{{ $orgId }}" />
             <br>
             {{--
             <livewire:course.form /> --}}
@@ -25,5 +25,4 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @endpush
-
 </x-app-layout>

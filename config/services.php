@@ -47,4 +47,18 @@ return [
     'google' => [
         'measurement_id' => env('GA_MEASUREMENT_ID'),
     ],
+
+    'stripe' => [
+        'key'       => env('STRIPE_KEY'),
+        'secret'    => env('STRIPE_SECRET'),
+        'webhook'   => env('STRIPE_WEBHOOK_SECRET'),
+        'currency'  => env('CASHIER_CURRENCY'),
+    ],
+
+    'telegram-bot-api' => [
+        'token' => env('TELEGRAM_BOT_TOKEN'),
+        'name' => env('TELEGRAM_BOT_NAME'),
+        'telegram_id' => env('TELEGRAM_ID'),
+        
+    ],
 ];

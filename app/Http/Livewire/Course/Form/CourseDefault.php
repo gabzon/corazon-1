@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Course\Form;
 
 use App\Models\Course;
+use App\Models\Organization;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -67,8 +68,8 @@ class CourseDefault extends Component
         }
     }
     
-    public function mount(Course $course = null)
-    {        
+    public function mount(Course $course = null, $orgId = null)
+    {                
         if ($course->exists) {
             $this->course = $course;
             $this->action = 'update';
@@ -76,6 +77,12 @@ class CourseDefault extends Component
             $this->course = new Course();
             $this->course->level_code = '';
             $this->course->focus = '';
+
+            if ($orgId != null) {
+                $this->org = Organization::find($orgId);
+                $this->course->city_id = $this->org->city_id;
+                $this->course->organization_id = $this->org->id;
+            }
         }
     }
 

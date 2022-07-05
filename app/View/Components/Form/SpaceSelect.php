@@ -2,19 +2,23 @@
 
 namespace App\View\Components\Form;
 
+use App\Models\Space;
 use Illuminate\View\Component;
 
 class SpaceSelect extends Component
 {
     public $name;
+    public $spaces;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name)
-    {
-        $this->name = $name;
+    public function __construct($name, $cityId = null)
+    {        
+        $this->name = $name;        
+        $this->spaces = Space::inCity($cityId)->get();
+        
     }
 
     /**

@@ -1,4 +1,5 @@
 <x-guest-layout>
+
     @guest
     <div class="relative bg-indigo-50 overflow-hidden">
         <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full" aria-hidden="true">
@@ -86,7 +87,7 @@
 
 
         <x-city.popular />
-
+        <x-style.popular />
         {{-- @include('partials.cities') --}}
         {{-- @include('partials.styles') --}}
         @include('partials.contact-us')

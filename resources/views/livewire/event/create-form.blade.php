@@ -23,6 +23,7 @@
             <form wire:submit.prevent="save" method="POST">
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        @if (auth()->user()->facebook_id)
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-4">
                                 <x-form.text-input wire:model="event.facebook" name="event.facebook"
@@ -43,35 +44,41 @@
                                 </a>
                             </div>
                         </div>
-                        <div>
-                            @if ($fbResults)
-                            <div x-data="{ expanded:false }" role="region" class="my-5">
-                                <button type="button" @click="expanded = !expanded"
-                                    class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <span x-show="expanded">&minus; Hide Facebook Data</span>
-                                    <span x-show="!expanded">&plus; Show Facebook Data </span>
-                                </button>
-                                <div x-show="expanded" class="mt-1">
-                                    @dump($fbResults)
-                                </div>
+                        @endif
+
+                        @if ($fbResults)
+                        <div x-data="{ expanded:false }" role="region" class="my-5">
+                            <button type="button" @click="expanded = !expanded"
+                                class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <span x-show="expanded">&minus; Hide Facebook Data</span>
+                                <span x-show="!expanded">&plus; Show Facebook Data </span>
+                            </button>
+                            <div x-show="expanded" class="mt-1">
+                                @dump($fbResults)
                             </div>
-                            @endif
                         </div>
+                        @endif
+
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-2">
                                 <x-form.city-select wire:model="event.city_id" name="event.city_id" />
+                                @can('create', \App\Models\City::class)
                                 <a href="{{ route('city.create') }}"
                                     class="text-indigo-500 text-xs mt-1 hover:text-indigo-800 ml-2">
                                     Add city <span aria-hidden="true">&rarr;</span>
                                 </a>
+                                @endcan
+
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <x-form.location-select wire:model="event.location_id" name="event.location_id"
                                     city="{{ $event->city_id }}" />
+                                @can('create', \App\Models\Location::class)
                                 <a href="{{ route('location.create') }}"
                                     class="text-indigo-500 text-xs mt-1 hover:text-indigo-800 ml-2">
                                     Add Location <span aria-hidden="true">&rarr;</span>
                                 </a>
+                                @endcan
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <div>

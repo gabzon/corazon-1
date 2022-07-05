@@ -26,11 +26,10 @@
             </div>
             <main class="lg:col-span-9 xl:col-span-6">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    <!-- This example requires Tailwind CSS v2.0+ -->
                     <div>
                         <h2 class="text-lg font-medium text-gray-900">Organization Management</h2>
-                        <p class="mt-1 text-sm text-gray-500">You haven’t created a project yet. Get started by
-                            selecting a template or start from an empty project.</p>
+                        <p class="mt-1 text-sm text-gray-500">Take control over your school management. Get started by
+                            creating courses or events.</p>
                         <ul role="list"
                             class="mt-6 border-t border-b border-gray-200 py-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <li class="flow-root">
@@ -38,23 +37,18 @@
                                     class="relative -m-2 p-2 flex items-center space-x-4 rounded-xl hover:bg-gray-50 focus-within:ring-2 focus-within:ring-indigo-500">
                                     <div
                                         class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-lg bg-pink-500">
-                                        <!-- Heroicon name: outline/view-list -->
-                                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-                                        </svg>
+                                        @include('icons.events',['style'=>'text-white w-6 h-6'])
                                     </div>
                                     <div>
                                         <h3 class="text-sm font-medium text-gray-900">
-                                            <a href="#" class="focus:outline-none">
+                                            <a href="{{ route('event.create', ['orgId' => $organization->id ]) }}"
+                                                class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Create an event<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Another to-do system you’ll try but
-                                            eventually give up on.</p>
+                                        <p class="mt-1 text-sm text-gray-500">Here you can easily create a party, a
+                                            workshop or a festival.</p>
                                     </div>
                                 </div>
                             </li>
@@ -74,12 +68,14 @@
                                     </div>
                                     <div>
                                         <h3 class="text-sm font-medium text-gray-900">
-                                            <a href="#" class="focus:outline-none">
+                                            <a href="{{ route('course.create', ['orgId' => $organization->id ]) }}"
+                                                class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Create a course<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Add a new class to your Schedule</p>
+                                        <p class="mt-1 text-sm text-gray-500">Add a new class to your school schedule.
+                                        </p>
                                     </div>
                                 </div>
                             </li>
@@ -101,10 +97,10 @@
                                         <h3 class="text-sm font-medium text-gray-900">
                                             <a href="#" class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
-                                                Create a Gallery<span aria-hidden="true"> &rarr;</span>
+                                                Create a lesson<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Great for mood boards and inspiration.</p>
+                                        <p class="mt-1 text-sm text-gray-500">Comming soon.</p>
                                     </div>
                                 </div>
                             </li>
@@ -126,11 +122,12 @@
                                         <h3 class="text-sm font-medium text-gray-900">
                                             <a href="#" class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
-                                                Create a Board<span aria-hidden="true"> &rarr;</span>
+                                                Add a Video<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Track tasks in different stages of your
-                                            project.</p>
+                                        <p class="mt-1 text-sm text-gray-500">
+                                            Comming soon.
+                                        </p>
                                     </div>
                                 </div>
                             </li>
@@ -152,11 +149,10 @@
                                         <h3 class="text-sm font-medium text-gray-900">
                                             <a href="#" class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
-                                                Create a Spreadsheet<span aria-hidden="true"> &rarr;</span>
+                                                Create a programme<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Lots of numbers and things — good for
-                                            nerds.</p>
+                                        <p class="mt-1 text-sm text-gray-500">Comming soon</p>
                                     </div>
                                 </div>
                             </li>
@@ -166,37 +162,32 @@
                                     class="relative -m-2 p-2 flex items-center space-x-4 rounded-xl hover:bg-gray-50 focus-within:ring-2 focus-within:ring-indigo-500">
                                     <div
                                         class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-lg bg-purple-500">
-                                        <!-- Heroicon name: outline/clock -->
-                                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
+                                        @include('icons.product', ['style' => 'w-5 h-5 text-white'])
                                     </div>
                                     <div>
                                         <h3 class="text-sm font-medium text-gray-900">
                                             <a href="#" class="focus:outline-none">
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
-                                                Create a Timeline<span aria-hidden="true"> &rarr;</span>
+                                                Create a Product<span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Get a birds-eye-view of your
-                                            procrastination.</p>
+                                        <p class="mt-1 text-sm text-gray-500">
+                                            Comming soon.
+                                        </p>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                         <div class="mt-4 flex">
-                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Or start from
-                                an empty project<span aria-hidden="true"> &rarr;</span></a>
+                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Or start
+                                configuring your organization <span aria-hidden="true"> &rarr;</span></a>
                         </div>
                     </div>
 
                 </div>
             </main>
-            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">
-                Area to be defined
+            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10">
+                @include('organization.dashboard.aside.index-stats')
             </aside>
         </div>
     </div>

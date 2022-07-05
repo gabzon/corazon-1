@@ -15,18 +15,12 @@
 
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <x-form.media-library name="thumbnail" :model="$event" collection="events"
-                                    label="Thumbnail" />
+                                <x-form.select wire:model="event.public" name="event.public"
+                                    :options="['everyone', 'women', 'men', 'kids', 'teenagers']" label="Public" />
                             </div>
                         </div>
 
                         <x-form.rich-text name="event.description" description="Detailed description of the event." />
-
-                        <div>
-                            <div class="mb-3">{!! $event->video !!}</div>
-                            <x-form.textarea wire:model="event.video" label="Promo Video" name="video" rows="4"
-                                description="Please paste embed code from Youtube/Facebook/Vimeo." />
-                        </div>
 
 
                         <x-form.text-input wire:model="event.tagline" name="event.tagline" label="Tagline" />

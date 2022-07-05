@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -63,5 +64,15 @@ class Space extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+    public function scopeInCity($query, $city)
+    {                
+        if (!empty($city)) {
+            return $query->whereHas('location', function(Builder $location) use($city){
+                $location->where('city_id', $city);
+            });
+        }
+        return $query;        
     }
 }

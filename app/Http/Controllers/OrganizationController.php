@@ -115,6 +115,12 @@ class OrganizationController extends Controller
 
     public function dashboard(Organization $organization)
     {
+        // $totalMembers = 4;
+        // $totalFemales = 2;
+        // $totalMales = 1;
+        // $totalCourses = 3;
+        // $activeCourses = 2;
+        // $total
         return view('organization.dashboard.index', compact('organization'));           
     }
     

@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Http\Requests\EventStoreRequest;
 use App\Http\Requests\EventUpdateRequest;
 use App\Models\Course;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -27,9 +28,9 @@ class EventController extends Controller
      */
     public function create(Request $request)    
     {
-        // $this->authorize('create');
-
-        return view('event.create');
+        return view('event.create', [
+            'orgId' => $request->orgId ?? null
+        ]);
     }
 
     /**

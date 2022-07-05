@@ -33,7 +33,6 @@
             <x-jet-dropdown-link href="{{ route('dashboard') }}">
                 {{ __('Dashboard') }}
             </x-jet-dropdown-link>
-
             {{-- @if (auth()->user()->username)
             <x-jet-dropdown-link href="{{ route('profile.index', auth()->user()) }}">
                 {{ __('Profile') }}
@@ -52,9 +51,11 @@
             @if (auth()->user()->hasManagementRights())
             <div class="border-t border-gray-100"></div>
             <!-- Account Management -->
+            @if (auth()->user()->is_super)
             <div class="block px-4 py-2 text-xs text-gray-400">
                 {{ __('Administration') }}
             </div>
+            @endif
 
             @can('manage', App\Models\Course::class)
             <x-jet-dropdown-link href="{{ route('course.index') }}">

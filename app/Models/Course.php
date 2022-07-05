@@ -376,4 +376,9 @@ class Course extends Model implements HasMedia, Registrable, Favoriteable, Bookm
         return $this->organization()->pluck('id')->toArray();
     }
 
+    public function getplaceNameAttribute()
+    {
+        return $this->space->name . ', ' . $this->space->location->shortname ?? $this->space->location->name;
+    }
+
 }

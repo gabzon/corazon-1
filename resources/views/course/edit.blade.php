@@ -27,15 +27,18 @@
     <div class="py-0 sm:py-6 md:py-8 lg:py-10 xl:py-12 px-3 sm:px-0 h-screen overflow-y-scroll ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:course.form.course-default :course="$course" />
-
-            {{--
-            <livewire:course.form :course="$course" /> --}}
         </div>
 
         <x-jet-section-border />
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.options :course="$course" />
+        </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+            <livewire:shared.media-form :model="$course" />
         </div>
 
         <x-jet-section-border />
@@ -48,12 +51,6 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
             <livewire:course.form.schedule :course="$course" />
-        </div>
-
-        <x-jet-section-border />
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
-            <livewire:course.form.videos :course="$course" />
         </div>
 
         @if ($course->type == 'workshop')

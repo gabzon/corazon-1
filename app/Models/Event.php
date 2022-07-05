@@ -125,7 +125,7 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
     public function organizations()
     {
         return $this->belongsToMany(Organization::class);
-    }    
+    }
     
     public function hasOrganization($id)
     {
@@ -320,6 +320,11 @@ class Event extends Model implements HasMedia, Registrable, Favoriteable, Bookma
     public function getOrgIdAttribute()
     {
         return $this->organizations()->pluck('organization_id')->toArray();
+    }
+
+    public function getplaceNameAttribute()
+    {
+        return $this->location->shortname ?? $this->location->name;
     }
 
 }

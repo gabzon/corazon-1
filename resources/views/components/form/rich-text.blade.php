@@ -11,6 +11,13 @@
             </trix-editor>
         </div>
     </div>
+    @error($name)
+    <span class="text-sm text-red-600">{{ $message }}</span>
+    @enderror
+
+    <div>
+
+    </div>
     @push('scripts')
     <script>
         document.addEventListener("trix-file-accept", function(event) {

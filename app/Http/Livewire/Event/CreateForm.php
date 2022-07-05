@@ -7,6 +7,7 @@ use App\Services\FBImportService;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Http\Livewire\Traits\WithThumbnail;
+use App\Models\Organization;
 
 class CreateForm extends Component
 {
@@ -16,6 +17,7 @@ class CreateForm extends Component
     protected $listeners = ['thumbnail' => 'updateThumbnail'];
 
     public $thumbnail;
+    public Organization $org;
     public array $fbResults = [];
 
     protected $rules = [
@@ -72,6 +74,10 @@ class CreateForm extends Component
             $this->handleThumbnailUpload($this->event, $this->thumbnail);
         }
 
+        if ($this->org) {
+            $this->event->organizations()->sync($this->org->id);
+        }
+
         session()->flash('success', 'Event created successfully.');
 
         return redirect(route('event.edit', $this->event));
@@ -82,12 +88,16 @@ class CreateForm extends Component
         $this->event->slug = Str::slug($this->event->name, '-') . '-' . \Carbon\Carbon::now()->timestamp;        
     }
 
-    public function mount()
+    public function mount($orgId = null)
     {
         $this->event = new Event;
         $this->event->type = '';
         $this->event->status = '';
         $this->event->location_id = null;    
+        if ($orgId != null) {
+            $this->org = Organization::find($orgId);
+            $this->event->city_id = $this->org->city_id;            
+        }
     }
     
     public function render()

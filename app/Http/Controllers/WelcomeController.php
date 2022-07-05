@@ -27,4 +27,9 @@ class WelcomeController extends Controller
         return view('auth.fb-login');
     }
 
+    public function sources()
+    {
+        return view('pages.sources');
+    }
+
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Livewire\Shared;
 
 use App\Contracts\Registrable;
+use App\Mail\Registrations\NewRegistration;
 use App\Models\Event;
 use App\Notifications\Registrations\UserRegistration;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
@@ -18,11 +20,22 @@ class RegistrationButton extends Component
     public function register()
     {                
         // $this->authorise('bookmark', $this->model);
-        auth()->user()->register($this->model);
-        
-        request()->user()->notify(new UserRegistration($this->model));
+        auth()->user()->register($this->model);        
+        // if (class_basename($this->model) == 'Course') {    
+        //     if ($this->model->organization) {
+        //         Mail::to('gab.zambrano@gmail.com')->queue(new NewRegistration(auth()->user(), $this->model));
+        //     }                    
+        // }else{
+        //     foreach ($this->model->organizations as $org) {
+        //         if ($org->email) {
+        //             Mail::to($org->email)->queue(new NewRegistration(auth()->user(), $this->model));
+        //         }                
+        //     }
+        // }
 
-        if ($this->refreshPage) {            
+        // request()->user()->notify(new UserRegistration($this->model));
+
+        if ($this->refreshPage) {                        
             return redirect(request()->header('Referer'));        
         }               
         

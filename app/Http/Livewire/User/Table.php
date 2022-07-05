@@ -39,7 +39,8 @@ class Table extends Component
     {
         $users = User::byNameEmailUsername($this->search)
                         ->byGender($this->gender)
-                        ->orderBy('name', 'asc');
+                        // ->orderBy('name', 'asc')
+                        ->latest();
         return view('livewire.user.table', [
             'users' => $users->paginate($this->paginate)
         ]);

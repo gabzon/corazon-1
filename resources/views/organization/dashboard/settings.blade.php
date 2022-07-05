@@ -19,20 +19,71 @@
         </div>
     </x-slot>
 
-    <div class="max-h-screen">
+    <div class="h-screen overflow-y-auto">
         <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="hidden lg:block lg:col-span-3 xl:col-span-2 py-4 sm:py-6 md:py-8 lg:py-10">
                 @include('organization.dashboard.nav')
             </div>
-            <main class="lg:col-span-9 xl:col-span-6">
+            <main class="lg:col-span-12 xl:col-span-9">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    <x-partials.development-card description="School settings"
-                        duration="1 month + testing + feedback improvements" start="November p" link="" />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:organization.form.default-form :organization="$organization" />
+                        </div>
+                    </div>
+
+                    <x-jet-section-border />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:organization.form.general-form :organization="$organization" />
+                        </div>
+                    </div>
+
+                    <x-jet-section-border />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:organization.form.address-form :organization="$organization" />
+                        </div>
+                    </div>
+
+                    <x-jet-section-border />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:shared.social-media-form :model="$organization" />
+                        </div>
+                    </div>
+
+                    <x-jet-section-border />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:organization.form.team :organization="$organization" />
+                        </div>
+                    </div>
+
+                    @if (auth()->user()->is_super)
+                    <x-jet-section-border />
+
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+                        <div class="mx-3 sm:mx-2 md:mx-1 lg:mx-0">
+                            <livewire:shared.styles-form :model="$organization" />
+                        </div>
+                    </div>
+                    <br>
+                    @endif
+
+                    <div class="my-28"></div>
+
+
                 </div>
             </main>
-            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">
+            {{-- <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">
                 Area to be defined
-            </aside>
+            </aside> --}}
         </div>
     </div>
 

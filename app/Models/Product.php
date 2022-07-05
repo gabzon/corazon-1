@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use App\Contracts\Interestable;
-use App\Contracts\Likeable;
-use App\Models\Concerns\Interests;
-use App\Models\Concerns\Likes;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model implements Likeable, Interestable
+class Product extends Model implements HasMedia
 {
     use HasFactory;
-    use Likes;
-    use Interests;
+    use InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -23,14 +21,21 @@ class Product extends Model implements Likeable, Interestable
     protected $fillable = [
         'name',
         'slug',
+        'tagline',
+        'description',
+        'deadline',
+        'full_price',
+        'promo_price',
         'content',
         'video',
         'thumbnail',
-        'qty',
-        'price',
-        'currency',
-        'dealine',
-    ];
+        'qty',        
+        'ordered',
+        'public',
+        'status',
+        'user_id',
+    ];     
+
 
     /**
      * The attributes that should be cast to native types.
@@ -40,6 +45,21 @@ class Product extends Model implements Likeable, Interestable
     protected $casts = [
         'id' => 'integer',
         'price' => 'decimal',
-        'dealine' => 'datetime',
+        'deadline' => 'datetime',
     ];
+
+    public function getAvailabilityPercentageAttribute()
+    {
+        return round(100 - (($this->ordered * 100)/$this->qty));
+    }
+
+    public function hasExpired():bool
+    {
+        return $this->deadline->lessThan(now());
+    }
+
+    public function hasReachedAvailabilityLimit()
+    {
+        return $this->ordered >= $this->qty;
+    }
 }

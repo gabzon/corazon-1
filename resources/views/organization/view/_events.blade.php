@@ -35,7 +35,7 @@
 
             <ul x-ref="slider" tabindex="0" role="listbox" aria-labelledby="carousel-content-label"
                 class="flex w-full overflow-x-scroll snap-x snap-mandatory">
-                @foreach ($organization->events->where('status','active')->sortByDesc('start_date') as $event)
+                @foreach ($organization->events->where('status','active')->sortBy('start_date') as $event)
                 <li class="snap-start w-1/4 shrink-0 min-w-max">
                     <livewire:catalogue.event-card :event="$event" wire:key="{{ $event->id }}" />
                 </li>

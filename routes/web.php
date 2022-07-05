@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\SpaceController;
 use App\Http\Controllers\CourseController;
@@ -19,14 +20,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TelegramBotController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +47,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 Route::get('/facebook-login', [WelcomeController::class, 'fbLogin'])->name('facebook.login');
+Route::get('sources', [WelcomeController::class, 'sources'])->name('sources');
 
 Route::get('/auth/redirect', [LoginController::class,'redirectToFacebook']);
 Route::get('/auth/callback', [LoginController::class, 'handleFacebookCallback']);
@@ -95,6 +100,8 @@ Route::get('mail', function(){
     // return $response->name;
 
 });
+
+
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('events', [EventController::class, 'catalogue'])->name('events.catalogue');
@@ -159,6 +166,17 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('user/register', [RegistrationController::class, 'register'])->name('enroll');
     Route::delete('user/unregister', [RegistrationController::class, 'unregister'])->name('unenroll');
 
+    Route::get('checkout/pay',[CheckoutController::class,'pay'])->name('checkout.pay');
+    
+    Route::post('stripe/checkout',[StripeController::class,'checkout'])->name('stripe.checkout');
+    Route::post('purchase', [CheckoutController::class, 'purchase'])->name('purchase');
+
+    Route::get('/billing-portal', function (Request $request) {
+      return $request->user()->redirectToBillingPortal();
+    });
+
+    Route::get('telegram/message', [TelegramBotController::class, 'message'])->name('telegram.message');
+    Route::get('telegram/updates', [TelegramBotController::class, 'updates'])->name('telegram.updates');
     
     Route::get('profile/favorites/events', [ProfileController::class, 'favorites'])->name('profile.favorites.events');
     Route::get('profile/favorites/courses', [ProfileController::class, 'favorites'])->name('profile.favorites.courses');

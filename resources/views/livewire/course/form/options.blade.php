@@ -2,9 +2,9 @@
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
             <div class="px-4 sm:px-0">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Options</h3>
                 <p class="mt-1 text-sm text-gray-600">
-                    This information will be displayed publicly so be careful what you share.
+                    Extra information that complement and enrich default information.
                 </p>
             </div>
         </div>
@@ -14,7 +14,10 @@
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
                         <div class="w-full sm:w-3/4 md:w-1/2">
-                            <x-form.media-library name="thumbnail" :model="$course" collection="courses" />
+                            {{--
+                            <x-form.media-library name="thumbnail" :model="$course" collection="courses" /> --}}
+                            <x-form.select wire:model="course.public" name="course.public"
+                                :options="['everyone', 'women', 'men', 'kids', 'teenagers']" label="Public" />
                         </div>
 
                         <x-form.text-input wire:model="course.tagline" name="tagline" />

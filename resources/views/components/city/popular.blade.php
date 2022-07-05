@@ -18,7 +18,7 @@
                             </div>
                             <div aria-hidden="true" class="absolute inset-x-0 top-1/2">
                                 <div class="h-full flex flex-col justify-center items-center">
-                                    <div class="relative text-center text-3xl font-bold text-white">
+                                    <div class="relative text-center text-3xl font-bold text-white -mt-4">
                                         {{ $item->name }}
                                     </div>
                                 </div>

@@ -17,14 +17,14 @@ class Listing extends Component
     public $showStyleList = false;
     public $city;
     public $style;
-    public $cityName;
-    public $styleName;
+    public $search;
+
+    protected $listeners = ['selectedCity' => 'selectCity', 'selectedStyle' => 'selectStyle'];
 
     public function selectCity(City $city)
     {        
         $this->city = $city;                
-        $this->showList = false;    
-        $this->cityName = $city->name;    
+        $this->showList = false; 
     }
 
     public function selectStyle(Style $style)
@@ -34,22 +34,12 @@ class Listing extends Component
         $this->styleName = $style->name;    
     }
 
-    public function searchCityByName()
-    {
-        $this->city = City::where('name','LIKE', '%' . $this->cityName . '%')->first();        
-    }
-
     public function resetSchoolList()
     {
         $this->city = null;
         $this->style = null;
-        $this->cityName = null;
-        $this->styleName = null;
-    }
-
-    public function searchStyleByName()
-    {
-        $this->city = Style::where('name','LIKE', '%' . $this->styleName . '%')->first();        
+        $this->search = '';
+        $this->emit('resetSchoolList');        
     }
 
     public function updating($name, $value)
@@ -71,20 +61,12 @@ class Listing extends Component
         }
         if ($this->style != null) {
             $styleId = $this->style->id;
-        }
-
-        $cities = City::has('organizations')->orderBy('name','asc');
+        }        
         
-        if (!empty($this->cityName)) {            
-            $cities->where('name', 'LIKE', '%' . $this->cityName . '%');            
-        }
-        
-        $schools = Organization::where('type', $this->type)->inCity($cityId)->Style($styleId)->inRandomOrder()->paginate(15);
+        $schools = Organization::where('type', $this->type)->where('name','LIKE','%'. $this->search .'%')->inCity($cityId)->Style($styleId)->orderBy('name','asc')->paginate(15);
         
         return view('livewire.organization.listing', [
-            'schools' => $schools,
-            'cities' => $cities->get(),
-            'styles' => Style::has('organizations')->where('name', 'LIKE', '%' . $this->styleName . '%')->orderBy('name','asc')->get(), 
+            'schools' => $schools,                         
         ]);
     }
 }

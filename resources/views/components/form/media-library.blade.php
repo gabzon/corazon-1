@@ -18,6 +18,9 @@
         </div>
         @else
         <x-media-library-attachment name="{{ $name }}" rules="mimes:jpeg,png,gif" />
+        @if ($desc)
+        <p class="text-sm truncate text-gray-500 mt-2">{{ $desc }}</p>
+        @endif
         @endif
         @else
         <x-media-library-attachment name="{{ $name }}" rules="mimes:jpeg,png,gif" />

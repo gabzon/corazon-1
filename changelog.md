@@ -1,6 +1,19 @@
+# v0.2.13: Friday 1st, July 2022
+* Organization Dashboard index new design
+* Organization Dashboard livewire component to see active events/courses
+* Organization Dahsboard livewire compoentn to see other events/courses
+* Avatar-Group component
+* Media Form component for Courses and Events (cover image, square, portrait) + videos
+* Product show: round up availability number
+* Checkout: Product update number of orders
+* Checkout: verify if product is still available
+* Cheakout: verifies deadline
+
 # v0.2.12: Tuesday 31th, May 2022
 * List of events in location
 * User registration Notifications  
+* location select box type improvements
+* location table events added
 
 # v0.2.11: Tuesday 24th, May 2022
 * Add cities to the admin menu top navbar

@@ -112,11 +112,14 @@
                     </a>
                     @endcan
 
-                    {{-- <a href="{{ route('product.index') }}" id="products" data-tippy-placement="right"
+                    @can('manage', \App\Models\Product::class)
+                    <a href="{{ route('product.index') }}" id="products" data-tippy-placement="right"
                         data-tippy-content="Products"
                         class="flex items-center p-2 rounded-lg text-indigo-200 hover:bg-indigo-700">
                         @include('icons.product')
-                    </a> --}}
+                    </a>
+                    @endcan
+
 
                     @can('manage', App\Models\City::class)
                     <a href="{{ route('city.index') }}" id="cities" data-tippy-placement="right"

@@ -4,23 +4,16 @@ namespace App\Http\Livewire\Event;
 
 use App\Models\Event;
 use Livewire\Component;
-use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
 
 class OptionsForm extends Component
 {
-    use WithMedia;
-
     public Event $event;
-    
-    public $mediaComponentNames = ['thumbnail'];
-
-    public $thumbnail;
 
     protected $rules = [
         'event.registration_url'=> 'nullable|url',
+        'event.public'          => 'required',
         'event.tagline'         => 'nullable',
-        'event.description'     => 'nullable',
-        'event.video'           => 'nullable',
+        'event.description'     => 'nullable',        
         'event.is_private'      => 'nullable',
         'event.is_recurrent'    => 'nullable',
         'event.default_registration_status' => 'nullable',
@@ -32,11 +25,7 @@ class OptionsForm extends Component
 
         $this->event->save();
         
-        $this->event->addFromMediaLibraryRequest($this->thumbnail)->toMediaCollection('events');
-        
         session()->flash('success', 'Event saved successfully.');        
-
-        $this->clearMedia();
 
     }
 

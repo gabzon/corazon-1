@@ -4,7 +4,8 @@
             <div class="px-4 sm:px-0">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Styles</h3>
                 <p class="mt-1 text-sm text-gray-600">
-                    Add all the associated styles to this <span class="lowercase">{{ class_basename($model) }}</span>
+                    Add all the associated styles to this <span class="lowercase">{{ class_basename($model)
+                        }}</span>
                 </p>
             </div>
         </div>
@@ -17,7 +18,7 @@
                                 <label for="Styles" class="block text-sm font-medium text-gray-700">
                                     Styles
                                 </label>
-                                <div class="mt-1 flex rounded-md shadow-sm">
+                                <div class="mt-1 flex rounded-md">
                                     <select id="style-list" wire:model="sid"
                                         class="mt-1 mr-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                         <option value="" selected default disabled>Select style</option>
@@ -25,9 +26,11 @@
                                         <option value="{{ $style->id }}">{{ $style->name }}</option>
                                         @endforeach
                                     </select>
-                                    <x-ui.button route="#" size="xs" css="ml-3" wire:click="add">
-                                        Add
-                                    </x-ui.button>
+                                    <button type="button"
+                                        class="ml-2 flex items-center bg-gray-900 text-white hover:bg-gray-800 my-1 px-3 rounded text-sm uppercase"
+                                        wire:click="add">
+                                        &#43; <span class="ml-2">Add</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +56,7 @@
                                 </li>
                                 @empty
                                 <li class="py-4 flex">
-                                    <p class="text-sm font-medium text-gray-900">No styles found!</p>
+                                    <p class="text-sm font-medium text-gray-600 ml-2">No styles found!</p>
                                 </li>
                                 @endforelse
                             </ul>

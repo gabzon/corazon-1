@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="bg-gray-50">
-        <div class=" max-w-full mx-3 sm:mx-4 md:mx-5 lg:mx-6 xl:mx-8">
+        <div class=" max-w-full mx-3 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10">
             <section id="agenda" class="py-2 md:py-4 lg:py-6 xl:py-8">
                 <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">{{ $city->name }}</h1>
                 <livewire:agenda.weekly :city="$city" />

@@ -48,7 +48,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Product $product)
-    {
+    {                
         return view('product.show', compact('product'));
     }
 

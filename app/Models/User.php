@@ -17,9 +17,11 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
+    use Billable;
     use InteractsWithMedia;
     use HasApiTokens;
     use HasFactory;
@@ -29,6 +31,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     use UserFavoritesTrait;
     use UserBookmarksTrait;
     use UserRegistrationsTrait;
+
 
     protected $fillable = [
         'name',

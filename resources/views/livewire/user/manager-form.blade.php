@@ -15,10 +15,23 @@
                         <div class="grid grid-cols-6 gap-6">
 
                             <div class="col-span-6">
-                                <livewire:shared.organization-select type="manager" wire:key="manager" />
+                                <div class="flex justify-between items-center space-x-3">
+                                    <div class="w-full">
+                                        <livewire:shared.combobox.organizations :showLabel="false" />
+                                    </div>
+                                    <div>
+                                        <button type="button" wire:click="addOrgToManage"
+                                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-span-6">
+                                <h3 class="mb-4 mt-2 block text-sm font-medium text-gray-700">
+                                    Organizations managed by this user
+                                </h3>
                                 <div class="flex flex-col">
                                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -48,29 +61,29 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="bg-white divide-y divide-gray-200">
-                                                        @forelse ($orgList as $org)
+                                                        @forelse ($orgList as $organization)
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                {{ $org->name }}
+                                                                {{ $organization->name }}
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                {{ $org->city->name }}
+                                                                {{ $organization->city->name }}
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                {{ $org->city->country }}
+                                                                {{ $organization->city->country }}
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                {{ $org->pivot->created_at->format('d M Y') }}
+                                                                {{ $organization->pivot->created_at->format('d M Y') }}
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                                 <button type="button"
                                                                     class="text-indigo-600 hover:text-indigo-900"
-                                                                    wire:click="remove({{$org->id}})">
+                                                                    wire:click="remove({{$organization->id}})">
                                                                     remove
                                                                 </button>
                                                             </td>
@@ -91,7 +104,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
                         </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

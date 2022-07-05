@@ -30,7 +30,9 @@ class CourseController extends Controller
      */
     public function create(Request $request)
     {
-        return view('course.create');
+        return view('course.create',[            
+            'orgId' => $request->orgId ?? null            
+        ]);
     }
 
     /**

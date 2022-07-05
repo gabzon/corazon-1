@@ -54,10 +54,10 @@
             </div>
         </div>
 
-        <div class="hidden sm:block" aria-hidden="true">
-            <div class="py-5">
-                <div class="border-t border-gray-200"></div>
-            </div>
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 sm:mt-0">
+            <livewire:shared.media-form :model="$event" />
         </div>
 
         <div class="py-12">
@@ -85,14 +85,15 @@
         @endif
 
 
+        {{--
         <x-jet-section-border />
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                {{--
-                <livewire:event.invitees-form :event="$event" /> --}}
+
+                <livewire:event.invitees-form :event="$event" />
             </div>
-        </div>
+        </div> --}}
 
         <x-jet-section-border />
 

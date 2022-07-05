@@ -8,8 +8,6 @@
         @for ($i = 1; $i < (count($photos)); $i++) <a data-fslightbox href="{{ $photos[$i]->getUrl() }}"
             data-type="image" style="display: none"></a>
     @endfor
-
-
     </a>
     @endif
 </div>

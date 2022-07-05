@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div class="flex-1 min-w-0">
-                <x-typo.page-heading title="{{ $organization->name}}" />
+                <x-typo.page-heading title="{{ $organization->name }}" />
             </div>
             <div class="flex md:mt-0 md:ml-4">
                 <a href="{{ url()->previous() }}"
@@ -26,13 +26,11 @@
             </div>
             <main class="lg:col-span-9 xl:col-span-6">
                 <div class="py-4 sm:py-6 md:py-8 lg:py-10">
-                    <x-partials.development-card description="List of events given by a school"
-                        duration="1 month + testing + feedback improvements" start="Mid june"
-                        link="https://trello.com/c/RqaH8oqV" />
+                    <livewire:shared.dashboard-registrable-grid :org="$organization" model="event" />
                 </div>
             </main>
-            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10 border">
-                Area to be defined
+            <aside class="hidden xl:block xl:col-span-4 py-4 sm:py-6 md:py-8 lg:py-10">
+                <livewire:shared.dashboard-registrable-list :org="$organization" model="event" />
             </aside>
         </div>
     </div>

@@ -44,13 +44,14 @@
                                     :options="['active', 'inactive', 'standby', 'open', 'working', 'closed']"
                                     label="Status" />
                             </div>
-                            @endif
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <x-form.select wire:model="organization.type" name="organization.type"
                                     :options="['school', 'business', 'organizer', 'partner', 'association']"
                                     label="Type" />
                             </div>
+                            @endif
+
                         </div>
                         <div class="grid grid-cols-3 gap-6">
                             <div class="col-span-3 sm:col-span-1">
