@@ -87,7 +87,8 @@
 
 
         <x-city.popular />
-        <x-style.popular />
+        {{--
+        <x-style.popular /> --}}
         {{-- @include('partials.cities') --}}
         {{-- @include('partials.styles') --}}
         @include('partials.contact-us')
