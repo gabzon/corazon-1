@@ -74,7 +74,7 @@ class CreateForm extends Component
             $this->handleThumbnailUpload($this->event, $this->thumbnail);
         }
 
-        if ($this->org) {
+        if (isset($this->org)) {
             $this->event->organizations()->sync($this->org->id);
         }
 
