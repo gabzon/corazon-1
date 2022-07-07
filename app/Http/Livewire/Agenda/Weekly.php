@@ -4,23 +4,32 @@ namespace App\Http\Livewire\Agenda;
 
 use App\Models\City;
 use App\Models\Event;
+use App\Models\Style;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Livewire\Component;
 
 class Weekly extends Component
 {
-    public City $city;
+    public City|null $city;
+    public Style|null $style;
 
-    public function mount($city)
+    public function mount($city = null, $style = null)
     {
         $this->city = $city;
+        $this->style = $style;
     }
 
     public function render()
     {
         $week = CarbonImmutable::now();
-        $events = Event::inCity($this->city->id)->whereBetween('start_date',[$week->startOfWeek(), $week->endOfWeek()])->orderBy('start_date','asc')->get();
+        
+        if (isset($this->city)) {
+            $events = Event::inCity($this->city->id)->whereBetween('start_date',[$week->startOfWeek(), $week->endOfWeek()])->orderBy('start_date','asc')->get();
+        }        
+        if (isset($this->style)) {
+            $events = Event::style($this->style->id)->whereBetween('start_date',[$week->startOfWeek(), $week->endOfWeek()])->orderBy('start_date','asc')->get();
+        }        
         
         return view('livewire.agenda.weekly', [
             'mondays' => $events->where(function($query) use ($week){

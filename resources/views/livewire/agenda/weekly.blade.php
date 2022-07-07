@@ -2,7 +2,8 @@
     @if ($events->count() > 0)
     <header class="relative z-40 flex flex-none items-center justify-between py-4">
         <h1 class="text-lg font-semibold text-gray-900">
-            <time datetime="2022-01">{{ $week->startOfWeek()->format('M jS') }} - {{ $week->endOfWeek()->format('M jS')
+            <time datetime="2022-01">This week: {{ $week->startOfWeek()->format('M jS') }} - {{
+                $week->endOfWeek()->format('M jS')
                 }}</time>
         </h1>
         <div class="flex items-center">
