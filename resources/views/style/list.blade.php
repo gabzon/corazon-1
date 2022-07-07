@@ -8,7 +8,7 @@
 </x-app-layout>
 @else
 <x-guest-layout>
-    <div class="my-10">
+    <div class="bg-gray-100 py-10">
         <livewire:style.listing />
         <br>
     </div>
