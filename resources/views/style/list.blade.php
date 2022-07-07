@@ -8,6 +8,9 @@
 </x-app-layout>
 @else
 <x-guest-layout>
-    <livewire:style.listing />
+    <div class="my-10">
+        <livewire:style.listing />
+        <br>
+    </div>
 </x-guest-layout>
 @endauth
