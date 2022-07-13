@@ -96,7 +96,11 @@ class LocationPolicy
 
     public function manage(User $user)
     {
-        return $user->is_super == true;
+        if ($user->is_super == true || $user->role == 'publisher' || $user->role == 'admin') {
+            return true;
+        }
+        
+        return false;    
     }
 
     public function like(User $user, Location $location)

@@ -22,67 +22,38 @@
 
     <div class="py-4 h-screen overflow-y-scroll">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <div x-data="{ tab: 'general' }">
-                <div class="sm:hidden">
-                    <label for="tabs" class="sr-only">Select a tab</label>
-                    <select id="tabs" name="tabs"
-                        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <option>General</option>
-
-                        <option>Address</option>
-
-                        <option selected>Social</option>
-
-                        <option>Media</option>
-                    </select>
-                </div>
-                <div class="hidden sm:block">
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                            <button @click="tab = 'general'"
-                                :class="{ 'border-indigo-500 text-indigo-600': tab === 'general', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab != 'general'}"
-                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                General
-                            </button>
-
-                            <button @click="tab = 'address'"
-                                :class="{ 'border-indigo-500 text-indigo-600': tab === 'address', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab != 'address'}"
-                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Address
-                            </button>
-
-                            <button @click="tab = 'social'"
-                                :class="{ 'border-indigo-500 text-indigo-600': tab === 'social', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab != 'social'}"
-                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Social
-                            </button>
-
-                            <button @click="tab = 'media'"
-                                :class="{ 'border-indigo-500 text-indigo-600': tab === 'media', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab != 'media'}"
-                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Media
-                            </button>
-                        </nav>
-                    </div>
-                </div>
-
-                <div x-show="tab === 'general'">
-                    <livewire:location.form :location="$location" />
-                </div>
-                <div x-show="tab === 'address'">
-                    <livewire:location.address-form :location="$location" />
-                </div>
-                <div x-show="tab === 'social'">
-                    <livewire:location.social-form :location="$location" />
-                </div>
-                <div x-show="tab === 'media'">
-                    <livewire:location.media-form :location="$location" />
-                </div>
-
-            </div>
-
-            <div class="my-40"></div>
+            <livewire:location.form :location="$location" />
         </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:location.form.contact-form :location="$location" />
+        </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:location.form.address-form :location="$location" />
+        </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:shared.social-media-form :model="$location" />
+        </div>
+
+        <x-jet-section-border />
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:location.form.options-form :location="$location" />
+        </div>
+
+        <x-jet-section-border />
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <livewire:location.media-form :location="$location" />
+        </div>
+
+        <div class="my-20"></div>
     </div>
 </x-admin-layout>

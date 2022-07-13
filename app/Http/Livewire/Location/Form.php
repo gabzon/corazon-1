@@ -2,34 +2,25 @@
 
 namespace App\Http\Livewire\Location;
 
+use App\Models\City;
 use App\Models\Location;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Spatie\MediaLibraryPro\Http\Livewire\Concerns\WithMedia;
+
 
 class Form extends Component
 {
-    use WithMedia;
-
     public $action = 'store';
     public Location $location;
-
-    public $mediaComponentNames = ['contract'];
-    public $contract;
     
     protected function rules() {
         return [
             'location.name'         => 'required|min:5',
             'location.slug'         => 'required|min:5',
-            'location.shortname'    => 'nullable',
-            'location.comments'     => 'nullable',
-            'location.contact'      => 'nullable',
-            'location.website'      => 'nullable|min:12|url',
-            'location.email'        => 'nullable|min:5|email',
-            'location.phone'        => 'nullable',
-            'location.contract'     => 'nullable',
+            'location.shortname'    => 'nullable',            
             'location.type'         => 'nullable',
+            'location.google_id'    => 'nullable|unique:locations,google_id,' . $this->location->id,
             'location.facebook_id'  => 'nullable|unique:locations,facebook_id,' . $this->location->id,
             'location.user_id'      => 'nullable',
             'location.city_id'      => 'required',
@@ -41,19 +32,18 @@ class Form extends Component
         $this->validate(); 
         
         $this->location->save();  
-        
-        $this->location->addFromMediaLibraryRequest($this->contract)
-                       ->toMediaCollection('locations');
 
         session()->flash('success', 'Location saved successfully!');
         
         return redirect()->route('location.edit', $this->location);
     }
 
-    public function updatedLocationName($value)
+    public function updatedLocationName()
     {
-        $this->location->slug = Str::slug($value . '-' . \Carbon\Carbon::now()->timestamp,'-'); 
+        $cityName = City::findorFail($this->location->city_id);
+        $this->location->slug = Str::slug($this->location->city->name,'-') . '-' . Str::slug($this->location->name,'-');
     }
+
 
     public function remove()
     {
@@ -64,8 +54,7 @@ class Form extends Component
     }
 
     public function destroy(Location $location)
-    {
-        // dd($location);
+    {        
         $location->delete();
         session()->flash('success','Location deleted successfully!');            
         return redirect(route('location.index'));        

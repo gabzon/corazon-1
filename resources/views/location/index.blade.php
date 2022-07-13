@@ -23,5 +23,6 @@
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <livewire:location.table />
         </div>
+        <div class="my-14">&nbsp;</div>
     </div>
 </x-app-layout>

@@ -101,7 +101,6 @@ Route::get('mail', function(){
 
 });
 
-
 // Route::get('/terms', [WelcomeController::class, 'terms'])->name('terms');
 // Route::get('/policy', [WelcomeController::class, 'policy'])->name('policy');
 Route::get('events', [EventController::class, 'catalogue'])->name('events.catalogue');
@@ -204,7 +203,10 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::resource('admin/challenge', ChallengeController::class);
     Route::resource('admin/organization', OrganizationController::class);
     Route::resource('admin/user', UserController::class);        
-    Route::resource('admin/role', RoleController::class);            
+    Route::resource('admin/role', RoleController::class);       
+    Route::get('components', function(){
+      return view('pages.components');
+    });     
 });
 
 

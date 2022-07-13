@@ -1,8 +1,13 @@
 <div class="space-y-6">
     <div>
         <div class="block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
+            @if ($location->video)
             {!! $location->video ?? ''!!}
-            {{-- <img src="{{ asset($location->logo) }}" alt="" class="object-cover"> --}}
+            @else
+            <img src="{{ asset($location->coverImage) }}" alt="" class="object-cover">
+            @endif
+
+
         </div>
         <div class="mt-4 flex items-start justify-between">
             <div>

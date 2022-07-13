@@ -1,10 +1,10 @@
 <x-guest-layout>
     <x-slot name="header">
         <div class="md:flex md:items-center md:justify-between">
-            <div class="flex-1 min-w-0">
-                <h1 class="text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate">
-                    {{ $location->name }}
-                </h1>
+            <div class="flex items-center min-w-0">
+                <img class="inline-block h-10 w-10 rounded-full mr-2 bg-gray-100 object-cover" lazy="loading"
+                    src="{{ $location->icon }}" alt="{{ $location->name }}">
+                <x-typo.page-heading title="{{ $location->name }}" />
             </div>
             @auth
             <div class="mt-4 flex md:mt-0 md:ml-4">

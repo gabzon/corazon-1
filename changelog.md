@@ -1,3 +1,10 @@
+# v0.2.14: Wednesday 13th, July 2022
+* Location forms refactored (general, contact, address, social, options, media) 
+* Location support for lat, long
+* Location index pagination problem fixed
+* Location logo, facade, icon, contract, gallery added
+* Location display icon on location show page menubar
+
 # v0.2.13: Friday 1st, July 2022
 * Organization Dashboard index new design
 * Organization Dashboard livewire component to see active events/courses

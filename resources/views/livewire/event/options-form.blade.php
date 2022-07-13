@@ -22,7 +22,6 @@
 
                         <x-form.rich-text name="event.description" description="Detailed description of the event." />
 
-
                         <x-form.text-input wire:model="event.tagline" name="event.tagline" label="Tagline" />
 
                         <x-form.text-input wire:model="event.registration_url" name="event.registration_url"

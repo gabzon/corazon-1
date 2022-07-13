@@ -22,23 +22,34 @@ class Location extends Model implements HasMedia
         'name',
         'slug',
         'shortname',
-        
+        'type',
+        'facebook_id',
+        'google_id',
+
+        'contact',
+        'email',
+        'phone',
+        'website',
+        'comments',
+
         'address',        
         'address_info',
         'zip',        
         'neighborhood',
         'entry_code',
-
-        'comments',
-        'type',
+        'google_maps_shortlink',
+        'google_maps',
+        'public_transportation',
+        'lng',
+        'lat',
         
-        'website',
         'facebook',
         'youtube',
         'instagram',
         'twitter',
         'tiktok',
 
+        'comments',
         'has_sink',
         'has_bar',
         'has_fridge',
@@ -49,20 +60,10 @@ class Location extends Model implements HasMedia
         'has_separate_wc',
         'has_shower',
         
-        'contact',
-        'email',
-        'phone',
+
         'contract',
         'video',
-        
-        'facebook_id',
-        'google_id',
-        'lng',
-        'lat',
 
-        'google_maps_shortlink',
-        'google_maps',
-        'public_transportation',
         'user_id',
         'city_id',        
     ];
@@ -75,7 +76,16 @@ class Location extends Model implements HasMedia
     protected $casts = [
         'id'        => 'integer',
         'user_id'   => 'integer',
-        'city_id'   => 'integer',
+        'city_id'   => 'integer',        
+        'has_sink' => 'boolean',
+        'has_bar' => 'boolean',
+        'has_fridge' => 'boolean',
+        'has_hall' => 'boolean',
+        'has_changeroom' => 'boolean',
+        'has_lockers' => 'boolean',
+        'has_wc' => 'boolean',
+        'has_separate_wc' => 'boolean',
+        'has_shower' => 'boolean',
     ];
 
 
@@ -108,8 +118,46 @@ class Location extends Model implements HasMedia
     }
 
     public function getPhotoAttribute()
+    {        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
+    public function getCoverImageAttribute()
     {
-        // $this->avatar ?? $course->location->photo ?? ''
+        if ($this->getMedia('location-logo')->last() != null){
+            return $this->getMedia('location-logo')->last()->getUrl();
+        }
+        
+        if ($this->logo) {
+            return $this->logo;
+        }
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
+    public function getIconAttribute()
+    {
+        if ($this->getMedia('location-icon')->last() != null){
+            return $this->getMedia('location-icon')->last()->getUrl();
+        }
+        
+        return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
+    }
+
+    public function getFacadeImageAttribute()
+    {
+        if ($this->getMedia('location-facade')->last() != null){
+            return $this->getMedia('location-facade')->last()->getUrl();
+        }
+                
+        if ($this->facade) {
+            return $this->facade;
+        }
+
+        if ($this->logo) {
+            return $this->logo;
+        }
+        
         return 'https://eu.ui-avatars.com/api/?name='. urlencode($this->name) .'&background=4338ca&color=ffffff';
     }
 }

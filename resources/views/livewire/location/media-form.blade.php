@@ -1,39 +1,80 @@
-<form wire:submit.prevent="save" class="space-y-8 divide-y divide-gray-200">
-    <div class="py-6 sm:col-span-6">
-        <label for="Photos" class="block text-sm font-medium text-gray-700">
-            Photos
-        </label>
-        <div class="mt-1 w-full">
-            <x-media-library-attachment name="photos" multiple />
-        </div>
-    </div>
-    <div class="py-6 sm:col-span-6">
-        <div class="mb-4">
-            <div class="block w-full aspect-w-10 aspect-h-6 rounded-lg overflow-hidden">
-                {!! $location->video !!}
+<div>
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="md:col-span-1">
+            <div class="px-4 sm:px-0">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Media</h3>
+                <p class="mt-1 text-sm text-gray-600">Add all multimedia content.</p>
             </div>
         </div>
-        <label for="location.video" class="block text-sm font-medium text-gray-700">
-            Video
-        </label>
-        <div class="mt-1">
-            <textarea id="location.video" name="video" rows="3" wire:model="location.video"
-                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
-        </div>
-        <p class="mt-2 text-sm text-gray-500">Write a few sentences about the location.</p>
-    </div>
+        <div class="mt-5 md:mt-0 md:col-span-2">
+            <form wire:submit.prevent="save">
+                <div class="shadow sm:rounded-md sm:overflow-hidden">
+                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        <div class="grid grid-cols-6 gap-6">
+                            <div class="col-span-6 sm:col-span-2">
+                                <x-form.media-library wire:model="logo" name="logo" :model="$location"
+                                    collection="location-logo" label="Logo" desc="Ratio 4:3 (1280×960)" />
+                            </div>
+                            <div class="col-span-6 sm:col-span-2">
+                                <x-form.media-library wire:model="icon" name="icon" :model="$location"
+                                    collection="location-icon" label="Icon" desc="Ratio 1:1 (1080×1080)" />
+                            </div>
+                            <div class="col-span-6 sm:col-span-2">
+                                <x-form.media-library name="facade" :model="$location" collection="location-facade"
+                                    label="Facade" desc="Ratio 4:3 (1280×960)" />
+                            </div>
+                        </div>
 
-    <div class="pt-5">
-        <div class="flex justify-end items-center">
-            <x-partials.saved-confirmation />
-            <a href="{{ route('location.index') }}"
-                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Cancel
-            </a>
-            <button type="submit"
-                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Save
-            </button>
+                        <div>
+                            <x-shared.display-embed :embed="$location->video" />
+                            <x-form.textarea wire:model="location.video" label="Video" name="location.video" rows="3"
+                                description="Embed promo video from Youtube/Facebook/Instagram" />
+                        </div>
+
+                        <div>
+                            <div class="w-full">
+                                <label for="Contract" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Contract
+                                </label>
+                                <div x-data="{changeThumb:false}">
+                                    @if ($location->getMedia('location-contracts')->last() != null)
+                                    <div x-show="!changeThumb">
+                                        <a href="{{ $location->getMedia('location-contracts')->last()->getUrl() }}"
+                                            download="true"
+                                            class="block text-sm truncate text-gray-500 hover:text-indigo-600">
+                                            {{ $location->getMedia('location-contracts')->last()->getUrl() }}
+                                        </a>
+
+                                        <button type="button" @click="changeThumb=true"
+                                            class="text-sm text-indigo-700 hover:text-indigo-500">Change</button>
+                                    </div>
+                                    <div class="mt-1" x-show="changeThumb">
+                                        <x-media-library-attachment name="contract" rules="mimes:pdf" />
+                                        <button type="button" @click="changeThumb=false"
+                                            class="text-sm text-indigo-700 hover:text-indigo-500">Cancel</button>
+                                    </div>
+                                    @else
+                                    <x-media-library-attachment name="contract" rules=" mimes:pdf" />
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="mt-1 w-full">
+                                {{--
+                                <x-media-library-attachment name="photos" multiple /> --}}
+                                <x-form.media-library-multiple name="photos" :model="$location"
+                                    collection="location-photos" label="Photos" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <x-form.submit />
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
+    <div class="my-10">&nbsp;</div>
+</div>
